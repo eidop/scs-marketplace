@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started | Simply Complex Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .lead-hero { padding: 160px 2rem 60px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .lead-hero h1 { font-size: 2.75rem; font-weight: 800; margin-bottom: 1rem; }
+        .lead-hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .lead-form { background: linear-gradient(155deg, var(--bg-card), #18181f); border: 1px solid var(--border); border-radius: 28px; padding: 3rem; max-width: 600px; margin: 0 auto 4rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.95rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 1rem 1.25rem; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; color: var(--text); font-size: 1rem; transition: all 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.2); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .form-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .form-section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; color: var(--primary-light); }
+        .radio-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+        .radio-option { flex: 1; min-width: 120px; }
+        .radio-option input { display: none; }
+        .radio-option label { display: flex; align-items: center; justify-content: center; padding: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.3s; font-size: 0.95rem; }
+        .radio-option input:checked + label { background: var(--gradient); border-color: var(--primary); color: #fff; }
+        .radio-option label:hover { border-color: var(--primary); }
+        .submit-btn { width: 100%; padding: 1.25rem; font-size: 1.1rem; margin-top: 1rem; }
+        .info-box { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 1rem; }
+        .info-box i { font-size: 1.5rem; color: var(--primary-light); margin-top: 0.25rem; }
+        .info-box p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .selected-bundle { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gradient); padding: 0.5rem 1rem; border-radius: 10px; font-weight: 600; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex</span>
+            </a>
+            <nav>
+                <a href="templates.html">Templates</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="https://simplyx.gumroad.com/" target="_blank" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="lead-hero">
+        <h1>Let's Get Started</h1>
+        <p>Tell us about your needs and we'll customize the perfect automation solution for you.</p>
+        
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <p>Please fill out all required fields. This helps us prepare a tailored solution and schedule your onboarding call. We'll typically respond within 24 hours.</p>
+        </div>
+        
+        <div class="selected-bundle" id="bundleDisplay">
+            <i class="fas fa-crown"></i>
+            <span id="bundleName">Professional Bundle</span>
+        </div>
+        
+        <form class="lead-form" id="leadForm">
+            <div class="form-section">
+                <h3>👤 Contact Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" name="firstName" required placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" name="lastName" required placeholder="Doe">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" name="email" required placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" placeholder="+47 123 45 678">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Company Name *</label>
+                    <input type="text" name="company" required placeholder="Your Company AS">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>🎯 Bundle Selection</h3>
+                <div class="form-group">
+                    <label>Which bundle interests you? *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="bundle" id="bundle-essential" value="Essential">
+                            <label for="bundle-essential">Essential (€499)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="bundle" id="bundle-pro" value="Professional" checked>
+                            <label for="bundle-pro">Professional (€799)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="bundle" id="bundle-enterprise" value="Enterprise">
+                            <label for="bundle-enterprise">Enterprise (€1,999)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>🔧 Your Automation Needs</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Primary Industry *</label>
+                        <select name="industry" required>
+                            <option value="">Select industry...</option>
+                            <option value="saas">SaaS / Technology</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="marketing">Marketing Agency</option>
+                            <option value="finance">Finance / Insurance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="realestate">Real Estate</option>
+                            <option value="recruitment">Recruitment / HR</option>
+                            <option value="education">Education</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Size *</label>
+                        <select name="companySize" required>
+                            <option value="">Select size...</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="500+">500+ employees</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>What do you want to automate? *</label>
+                    <textarea name="automationGoals" required placeholder="Describe your main automation challenges and what workflows you need..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Current Tools You Use</label>
+                    <input type="text" name="currentTools" placeholder="n8n, Zapier, Make, Slack, Notion, CRM, etc.">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>📅 Timeline & Budget</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>When do you want to start? *</label>
+                        <select name="timeline" required>
+                            <option value="">Select timeline...</option>
+                            <option value="immediately">Immediately</option>
+                            <option value="this-month">This month</option>
+                            <option value="1-3-months">1-3 months</option>
+                            <option value="3-6-months">3-6 months</option>
+                            <option value="just-exploring">Just exploring</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget Range *</label>
+                        <select name="budget" required>
+                            <option value="">Select range...</option>
+                            <option value="500-1000">€500 - €1,000</option>
+                            <option value="1000-2000">€1,000 - €2,000</option>
+                            <option value="2000-5000">€2,000 - €5,000</option>
+                            <option value="5000+">€5,000+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>📝 Additional Information</h3>
+                <div class="form-group">
+                    <label>How did you hear about us?</label>
+                    <select name="referral">
+                        <option value="">Select...</option>
+                        <option value="google">Google Search</option>
+                        <option value="social">Social Media</option>
+                        <option value="friend">Friend / Colleague</option>
+                        <option value="gumroad">Gumroad</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Any other comments or questions?</label>
+                    <textarea name="comments" placeholder="Anything else we should know?"></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary submit-btn">
+                <i class="fas fa-paper-plane"></i> Submit & Continue to Payment
+            </button>
+        </form>
+    </section>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">◈</div>
+                    <span class="logo-text">Simply Complex</span>
+                </div>
+                <p>Premium automation solutions for modern businesses.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="templates.html">Templates</a></li>
+                    <li><a href="pricing.html">Bundles</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+    // Get bundle from URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const bundle = urlParams.get('bundle') || 'Professional';
+    document.getElementById('bundleName').textContent = bundle + ' Bundle';
+    
+    // Pre-select bundle option
+    const bundleMap = {
+        'essential': 'bundle-essential',
+        'professional': 'bundle-pro', 
+        'enterprise': 'bundle-enterprise'
+    };
+    const bundleKey = bundle.toLowerCase();
+    if (bundleMap[bundleKey]) {
+        document.getElementById(bundleMap[bundleKey]).checked = true;
+    }
+    
+    // Handle form submission
+    document.getElementById('leadForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+        
+        console.log('Lead data:', data);
+        
+        // Show success and redirect to payment
+        alert('Thank you! Your information has been received. Redirecting to payment...');
+        
+        // Redirect to Gumroad based on bundle
+        const gumroadLinks = {
+            'essential': 'https://simplyx.gumroad.com/l/starter-bundle',
+            'professional': 'https://simplyx.gumroad.com/l/growth-bundle',
+            'enterprise': 'https://simplyx.gumroad.com/l/complete-bundle'
+        };
+        
+        const selectedBundle = data.bundle.toLowerCase();
+        const gumroadLink = gumroadLinks[selectedBundle] || 'https://simplyx.gumroad.com/';
+        
+        window.location.href = gumroadLink;
+    });
+    </script>
+</body>
+</html>
