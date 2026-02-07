@@ -19,12 +19,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build website
-        working-directory: ./apps/template-marketplace
         run: |
-          mkdir -p dist/assets
-          cp -r assets/* dist/assets/
-          cp index.html dist/
-          cp _headers dist/
+          echo "Current dir: $(pwd)"
+          echo "Contents: $(ls -la)"
+          echo "Apps dir: $(ls -la apps/)"
+          ls -la apps/template-marketplace/
+          mkdir -p apps/template-marketplace/dist/assets
+          cp -r apps/template-marketplace/assets/* apps/template-marketplace/dist/assets/
+          cp apps/template-marketplace/index.html apps/template-marketplace/dist/
+          cp apps/template-marketplace/_headers apps/template-marketplace/dist/
+          echo "Build complete"
+          ls -la apps/template-marketplace/dist/
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
