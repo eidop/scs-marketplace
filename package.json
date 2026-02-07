@@ -4,7 +4,7 @@
   "description": "Simply Complex Solutions - Premium Automation Upgrades",
   "scripts": {
     "deploy": "wrangler pages deploy ./dist --project-name=scs-market-place",
-    "build": "xcopy /E /I assets dist\\assets 2>nul & copy index.html dist\\ 2>nul & copy _headers dist\\ 2>nul",
+    "build": "mkdir -p dist/assets && cp -r assets/* dist/assets/ && cp index.html dist/ && cp _headers dist/"
   },
   "devDependencies": {
     "wrangler": "^3.114.17"
