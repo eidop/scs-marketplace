@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Templates | Simply Complex Solutions</title>
+    <title>Pricing | Simply Complex Solutions Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .bundle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .bundle-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem 2rem; text-align: center; }
+        .bundle-card.featured { background: linear-gradient(155deg, rgba(99,102,241,0.15), rgba(168,85,247,0.1)); border-color: var(--primary); position: relative; }
+        .bundle-card.featured::before { content: ''; position: absolute; inset: 0; border-radius: 24px; padding: 2px; background: var(--gradient); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+        .bundle-icon { width: 80px; height: 80px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; }
+        .bundle-name { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .bundle-price { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .bundle-price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+        .bundle-desc { color: var(--text-muted); }
+        .buy-section { text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+        .buy-section h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+        @media (max-width: 900px) { .bundle-grid { grid-template-columns: 1fr; max-width: 400px; } }
+    </style>
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -17,57 +31,59 @@
         <div class="header-inner">
             <a href="index.html" class="logo">
                 <div class="logo-icon">◈</div>
-                <span class="logo-text">Simply Complex</span>
+                <span class="logo-text">Simply Complex Solutions</span>
             </a>
             <nav>
-                <a href="templates.html" class="active">Templates</a>
-                <a href="pricing.html">Pricing</a>
+                <a href="templates.html">Templates</a>
+                <a href="pricing.html" class="active">Pricing</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <a href="https://scs-marketplace.pages.dev/scs-dashboard/">Dashboard</a>
             </nav>
             <div class="nav-cta">
-                <div class="currency-toggle">
-                    <button class="currency-btn active" data-currency="EUR">EUR</button>
-                    <button class="currency-btn" data-currency="USD">USD</button>
-                </div>
-                <a href="https://simplyx.gumroad.com/" target="_blank" class="btn btn-primary">Get Started</a>
+                <a href="lead.html?bundle=Professional" class="btn btn-primary">BUY</a>
             </div>
         </div>
     </header>
     
-    <section class="hero" style="padding:140px 2rem 60px">
-        <h1 style="font-size:3rem">All Templates</h1>
-        <p class="hero-desc">12 production-ready automation workflows for every business need</p>
+    <section class="hero" style="padding:140px 3rem 80px">
+        <h1 style="font-size:3rem">Simple, Transparent Pricing</h1>
+        <p class="hero-desc">Choose the perfect package for your automation needs</p>
     </section>
     
-    <section id="templates" style="padding-top:0">
-        <div class="templates-grid" id="templatesGrid"></div>
-    </section>
-    
-    <section class="cta-section">
-        <h2>Need All Templates?</h2>
-        <p>Get the complete suite at a fraction of the individual price.</p>
-        <div class="cta-pricing">
-            <div class="cta-price-card">
-                <div class="cta-price-name">Essential</div>
-                <div class="cta-price-value">€499 <span>/one-time</span></div>
-                <p class="cta-price-desc">All templates + Installation</p>
+    <section style="padding: 0 3rem 6rem;">
+        <div class="bundle-grid">
+            <div class="bundle-card">
+                <div class="bundle-icon" style="background: linear-gradient(135deg, #6366f1, #818cf8)">
+                    <i class="fas fa-rocket" style="color: #fff"></i>
+                </div>
+                <h3 class="bundle-name">Essential</h3>
+                <div class="bundle-price" data-eur="499">€499 <span>/one-time</span></div>
+                <p class="bundle-desc">All templates + Installation</p>
             </div>
-            <div class="cta-price-card featured">
-                <div class="cta-price-name">Professional</div>
-                <div class="cta-price-value">€799 <span>/one-time</span></div>
-                <p class="cta-price-desc">Everything + Priority Support</p>
+            
+            <div class="bundle-card featured">
+                <div class="bundle-icon" style="background: linear-gradient(135deg, #10b981, #34d399)">
+                    <i class="fas fa-crown" style="color: #fff"></i>
+                </div>
+                <h3 class="bundle-name">Professional</h3>
+                <div class="bundle-price" data-eur="799">€799 <span>/one-time</span></div>
+                <p class="bundle-desc">Everything + Priority Support</p>
             </div>
-            <div class="cta-price-card">
-                <div class="cta-price-name">Enterprise</div>
-                <div class="cta-price-value">€1,999 <span>/one-time</span></div>
-                <p class="cta-price-desc">All + Custom Development</p>
+            
+            <div class="bundle-card">
+                <div class="bundle-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24)">
+                    <i class="fas fa-chart-line" style="color: #fff"></i>
+                </div>
+                <h3 class="bundle-name">Enterprise</h3>
+                <div class="bundle-price" data-eur="1999">€1,999 <span>/one-time</span></div>
+                <p class="bundle-desc">All + Custom Development</p>
             </div>
         </div>
-        <a href="pricing.html" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
-            <i class="fas fa-crown"></i> View Bundle Options
-        </a>
+        
+        <div class="buy-section">
+            <h3>Ready to get started?</h3>
+            <a href="lead.html?bundle=Professional" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">BUY</a>
+        </div>
     </section>
     
     <footer>
@@ -75,104 +91,38 @@
             <div class="footer-brand">
                 <div class="logo">
                     <div class="logo-icon">◈</div>
-                    <span class="logo-text">Simply Complex</span>
+                    <span class="logo-text">Simply Complex Solutions</span>
                 </div>
-                <p>Premium automation solutions for modern businesses.</p>
+                <p>Premium automation solutions.</p>
             </div>
             <div class="footer-links">
                 <h4>Products</h4>
-                <ul>
-                    <li><a href="templates.html">Templates</a></li>
-                    <li><a href="pricing.html">Bundles</a></li>
-                </ul>
+                <ul><li><a href="templates.html">Templates</a></li><li><a href="pricing.html">Bundles</a></li></ul>
             </div>
             <div class="footer-links">
                 <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
+                <ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Simply Complex Solutions Solutions</p></div>
     </footer>
     
     <script>
     const currencyRates = { EUR: 1, USD: 1.08 };
     let currentCurrency = 'EUR';
     
-    const templates = [
-        { id: 1, name: "Lead Generation Engine", price: 479, category: "lead-gen", color: "#6366f1", icon: "fa-robot", desc: "Multi-channel lead capture with AI enrichment and scoring.", features: ["AI Enrichment", "Lead Scoring", "CRM Integration"], badge: "hot", link: "template-lead-generation.html" },
-        { id: 2, name: "Support Ticket System", price: 479, category: "support", color: "#10b981", icon: "fa-headset", desc: "AI-powered support automation with auto-triage.", features: ["Auto-responders", "AI Triage", "Priority Routing"], badge: "popular", link: "template-support-ticket.html" },
-        { id: 3, name: "Recruitment Automation", price: 459, category: "hr", color: "#f59e0b", icon: "fa-users", desc: "Source, screen, and schedule candidates automatically.", features: ["Resume Parsing", "Scheduling", "CRM Integration"], badge: "new", link: "template-recruitment.html" },
-        { id: 4, name: "Cold Outreach Engine", price: 299, category: "sales", color: "#3b82f6", icon: "fa-envelope", desc: "AI-powered cold email automation at scale.", features: ["Email Sequences", "AI Writing", "Tracking"], badge: null, link: "template-cold-outreach.html" },
-        { id: 5, name: "Webinar Automation", price: 249, category: "marketing", color: "#8b5cf6", icon: "fa-video", desc: "Registration, reminders, and follow-ups.", features: ["Registration", "Reminders", "Calendar"], badge: null, link: "template-webinar.html" },
-        { id: 6, name: "Customer Onboarding", price: 279, category: "support", color: "#22c55e", icon: "fa-user-plus", desc: "Automated welcome sequences and check-ins.", features: ["Welcome Emails", "Check-ins", "Slack Alerts"], badge: null, link: "template-onboarding.html" },
-        { id: 7, name: "Invoice Processor", price: 329, category: "finance", color: "#06b6d4", icon: "fa-file-invoice", desc: "AI-powered invoice processing with OCR.", features: ["OCR Extraction", "Validation", "Accounting"], badge: null, link: "template-invoice.html" },
-        { id: 8, name: "Social Media Scheduler", price: 279, category: "marketing", color: "#f97316", icon: "fa-share-alt", desc: "Schedule and publish to LinkedIn and Twitter.", features: ["Multi-platform", "Scheduling", "AI Content"], badge: null, link: "template-social-media.html" },
-        { id: 9, name: "Appointment Booking", price: 349, category: "productivity", color: "#ec4899", icon: "fa-calendar-check", desc: "Smart scheduling with calendar sync and reminders.", features: ["Calendar Sync", "Buffer Time", "Confirmations"], badge: null, link: "template-appointment.html" },
-        { id: 10, name: "Content Repurposing", price: 399, category: "marketing", color: "#14b8a6", icon: "fa-recycle", desc: "Turn one content piece into 10+ formats.", features: ["AI Summaries", "Multi-platform", "Scheduling"], badge: null, link: "template-content-repurpose.html" },
-        { id: 11, name: "Competitor Monitoring", price: 429, category: "intelligence", color: "#f43f5e", icon: "fa-radar", desc: "Track competitors and get automated alerts.", features: ["Price Tracking", "News Alerts", "SWOT Analysis"], badge: null, link: "template-competitor.html" },
-        { id: 12, name: "Affiliate Management", price: 379, category: "sales", color: "#8b5cf6", icon: "fa-handshake", desc: "Track affiliates and automate commissions.", features: ["Commission Tracking", "Payouts", "Performance"], badge: null, link: "template-affiliate.html" }
-    ];
-    
-    function formatPrice(eur) {
-        const val = Math.round(eur * currencyRates[currentCurrency]);
-        return currentCurrency === 'USD' ? '$' + val : '€' + val;
-    }
-    
-    function renderTemplates() {
-        const grid = document.getElementById('templatesGrid');
-        grid.innerHTML = '';
-        templates.forEach(t => {
-            const badge = t.badge ? `<span class="template-badge ${t.badge}">${t.badge}</span>` : '';
-            const features = t.features.map(f => `<span class="feature-tag">${f}</span>`).join('');
-            grid.innerHTML += `
-                <div class="template-card">
-                    <div class="template-image" style="background:linear-gradient(135deg,${t.color},${t.color}dd)">
-                        ${badge}
-                        <i class="fas ${t.icon} template-icon"></i>
-                        <span class="template-image-text">${t.category.replace('-', ' ')}</span>
-                    </div>
-                    <div class="template-content">
-                        <h3>${t.name}</h3>
-                        <p>${t.desc}</p>
-                        <div class="template-features">${features}</div>
-                        <div class="template-footer">
-                            <div class="price">${formatPrice(t.price)}</div>
-                            <a href="${t.link}" class="buy-link"><i class="fas fa-arrow-right"></i> Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-    }
-    
-    function updatePricing() {
-        document.querySelectorAll('.currency-btn').forEach(b => {
-            b.classList.toggle('active', b.dataset.currency === currentCurrency);
-        });
-        document.querySelectorAll('.cta-price-value').forEach((card, i) => {
-            const prices = [{e:499,s:539}, {e:799,s:863}, {e:1999,s:2159}];
-            const sym = currentCurrency === 'USD' ? '$' : '€';
-            card.innerHTML = sym + prices[i][currentCurrency.toLowerCase()] + ' <span>/one-time</span>';
-        });
-    }
-    
     document.querySelectorAll('.currency-btn').forEach(btn => {
-        btn.addEventListener('click', () => { currentCurrency = btn.dataset.currency; renderTemplates(); updatePricing(); });
+        btn.addEventListener('click', () => {
+            currentCurrency = btn.dataset.currency;
+            document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === currentCurrency));
+            document.querySelectorAll('.bundle-price').forEach(el => {
+                const eur = parseInt(el.dataset.eur);
+                const val = Math.round(eur * currencyRates[currentCurrency]);
+                el.innerHTML = (currentCurrency === 'USD' ? '$' : '€') + val + ' <span>/one-time</span>';
+            });
+        });
     });
-    
-    renderTemplates();
     </script>
 </body>
 </html>
+
