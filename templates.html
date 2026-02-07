@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simply Complex Solutions | Premium n8n Automation Templates</title>
-    <meta name="description" content="Enterprise-grade n8n automation templates. Lead generation, sales automation, customer support, and workflow solutions.">
+    <title>All Templates | Simply Complex Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -21,7 +20,7 @@
                 <span class="logo-text">Simply Complex</span>
             </a>
             <nav>
-                <a href="templates.html">Templates</a>
+                <a href="templates.html" class="active">Templates</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
@@ -37,56 +36,18 @@
         </div>
     </header>
     
-    <section class="hero">
-        <div class="hero-badge">
-            <i class="fas fa-rocket"></i>
-            Premium n8n Automation Templates
-        </div>
-        <h1>Automate Your Business<br><span class="gradient">Scale Without Limits</span></h1>
-        <p class="hero-desc">Production-ready automation workflows built by experts. Import, customize, deploy. Save 20+ hours per week.</p>
-        <div class="hero-actions">
-            <a href="templates.html" class="btn btn-primary" style="padding:1rem 2rem;font-size:1.1rem">
-                <i class="fas fa-search"></i> Browse Templates
-            </a>
-            <a href="pricing.html" class="btn btn-outline" style="padding:1rem 2rem;font-size:1.1rem">
-                <i class="fas fa-gift"></i> View Bundles
-            </a>
-        </div>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-value">12</div>
-                <div class="hero-stat-label">Templates</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-value">€4,085</div>
-                <div class="hero-stat-label">Total Value</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-value">20h+</div>
-                <div class="hero-stat-label">Time Saved/Template</div>
-            </div>
-        </div>
+    <section class="hero" style="padding:140px 2rem 60px">
+        <h1 style="font-size:3rem">All Templates</h1>
+        <p class="hero-desc">12 production-ready automation workflows for every business need</p>
     </section>
     
-    <section id="templates">
-        <div class="section-header">
-            <h2>Featured Templates</h2>
-            <p>Enterprise-grade automations ready to deploy</p>
-        </div>
-        
+    <section id="templates" style="padding-top:0">
         <div class="templates-grid" id="templatesGrid"></div>
-        
-        <div style="text-align:center;margin-top:3rem">
-            <a href="templates.html" class="btn btn-outline" style="padding:1rem 2rem">
-                <i class="fas fa-th"></i> View All Templates
-            </a>
-        </div>
     </section>
     
     <section class="cta-section">
-        <h2>Complete Automation Suite</h2>
-        <p>Get all templates plus exclusive features, support, and updates.</p>
-        
+        <h2>Need All Templates?</h2>
+        <p>Get the complete suite at a fraction of the individual price.</p>
         <div class="cta-pricing">
             <div class="cta-price-card">
                 <div class="cta-price-name">Essential</div>
@@ -104,9 +65,8 @@
                 <p class="cta-price-desc">All + Custom Development</p>
             </div>
         </div>
-        
         <a href="pricing.html" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
-            <i class="fas fa-crown"></i> Get Complete Access
+            <i class="fas fa-crown"></i> View Bundle Options
         </a>
     </section>
     
@@ -117,20 +77,13 @@
                     <div class="logo-icon">◈</div>
                     <span class="logo-text">Simply Complex</span>
                 </div>
-                <p>Premium automation solutions for modern businesses. Built once, deployed forever.</p>
-                <div class="footer-social">
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
-                </div>
+                <p>Premium automation solutions for modern businesses.</p>
             </div>
             <div class="footer-links">
                 <h4>Products</h4>
                 <ul>
                     <li><a href="templates.html">Templates</a></li>
                     <li><a href="pricing.html">Bundles</a></li>
-                    <li><a href="#">Custom Dev</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -138,15 +91,13 @@
                 <ul>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Support</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
                 </ul>
             </div>
         </div>
@@ -163,7 +114,15 @@
         { id: 1, name: "Lead Generation Engine", price: 479, category: "lead-gen", color: "#6366f1", icon: "fa-robot", desc: "Multi-channel lead capture with AI enrichment and scoring.", features: ["AI Enrichment", "Lead Scoring", "CRM Integration"], badge: "hot", link: "template-lead-generation.html" },
         { id: 2, name: "Support Ticket System", price: 479, category: "support", color: "#10b981", icon: "fa-headset", desc: "AI-powered support automation with auto-triage.", features: ["Auto-responders", "AI Triage", "Priority Routing"], badge: "popular", link: "template-support-ticket.html" },
         { id: 3, name: "Recruitment Automation", price: 459, category: "hr", color: "#f59e0b", icon: "fa-users", desc: "Source, screen, and schedule candidates automatically.", features: ["Resume Parsing", "Scheduling", "CRM Integration"], badge: "new", link: "template-recruitment.html" },
-        { id: 4, name: "Cold Outreach Engine", price: 299, category: "sales", color: "#3b82f6", icon: "fa-envelope", desc: "AI-powered cold email automation at scale.", features: ["Email Sequences", "AI Writing", "Tracking"], badge: null, link: "template-cold-outreach.html" }
+        { id: 4, name: "Cold Outreach Engine", price: 299, category: "sales", color: "#3b82f6", icon: "fa-envelope", desc: "AI-powered cold email automation at scale.", features: ["Email Sequences", "AI Writing", "Tracking"], badge: null, link: "template-cold-outreach.html" },
+        { id: 5, name: "Webinar Automation", price: 249, category: "marketing", color: "#8b5cf6", icon: "fa-video", desc: "Registration, reminders, and follow-ups.", features: ["Registration", "Reminders", "Calendar"], badge: null, link: "template-webinar.html" },
+        { id: 6, name: "Customer Onboarding", price: 279, category: "support", color: "#22c55e", icon: "fa-user-plus", desc: "Automated welcome sequences and check-ins.", features: ["Welcome Emails", "Check-ins", "Slack Alerts"], badge: null, link: "template-onboarding.html" },
+        { id: 7, name: "Invoice Processor", price: 329, category: "finance", color: "#06b6d4", icon: "fa-file-invoice", desc: "AI-powered invoice processing with OCR.", features: ["OCR Extraction", "Validation", "Accounting"], badge: null, link: "template-invoice.html" },
+        { id: 8, name: "Social Media Scheduler", price: 279, category: "marketing", color: "#f97316", icon: "fa-share-alt", desc: "Schedule and publish to LinkedIn and Twitter.", features: ["Multi-platform", "Scheduling", "AI Content"], badge: null, link: "template-social-media.html" },
+        { id: 9, name: "Appointment Booking", price: 349, category: "productivity", color: "#ec4899", icon: "fa-calendar-check", desc: "Smart scheduling with calendar sync and reminders.", features: ["Calendar Sync", "Buffer Time", "Confirmations"], badge: null, link: "template-appointment.html" },
+        { id: 10, name: "Content Repurposing", price: 399, category: "marketing", color: "#14b8a6", icon: "fa-recycle", desc: "Turn one content piece into 10+ formats.", features: ["AI Summaries", "Multi-platform", "Scheduling"], badge: null, link: "template-content-repurpose.html" },
+        { id: 11, name: "Competitor Monitoring", price: 429, category: "intelligence", color: "#f43f5e", icon: "fa-radar", desc: "Track competitors and get automated alerts.", features: ["Price Tracking", "News Alerts", "SWOT Analysis"], badge: null, link: "template-competitor.html" },
+        { id: 12, name: "Affiliate Management", price: 379, category: "sales", color: "#8b5cf6", icon: "fa-handshake", desc: "Track affiliates and automate commissions.", features: ["Commission Tracking", "Payouts", "Performance"], badge: null, link: "template-affiliate.html" }
     ];
     
     function formatPrice(eur) {
@@ -207,8 +166,6 @@
             const sym = currentCurrency === 'USD' ? '$' : '€';
             card.innerHTML = sym + prices[i][currentCurrency.toLowerCase()] + ' <span>/one-time</span>';
         });
-        const stats = document.querySelectorAll('.hero-stat-value');
-        stats[1].textContent = (currentCurrency === 'USD' ? '$' : '€') + (currentCurrency === 'USD' ? 4412 : 4085);
     }
     
     document.querySelectorAll('.currency-btn').forEach(btn => {
