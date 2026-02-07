@@ -107,6 +107,12 @@
         .footer-links a:hover{color:var(--text)}
         .footer-bottom{border-top:1px solid var(--border);margin-top:3rem;padding-top:2rem;text-align:center;color:var(--text-muted);font-size:0.85rem}
         
+        /* Currency Toggle */
+        .currency-toggle{display:flex;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:0.25rem;gap:0.25rem}
+        .currency-btn{background:transparent;border:none;color:var(--text-muted);padding:0.4rem 0.75rem;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.3s}
+        .currency-btn:hover{color:var(--text)}
+        .currency-btn.active{background:var(--primary);color:#fff}
+        
         /* Responsive */
         @media(max-width:768px){
             .header-inner{padding:1rem}
@@ -143,6 +149,10 @@
                 <a href="https://scs-marketplace.pages.dev/scs-dashboard/">Dashboard</a>
             </nav>
             <div class="nav-cta">
+                <div class="currency-toggle">
+                    <button class="currency-btn active" data-currency="EUR">EUR</button>
+                    <button class="currency-btn" data-currency="USD">USD</button>
+                </div>
                 <button class="btn btn-ghost">Sign In</button>
                 <button class="btn btn-primary">Get Started</button>
             </div>
@@ -256,6 +266,13 @@
     </footer>
     
     <script>
+    // Currency conversion rates (EUR base)
+    const currencyRates = {
+        EUR: 1,
+        USD: 1.08 // 1 EUR = 1.08 USD
+    };
+    let currentCurrency = 'EUR';
+
     const templates=[
         {id:1,name:"Lead Generation Engine",price:479,category:"lead-gen",color:"#6366f1",icon:"fa-robot",desc:"Multi-channel lead capture with AI enrichment and scoring.",features:["AI Enrichment","Lead Scoring","CRM Integration"],badge:"hot",link:"https://simplyx.gumroad.com/l/lead-generation-engine"},
         {id:2,name:"Support Ticket System",price:479,category:"support",color:"#10b981",icon:"fa-headset",desc:"AI-powered support automation with auto-triage.",features:["Auto-responders","AI Triage","Priority Routing"],badge:"popular",link:"https://simplyx.gumroad.com/l/grrof"},
@@ -268,28 +285,72 @@
     ];
     
     const grid=document.getElementById('templatesGrid');
-    templates.forEach(t=>{
-        const badge=t.badge?'<span class="template-badge '+t.badge+'">'+t.badge+'</span>':'';
-        const features=t.features.map(f=>'<span class="feature-tag">'+f+'</span>').join('');
-        const card=document.createElement('div');
-        card.className='template-card';
-        card.innerHTML=`
-            <div class="template-image" style="background:${t.color}">
-                ${badge}
-                <i class="fas ${t.icon} template-icon"></i>
-            </div>
-            <div class="template-content">
-                <h3>${t.name}</h3>
-                <p>${t.desc}</p>
-                <div class="template-features">${features}</div>
-                <div class="template-footer">
-                    <div class="price">€${t.price}</div>
-                    <a href="${t.link}" target="_blank" class="buy-link"><i class="fas fa-shopping-cart"></i> Get Template</a>
+    
+    function formatPrice(eurPrice) {
+        const converted = Math.round(eurPrice * currencyRates[currentCurrency]);
+        return currentCurrency === 'USD' ? '$' + converted.toLocaleString() : '€' + converted.toLocaleString();
+    }
+    
+    function renderTemplates() {
+        grid.innerHTML = '';
+        templates.forEach(t=>{
+            const badge=t.badge?'<span class="template-badge '+t.badge+'">'+t.badge+'</span>':'';
+            const features=t.features.map(f=>'<span class="feature-tag">'+f+'</span>').join('');
+            const card=document.createElement('div');
+            card.className='template-card';
+            card.innerHTML=`
+                <div class="template-image" style="background:${t.color}">
+                    ${badge}
+                    <i class="fas ${t.icon} template-icon"></i>
                 </div>
-            </div>
-        `;
-        grid.appendChild(card);
+                <div class="template-content">
+                    <h3>${t.name}</h3>
+                    <p>${t.desc}</p>
+                    <div class="template-features">${features}</div>
+                    <div class="template-footer">
+                        <div class="price">${formatPrice(t.price)}</div>
+                        <a href="${t.link}" target="_blank" class="buy-link"><i class="fas fa-shopping-cart"></i> Get Template</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+    
+    function updatePricingSection() {
+        const priceCards = document.querySelectorAll('.cta-price-value');
+        const bundlePrices = [
+            { eur: 499, usd: 539 },
+            { eur: 799, usd: 863 },
+            { eur: 1999, usd: 2159 }
+        ];
+        priceCards.forEach((card, index) => {
+            const symbol = currentCurrency === 'USD' ? '$' : '€';
+            const price = currentCurrency === 'USD' ? bundlePrices[index].usd : bundlePrices[index].eur;
+            card.innerHTML = symbol + price.toLocaleString() + ' <span>/one-time</span>';
+        });
+    }
+    
+    function updateHeroStats() {
+        const stats = document.querySelectorAll('.hero-stat-value');
+        const totalValueEur = 5800;
+        const totalValueUsd = 6264;
+        stats[1].textContent = (currentCurrency === 'USD' ? '$' : '€') + (currentCurrency === 'USD' ? totalValueUsd : totalValueEur).toLocaleString() + '+';
+    }
+    
+    // Currency toggle handlers
+    document.querySelectorAll('.currency-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCurrency = btn.dataset.currency;
+            renderTemplates();
+            updatePricingSection();
+            updateHeroStats();
+        });
     });
+    
+    renderTemplates();
     </script>
 </body>
 </html>
