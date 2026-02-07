@@ -1,8 +1,9 @@
+# GitHub Actions Workflow for Cloudflare Pages Auto-Deploy
 name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master, main]
   workflow_dispatch:
 
 permissions:
@@ -17,10 +18,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: ./apps/template-marketplace
+        run: npm ci
+
+      - name: Build website
+        working-directory: ./apps/template-marketplace
+        run: npm run build
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: scs-marketplace
-          directory: .
+          projectName: scs-market-place
+          directory: apps/template-marketplace/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

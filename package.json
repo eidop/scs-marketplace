@@ -1,9 +1,9 @@
 {
-  "name": "scs-marketplace",
+  "name": "scs-market-place",
   "version": "1.0.0",
-  "description": "Simply Complex Solutions - Premium n8n Automation Templates",
+  "description": "Simply Complex Solutions - Premium Automation Upgrades",
   "scripts": {
-    "deploy": "wrangler pages deploy ./dist --project-name=scs-marketplace",
+    "deploy": "wrangler pages deploy ./dist --project-name=scs-market-place",
     "build": "xcopy /E /I assets dist\\assets 2>nul & copy index.html dist\\ 2>nul & copy _headers dist\\ 2>nul",
   },
   "devDependencies": {
