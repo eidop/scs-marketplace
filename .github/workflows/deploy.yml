@@ -17,18 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build (Copy files)
-        run: |
-          mkdir -p dist
-          cp -r index.html dist/
-          cp -r _headers dist/
-          cp -r assets dist/
-          ls -la dist/
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: scs-marketplace
-          directory: dist
+          directory: .
