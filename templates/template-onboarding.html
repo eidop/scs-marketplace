@@ -6,7 +6,7 @@
     <title>Customer Onboarding | Simply Complex Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -15,18 +15,15 @@
     
     <header>
         <div class="header-inner">
-            <a href="../index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex</span></a>
+            <a href="index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex Solutions</span></a>
             <nav>
-                <a href="../templates.html">Templates</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
+                <a href="templates.html">Templates</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </nav>
             <div class="nav-cta">
-                <div class="currency-toggle">
-                    <button class="currency-btn active" data-currency="EUR">EUR</button>
-                    <button class="currency-btn" data-currency="USD">USD</button>
-                </div>
+                <a href="pricing.html" class="btn btn-primary">BUY</a>
             </div>
         </div>
     </header>
@@ -36,8 +33,8 @@
             <i class="fas fa-user-plus" style="color:#fff"></i>
         </div>
         <h1>Customer Onboarding</h1>
-        <p>Automated welcome sequences and check-ins.</p>
-        <div style="margin-top:1.5rem"><span class="price" id="mainPrice">€279</span></div>
+        <p>Automated welcome sequences and check-ins. Turn new customers into raving fans.</p>
+        <div style="margin-top:1.5rem"><span class="price">€279</span></div>
         <div style="margin-top:2rem">
             <a href="https://simplyx.gumroad.com/l/customer-onboarding" target="_blank" class="btn btn-primary" style="padding:1rem 2.5rem;font-size:1.1rem">
                 <i class="fas fa-shopping-cart"></i> Buy Now
@@ -46,47 +43,43 @@
     </section>
     
     <section class="detail-section">
-        <h2>Overview</h2>
-        <p>Create seamless customer onboarding experiences. Automate welcome emails, guide tours, and periodic check-ins to improve retention.</p>
+        <h2>What It Solves</h2>
+        <p>Lost customers happen in the first 30 days. This template automates your entire onboarding journey—from welcome email to success check-ins—ensuring every customer gets started right.</p>
         
         <h2 style="margin-top:3rem">Key Features</h2>
         <ul class="features-list">
-            <li><i class="fas fa-envelope-open"></i> Welcome email sequences</li>
-            <li><i class="fas fa-tasks"></i> Task checklists</li>
-            <li><i class="fab fa-slack"></i> Slack notifications</li>
-            <li><i class="fas fa-calendar-check"></i> Health score tracking</li>
+            <li><i class="fas fa-envelope" style="color:#22c55e"></i> <strong>Welcome Sequences</strong> — Multi-day welcome emails with resources</li>
+            <li><i class="fas fa-calendar-check" style="color:#22c55e"></i> <strong>Smart Scheduling</strong> — Book onboarding calls automatically</li>
+            <li><i class="fas fa-slack" style="color:#22c55e"></i> <strong>Slack Alerts</strong> — Notify team of new signups</li>
+            <li><i class="fas fa-tasks" style="color:#22c55e"></i> <strong>Task Tracking</strong> — Track customer progress</li>
+            <li><i class="fas fa-chart-line" style="color:#22c55e"></i> <strong>Success Metrics</strong> — Onboarding completion rates</li>
+            <li><i class="fas fa-bell" style="color:#22c55e"></i> <strong>Re-engagement</strong> — Auto-follow-up for inactive users</li>
         </ul>
+        
+        <div style="background:linear-gradient(135deg,rgba(34,197,94,0.1),rgba(34,197,94,0.05));border:1px solid rgba(34,197,94,0.2);border-radius:20px;padding:2rem;margin-top:3rem;text-align:center">
+            <h3 style="margin-bottom:1rem">Ready to Delight Your Customers?</h3>
+            <a href="https://simplyx.gumroad.com/l/customer-onboarding" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
+                <i class="fas fa-shopping-cart"></i> Get Customer Onboarding — €279
+            </a>
+        </div>
     </section>
     
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <div class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex</span></div>
+                <div class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex Solutions</span></div>
                 <p>Premium automation solutions.</p>
             </div>
             <div class="footer-links">
                 <h4>Products</h4>
-                <ul><li><a href="../templates.html">Templates</a></li><li><a href="../pricing.html">Bundles</a></li></ul>
+                <ul><li><a href="templates.html">Templates</a></li><li><a href="pricing.html">Bundles</a></li></ul>
             </div>
             <div class="footer-links">
                 <h4>Company</h4>
-                <ul><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul>
+                <ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom"><p>&copy; 2026 Simply Complex Solutions</p></div>
     </footer>
-    
-    <script>
-    const currencyRates = { EUR: 1, USD: 1.08 };
-    let currentCurrency = 'EUR';
-    const price = 279;
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentCurrency = btn.dataset.currency;
-            document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === currentCurrency));
-            document.getElementById('mainPrice').textContent = (currentCurrency === 'USD' ? '$' : '€') + Math.round(price * currencyRates[currentCurrency]);
-        });
-    });
-    </script>
 </body>
 </html>

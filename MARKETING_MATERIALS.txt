@@ -1,0 +1,324 @@
+# MARKETING MATERIALS - Simply Complex Solutions
+
+================================================================================
+EMAIL TEMPLATES
+================================================================================
+
+## 1. Welcome Email (New Subscriber)
+
+Subject: Welcome to Simply Complex Solutions 🎉
+
+Hi [FIRST_NAME],
+
+Thanks for joining us! We're thrilled to have you.
+
+At Simply Complex Solutions, we help businesses save 20+ hours/week with premium n8n automation templates.
+
+Here's what we offer:
+✅ Lead Generation Engine - Capture & qualify leads automatically
+✅ Recruitment Automation - Source, screen, schedule candidates
+✅ Support Ticket System - AI-powered customer support
+✅ 12+ automation templates total
+
+Get started today:
+🔗 simplycomplexsolutions.com/templates
+
+Questions? Just reply to this email - we're here to help!
+
+Best,
+The Simply Complex Team
+
+---
+
+## 2. Product Announcement - New Template Launch
+
+Subject: 🚀 NEW: [TEMPLATE NAME] is here!
+
+Hi [FIRST_NAME],
+
+Great news! We've just launched **[TEMPLATE NAME]** - our latest automation template designed to [BENEFIT].
+
+What it does:
+• [FEATURE 1]
+• [FEATURE 2]
+• [FEATURE 3]
+
+Save [X] hours per week with [TEMPLATE NAME].
+
+🔗 Get it now: [GUMROAD_LINK]
+
+Special launch pricing: [PRICE] (limited time)
+
+Questions? Just hit reply!
+
+Best,
+The Simply Complex Team
+
+---
+
+## 3. Cart Abandonment / Bundle Offer
+
+Subject: Don't leave empty-handed! 🎁 20% off bundles
+
+Hi [FIRST_NAME],
+
+We noticed you were checking out our automation templates.
+
+Here's a deal you might love:
+
+**ALL 3 BUNDLES - 20% OFF**
+• Essential (12 templates) - €499 → €399
+• Professional (12 templates + support) - €799 → €639
+• Enterprise (everything + custom dev) - €1,999 → €1,599
+
+Use code: LAUNCH20
+
+🔗 simplycomplexsolutions.com/pricing
+
+This offer expires in 48 hours!
+
+Best,
+The Simply Complex Team
+
+---
+
+================================================================================
+SOCIAL MEDIA POSTS
+================================================================================
+
+## LinkedIn Post
+
+🚀 Just launched 12 n8n automation templates
+
+From lead generation to customer onboarding - we've got your business covered.
+
+Features:
+• AI-powered workflows
+• Easy setup (15 minutes)
+• Lifetime updates
+• Priority support
+
+Save 20+ hours/week starting at €249.
+
+🔗 simplycomplexsolutions.com
+
+#Automation #n8n #Productivity #SaaS #Entrepreneur
+
+---
+
+## Twitter/X Post
+
+12 n8n automation templates. 20+ hours saved/week. 
+
+From €249.
+
+🔥 Lead gen, recruitment, support, content repurposing...
+
+Everything you need to automate your business.
+
+→ simplycomplexsolutions.com
+
+#Automation #SaaS
+
+---
+
+## Facebook Post
+
+🚀 NEW: Simply Complex Solutions is live!
+
+We've built 12 premium n8n automation templates to help you save 20+ hours every week.
+
+What can you automate?
+✅ Lead capture & qualification
+✅ Customer support tickets
+✅ Recruitment & scheduling
+✅ Content repurposing
+✅ And MORE!
+
+Starting at just €249.
+
+Shop now → simplycomplexsolutions.com
+
+#BusinessAutomation #Productivity #Entrepreneur #SmallBusiness
+
+---
+
+## Instagram Post
+
+12 automation templates. 20+ hours saved. One mission: simplify the complex. 💜
+
+Swipe to see what you can automate 👉
+
+1️⃣ Lead Generation
+2️⃣ Recruitment
+3️⃣ Support Tickets
+4️⃣ Content Repurposing
+5️⃣ Social Media Scheduling
+6️⃣ Invoice Processing
+
+Link in bio 🔗 simplycomplexsolutions.com
+
+#Automation #n8n #ProductivityHacks #BusinessGrowth #Entrepreneur
+
+---
+
+================================================================================
+AD COPY
+================================================================================
+
+## Google Ads - Search
+
+Headline 1: Automate Your Business in Minutes | n8n Templates
+Headline 2: Save 20+ Hours Per Week
+Headline 3: Simply Complex Solutions
+
+Description: Premium automation templates for lead gen, recruitment, support & more. Easy setup. Lifetime updates. Starting at €249.
+
+---
+
+## Facebook/Instagram Ads
+
+Copy 1:
+
+🚀 Stop wasting hours on manual work
+
+Our n8n automation templates save businesses 20+ hours/week.
+
+What you get:
+• 12 ready-to-use templates
+• AI-powered workflows
+• Easy 15-min setup
+• Lifetime updates
+
+Starting at €249.
+
+🔗 simplycomplexsolutions.com
+
+---
+
+Copy 2:
+
+Your competitors are automating. Are you?
+
+12 premium n8n templates:
+✅ Lead capture → CRM integration
+✅ Resume screening → Interview scheduling
+✅ Customer support → Ticket resolution
+
+Save 20+ hours/week.
+
+→ simplycomplexsolutions.com
+
+---
+
+## LinkedIn Ads
+
+Headline: Premium n8n Automation Templates | Save 20+ Hours/Week
+
+Body: Simply Complex Solutions offers 12 production-ready automation templates for lead generation, recruitment, customer support, and more. Easy setup, lifetime updates, starting at €249.
+
+CTA: Shop Now → simplycomplexsolutions.com
+
+---
+
+================================================================================
+PRODUCT LAUNCH EMAIL
+================================================================================
+
+Subject: 🚀 WE'RE LIVE! 12 n8n Templates. 20+ Hours Saved. One Mission.
+
+Hi [FIRST_NAME],
+
+We're officially live! 🎉
+
+Simply Complex Solutions is here to help you automate the chaos and focus on what matters.
+
+We've built 12 premium n8n automation templates:
+
+📊 LEAD GENERATION
+Capture, enrich, and qualify leads automatically.
+
+🎯 RECRUITMENT AUTOMATION
+Source, screen, and schedule candidates.
+
+💬 SUPPORT TICKET SYSTEM
+AI-powered customer support.
+
+📅 WEBINAR AUTOMATION
+Registration, reminders, follow-ups.
+
+📝 INVOICE PROCESSING
+OCR-powered data extraction.
+
+🔄 CONTENT REPURPOSING
+One content → 10+ formats.
+
+...and 6 more templates.
+
+**Why n8n?**
+• Self-hosted (your data stays yours)
+• No per-seat pricing
+• Unlimited workflows
+• Active community of 50K+ users
+
+**Pricing:**
+Individual templates: €249 - €479
+Bundles from €499
+
+🚀 SHOP NOW: simplycomplexsolutions.com
+
+Still on the fence? Here's what early testers say:
+
+"Cut our hiring time by 70% in the first month."
+"Saved us 15 hours/week on support tickets."
+
+Let's automate!
+
+The Simply Complex Team
+simplycomplexsolutions.com
+
+P.S. Launch special - 20% off bundles this week only. Use code LAUNCH20
+
+---
+
+================================================================================
+SHORT SOCIAL POSTS (Twitter/LinkedIn - Quick Copy)
+================================================================================
+
+• "12 n8n templates. 20+ hours saved. €249. Done."
+• "What if you got 20 hours back every week? → simplycomplexsolutions.com"
+• "Automation isn't complicated. It's simply complex. 💜"
+• "Your competitors are automating. Are you? → simplycomplexsolutions.com"
+• "12 templates. One mission: simplify the complex. 🚀 simplycomplexsolutions.com"
+
+---
+
+================================================================================
+GUMROAD PRODUCT DESCRIPTIONS (Quick Copy)
+================================================================================
+
+All Templates Bundle:
+"12 premium n8n automation templates. Lead gen, recruitment, support, content, and more. Save 20+ hours/week. Easy setup."
+
+Professional Bundle:
+"Everything in Essential + Priority support + Custom configuration help. For teams that want it all."
+
+Enterprise Bundle:
+"Complete package + Custom development + Dedicated support channel. For businesses with unique needs."
+
+---
+
+================================================================================
+WEBSITE HERO SECTION
+================================================================================
+
+Headline: Automate Your Entire Business
+
+Subheadline: 12 premium n8n templates. Save 20+ hours/week. Starting at €249.
+
+CTA: Shop Templates → simplycomplexsolutions.com
+
+Or:
+Get All Access → simplycomplexsolutions.com/pricing
+
+================================================================================

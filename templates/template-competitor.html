@@ -6,7 +6,7 @@
     <title>Competitor Monitoring | Simply Complex Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -15,29 +15,26 @@
     
     <header>
         <div class="header-inner">
-            <a href="../index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex</span></a>
+            <a href="index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex Solutions</span></a>
             <nav>
-                <a href="../templates.html">Templates</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
+                <a href="templates.html">Templates</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </nav>
             <div class="nav-cta">
-                <div class="currency-toggle">
-                    <button class="currency-btn active" data-currency="EUR">EUR</button>
-                    <button class="currency-btn" data-currency="USD">USD</button>
-                </div>
+                <a href="pricing.html" class="btn btn-primary">BUY</a>
             </div>
         </div>
     </header>
     
     <section class="detail-hero">
-        <div class="detail-hero-icon" style="background:linear-gradient(135deg,#f43f5e,#f43f5edd)">
+        <div class="detail-hero-icon" style="background:linear-gradient(135deg,#f43f5e,#e11d48)">
             <i class="fas fa-radar" style="color:#fff"></i>
         </div>
         <h1>Competitor Monitoring</h1>
-        <p>Track competitors and get automated alerts.</p>
-        <div style="margin-top:1.5rem"><span class="price" id="mainPrice">€429</span></div>
+        <p>Track competitors and get automated alerts on changes.</p>
+        <div style="margin-top:1.5rem"><span class="price">€429</span></div>
         <div style="margin-top:2rem">
             <a href="https://simplyx.gumroad.com/l/competitor-monitor" target="_blank" class="btn btn-primary" style="padding:1rem 2.5rem;font-size:1.1rem">
                 <i class="fas fa-shopping-cart"></i> Buy Now
@@ -46,47 +43,43 @@
     </section>
     
     <section class="detail-section">
-        <h2>Overview</h2>
-        <p>Stay ahead of the competition with automated monitoring. Track pricing, news, product launches, and market changes.</p>
+        <h2>What It Solves</h2>
+        <p>Manually tracking competitors is impossible at scale. This template monitors pricing, product launches, news, and marketing campaigns automatically.</p>
         
         <h2 style="margin-top:3rem">Key Features</h2>
         <ul class="features-list">
-            <li><i class="fas fa-tag"></i> Price tracking</li>
-            <li><i class="fas fa-newspaper"></i> News monitoring</li>
-            <li><i class="fas fa-bell"></i> Instant alerts</li>
-            <li><i class="fas fa-chart-pie"></i> SWOT analysis</li>
+            <li><i class="fas fa-tag" style="color:#f43f5e"></i> <strong>Price Tracking</strong> — Monitor competitor pricing</li>
+            <li><i class="fas fa-newspaper" style="color:#f43f5e"></i> <strong>News Alerts</strong> — Get notified of press coverage</li>
+            <li><i class="fas fa-chart-pie" style="color:#f43f5e"></i> <strong>SWOT Analysis</strong> — Automated competitor insights</li>
+            <li><i class="fas fa-bullhorn" style="color:#f43f5e"></i> <strong>Campaign Alerts</strong> — Spot their marketing</li>
+            <li><i class="fas fa-globe" style="color:#f43f5e"></i> <strong>Website Changes</strong> — Detect redesigns or new features</li>
+            <li><i class="fas fa-file-alt" style="color:#f43f5e"></i> <strong>Job Postings</strong> — See what they're hiring for</li>
         </ul>
+        
+        <div style="background:linear-gradient(135deg,rgba(244,63,94,0.1),rgba(225,29,72,0.05));border:1px solid rgba(244,63,94,0.2);border-radius:20px;padding:2rem;margin-top:3rem;text-align:center">
+            <h3 style="margin-bottom:1rem">Know What Your Competitors Are Doing</h3>
+            <a href="https://simplyx.gumroad.com/l/competitor-monitor" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
+                <i class="fas fa-shopping-cart"></i> Get Competitor Monitoring — €429
+            </a>
+        </div>
     </section>
     
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <div class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex</span></div>
+                <div class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex Solutions</span></div>
                 <p>Premium automation solutions.</p>
             </div>
             <div class="footer-links">
                 <h4>Products</h4>
-                <ul><li><a href="../templates.html">Templates</a></li><li><a href="../pricing.html">Bundles</a></li></ul>
+                <ul><li><a href="templates.html">Templates</a></li><li><a href="pricing.html">Bundles</a></li></ul>
             </div>
             <div class="footer-links">
                 <h4>Company</h4>
-                <ul><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul>
+                <ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom"><p>&copy; 2026 Simply Complex Solutions</p></div>
     </footer>
-    
-    <script>
-    const currencyRates = { EUR: 1, USD: 1.08 };
-    let currentCurrency = 'EUR';
-    const price = 429;
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentCurrency = btn.dataset.currency;
-            document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === currentCurrency));
-            document.getElementById('mainPrice').textContent = (currentCurrency === 'USD' ? '$' : '€') + Math.round(price * currencyRates[currentCurrency]);
-        });
-    });
-    </script>
 </body>
 </html>
