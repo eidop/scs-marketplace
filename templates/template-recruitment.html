@@ -7,6 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .workflow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .workflow-step { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; position: relative; overflow: hidden; }
+        .workflow-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #f59e0b, #f97316); }
+        .workflow-step-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--primary); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+        .workflow-step h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .workflow-step p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        .comparison-table th { background: var(--bg-card); font-weight: 600; }
+        .comparison-table tr:hover td { background: rgba(99,102,241,0.05); }
+        .check-yes { color: var(--success); }
+        .check-no { color: var(--text-muted); }
+        .integrations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .integration-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+        .integration-item i { font-size: 1.5rem; color: var(--primary-light); margin-bottom: 0.5rem; }
+        .integration-item span { font-size: 0.85rem; color: var(--text-muted); }
+    </style>
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -36,26 +54,114 @@
             <i class="fas fa-users" style="color:#fff"></i>
         </div>
         <h1>Recruitment Automation</h1>
-        <p>Source, screen, and schedule candidates automatically.</p>
+        <p>Source, screen, and schedule candidates automatically. Cut hiring time in half with intelligent automation.</p>
         <div style="margin-top:1.5rem"><span class="price" id="mainPrice">€459</span></div>
-        <div style="margin-top:2rem">
+        <div style="margin-top:2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="https://simplyx.gumroad.com/l/recruitment-automation" target="_blank" class="btn btn-primary" style="padding:1rem 2.5rem;font-size:1.1rem">
                 <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
+            <a href="#workflow" class="btn btn-outline" style="padding:1rem 2rem;font-size:1rem">
+                <i class="fas fa-cog"></i> See How It Works
+            </a>
+        </div>
+        <div style="margin-top:1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <span class="badge" style="background:rgba(16,185,129,0.2);color:#10b981;border:1px solid rgba(16,185,129,0.3)"><i class="fas fa-bolt"></i> Saves 10+ hrs/week</span>
+            <span class="badge" style="background:rgba(99,102,241,0.2);color:#818cf8;border:1px solid rgba(99,102,241,0.3)"><i class="fas fa-sliders-h"></i> Easy Setup</span>
         </div>
     </section>
     
     <section class="detail-section">
-        <h2>Overview</h2>
-        <p>Streamline your hiring process with intelligent automation. Automatically parse resumes, score candidates, schedule interviews, and send personalized communications.</p>
+        <h2><i class="fas fa-bullseye" style="color:var(--primary-light)"></i> What It Solves</h2>
+        <p style="font-size:1.05rem; line-height:1.8; color:var(--text-muted)">Hiring is time-consuming. Manually screening resumes, scheduling interviews, and following up with candidates takes hours each week. This template automates your entire recruitment pipeline—from job posting to offer letter—so you can focus on interviewing top talent.</p>
         
-        <h2 style="margin-top:3rem">Key Features</h2>
-        <ul class="features-list">
-            <li><i class="fas fa-file-alt" style="color:var(--primary-light)"></i> Resume parsing</li>
-            <li><i class="fas fa-calendar" style="color:var(--primary-light)"></i> Auto-scheduling</li>
-            <li><i class="fas fa-envelope" style="color:var(--primary-light)"></i> Candidate communications</li>
-            <li><i class="fas fa-star" style="color:var(--primary-light)"></i> Candidate scoring</li>
+        <h2 style="margin-top:3rem" id="workflow"><i class="fas fa-stream" style="color:var(--primary-light)"></i> How It Works</h2>
+        <div class="workflow-steps">
+            <div class="workflow-step">
+                <div class="workflow-step-number">1</div>
+                <h4>📥 Receive Applications</h4>
+                <p>Automatically collect resumes from multiple sources—LinkedIn, Indeed, your website, and email. All applications land in one organized queue.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">2</div>
+                <h4>🔍 AI Resume Screening</h4>
+                <p>AI analyzes each resume against your job requirements. Scores candidates on skills, experience, and qualifications automatically.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">3</div>
+                <h4>📊 Automatic Scoring</h4>
+                <p>Candidates are ranked by match percentage. Top-scoring applications get flagged for immediate review. No resume goes unseen.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">4</div>
+                <h4>📅 Smart Scheduling</h4>
+                <p>Candidates book available slots directly via calendar integration. Automatic confirmations and reminders sent to all parties.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">5</div>
+                <h4>✉️ Personalized Comms</h4>
+                <p>Automated email updates keep candidates informed at every stage. Rejection letters, interview invites, and offer letters—all personalized.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">6</div>
+                <h4>📈 Pipeline Analytics</h4>
+                <p>Track time-to-hire, source effectiveness, and funnel conversion rates. Get insights to optimize your recruitment process.</p>
+            </div>
+        </div>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-star" style="color:var(--primary-light)"></i> Key Features</h2>
+        <ul class="features-list" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <li><i class="fas fa-file-pdf" style="color:#f59e0b"></i> <strong>Resume Parsing</strong> — Extracts contact info, skills, experience from PDF/DOCX</li>
+            <li><i class="fas fa-brain" style="color:#f59e0b"></i> <strong>AI Candidate Scoring</strong> — ML-powered ranking against job requirements</li>
+            <li><i class="fas fa-calendar-check" style="color:#f59e0b"></i> <strong>Auto-Scheduling</strong> — Calendar integration for interview booking</li>
+            <li><i class="fas fa-envelope-open-text" style="color:#f59e0b"></i> <strong>Email Templates</strong> — Customizable templates for every stage</li>
+            <li><i class="fas fa-tasks" style="color:#f59e0b"></i> <strong>Pipeline Management</strong> — Kanban-style status tracking</li>
+            <li><i class="fas fa-chart-line" style="color:#f59e0b"></i> <strong>Analytics Dashboard</strong> — Hiring metrics and insights</li>
+            <li><i class="fas fa-bell" style="color:#f59e0b"></i> <strong>Reminder System</strong> — Auto-reminders for interviews and follow-ups</li>
+            <li><i class="fas fa-database" style="color:#f59e0b"></i> <strong>Talent Pool</strong> — Store rejected candidates for future roles</li>
         </ul>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-plug" style="color:var(--primary-light)"></i> Integrations</h2>
+        <div class="integrations-grid">
+            <div class="integration-item"><i class="fab fa-linkedin"></i><br><span>LinkedIn</span></div>
+            <div class="integration-item"><i class="fas fa-envelope"></i><br><span>Gmail</span></div>
+            <div class="integration-item"><i class="fas fa-calendar-alt"></i><br><span>Google Calendar</span></div>
+            <div class="integration-item"><i class="fas fa-database"></i><br><span>Google Sheets</span></div>
+            <div class="integration-item"><i class="fas fa-slack"></i><br><span>Slack</span></div>
+            <div class="integration-item"><i class="fas fa-file-pdf"></i><br><span>PDF Tools</span></div>
+        </div>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-clock" style="color:var(--primary-light)"></i> Time Savings</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr><th>Task</th><th>Manual (hrs/week)</th><th>Automated (hrs/week)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Resume Screening</td><td>8-10</td><td>1-2 (review only)</td></tr>
+                <tr><td>Email Responses</td><td>3-4</td><td>0 (auto-replies)</td></tr>
+                <tr><td>Interview Scheduling</td><td>2-3</td><td>0.5 (calendar links)</td></tr>
+                <tr><td>Follow-ups</td><td>2</td><td>Automated</td></tr>
+                <tr><td><strong>Total Savings</strong></td><td><strong>15-19 hrs</strong></td><td><strong>2-4 hrs</strong></td></tr>
+            </tbody>
+        </table>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-box-open" style="color:var(--primary-light)"></i> What's Included</h2>
+        <ul class="features-list">
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Complete n8n workflow (50+ nodes)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> AI prompt configuration guide</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Email template library (10+ templates)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Setup documentation (PDF)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Video walkthrough (45 min)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> 30-day support via email</li>
+        </ul>
+        
+        <div style="background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.1));border:1px solid rgba(99,102,241,0.2);border-radius:20px;padding:2rem;margin-top:3rem;text-align:center">
+            <h3 style="margin-bottom:1rem">Ready to Transform Your Hiring?</h3>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem">Join 200+ companies using our automation templates.</p>
+            <a href="https://simplyx.gumroad.com/l/recruitment-automation" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
+                <i class="fas fa-shopping-cart"></i> Get Recruitment Automation — €459
+            </a>
+            <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-muted)">30-day money-back guarantee • Instant delivery</p>
+        </div>
     </section>
     
     <footer>
