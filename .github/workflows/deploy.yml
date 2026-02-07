@@ -18,19 +18,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        working-directory: ./apps/template-marketplace
-        run: npm ci
-
       - name: Build website
         working-directory: ./apps/template-marketplace
-        run: npm run build
+        run: |
+          mkdir -p dist/assets
+          cp -r assets/* dist/assets/
+          cp index.html dist/
+          cp _headers dist/
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
