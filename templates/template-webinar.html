@@ -6,7 +6,23 @@
     <title>Webinar Automation | Simply Complex Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .workflow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .workflow-step { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; position: relative; overflow: hidden; }
+        .workflow-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #8b5cf6, #a855f7); }
+        .workflow-step-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--primary); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+        .workflow-step h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .workflow-step p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        .comparison-table th { background: var(--bg-card); font-weight: 600; }
+        .comparison-table tr:hover td { background: rgba(99,102,241,0.05); }
+        .integrations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .integration-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+        .integration-item i { font-size: 1.5rem; color: var(--primary-light); margin-bottom: 0.5rem; }
+        .integration-item span { font-size: 0.85rem; color: var(--text-muted); }
+    </style>
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -15,12 +31,12 @@
     
     <header>
         <div class="header-inner">
-            <a href="../index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex</span></a>
+            <a href="index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex</span></a>
             <nav>
-                <a href="../templates.html">Templates</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
+                <a href="templates.html">Templates</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </nav>
             <div class="nav-cta">
                 <div class="currency-toggle">
@@ -32,30 +48,118 @@
     </header>
     
     <section class="detail-hero">
-        <div class="detail-hero-icon" style="background:linear-gradient(135deg,#8b5cf6,#8b5cf6dd)">
+        <div class="detail-hero-icon" style="background:linear-gradient(135deg,#8b5cf6,#a855f7)">
             <i class="fas fa-video" style="color:#fff"></i>
         </div>
         <h1>Webinar Automation</h1>
-        <p>Registration, reminders, and follow-ups.</p>
+        <p>Turn webinar attendees into customers with automated registration, reminders, and follow-ups. Save 8+ hours per webinar.</p>
         <div style="margin-top:1.5rem"><span class="price" id="mainPrice">€249</span></div>
-        <div style="margin-top:2rem">
+        <div style="margin-top:2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="https://simplyx.gumroad.com/l/webinar-automation" target="_blank" class="btn btn-primary" style="padding:1rem 2.5rem;font-size:1.1rem">
                 <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
+            <a href="#workflow" class="btn btn-outline" style="padding:1rem 2rem;font-size:1rem">
+                <i class="fas fa-cog"></i> See How It Works
+            </a>
+        </div>
+        <div style="margin-top:1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <span class="badge" style="background:rgba(16,185,129,0.2);color:#10b981;border:1px solid rgba(16,185,129,0.3)"><i class="fas fa-bolt"></i> Saves 8+ hrs/webinar</span>
+            <span class="badge" style="background:rgba(99,102,241,0.2);color:#818cf8;border:1px solid rgba(99,102,241,0.3)"><i class="fas fa-sliders-h"></i> Easy Setup</span>
         </div>
     </section>
     
     <section class="detail-section">
-        <h2>Overview</h2>
-        <p>Automate your entire webinar workflow from registration to follow-up. Send reminders, track attendance, and nurture attendees automatically.</p>
+        <h2><i class="fas fa-bullseye" style="color:var(--primary-light)"></i> What It Solves</h2>
+        <p style="font-size:1.05rem; line-height:1.8; color:var(--text-muted)">Webinars are powerful for leads and sales, but managing them manually takes hours. This template automates your entire webinar workflow—from registration to follow-up—so you can focus on delivering great content while the system nurture attendees automatically.</p>
         
-        <h2 style="margin-top:3rem">Key Features</h2>
-        <ul class="features-list">
-            <li><i class="fas fa-clipboard-list"></i> Registration management</li>
-            <li><i class="fas fa-bell"></i> Automated reminders</li>
-            <li><i class="fas fa-calendar-check"></i> Calendar integration</li>
-            <li><i class="fas fa-envelope-open-text"></i> Follow-up sequences</li>
+        <h2 style="margin-top:3rem" id="workflow"><i class="fas fa-stream" style="color:var(--primary-light)"></i> How It Works</h2>
+        <div class="workflow-steps">
+            <div class="workflow-step">
+                <div class="workflow-step-number">1</div>
+                <h4>📝 Registration Form</h4>
+                <p>Beautiful landing page collects registrant info. Automatic confirmation emails sent immediately with calendar invites.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">2</div>
+                <h4>📧 Reminder Sequence</h4>
+                <p>Automated email reminders at 1 week, 1 day, 1 hour, and 15 minutes before the webinar. Keeps attendance rates high.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">3</div>
+                <h4>📅 Calendar Integration</h4>
+                <p>One-click add to Google Calendar, Outlook, and iCal. Reduces no-shows by 40%+ automatically.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">4</div>
+                <h4>🎥 Live Event Support</h4>
+                <p>Auto-send join links 5 minutes before start. Handle late arrivals gracefully with updated links.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">5</div>
+                <h4>📊 Attendance Tracking</h4>
+                <p>Track who attended, who joined late, and who dropped off. Score engagement for follow-up prioritization.</p>
+            </div>
+            <div class="workflow-step">
+                <div class="workflow-step-number">6</div>
+                <h4>✉️ Follow-Up Automation</h4>
+                <p>Immediate thank you with replay link. Drip sequence for attendees, different sequence for no-shows.</p>
+            </div>
+        </div>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-star" style="color:var(--primary-light)"></i> Key Features</h2>
+        <ul class="features-list" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <li><i class="fas fa-clipboard-list" style="color:#8b5cf6"></i> <strong>Registration Management</strong> — Beautiful forms with custom fields and validation</li>
+            <li><i class="fas fa-bell" style="color:#8b5cf6"></i> <strong>Smart Reminders</strong> — 4-touch sequence before webinar starts</li>
+            <li><i class="fas fa-calendar-plus" style="color:#8b5cf6"></i> <strong>Calendar Sync</strong> — Google, Outlook, iCal integration</li>
+            <li><i class="fas fa-envelope-open-text" style="color:#8b5cf6"></i> <strong>Email Templates</strong> — 8+ customizable templates included</li>
+            <li><i class="fas fa-chart-bar" style="color:#8b5cf6"></i> <strong>Analytics Dashboard</strong> — Registrations, attendance, engagement metrics</li>
+            <li><i class="fas fa-users-cog" style="color:#8b5cf6"></i> <strong>Segmentation</strong> — Attendees vs no-shows get different flows</li>
+            <li><i class="fas fa-play-circle" style="color:#8b5cf6"></i> <strong>Replay Access</strong> — Auto-send recording to all registrants</li>
+            <li><i class="fas fa-ticket-alt" style="color:#8b5cf6"></i> <strong>Coupon Codes</strong> — Offer discounts to attendees during/after</li>
         </ul>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-plug" style="color:var(--primary-light)"></i> Integrations</h2>
+        <div class="integrations-grid">
+            <div class="integration-item"><i class="fab fa-zoom"></i><br><span>Zoom</span></div>
+            <div class="integration-item"><i class="fab fa-google"></i><br><span>Google Meet</span></div>
+            <div class="integration-item"><i class="fas fa-envelope"></i><br><span>Gmail</span></div>
+            <div class="integration-item"><i class="fas fa-calendar-alt"></i><br><span>Google Calendar</span></div>
+            <div class="integration-item"><i class="fab fa-slack"></i><br><span>Slack</span></div>
+            <div class="integration-item"><i class="fas fa-file-csv"></i><br><span>Google Sheets</span></div>
+        </div>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-clock" style="color:var(--primary-light)"></i> Time Savings</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr><th>Task</th><th>Manual (hrs/webinar)</th><th>Automated (hrs/webinar)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Registration Management</td><td>2-3</td><td>0 (auto)</td></tr>
+                <tr><td>Reminder Emails</td><td>2</td><td>0 (auto)</td></tr>
+                <tr><td>Follow-up Emails</td><td>3-4</td><td>0.5 (review)</td></tr>
+                <tr><td>Tracking & Reporting</td><td>1</td><td>0 (auto)</td></tr>
+                <tr><td><strong>Total Savings</strong></td><td><strong>8-10 hrs</strong></td><td><strong>0.5 hrs</strong></td></tr>
+            </tbody>
+        </table>
+        
+        <h2 style="margin-top:3rem"><i class="fas fa-box-open" style="color:var(--primary-light)"></i> What's Included</h2>
+        <ul class="features-list">
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Complete n8n workflow (40+ nodes)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Registration landing page template</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> 8 email templates (registration, reminders, follow-up)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Setup documentation (PDF)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> Video walkthrough (35 min)</li>
+            <li><i class="fas fa-check-circle" style="color:var(--success)"></i> 30-day support via email</li>
+        </ul>
+        
+        <div style="background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(168,85,247,0.1));border:1px solid rgba(139,92,246,0.2);border-radius:20px;padding:2rem;margin-top:3rem;text-align:center">
+            <h3 style="margin-bottom:1rem">Ready to Automate Your Webinars?</h3>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem">Spend less time on logistics and more time on great content.</p>
+            <a href="https://simplyx.gumroad.com/l/webinar-automation" target="_blank" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
+                <i class="fas fa-shopping-cart"></i> Get Webinar Automation — €249
+            </a>
+            <p style="margin-top:1rem;font-size:0.9rem;color:var(--text-muted)">30-day money-back guarantee • Instant delivery</p>
+        </div>
     </section>
     
     <footer>
@@ -66,11 +170,11 @@
             </div>
             <div class="footer-links">
                 <h4>Products</h4>
-                <ul><li><a href="../templates.html">Templates</a></li><li><a href="../pricing.html">Bundles</a></li></ul>
+                <ul><li><a href="templates.html">Templates</a></li><li><a href="pricing.html">Bundles</a></li></ul>
             </div>
             <div class="footer-links">
                 <h4>Company</h4>
-                <ul><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul>
+                <ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom"><p>&copy; 2026 Simply Complex Solutions</p></div>
