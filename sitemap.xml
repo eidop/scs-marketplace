@@ -51,6 +51,26 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://scs-marketplace.pages.dev/client-dashboard.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/roi-calculator.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/integrations.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/getting-started.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://scs-marketplace.pages.dev/privacy.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
