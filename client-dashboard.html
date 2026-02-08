@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,183 +8,230 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; }
-        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
-        .scrollable { max-height: 280px; overflow-y: auto; }
-        .scrollable::-webkit-scrollbar { width: 4px; }
-        .scrollable::-webkit-scrollbar-thumb { background: #475569; border-radius: 2px; }
+        body { font-family: 'Inter', sans-serif; }
+        .dark { --bg: #0f172a; --card: #1e293b; --border: #334155; --text: #e2e8f0; --muted: #94a3b8; }
+        .light { --bg: #f1f5f9; --card: #ffffff; --border: #e2e8f0; --text: #1e293b; --muted: #64748b; }
+        body { background: var(--bg); color: var(--text); }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+        .muted { color: var(--muted); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="dark min-h-screen">
     <!-- Header -->
-    <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 sticky top-0 z-10">
+    <header class="border-b border-[var(--border)] px-4 md:px-6 py-3 sticky top-0 z-10" style="background: var(--card);">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3">
                 <a href="index.html" class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-400 rounded-lg flex items-center justify-center text-white font-bold text-sm">SC</div>
-                    <span class="text-white font-semibold hidden sm:block">Simply Complex</span>
+                    <span class="font-semibold hidden sm:block">Simply Complex</span>
                 </a>
-                <span class="text-slate-600">|</span>
-                <h1 class="text-lg font-semibold text-white">Customer Analytics</h1>
+                <span class="muted">|</span>
+                <h1 class="text-base font-semibold">Analytics</h1>
             </div>
-            <a href="index.html" class="text-sm text-slate-400 hover:text-white">← Back to Site</a>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-slate-700/50" title="Toggle theme">
+                    <svg id="themeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
+                <a href="index.html" class="text-sm muted hover:text-cyan-400">← Back</a>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto p-6">
-        <!-- KPIs Row -->
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-            <div class="card p-4">
-                <p class="text-xs text-slate-400 uppercase">Customers</p>
-                <p class="text-2xl font-bold text-white">1,247</p>
-                <p class="text-xs text-green-400">+12.5%</p>
-            </div>
-            <div class="card p-4">
-                <p class="text-xs text-slate-400 uppercase">Active</p>
-                <p class="text-2xl font-bold text-white">1,089</p>
-                <p class="text-xs text-green-400">+8.2%</p>
-            </div>
-            <div class="card p-4">
-                <p class="text-xs text-slate-400 uppercase">Churn Rate</p>
-                <p class="text-2xl font-bold text-white">2.4%</p>
-                <p class="text-xs text-green-400">-0.3%</p>
-            </div>
-            <div class="card p-4">
-                <p class="text-xs text-slate-400 uppercase">Avg Revenue</p>
-                <p class="text-2xl font-bold text-white">$12.4K</p>
-                <p class="text-xs text-green-400">+15.7%</p>
-            </div>
-            <div class="card p-4">
-                <p class="text-xs text-slate-400 uppercase">Satisfaction</p>
-                <p class="text-2xl font-bold text-white">4.8/5</p>
-                <p class="text-xs text-green-400">+0.2</p>
-            </div>
+    <main class="max-w-7xl mx-auto p-4 md:p-6">
+        <!-- KPIs -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-5">
+            <div class="card p-3 md:p-4"><p class="text-xs muted uppercase">Customers</p><p class="text-xl md:text-2xl font-bold">1,247</p><p class="text-xs text-green-400">↑ 12.5%</p></div>
+            <div class="card p-3 md:p-4"><p class="text-xs muted uppercase">Active</p><p class="text-xl md:text-2xl font-bold">1,089</p><p class="text-xs text-green-400">↑ 8.2%</p></div>
+            <div class="card p-3 md:p-4"><p class="text-xs muted uppercase">Churn</p><p class="text-xl md:text-2xl font-bold">2.4%</p><p class="text-xs text-green-400">↓ 0.3%</p></div>
+            <div class="card p-3 md:p-4"><p class="text-xs muted uppercase">Avg Rev</p><p class="text-xl md:text-2xl font-bold">$12.4K</p><p class="text-xs text-green-400">↑ 15.7%</p></div>
+            <div class="card p-3 md:p-4 hidden sm:block"><p class="text-xs muted uppercase">NPS</p><p class="text-xl md:text-2xl font-bold">72</p><p class="text-xs text-green-400">↑ 5</p></div>
         </div>
 
-        <!-- Charts Row -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="card p-4">
-                <h3 class="text-sm font-semibold text-white mb-3">Customer Growth</h3>
-                <div style="height: 200px;"><canvas id="growthChart"></canvas></div>
-            </div>
-            <div class="card p-4">
-                <h3 class="text-sm font-semibold text-white mb-3">Revenue by Region</h3>
-                <div style="height: 200px;"><canvas id="regionChart"></canvas></div>
-            </div>
+        <!-- Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5">
+            <div class="card p-4"><h3 class="text-sm font-semibold mb-2">Growth</h3><div style="height:180px"><canvas id="growthChart"></canvas></div></div>
+            <div class="card p-4"><h3 class="text-sm font-semibold mb-2">Revenue by Region</h3><div style="height:180px"><canvas id="regionChart"></canvas></div></div>
         </div>
 
-        <!-- Middle Row -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <!-- Top Clients -->
+        <!-- 3-Column -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
             <div class="card p-4">
-                <h3 class="text-sm font-semibold text-white mb-3">Top Clients</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">1. TechFlow Inc.</span><span class="text-sm font-semibold text-white">$312K</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">2. Innovate Labs</span><span class="text-sm font-semibold text-white">$215K</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">3. ScaleUp Tech</span><span class="text-sm font-semibold text-white">$178K</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">4. FinTech Pro</span><span class="text-sm font-semibold text-white">$167K</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">5. AI Solutions</span><span class="text-sm font-semibold text-white">$156K</span></div>
+                <h3 class="text-sm font-semibold mb-3">Top Clients</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span class="muted">1.</span><span>TechFlow Inc.</span><span class="font-semibold">$312K</span></div>
+                    <div class="flex justify-between"><span class="muted">2.</span><span>Innovate Labs</span><span class="font-semibold">$215K</span></div>
+                    <div class="flex justify-between"><span class="muted">3.</span><span>ScaleUp Tech</span><span class="font-semibold">$178K</span></div>
+                    <div class="flex justify-between"><span class="muted">4.</span><span>FinTech Pro</span><span class="font-semibold">$167K</span></div>
+                    <div class="flex justify-between"><span class="muted">5.</span><span>AI Solutions</span><span class="font-semibold">$156K</span></div>
                 </div>
             </div>
-
-            <!-- Segments -->
             <div class="card p-4">
-                <h3 class="text-sm font-semibold text-white mb-3">Segments</h3>
+                <h3 class="text-sm font-semibold mb-3">Segments</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>🟢 New</span><span>187 <span class="text-green-400 text-xs">+24%</span></span></div>
+                    <div class="flex justify-between"><span>🔵 Recurring</span><span>612 <span class="text-green-400 text-xs">+8%</span></span></div>
+                    <div class="flex justify-between"><span>🟡 At Risk</span><span>89 <span class="text-red-400 text-xs">+12%</span></span></div>
+                    <div class="flex justify-between"><span>🔴 Inactive</span><span>156 <span class="text-green-400 text-xs">-5%</span></span></div>
+                    <div class="flex justify-between"><span>🟣 Champions</span><span>203 <span class="text-green-400 text-xs">+18%</span></span></div>
+                </div>
+            </div>
+            <div class="card p-4">
+                <h3 class="text-sm font-semibold mb-3">⚠️ Churn Risk</h3>
                 <div class="space-y-2">
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🟢 New</span><span class="text-sm text-slate-400">187</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🔵 Recurring</span><span class="text-sm text-slate-400">612</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🟡 At Risk</span><span class="text-sm text-slate-400">89</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🔴 Inactive</span><span class="text-sm text-slate-400">156</span></div>
-                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🟣 Champions</span><span class="text-sm text-slate-400">203</span></div>
-                </div>
-            </div>
-
-            <!-- Churn Risks -->
-            <div class="card p-4">
-                <h3 class="text-sm font-semibold text-white mb-3">⚠️ Churn Risks</h3>
-                <div class="space-y-2">
-                    <div class="p-2 bg-red-900/20 border border-red-800/50 rounded-lg">
-                        <div class="flex justify-between"><span class="text-sm text-white">DevTools Inc.</span><span class="text-xs bg-red-900/50 text-red-400 px-2 py-0.5 rounded">87%</span></div>
-                        <p class="text-xs text-slate-400">No login 25 days • $45K</p>
-                    </div>
-                    <div class="p-2 bg-yellow-900/20 border border-yellow-800/50 rounded-lg">
-                        <div class="flex justify-between"><span class="text-sm text-white">Creative Labs</span><span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded">72%</span></div>
-                        <p class="text-xs text-slate-400">Declining usage • $38K</p>
-                    </div>
-                    <div class="p-2 bg-yellow-900/20 border border-yellow-800/50 rounded-lg">
-                        <div class="flex justify-between"><span class="text-sm text-white">StartupGen</span><span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded">65%</span></div>
-                        <p class="text-xs text-slate-400">Trial expiring • $0</p>
-                    </div>
+                    <div class="p-2 bg-red-500/10 border border-red-500/30 rounded-lg text-sm"><div class="flex justify-between"><span>DevTools Inc.</span><span class="text-red-400 text-xs">87%</span></div><p class="text-xs muted">No login 25d • $45K</p></div>
+                    <div class="p-2 bg-yellow-500/10 border border-yellow-500/30 rounded-lg text-sm"><div class="flex justify-between"><span>Creative Labs</span><span class="text-yellow-400 text-xs">72%</span></div><p class="text-xs muted">Usage ↓ • $38K</p></div>
+                    <div class="p-2 bg-yellow-500/10 border border-yellow-500/30 rounded-lg text-sm"><div class="flex justify-between"><span>StartupGen</span><span class="text-yellow-400 text-xs">65%</span></div><p class="text-xs muted">Trial ending • $0</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Customer Table -->
+        <!-- Table -->
         <div class="card overflow-hidden">
-            <div class="p-4 border-b border-slate-700 flex flex-wrap items-center gap-3">
-                <input type="text" id="search" placeholder="Search..." class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm w-48" onkeyup="filter()">
-                <select id="status" class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm" onchange="filter()">
-                    <option value="">All Status</option>
-                    <option value="active">Active</option>
-                    <option value="pending">Pending</option>
-                    <option value="inactive">Inactive</option>
+            <div class="p-3 border-b border-[var(--border)] flex flex-wrap items-center gap-2">
+                <input type="text" id="search" placeholder="Search..." class="px-3 py-1.5 bg-transparent border border-[var(--border)] rounded-lg text-sm flex-1 min-w-[150px] max-w-[200px]" onkeyup="render()">
+                <select id="status" class="px-3 py-1.5 bg-transparent border border-[var(--border)] rounded-lg text-sm" onchange="render()">
+                    <option value="">All Status</option><option value="Active">Active</option><option value="Pending">Pending</option><option value="Inactive">Inactive</option>
                 </select>
-                <select id="region" class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm" onchange="filter()">
-                    <option value="">All Regions</option>
-                    <option value="north">North America</option>
-                    <option value="europe">Europe</option>
-                    <option value="asia">Asia Pacific</option>
+                <select id="region" class="px-3 py-1.5 bg-transparent border border-[var(--border)] rounded-lg text-sm" onchange="render()">
+                    <option value="">All Regions</option><option value="North America">North America</option><option value="Europe">Europe</option><option value="Asia Pacific">Asia Pacific</option><option value="Latin America">Latin America</option>
                 </select>
+                <button onclick="exportCSV()" class="ml-auto px-3 py-1.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-sm font-medium">Export</button>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm" id="table">
-                    <thead class="bg-slate-800">
+                <table class="w-full text-sm">
+                    <thead style="background: var(--border);">
                         <tr>
-                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Customer</th>
-                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Status</th>
-                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Region</th>
-                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Revenue</th>
-                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Engagement</th>
+                            <th class="px-4 py-2 text-left text-xs muted uppercase cursor-pointer" onclick="sort('name')">Name ↕</th>
+                            <th class="px-4 py-2 text-left text-xs muted uppercase">Status</th>
+                            <th class="px-4 py-2 text-left text-xs muted uppercase">Region</th>
+                            <th class="px-4 py-2 text-left text-xs muted uppercase cursor-pointer" onclick="sort('revenue')">Revenue ↕</th>
+                            <th class="px-4 py-2 text-left text-xs muted uppercase">Engagement</th>
+                            <th class="px-4 py-2 text-left text-xs muted uppercase hidden md:table-cell">Last Active</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-700">
-                        <tr class="hover:bg-slate-800" data-s="active" data-r="north"><td class="px-4 py-3 text-white">Sarah Johnson</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">North America</td><td class="px-4 py-3 text-white">$125K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
-                        <tr class="hover:bg-slate-800" data-s="active" data-r="europe"><td class="px-4 py-3 text-white">Marcus Weber</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">Europe</td><td class="px-4 py-3 text-white">$98K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
-                        <tr class="hover:bg-slate-800" data-s="pending" data-r="asia"><td class="px-4 py-3 text-white">Yuki Tanaka</td><td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 rounded text-xs">Pending</span></td><td class="px-4 py-3 text-slate-300">Asia Pacific</td><td class="px-4 py-3 text-white">$76K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 rounded text-xs">Medium</span></td></tr>
-                        <tr class="hover:bg-slate-800" data-s="inactive" data-r="north"><td class="px-4 py-3 text-white">James Miller</td><td class="px-4 py-3"><span class="px-2 py-1 bg-red-900/30 text-red-400 rounded text-xs">Inactive</span></td><td class="px-4 py-3 text-slate-300">North America</td><td class="px-4 py-3 text-white">$45K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-red-900/30 text-red-400 rounded text-xs">Low</span></td></tr>
-                        <tr class="hover:bg-slate-800" data-s="active" data-r="europe"><td class="px-4 py-3 text-white">Emma Laurent</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">Europe</td><td class="px-4 py-3 text-white">$167K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
-                        <tr class="hover:bg-slate-800" data-s="active" data-r="asia"><td class="px-4 py-3 text-white">Chen Wei</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">Asia Pacific</td><td class="px-4 py-3 text-white">$89K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
-                    </tbody>
+                    <tbody id="tbody" class="divide-y divide-[var(--border)]"></tbody>
                 </table>
+            </div>
+            <div class="p-3 border-t border-[var(--border)] flex items-center justify-between text-sm">
+                <span id="info" class="muted"></span>
+                <div class="flex gap-2">
+                    <button onclick="page--; render()" class="px-3 py-1 border border-[var(--border)] rounded-lg muted hover:bg-slate-700/30">Prev</button>
+                    <button onclick="page++; render()" class="px-3 py-1 border border-[var(--border)] rounded-lg hover:bg-slate-700/30">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="card p-4 mt-5">
+            <h3 class="text-sm font-semibold mb-3">Recent Activity</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+                <div class="flex gap-2 items-start"><span class="text-green-400">✓</span><div><p>TechFlow Inc. upgraded</p><p class="text-xs muted">2 min ago</p></div></div>
+                <div class="flex gap-2 items-start"><span class="text-cyan-400">$</span><div><p>Innovate Labs paid $15K</p><p class="text-xs muted">15 min ago</p></div></div>
+                <div class="flex gap-2 items-start"><span class="text-yellow-400">?</span><div><p>ScaleUp opened ticket</p><p class="text-xs muted">1 hr ago</p></div></div>
+                <div class="flex gap-2 items-start"><span class="text-purple-400">★</span><div><p>FinTech left 5-star review</p><p class="text-xs muted">3 hrs ago</p></div></div>
             </div>
         </div>
     </main>
 
     <script>
-        Chart.defaults.color = '#94a3b8';
-        Chart.defaults.borderColor = '#334155';
-        
-        new Chart(document.getElementById('growthChart'), {
-            type: 'line',
-            data: { labels: ['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb'], datasets: [{ data: [520,580,650,720,820,920,1040,1247], borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,0.1)', fill: true, tension: 0.4 }] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-        });
-        
-        new Chart(document.getElementById('regionChart'), {
-            type: 'bar',
-            data: { labels: ['NA','EU','APAC','LATAM','ME'], datasets: [{ data: [2.45,1.68,0.98,0.42,0.28], backgroundColor: ['#06b6d4','#10b981','#f59e0b','#ef4444','#8b5cf6'], borderRadius: 4 }] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: v => '$'+v+'M' } } } }
-        });
+        // Data
+        const customers = [
+            {name:'Sarah Johnson',email:'sarah@techflow.io',status:'Active',region:'North America',revenue:125000,engagement:'High',lastActive:'2 days ago'},
+            {name:'Marcus Weber',email:'marcus@innovate.de',status:'Active',region:'Europe',revenue:98000,engagement:'High',lastActive:'1 day ago'},
+            {name:'Yuki Tanaka',email:'yuki@scaleup.jp',status:'Pending',region:'Asia Pacific',revenue:76000,engagement:'Medium',lastActive:'5 days ago'},
+            {name:'James Miller',email:'james@devtools.com',status:'Inactive',region:'North America',revenue:45000,engagement:'Low',lastActive:'25 days ago'},
+            {name:'Emma Laurent',email:'emma@fintech.fr',status:'Active',region:'Europe',revenue:167000,engagement:'High',lastActive:'Today'},
+            {name:'Chen Wei',email:'chen@aisolutions.cn',status:'Active',region:'Asia Pacific',revenue:89000,engagement:'High',lastActive:'Today'},
+            {name:'Carlos Rodriguez',email:'carlos@latamtech.br',status:'Active',region:'Latin America',revenue:54000,engagement:'Medium',lastActive:'3 days ago'},
+            {name:'Anna Kowalski',email:'anna@nordic.no',status:'Active',region:'Europe',revenue:112000,engagement:'High',lastActive:'1 day ago'},
+            {name:'David Kim',email:'david@seoul.kr',status:'Pending',region:'Asia Pacific',revenue:67000,engagement:'Medium',lastActive:'1 week ago'},
+            {name:'Lisa Thompson',email:'lisa@startup.io',status:'Active',region:'North America',revenue:134000,engagement:'High',lastActive:'Today'},
+            {name:'Hans Mueller',email:'hans@berlin.de',status:'Active',region:'Europe',revenue:145000,engagement:'High',lastActive:'2 days ago'},
+            {name:'Maria Santos',email:'maria@saopaulo.br',status:'Inactive',region:'Latin America',revenue:23000,engagement:'Low',lastActive:'30 days ago'},
+            {name:'Tom Wilson',email:'tom@chicago.com',status:'Active',region:'North America',revenue:87000,engagement:'Medium',lastActive:'4 days ago'},
+            {name:'Sophie Martin',email:'sophie@paris.fr',status:'Active',region:'Europe',revenue:156000,engagement:'High',lastActive:'Today'},
+            {name:'Raj Patel',email:'raj@mumbai.in',status:'Pending',region:'Asia Pacific',revenue:43000,engagement:'Medium',lastActive:'1 week ago'},
+            {name:'Emily Brown',email:'emily@boston.com',status:'Active',region:'North America',revenue:178000,engagement:'High',lastActive:'Today'},
+            {name:'Luca Rossi',email:'luca@milan.it',status:'Active',region:'Europe',revenue:92000,engagement:'Medium',lastActive:'3 days ago'},
+            {name:'Akiko Sato',email:'akiko@tokyo.jp',status:'Active',region:'Asia Pacific',revenue:201000,engagement:'High',lastActive:'Today'},
+            {name:'Mike Johnson',email:'mike@seattle.com',status:'Inactive',region:'North America',revenue:34000,engagement:'Low',lastActive:'45 days ago'},
+            {name:'Elena Volkov',email:'elena@moscow.ru',status:'Active',region:'Europe',revenue:78000,engagement:'Medium',lastActive:'5 days ago'},
+        ];
 
-        function filter() {
+        let page = 0, perPage = 8, sortKey = 'revenue', sortDir = -1;
+
+        function getFiltered() {
             const s = document.getElementById('search').value.toLowerCase();
             const st = document.getElementById('status').value;
             const r = document.getElementById('region').value;
-            document.querySelectorAll('#table tbody tr').forEach(row => {
-                const match = row.textContent.toLowerCase().includes(s) && (!st || row.dataset.s === st) && (!r || row.dataset.r === r);
-                row.style.display = match ? '' : 'none';
-            });
+            return customers.filter(c => 
+                c.name.toLowerCase().includes(s) && 
+                (!st || c.status === st) && 
+                (!r || c.region === r)
+            );
         }
+
+        function render() {
+            let data = getFiltered();
+            data.sort((a,b) => (a[sortKey] > b[sortKey] ? 1 : -1) * sortDir);
+            const total = data.length;
+            const maxPage = Math.ceil(total / perPage) - 1;
+            if (page < 0) page = 0;
+            if (page > maxPage) page = maxPage;
+            data = data.slice(page * perPage, (page + 1) * perPage);
+            
+            const statusColors = {Active:'green',Pending:'yellow',Inactive:'red'};
+            const engColors = {High:'green',Medium:'yellow',Low:'red'};
+            
+            document.getElementById('tbody').innerHTML = data.map(c => `
+                <tr class="hover:bg-slate-700/20">
+                    <td class="px-4 py-2"><div>${c.name}</div><div class="text-xs muted">${c.email}</div></td>
+                    <td class="px-4 py-2"><span class="px-2 py-0.5 bg-${statusColors[c.status]}-500/20 text-${statusColors[c.status]}-400 rounded text-xs">${c.status}</span></td>
+                    <td class="px-4 py-2 muted">${c.region}</td>
+                    <td class="px-4 py-2 font-medium">$${(c.revenue/1000).toFixed(0)}K</td>
+                    <td class="px-4 py-2"><span class="px-2 py-0.5 bg-${engColors[c.engagement]}-500/20 text-${engColors[c.engagement]}-400 rounded text-xs">${c.engagement}</span></td>
+                    <td class="px-4 py-2 muted hidden md:table-cell">${c.lastActive}</td>
+                </tr>
+            `).join('');
+            
+            document.getElementById('info').textContent = `${page*perPage+1}-${Math.min((page+1)*perPage, total)} of ${total}`;
+        }
+
+        function sort(key) { if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = -1; } render(); }
+
+        function exportCSV() {
+            const data = getFiltered();
+            const csv = 'Name,Email,Status,Region,Revenue,Engagement,Last Active\n' + 
+                data.map(c => `${c.name},${c.email},${c.status},${c.region},${c.revenue},${c.engagement},${c.lastActive}`).join('\n');
+            const blob = new Blob([csv], {type: 'text/csv'});
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'customers.csv'; a.click();
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark'); body.classList.toggle('light');
+            const icon = document.getElementById('themeIcon');
+            icon.innerHTML = body.classList.contains('dark') 
+                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>'
+                : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
+        }
+
+        // Charts
+        Chart.defaults.color = '#94a3b8'; Chart.defaults.borderColor = '#334155';
+        new Chart(document.getElementById('growthChart'), {
+            type: 'line',
+            data: { labels: ['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb'], datasets: [{ data: [520,580,650,720,820,920,1040,1247], borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,0.1)', fill: true, tension: 0.4, pointRadius: 0 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } } } }
+        });
+        new Chart(document.getElementById('regionChart'), {
+            type: 'bar',
+            data: { labels: ['NA','EU','APAC','LATAM','ME'], datasets: [{ data: [2.45,1.68,0.98,0.42,0.28], backgroundColor: ['#06b6d4','#10b981','#f59e0b','#ef4444','#8b5cf6'], borderRadius: 4 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: v => '$'+v+'M' } }, x: { grid: { display: false } } } }
+        });
+
+        render();
     </script>
 </body>
 </html>
