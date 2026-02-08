@@ -71,6 +71,16 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://scs-marketplace.pages.dev/resources.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/changelog.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://scs-marketplace.pages.dev/privacy.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
