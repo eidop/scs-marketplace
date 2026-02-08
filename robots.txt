@@ -1,0 +1,10 @@
+# Robots.txt for Simply Complex Solutions
+User-agent: *
+Allow: /
+
+Sitemap: https://scs-marketplace.pages.dev/sitemap.xml
+
+# Disallow admin/private areas
+Disallow: /dashboard
+Disallow: /setup
+Disallow: /api/
