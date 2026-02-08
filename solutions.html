@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | Simply Complex Solutions</title>
+    <meta name="description" content="Complete AI automation solutions for Sales, Support, and Hiring. Enterprise-grade automation bundles.">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scs-marketplace.pages.dev/solutions.html">
+    <meta property="og:title" content="AI Automation Solutions | Simply Complex Solutions">
+    <meta property="og:description" content="Complete AI automation bundles for Sales, Support, and Hiring. Enterprise-grade solutions that actually work.">
+    <meta property="og:image" content="https://scs-marketplace.pages.dev/images/og-solutions.jpg">
+    <meta property="og:site_name" content="Simply Complex Solutions">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@simplycomplex">
+    <meta name="twitter:url" content="https://scs-marketplace.pages.dev/solutions.html">
+    <meta name="twitter:title" content="AI Automation Solutions | Simply Complex Solutions">
+    <meta name="twitter:description" content="Complete AI automation bundles for Sales, Support, and Hiring. Enterprise-grade solutions that actually work.">
+    <meta name="twitter:image" content="https://scs-marketplace.pages.dev/images/og-solutions.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scs-marketplace.pages.dev/solutions.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .solutions-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .solutions-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .solutions-intro h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .solutions-intro p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .solution-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .solution-card.featured {
+            border: 2px solid rgba(99, 102, 241, 0.6);
+            background: rgba(30, 41, 59, 0.9);
+        }
+        
+        .solution-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+        }
+        
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+        
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+        
+        .solution-tagline {
+            font-size: 1.1rem;
+            color: #6366f1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution-includes {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution-includes li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+        }
+        
+        .check {
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .solution-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .solution-meta span {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+        
+        .solution-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #6366f1;
+            color: #6366f1;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .solutions-intro h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "AI Automation Solutions",
+        "description": "Complete AI automation bundles for Sales, Support, and Hiring. Enterprise-grade solutions that actually work.",
+        "url": "https://scs-marketplace.pages.dev/solutions.html",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://scs-marketplace.pages.dev/"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Solutions",
+                "item": "https://scs-marketplace.pages.dev/solutions.html"
+            }]
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <!-- Navigation -->
+    
+    
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="n8n-store.html">Templates</a>
+                <a href="integrations.html">Integrations</a>
+                <a href="client-dashboard.html">Analytics</a>
+                <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="status.html">Status</a>
+                <a href="compare.html">Compare</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    
+
+
+    
+
+    
+
+
+    
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (navLinks.classList.contains('open') && 
+                !navLinks.contains(event.target) && 
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+            }
+        });
+    </script>
+
+
+    <style>
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+        @media (max-width: 900px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        }
+    </style>
+
+    
+
+    <section class="detail-hero">
+        <div class="detail-hero-icon">🤖</div>
+        <span class="section-badge">Complete Automation Bundles</span>
+        <h1>AI Solutions That Solve Real Business Problems</h1>
+        <p>Each bundle includes 3 integrated AI automations designed to work together for maximum impact.</p>
+    </section>
+
+    <section class="solutions-section">
+        <div class="solutions-intro">
+            <p>Deploy complete AI automation systems, not single workflows. Our 3-pack bundles actually work—out of the box.</p>
+        </div>
+
+        <div class="solutions-grid">
+            <!-- Sales Bundle -->
+            <div class="solution-card" data-solution="sales">
+                <div class="solution-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>Sales Excellence</h3>
+                <p class="solution-tagline">Close more deals, faster</p>
+                <ul class="solution-includes">
+                    <li>
+                        <span class="check">✓</span>
+                        Lead qualification & routing
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Automated follow-up sequences
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Pipeline sync & analytics
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        CRM integration
+                    </li>
+                </ul>
+                <div class="solution-meta">
+                    <span class="setup-time">⚡ 2-hour setup</span>
+                    <span class="integrations">📦 12 integrations</span>
+                </div>
+                <a href="solution-sales.html" class="btn btn-primary">View Details</a>
+            </div>
+
+            <!-- Support Bundle -->
+            <div class="solution-card featured" data-solution="support">
+                <div class="featured-badge">Most Popular</div>
+                <div class="solution-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                    </svg>
+                </div>
+                <h3>Support Automation</h3>
+                <p class="solution-tagline">Delight customers, reduce load</p>
+                <ul class="solution-includes">
+                    <li>
+                        <span class="check">✓</span>
+                        AI ticket triage & routing
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Smart response suggestions
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Knowledge base sync
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Customer sentiment analysis
+                    </li>
+                </ul>
+                <div class="solution-meta">
+                    <span class="setup-time">⚡ 2-hour setup</span>
+                    <span class="integrations">📦 15 integrations</span>
+                </div>
+                <a href="solution-support.html" class="btn btn-primary">View Details</a>
+            </div>
+
+            <!-- Hiring Bundle -->
+            <div class="solution-card" data-solution="hiring">
+                <div class="solution-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                </div>
+                <h3>Hiring System</h3>
+                <p class="solution-tagline">Hire better, faster</p>
+                <ul class="solution-includes">
+                    <li>
+                        <span class="check">✓</span>
+                        Resume screening & scoring
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Interview scheduling automation
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Candidate status tracking
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Reference checking
+                    </li>
+                </ul>
+                <div class="solution-meta">
+                    <span class="setup-time">⚡ 1.5-hour setup</span>
+                    <span class="integrations">📦 8 integrations</span>
+                </div>
+                <a href="solution-hiring.html" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <h3 style="color: #fff; margin-bottom: 1rem;">Need a Custom Solution?</h3>
+            <p style="color: #94a3b8; max-width: 600px; margin: 0 auto 1.5rem;">Our team can customize any bundle or create a solution tailored to your specific needs.</p>
+            <a href="contact.html" class="btn btn-outline">Contact Sales</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+    
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">◈</div>
+                        <span class="logo-text">Simply Complex Solutions</span>
+                    </a>
+                    <p>Enterprise AI automation bundles that actually work.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/simplycomplex" target="_blank" rel="noopener" title="Twitter">𝕏</a>
+                        <a href="https://linkedin.com/company/simplycomplex" target="_blank" rel="noopener" title="LinkedIn">in</a>
+                        <a href="https://github.com/simplycomplex" target="_blank" rel="noopener" title="GitHub">⌘</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <a href="solution-sales.html">Sales Excellence</a>
+                    <a href="solution-support.html">Support Automation</a>
+                    <a href="solution-hiring.html">Hiring System</a>
+                    <a href="n8n-store.html">All Templates</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Tools</h4>
+                    <a href="roi-calculator.html">ROI Calculator</a>
+                    <a href="client-dashboard.html">Analytics Dashboard</a>
+                    <a href="status.html">System Status</a>
+                    <a href="compare.html">Feature Comparison</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="resources.html">Free Downloads</a>
+                    <a href="getting-started.html">Getting Started</a>
+                    <a href="changelog.html">Changelog</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get automation tips and product updates.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Simply Complex Solutions. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="cookies.html">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>

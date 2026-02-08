@@ -159,6 +159,10 @@
     <div class="bg-glow-2"></div>
     
     <!-- Navigation -->
+    
+    
+    
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -169,14 +173,35 @@
                 <span></span><span></span><span></span>
             </button>
             <div class="nav-links" id="navLinks">
-                <a href="#solutions">Solutions</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pricing</a>
+                <a href="index.html">Home</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="n8n-store.html">Templates</a>
+                <a href="integrations.html">Integrations</a>
                 <a href="client-dashboard.html">Analytics</a>
-                <a href="dashboard.html" class="nav-btn">Dashboard</a>
+                <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="status.html">Status</a>
+                <a href="compare.html">Compare</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
             </div>
         </div>
     </nav>
+
+    
+
+    
+
+
+    
+
+    
+
+
+    
+
+    
+
 
     <style>
         .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
@@ -194,7 +219,24 @@
         function toggleMobileMenu() {
             document.getElementById('navLinks').classList.toggle('open');
         }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (navLinks.classList.contains('open') && 
+                !navLinks.contains(event.target) && 
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+            }
+        });
     </script>
+
+
+    
+
+    
 
     <!-- Hero Section -->
     <section class="hero">
@@ -660,6 +702,10 @@
     </section>
 
     <!-- Footer -->
+    
+    
+    
+    
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-grid">
@@ -680,20 +726,28 @@
                     <a href="solution-sales.html">Sales Excellence</a>
                     <a href="solution-support.html">Support Automation</a>
                     <a href="solution-hiring.html">Hiring System</a>
+                    <a href="n8n-store.html">All Templates</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="about.html">About</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="contact.html">Contact</a>
+                    <h4>Tools</h4>
+                    <a href="roi-calculator.html">ROI Calculator</a>
+                    <a href="client-dashboard.html">Analytics Dashboard</a>
+                    <a href="status.html">System Status</a>
+                    <a href="compare.html">Feature Comparison</a>
                 </div>
                 <div class="footer-links">
                     <h4>Resources</h4>
                     <a href="resources.html">Free Downloads</a>
+                    <a href="getting-started.html">Getting Started</a>
                     <a href="changelog.html">Changelog</a>
-                    <a href="status.html">Status</a>
-                    <a href="compare.html">Why Us</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="pricing.html">Pricing</a>
                 </div>
             </div>
             
@@ -709,9 +763,18 @@
             
             <div class="footer-bottom">
                 <p>© 2026 Simply Complex Solutions. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="cookies.html">Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
+
+
+
+
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-banner" id="cookieBanner">
