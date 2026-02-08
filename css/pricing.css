@@ -1,0 +1,77 @@
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
+/* Premium Pricing Improvements */
+.pricing-badge { 
+    display: inline-block; 
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1)); 
+    border: 1px solid rgba(16, 185, 129, 0.3); 
+    color: #10b981; 
+    padding: 8px 20px; 
+    border-radius: 50px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    margin-top: 16px;
+}
+
+.pricing-badge-tier {
+    display: inline-block;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px 8px 8px 0;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    right: 24px;
+    transform: translateY(-50%);
+}
+
+.pricing-badge-tier.enterprise {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+}
+
+.pricing-card {
+    position: relative;
+    padding-top: 40px;
+}
+
+.price-annual {
+    font-size: 13px;
+    color: #10b981;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.pricing-note {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 12px;
+}
+
+.pricing-trust {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.pricing-card.featured .pricing-note {
+    color: var(--primary-light);
+}
