@@ -1,9 +1,3 @@
-/* Scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
-
 /* Premium Pricing Improvements */
 .pricing-badge { 
     display: inline-block; 
@@ -72,6 +66,67 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-.pricing-card.featured .pricing-note {
-    color: var(--primary-light);
+/* New Offer Styling */
+.offer-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-savings {
+    position: absolute;
+    top: 16px;
+    right: -32px;
+    background: #10b981;
+    color: white;
+    padding: 4px 40px;
+    font-size: 11px;
+    font-weight: 700;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+}
+
+.pricing-price-lock {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.price-original {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.price-current {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pricing-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    margin: 20px 0;
+}
+
+.pricing-subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.price-period {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.pricing-card.featured .pricing-subtitle,
+.pricing-card.featured .price-period {
+    color: rgba(255, 255, 255, 0.7);
 }
