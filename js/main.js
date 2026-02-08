@@ -723,3 +723,63 @@ function formatNumber(num) { return new Intl.NumberFormat().format(num); }
 function formatDate(date) {
     return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(date);
 }
+
+/* ========================================
+   Cookie Consent
+   ======================================== */
+
+const CookieConsent = {
+    COOKIE_NAME: 'scs_cookie_consent',
+    
+    init() {
+        if (!this.hasConsent()) {
+            this.showBanner();
+        } else {
+            this.enableCookies();
+        }
+    },
+    
+    hasConsent() {
+        const consent = localStorage.getItem(this.COOKIE_NAME);
+        return consent === 'accepted' || consent === 'rejected';
+    },
+    
+    showBanner() {
+        const banner = document.getElementById('cookieBanner');
+        if (banner) {
+            setTimeout(() => banner.classList.add('visible'), 1000);
+        }
+    },
+    
+    hideBanner() {
+        const banner = document.getElementById('cookieBanner');
+        if (banner) {
+            banner.classList.remove('visible');
+        }
+    },
+    
+    acceptAll() {
+        localStorage.setItem(this.COOKIE_NAME, 'accepted');
+        this.hideBanner();
+        this.enableCookies();
+    },
+    
+    rejectAll() {
+        localStorage.setItem(this.COOKIE_NAME, 'rejected');
+        this.hideBanner();
+        this.disableCookies();
+    },
+    
+    enableCookies() {
+        console.log('Cookies enabled');
+    },
+    
+    disableCookies() {
+        console.log('Non-essential cookies rejected');
+    }
+};
+
+// Initialize cookie consent on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    CookieConsent.init();
+});
