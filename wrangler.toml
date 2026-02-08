@@ -1,4 +1,4 @@
-name = "scs-market-place"
+name = "scs-marketplace"
 compatibility_date = "2026-02-07"
 pages_build_output_dir = "./dist"
 
