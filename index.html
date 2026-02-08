@@ -68,13 +68,88 @@
     }
     </script>
     
-    <!-- Analytics (Add your GA4 measurement ID) -->
+    <!-- ========================================
+         ANALYTICS & TRACKING
+         ======================================== -->
+    
+    <!-- Google Analytics 4 -->
+    <!-- Replace GA_MEASUREMENT_ID with your actual GA4 measurement ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Intercom Live Chat -->
+    <!-- Replace INTERCOM_APP_ID with your actual Intercom app ID -->
+    <script>
+        window.intercomSettings = {
+            api_base: "https://api-iam.intercom.io",
+            app_id: "INTERCOM_APP_ID"
+        };
+    </script>
+    <script>
+        (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/INTERCOM_APP_ID';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+    </script>
+    
+    <!-- Email Capture (Mailchimp/ConvertKit/etc.) -->
+    <script>
+        const EmailCapture = {
+            formId: 'newsletter-form',
+            apiUrl: 'YOUR_EMAIL_API_ENDPOINT',
+            
+            init() {
+                const form = document.getElementById(this.formId);
+                if (form) {
+                    form.addEventListener('submit', (e) => this.handleSubmit(e));
+                }
+            },
+            
+            async handleSubmit(e) {
+                e.preventDefault();
+                const form = e.target;
+                const email = form.querySelector('input[type="email"]').value;
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = 'Subscribing...';
+                btn.disabled = true;
+                
+                try {
+                    // Replace with your actual email service API
+                    const response = await fetch(this.apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, source: 'homepage' })
+                    });
+                    
+                    if (response.ok) {
+                        btn.innerHTML = '✓ Subscribed!';
+                        btn.classList.add('success');
+                        form.reset();
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.classList.remove('success');
+                            btn.disabled = false;
+                        }, 3000);
+                    } else {
+                        throw new Error('Subscription failed');
+                    }
+                } catch (error) {
+                    btn.innerHTML = 'Error - try again';
+                    btn.classList.add('error');
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove('error');
+                        btn.disabled = false;
+                    }, 3000);
+                }
+            }
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => EmailCapture.init());
     </script>
 </head>
 <body>
@@ -572,6 +647,11 @@
                         <span class="logo-text">Simply Complex Solutions</span>
                     </a>
                     <p>Enterprise AI automation bundles that actually work.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/simplycomplex" target="_blank" rel="noopener" title="Twitter">𝕏</a>
+                        <a href="https://linkedin.com/company/simplycomplex" target="_blank" rel="noopener" title="LinkedIn">in</a>
+                        <a href="https://github.com/simplycomplex" target="_blank" rel="noopener" title="GitHub">⌘</a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Solutions</h4>
@@ -581,19 +661,30 @@
                 </div>
                 <div class="footer-links">
                     <h4>Company</h4>
-                    <a href="#">About</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Careers</</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
                 </div>
                 <div class="footer-links">
                     <h4>Support</h4>
                     <a href="#">Documentation</a>
                     <a href="#">Status</a>
-                    <a href="#">Contact</a>
+                    <a href="contact.html">Contact</a>
                 </div>
             </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get automation tips and product updates.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+            
             <div class="footer-bottom">
-                <p>© 2024 Simply Complex Solutions. Enterprise-grade reliability.</p>
+                <p>© 2024 Simply Complex Solutions. All rights reserved.</p>
             </div>
         </div>
     </footer>
