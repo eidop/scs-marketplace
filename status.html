@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status | Simply Complex Solutions</title>
+    <meta name="description" content="Real-time system status and uptime for Simply Complex Solutions services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .status-section { padding: 4rem 2rem; max-width: 800px; margin: 0 auto; }
+        .status-overall { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 2rem; }
+        .status-overall.degraded { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1)); border-color: rgba(245, 158, 11, 0.3); }
+        .status-overall.down { background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1)); border-color: rgba(239, 68, 68, 0.3); }
+        .status-indicator { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.5rem; font-weight: 700; color: #10b981; }
+        .status-indicator.degraded { color: #f59e0b; }
+        .status-indicator.down { color: #ef4444; }
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .status-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .status-item { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+        .status-item-name { color: #fff; font-weight: 500; }
+        .status-item-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+        .status-item-status.operational { color: #10b981; }
+        .status-item-status.degraded { color: #f59e0b; }
+        .status-item-status.down { color: #ef4444; }
+        .uptime-bar { display: flex; gap: 2px; margin-top: 0.5rem; }
+        .uptime-day { width: 8px; height: 24px; border-radius: 2px; background: #10b981; }
+        .uptime-day.degraded { background: #f59e0b; }
+        .uptime-day.down { background: #ef4444; }
+        .incidents { margin-top: 3rem; }
+        .incidents h3 { color: #fff; margin-bottom: 1rem; }
+        .incident { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+        .incident-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+        .incident-title { color: #fff; font-weight: 600; }
+        .incident-date { color: #64748b; font-size: 0.875rem; }
+        .incident-status { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+        .incident-status.resolved { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .incident-status.investigating { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .incident-body { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+        .subscribe-updates { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="detail-hero">
+        <div class="detail-hero-icon">📡</div>
+        <span class="section-badge">System Status</span>
+        <h1>All Systems Operational</h1>
+        <p>Real-time status of Simply Complex Solutions services.</p>
+    </section>
+
+    <section class="status-section">
+        <div class="status-overall">
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                All Systems Operational
+            </div>
+            <p style="color: #94a3b8; margin-top: 0.5rem;">Last updated: <span id="lastUpdate"></span></p>
+        </div>
+
+        <div class="status-list">
+            <div class="status-item">
+                <div>
+                    <div class="status-item-name">API</div>
+                    <div class="uptime-bar" title="Last 30 days">
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                    </div>
+                </div>
+                <div class="status-item-status operational">● Operational</div>
+            </div>
+
+            <div class="status-item">
+                <div>
+                    <div class="status-item-name">Webhooks</div>
+                    <div class="uptime-bar" title="Last 30 days">
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                    </div>
+                </div>
+                <div class="status-item-status operational">● Operational</div>
+            </div>
+
+            <div class="status-item">
+                <div>
+                    <div class="status-item-name">Dashboard</div>
+                    <div class="uptime-bar" title="Last 30 days">
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                    </div>
+                </div>
+                <div class="status-item-status operational">● Operational</div>
+            </div>
+
+            <div class="status-item">
+                <div>
+                    <div class="status-item-name">Integrations</div>
+                    <div class="uptime-bar" title="Last 30 days">
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                    </div>
+                </div>
+                <div class="status-item-status operational">● Operational</div>
+            </div>
+
+            <div class="status-item">
+                <div>
+                    <div class="status-item-name">Email Notifications</div>
+                    <div class="uptime-bar" title="Last 30 days">
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                        <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+                    </div>
+                </div>
+                <div class="status-item-status operational">● Operational</div>
+            </div>
+        </div>
+
+        <p style="color: #64748b; text-align: center; margin-top: 1rem; font-size: 0.875rem;">
+            📊 99.99% uptime over the last 90 days
+        </p>
+
+        <div class="incidents">
+            <h3>📋 Recent Incidents</h3>
+            
+            <div class="incident">
+                <div class="incident-header">
+                    <span class="incident-title">Scheduled Maintenance</span>
+                    <span class="incident-status resolved">Resolved</span>
+                </div>
+                <div class="incident-date">February 1, 2026 • 02:00-02:30 UTC</div>
+                <div class="incident-body">
+                    Scheduled maintenance window for infrastructure upgrades. All services performed normally after maintenance.
+                </div>
+            </div>
+
+            <div class="incident">
+                <div class="incident-header">
+                    <span class="incident-title">Webhook Delays</span>
+                    <span class="incident-status resolved">Resolved</span>
+                </div>
+                <div class="incident-date">January 28, 2026 • 14:22-14:45 UTC</div>
+                <div class="incident-body">
+                    Brief period of increased latency for webhook deliveries due to upstream provider issues. All webhooks were delivered successfully with retry mechanisms.
+                </div>
+            </div>
+
+            <p style="color: #64748b; text-align: center; margin-top: 1rem;">No major incidents in the last 90 days.</p>
+        </div>
+
+        <div class="subscribe-updates">
+            <h4 style="color: #fff; margin-bottom: 0.5rem;">🔔 Get Status Updates</h4>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">Subscribe to receive notifications about scheduled maintenance and incidents.</p>
+            <a href="mailto:status@simplycomplex.io?subject=Subscribe to Status Updates" class="btn btn-primary">Subscribe via Email</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
