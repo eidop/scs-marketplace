@@ -779,7 +779,117 @@ const CookieConsent = {
     }
 };
 
-// Initialize cookie consent on DOM ready
+/* ========================================
+   Scroll Animations
+   ======================================== */
+
+const ScrollAnimations = {
+    init() {
+        this.addAnimationClasses();
+        this.setupObserver();
+    },
+    
+    addAnimationClasses() {
+        // Add animate-on-scroll class to common elements
+        const selectors = [
+            '.testimonial-card',
+            '.pricing-card',
+            '.feature-card',
+            '.blog-card',
+            '.solution-card',
+            '.step-card',
+            '.faq-item',
+            '.stat-item',
+            '.trust-item',
+            '.integration-card'
+        ];
+        
+        selectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach((el, index) => {
+                if (!el.classList.contains('animate-on-scroll')) {
+                    el.classList.add('animate-on-scroll');
+                    el.style.transitionDelay = `${index * 0.1}s`;
+                }
+            });
+        });
+    },
+    
+    setupObserver() {
+        const options = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    }
+};
+
+/* ========================================
+   Smooth Scroll
+   ======================================== */
+
+const SmoothScroll = {
+    init() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const href = anchor.getAttribute('href');
+                if (href === '#') return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+};
+
+/* ========================================
+   Header Scroll Effect
+   ======================================== */
+
+const HeaderScroll = {
+    init() {
+        const header = document.querySelector('.navbar, header');
+        if (!header) return;
+        
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    }
+};
+
+// Initialize all on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
     CookieConsent.init();
+    ScrollAnimations.init();
+    SmoothScroll.init();
+    HeaderScroll.init();
 });
+

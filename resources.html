@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Resources | Simply Complex Solutions</title>
+    <meta name="description" content="Free automation templates, guides, and tools to help you get started with business automation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .resource-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .resource-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .resource-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        .resource-card h3 {
+            color: #fff;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+        .resource-card p {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .resource-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+        }
+        .download-btn.secondary {
+            background: rgba(255,255,255,0.1);
+        }
+        .category-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .category-tab {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .category-tab:hover, .category-tab.active {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: #06b6d4;
+            color: #06b6d4;
+        }
+        .newsletter-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .newsletter-box h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .newsletter-box p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+        }
+        .newsletter-form button {
+            padding: 0.75rem 1.5rem;
+            background: #06b6d4;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="client-dashboard.html">Analytics</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="detail-hero">
+        <div class="detail-hero-icon">📚</div>
+        <span class="section-badge">Free Resources</span>
+        <h1>Templates, Guides & Tools</h1>
+        <p>Everything you need to start automating your business — completely free.</p>
+    </section>
+
+    <section style="padding: 4rem 2rem;">
+        <div class="section-container">
+            <div class="category-tabs">
+                <button class="category-tab active" onclick="filterResources('all')">All Resources</button>
+                <button class="category-tab" onclick="filterResources('template')">Templates</button>
+                <button class="category-tab" onclick="filterResources('guide')">Guides</button>
+                <button class="category-tab" onclick="filterResources('tool')">Tools</button>
+                <button class="category-tab" onclick="filterResources('checklist')">Checklists</button>
+            </div>
+
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- Templates -->
+                <div class="resource-card" data-category="template">
+                    <div class="resource-icon">📧</div>
+                    <span class="resource-type">Template</span>
+                    <h3>Lead Capture Starter Kit</h3>
+                    <p>5 ready-to-use n8n workflows for capturing and routing leads from web forms, chatbots, and landing pages.</p>
+                    <div class="resource-meta">
+                        <span>📄 5 workflows</span>
+                        <span>⏱️ 30 min setup</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Free →</a>
+                </div>
+
+                <div class="resource-card" data-category="template">
+                    <div class="resource-icon">📊</div>
+                    <span class="resource-type">Template</span>
+                    <h3>Email Sequence Builder</h3>
+                    <p>Automated email sequences for onboarding, nurturing, and re-engagement. Works with Mailchimp, SendGrid, and more.</p>
+                    <div class="resource-meta">
+                        <span>📄 3 workflows</span>
+                        <span>⏱️ 20 min setup</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Free →</a>
+                </div>
+
+                <div class="resource-card" data-category="template">
+                    <div class="resource-icon">🔔</div>
+                    <span class="resource-type">Template</span>
+                    <h3>Slack Notification Hub</h3>
+                    <p>Get real-time alerts for new leads, support tickets, payments, and more directly in Slack.</p>
+                    <div class="resource-meta">
+                        <span>📄 4 workflows</span>
+                        <span>⏱️ 15 min setup</span>
+                    </div>
+                    <a href="#" class="download-btn">Download Free →</a>
+                </div>
+
+                <!-- Guides -->
+                <div class="resource-card" data-category="guide">
+                    <div class="resource-icon">📖</div>
+                    <span class="resource-type">Guide</span>
+                    <h3>n8n Beginner's Guide</h3>
+                    <p>Complete introduction to n8n automation. Learn the basics, best practices, and build your first workflow in under an hour.</p>
+                    <div class="resource-meta">
+                        <span>📄 45 pages</span>
+                        <span>⏱️ 1 hour read</span>
+                    </div>
+                    <a href="#" class="download-btn">Download PDF →</a>
+                </div>
+
+                <div class="resource-card" data-category="guide">
+                    <div class="resource-icon">💰</div>
+                    <span class="resource-type">Guide</span>
+                    <h3>Automation ROI Playbook</h3>
+                    <p>How to calculate, measure, and maximize the ROI of your automation investments. Includes templates and formulas.</p>
+                    <div class="resource-meta">
+                        <span>📄 32 pages</span>
+                        <span>⏱️ 45 min read</span>
+                    </div>
+                    <a href="#" class="download-btn">Download PDF →</a>
+                </div>
+
+                <div class="resource-card" data-category="guide">
+                    <div class="resource-icon">🚀</div>
+                    <span class="resource-type">Guide</span>
+                    <h3>Scaling Sales with Automation</h3>
+                    <p>10 proven automation strategies to double your sales capacity without hiring. Real case studies included.</p>
+                    <div class="resource-meta">
+                        <span>📄 28 pages</span>
+                        <span>⏱️ 40 min read</span>
+                    </div>
+                    <a href="#" class="download-btn">Download PDF →</a>
+                </div>
+
+                <!-- Tools -->
+                <div class="resource-card" data-category="tool">
+                    <div class="resource-icon">🧮</div>
+                    <span class="resource-type">Tool</span>
+                    <h3>Automation ROI Calculator</h3>
+                    <p>Interactive calculator to estimate time and cost savings from automation. Input your numbers, get instant results.</p>
+                    <div class="resource-meta">
+                        <span>🌐 Web tool</span>
+                        <span>⏱️ 2 min</span>
+                    </div>
+                    <a href="roi-calculator.html" class="download-btn">Open Calculator →</a>
+                </div>
+
+                <div class="resource-card" data-category="tool">
+                    <div class="resource-icon">🔍</div>
+                    <span class="resource-type">Tool</span>
+                    <h3>Integration Finder</h3>
+                    <p>Search our database of 150+ integrations to find the tools that work with your existing stack.</p>
+                    <div class="resource-meta">
+                        <span>🌐 Web tool</span>
+                        <span>⏱️ Instant</span>
+                    </div>
+                    <a href="integrations.html" class="download-btn">Browse Integrations →</a>
+                </div>
+
+                <!-- Checklists -->
+                <div class="resource-card" data-category="checklist">
+                    <div class="resource-icon">✅</div>
+                    <span class="resource-type">Checklist</span>
+                    <h3>Automation Readiness Audit</h3>
+                    <p>25-point checklist to evaluate if your business is ready for automation and identify quick wins.</p>
+                    <div class="resource-meta">
+                        <span>📄 1 page</span>
+                        <span>⏱️ 10 min</span>
+                    </div>
+                    <a href="#" class="download-btn">Download PDF →</a>
+                </div>
+
+                <div class="resource-card" data-category="checklist">
+                    <div class="resource-icon">📋</div>
+                    <span class="resource-type">Checklist</span>
+                    <h3>n8n Security Checklist</h3>
+                    <p>Essential security configurations for production n8n deployments. Covers authentication, secrets, and backups.</p>
+                    <div class="resource-meta">
+                        <span>📄 2 pages</span>
+                        <span>⏱️ 15 min</span>
+                    </div>
+                    <a href="#" class="download-btn">Download PDF →</a>
+                </div>
+
+                <div class="resource-card" data-category="checklist">
+                    <div class="resource-icon">🎯</div>
+                    <span class="resource-type">Checklist</span>
+                    <h3>Sales Automation Checklist</h3>
+                    <p>40 automation ideas for sales teams. Prioritized by impact and difficulty. Perfect for planning your roadmap.</p>
+                    <div class="resource-meta">
+                        <span>📄 3 pages</span>
+                        <span>⏱️ 20 min</span>
+                    </div>
+                    <a href="#" class="download-btn">Download PDF →</a>
+                </div>
+            </div>
+
+            <div class="newsletter-box">
+                <h3>📬 Get New Resources Weekly</h3>
+                <p>Join 5,000+ automation enthusiasts. We'll send you new templates, guides, and tips every week.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+                    <input type="email" placeholder="your@email.com" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function filterResources(category) {
+            document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.resource-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
