@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started | Simply Complex Solutions</title>
+    <meta name="description" content="Step-by-step guide to setting up your first automation with Simply Complex templates.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pricing.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="getting-started.html" class="active">Getting Started</a>
+                <a href="n8n-store.html">Templates</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="detail-hero">
+        <div class="detail-hero-icon">🚀</div>
+        <span class="section-badge">Getting Started</span>
+        <h1>Your First Automation in 15 Minutes</h1>
+        <p>A step-by-step guide to setting up your first automation workflow.</p>
+    </section>
+
+    <section class="legal-content">
+        <div class="section-container">
+            <div class="legal-body">
+                <h2>📋 What You'll Need</h2>
+                <div class="getting-started-checklist">
+                    <div class="checklist-item">
+                        <span class="check-icon">✅</span>
+                        <div>
+                            <strong>n8n Account</strong>
+                            <p>Self-hosted or cloud. <a href="#">Sign up →</a></p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✅</span>
+                        <div>
+                            <strong>API Keys</strong>
+                            <p>For your integrations (Slack, HubSpot, Gmail, etc.)</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <span class="check-icon">✅</span>
+                        <div>
+                            <strong>Simply Complex Account</strong>
+                            <p>Free trial available. <a href="setup.html">Start trial →</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>🔧 Step 1: Choose Your Template</h2>
+                <p>Browse our template library and select an automation that fits your needs. For this guide, we'll use a simple email notification workflow.</p>
+                <ol style="padding-left: 1.5rem; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li>Go to our <a href="n8n-store.html">Template Store</a></li>
+                    <li>Filter by category (e.g., "Sales" or "Marketing")</li>
+                    <li>Click on a template to preview</li>
+                    <li>Click "Import to n8n"</li>
+                </ol>
+
+                <h2>🔗 Step 2: Connect Your Accounts</h2>
+                <p>After importing, n8n will prompt you to connect your accounts:</p>
+                <ul style="padding-left: 1.5rem; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li>Click on each node in your workflow</li>
+                    <li>Select "Create New Credential" or choose an existing one</li>
+                    <li>Follow the OAuth/API key flow for each service</li>
+                    <li>Test each connection with the "Test" button</li>
+                </ul>
+
+                <h2>⚙️ Step 3: Customize Your Workflow</h2>
+                <p>Tailor the template to your specific needs:</p>
+                <ul style="padding-left: 1.5rem; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li><strong>Triggers:</strong> Set up webhooks or scheduling</li>
+                    <li><strong>Filters:</strong> Add conditions to control when actions run</li>
+                    <li><strong>Actions:</strong> Customize messages, templates, and destinations</li>
+                    <li><strong>Variables:</strong> Map data fields between services</li>
+                </ul>
+
+                <h2>🧪 Step 4: Test Your Workflow</h2>
+                <p>Before activating, thoroughly test:</p>
+                <div class="steps-timeline" style="max-width: 100%;">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Single Execution Test</h4>
+                            <p>Click "Execute Node" to test one step at a time</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Full Workflow Test</h4>
+                            <p>Click "Execute Workflow" to run the entire flow</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Trigger Test</h4>
+                            <p>Fire the trigger manually (webhook, form submit, etc.)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>✅ Step 5: Activate</h2>
+                <p>Once testing is complete:</p>
+                <ul style="padding-left: 1.5rem; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li>Toggle the "Active" switch to on</li>
+                    <li>Your workflow will now run automatically</li>
+                    <li>Monitor execution in the <a href="dashboard.html">Dashboard</a></li>
+                </ul>
+
+                <h2>🎯 Pro Tips</h2>
+                <div class="features-grid" style="margin-top: 2rem;">
+                    <div class="feature-card">
+                        <h4>💾 Save Versions</h4>
+                        <p>Save copies of your workflow before major changes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Monitor Regularly</h4>
+                        <p>Check your dashboard daily for failed executions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔔 Set Alerts</h4>
+                        <p>Configure notifications for failures or anomalies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Document Changes</h4>
+                        <p>Keep notes on what you modified and why.</p>
+                    </div>
+                </div>
+
+                <h2>❓ Need Help?</h2>
+                <p>Our support team is here to assist:</p>
+                <ul style="padding-left: 1.5rem; color: rgba(255,255,255,0.7); line-height: 2;">
+                    <li>📧 Email: <a href="mailto:support@simplycomplex.io">support@simplycomplex.io</a></li>
+                    <li>💬 Live Chat: Available 24/7 for Growth and Complete plans</li>
+                    <li>📚 <a href="#">Documentation →</a></li>
+                </ul>
+
+                <div class="cta-buttons" style="margin-top: 3rem; justify-content: center;">
+                    <a href="setup.html?bundle=professional" class="btn btn-primary">Start Free Trial</a>
+                    <a href="n8n-store.html" class="btn btn-outline">Browse Templates</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">◈</div>
+                        <span class="logo-text">Simply Complex Solutions</span>
+                    </a>
+                    <p>Enterprise AI automation bundles that actually work.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Getting Started</h4>
+                    <a href="getting-started.html">Guide</a>
+                    <a href="n8n-store.html">Templates</a>
+                    <a href="#">Documentation</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Simply Complex Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
