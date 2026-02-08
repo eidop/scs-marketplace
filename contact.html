@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Simply Complex Solutions</title>
+    <title>Contact Sales | Simply Complex Solutions</title>
+    <meta name="description" content="Get in touch with our team for custom solutions, enterprise pricing, or technical questions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,108 +15,243 @@
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
     
-    <header>
-        <div class="header-inner">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">◈</div>
-                <span class="logo-text">Simply Complex</span>
+                <span class="logo-text">Simply Complex Solutions</span>
             </a>
-            <nav>
-                <a href="templates.html">Templates</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="active">Contact</a>
-                <a href="https://scs-marketplace.pages.dev/scs-dashboard/">Dashboard</a>
-            </nav>
-            <div class="nav-cta">
-                <a href="https://simplyx.gumroad.com/" target="_blank" class="btn btn-primary">Get Started</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#solutions">Solutions</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
             </div>
         </div>
-    </header>
-    
-    <section class="contact-content">
-        <div class="hero" style="padding:140px 2rem 60px">
-            <h1 style="font-size:3rem">Get In Touch</h1>
-            <p class="hero-desc">Have questions? We'd love to hear from you.</p>
-        </div>
-        
-        <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" placeholder="Your name" required>
+    </nav>
+
+    <!-- Hero -->
+    <section class="detail-hero">
+        <div class="detail-hero-icon">💬</div>
+        <span class="section-badge">Contact Us</span>
+        <h1>Let's Talk About Your Needs</h1>
+        <p>Whether you have questions or want a custom solution, we're here to help.</p>
+    </section>
+
+    <!-- Contact Grid -->
+    <section class="contact-section">
+        <div class="section-container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2>Send Us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required placeholder="John">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Work Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@company.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name *</label>
+                            <input type="text" id="company" name="company" required placeholder="Acme Inc.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">What are you interested in?</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select an option</option>
+                                <option value="sales">Sales Excellence Bundle</option>
+                                <option value="support">Support Automation Bundle</option>
+                                <option value="hiring">Hiring System Bundle</option>
+                                <option value="multiple">Multiple Bundles</option>
+                                <option value="enterprise">Enterprise / Custom</option>
+                                <option value="demo">Product Demo</option>
+                                <option value="support">Technical Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employees">Number of Employees</label>
+                            <select id="employees" name="employees">
+                                <option value="">Select range</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-200">51-200</option>
+                                <option value="201-500">201-500</option>
+                                <option value="500+">500+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your needs..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            Send Message
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="your@email.com" required>
+
+                <!-- Contact Info -->
+                <div class="contact-info-wrapper">
+                    <div class="contact-info-card">
+                        <h3>Sales Inquiries</h3>
+                        <p>Interested in our bundles? Let's discuss your needs.</p>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>sales@simplycomplex.io</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+1 (888) 555-0123</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🕐</span>
+                            <span>Mon-Fri 9am-6pm EST</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3>Support</h3>
+                        <p>Technical help for existing customers.</p>
+                        <div class="contact-item">
+                            <span class="contact-icon">🎫</span>
+                            <a href="#">Open a Ticket</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📚</span>
+                            <a href="#">Documentation</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">💬</span>
+                            <span>Live Chat Available</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3>Enterprise</h3>
+                        <p>Custom solutions for large organizations.</p>
+                        <div class="contact-item">
+                            <span class="contact-icon">👔</span>
+                            <span>Dedicated Account Manager</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🔒</span>
+                            <span>Custom Integrations</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📋</span>
+                            <span>SLA Guarantees</span>
+                        </div>
+                    </div>
+
+                    <!-- Office Location -->
+                    <div class="office-location">
+                        <h3>Our Office</h3>
+                        <p>📍 123 Innovation Drive<br>San Francisco, CA 94107<br>United States</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" placeholder="How can we help?">
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="5" placeholder="Your message..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <h4>Email</h4>
-                <p>jbot38454@gmail.com</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-headset"></i>
-                <h4>Support</h4>
-                <p>Response within 24h</p>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <h4>Location</h4>
-                <p>Norway</p>
             </div>
         </div>
     </section>
-    
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">◈</div>
-                    <span class="logo-text">Simply Complex</span>
+
+    <!-- CTA Section -->
+    <section class="contact-cta">
+        <div class="section-container">
+            <div class="cta-card">
+                <h2>Ready to Get Started?</h2>
+                <p>Try our automation solutions risk-free with our 14-day free trial.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#pricing" class="btn btn-primary">View Pricing</a>
+                    <a href="index.html#solutions" class="btn btn-secondary">Explore Solutions</a>
                 </div>
-                <p>Premium automation solutions for modern businesses.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="templates.html">Templates</a></li>
-                    <li><a href="pricing.html">Bundles</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">◈</div>
+                        <span class="logo-text">Simply Complex Solutions</span>
+                    </a>
+                    <p>Enterprise AI automation bundles that actually work.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <a href="solution-sales.html">Sales Excellence</a>
+                    <a href="solution-support.html">Support Automation</a>
+                    <a href="solution-hiring.html">Hiring System</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">Status</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Simply Complex Solutions. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate submission
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '✓ Message Sent!';
+                btn.classList.add('success');
+                
+                // Reset form
+                this.reset();
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('success');
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
