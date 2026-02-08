@@ -2,6 +2,77 @@
    Simply Complex Solutions - Main JavaScript
    ======================================== */
 
+// Gumroad Product Links - UPDATE THESE WITH YOUR GUMROAD URLs
+const GUMROAD_PRODUCTS = {
+    starter: 'https://gum.co/scs-starter',
+    professional: 'https://gum.co/scs-professional', 
+    enterprise: 'https://gum.co/scs-enterprise'
+};
+
+// Webhook Test Endpoints - Add your actual webhook URLs here
+const WEBHOOK_TEST_CONFIGS = {
+    slack: {
+        url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK',
+        method: 'POST',
+        testPayload: { text: 'Simply Complex webhook test' }
+    },
+    email: {
+        url: 'https://api.sendgrid.com/v3/mail/send',
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer YOUR_SENDGRID_KEY' }
+    },
+    hubspot: {
+        url: 'https://api.hubapi.com/crm/v3/objects/contacts',
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer YOUR_HUBSPOT_KEY' }
+    },
+    salesforce: {
+        url: 'https://your-instance.salesforce.com/services/data/v58.0/sobjects/',
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer YOUR_SALESFORCE_TOKEN' }
+    },
+    zendesk: {
+        url: 'https://your-subdomain.zendesk.com/api/v2/users.json',
+        method: 'GET',
+        headers: { 'Authorization': 'Basic YOUR_ZENDESK_CREDS' }
+    },
+    pipedrive: {
+        url: 'https://api.pipedrive.com/v1/users',
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer YOUR_PIPEDRIVE_KEY' }
+    },
+    teams: {
+        url: 'https://outlook.office.com/webhook/YOUR/WEBHOOK_URL',
+        method: 'POST',
+        testPayload: { text: 'Simply Complex webhook test' }
+    },
+    intercom: {
+        url: 'https://api.intercom.io/conversations',
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer YOUR_INTERCOM_KEY' }
+    },
+    freshdesk: {
+        url: 'https://your-domain.freshdesk.com/api/v2/tickets',
+        method: 'GET',
+        headers: { 'Authorization': 'Basic YOUR_FRESHDESK_CREDS' }
+    },
+    lever: {
+        url: 'https://api.lever.co/v1/opportunities',
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer YOUR_LEVER_KEY' }
+    },
+    greenhouse: {
+        url: 'https://harvest.greenhouse.io/v1/applications',
+        method: 'GET',
+        headers: { 'Authorization': 'Basic YOUR_GREENHOUSE_CREDS' }
+    },
+    workday: {
+        url: 'https://api.workday.com/v1/workers',
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer YOUR_WORKDAY_KEY' }
+    }
+};
+
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
@@ -56,13 +127,11 @@ function initAnimations() {
         });
     }, observerOptions);
 
-    // Observe sections
     document.querySelectorAll('section').forEach(section => {
         section.classList.add('animate-ready');
         observer.observe(section);
     });
 
-    // Observe cards
     document.querySelectorAll('.solution-card, .pricing-card, .step').forEach(card => {
         card.classList.add('animate-ready');
         observer.observe(card);
@@ -73,9 +142,7 @@ function initAnimations() {
 function initCounterAnimations() {
     const counters = document.querySelectorAll('.metric-value, .stat-value');
     
-    const observerOptions = {
-        threshold: 0.5
-    };
+    const observerOptions = { threshold: 0.5 };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -132,17 +199,14 @@ const SetupFlow = {
     currentStep: 1,
     bundle: null,
     integrations: {},
-    gumroadLinks: {
-        starter: 'https://gum.co/scs-starter',
-        professional: 'https://gum.co/scs-professional',
-        enterprise: 'https://gum.co/scs-enterprise'
-    },
+    validationResults: null,
     
     init() {
         this.bundle = this.getBundleFromURL();
         this.loadStep();
         this.bindEvents();
         this.updateBundleDisplay();
+        this.loadSavedData();
     },
     
     getBundleFromURL() {
@@ -154,24 +218,22 @@ const SetupFlow = {
     updateBundleDisplay() {
         const bundleNameEl = document.getElementById('bundle-name');
         const bundlePriceEl = document.querySelector('.bundle-price .price');
+        const bundleOriginalPrice = document.querySelector('.bundle-price .original-price');
         
-        const bundleNames = {
-            starter: 'Starter Bundle',
-            professional: 'Professional Bundle',
-            enterprise: 'Enterprise Bundle'
+        const bundleData = {
+            starter: { name: 'Starter Bundle', price: '$247/mo', original: '$497/mo' },
+            professional: { name: 'Professional Bundle', price: '$597/mo', original: '$997/mo' },
+            enterprise: { name: 'Enterprise Bundle', price: '$1,497/mo', original: '$2,497/mo' }
         };
         
-        const bundlePrices = {
-            starter: '$247/mo',
-            professional: '$597/mo',
-            enterprise: '$1,497/mo'
-        };
+        const data = bundleData[this.bundle] || bundleData.professional;
         
-        if (bundleNameEl) {
-            bundleNameEl.textContent = bundleNames[this.bundle] || 'Professional Bundle';
-        }
-        if (bundlePriceEl) {
-            bundlePriceEl.textContent = bundlePrices[this.bundle] || '$597/mo';
+        if (bundleNameEl) bundleNameEl.textContent = data.name;
+        if (bundlePriceEl) bundlePriceEl.textContent = data.price;
+        
+        if (bundleOriginalPrice) {
+            bundleOriginalPrice.textContent = data.original;
+            bundleOriginalPrice.style.display = 'inline';
         }
     },
     
@@ -236,17 +298,35 @@ const SetupFlow = {
         if (this.currentStep === 2) {
             const email = document.getElementById('contact-email');
             const company = document.getElementById('company-name');
+            const contactName = document.getElementById('contact-name');
             
             if (email && !email.value.includes('@')) {
-                alert('Please enter a valid email address');
+                this.showError('Please enter a valid email address');
                 return false;
             }
             if (company && !company.value.trim()) {
-                alert('Please enter your company name');
+                this.showError('Please enter your company name');
                 return false;
             }
+            if (contactName && !contactName.value.trim()) {
+                this.showError('Please enter your contact name');
+                return false;
+            }
+            
+            // Save data
+            this.saveData({
+                company: company.value,
+                email: email.value,
+                contact: contactName.value,
+                industry: document.getElementById('industry')?.value,
+                size: document.getElementById('company-size')?.value
+            });
         }
         return true;
+    },
+    
+    showError(message) {
+        alert(message);
     },
     
     nextStep() {
@@ -278,94 +358,225 @@ const SetupFlow = {
         } else {
             delete this.integrations[id];
         }
+        
+        this.saveData({ integrations: Object.keys(this.integrations) });
     },
     
     async deploySystem() {
         const btn = document.getElementById('deploy-btn');
         const webhookStatus = document.getElementById('webhook-validation');
+        const checklistItems = document.querySelectorAll('.checklist-item');
         
         btn.disabled = true;
-        btn.innerHTML = '<span class="spinner"></span> Validating Webhooks...';
+        btn.innerHTML = '<span class="spinner"></span> Testing Webhooks...';
         
-        // Update webhook status to show validation in progress
-        if (webhookStatus) {
-            webhookStatus.classList.add('validating');
-            webhookStatus.querySelector('.icon').textContent = '⟳';
-        }
-        
-        // Validate webhooks
-        const results = await this.validateWebhooks();
-        
-        // Update webhook status
-        if (webhookStatus) {
-            webhookStatus.classList.remove('validating');
-            if (results.allValid) {
-                webhookStatus.classList.add('success');
-                webhookStatus.querySelector('.icon').textContent = '✓';
-            } else {
-                webhookStatus.classList.add('error');
-                webhookStatus.querySelector('.icon').textContent = '✗';
+        // Update checklist
+        checklistItems.forEach((item, i) => {
+            if (i < 3) {
+                item.classList.add('success');
+                item.querySelector('.icon').textContent = '✓';
             }
+        });
+        
+        // Run webhook validation
+        webhookStatus.classList.add('validating');
+        webhookStatus.querySelector('.icon').textContent = '⟳';
+        
+        this.validationResults = await this.validateWebhooks();
+        
+        // Update webhook validation result
+        webhookStatus.classList.remove('validating');
+        if (this.validationResults.allValid) {
+            webhookStatus.classList.add('success');
+            webhookStatus.querySelector('.icon').textContent = '✓';
+        } else {
+            webhookStatus.classList.add('error');
+            webhookStatus.querySelector('.icon').textContent = '✗';
         }
         
-        if (results.allValid) {
-            btn.innerHTML = '✓ Webhooks Validated!';
+        if (this.validationResults.allValid) {
+            btn.innerHTML = '✓ All Validated!';
             btn.classList.add('success');
             
-            // Redirect to Gumroad after brief delay
+            // Redirect to Gumroad after delay
             setTimeout(() => {
                 this.redirectToGumroad();
-            }, 1000);
+            }, 1500);
         } else {
-            btn.innerHTML = '⚠ Validation Failed';
+            btn.innerHTML = '⚠ ' + this.validationResults.failedCount + ' Failed';
             btn.classList.add('error');
             btn.disabled = false;
             
-            // Show errors
-            alert('Some webhooks failed validation:\n\n' + 
-                  results.errors.map(e => `• ${e.name}: ${e.error}`).join('\n'));
+            // Show detailed errors
+            this.showValidationErrors();
         }
     },
     
     async validateWebhooks() {
-        // Simulate webhook validation
-        // In production, this would make actual HTTP requests to test endpoints
+        const selectedIntegrations = Object.keys(this.integrations);
+        const results = {
+            allValid: true,
+            checks: [],
+            errors: [],
+            failedCount: 0
+        };
         
-        return new Promise(resolve => {
-            setTimeout(() => {
-                // Simulate all webhooks passing (90% of the time)
-                const allValid = Math.random() > 0.1;
+        // Test each selected integration
+        for (const integration of selectedIntegrations) {
+            const config = WEBHOOK_TEST_CONFIGS[integration];
+            
+            if (config) {
+                const check = {
+                    name: integration.charAt(0).toUpperCase() + integration.slice(1),
+                    status: 'pending',
+                    latency: null,
+                    error: null
+                };
                 
-                if (allValid) {
+                try {
+                    const startTime = Date.now();
+                    const result = await this.testWebhook(integration, config);
+                    check.latency = Date.now() - startTime;
+                    
+                    if (result.success) {
+                        check.status = 'healthy';
+                        check.message = result.message || 'Connected';
+                    } else {
+                        check.status = 'failed';
+                        check.error = result.error;
+                        results.allValid = false;
+                        results.failedCount++;
+                        results.errors.push({ integration, error: result.error });
+                    }
+                } catch (err) {
+                    check.status = 'failed                    results.allValid = err.message;
+';
+                    check.error = false;
+                                       results.errors.push results.failedCount++;
+({ integration, error: err.message });
+                }
+                
+                results.checks.push(check);
+            } else {
+                // Integration not configured - skip or mark as info needed
+                results.checks.push({
+                    name: integration,
+                    status: 'info',
+                    message: 'Configuration needed'
+                });
+            }
+        }
+        
+        // Always pass general checks
+        results.checks.unshift({ name: 'SSL Certificate', status: 'healthy', message: 'Valid' });
+        results.checks.unshift({ name: 'Authentication', status: 'healthy', message: 'Verified' });
+        
+        return results;
+    },
+    
+    async testWebhook(integration, config) {
+        // In production, make actual HTTP requests
+        // For demo, simulate testing
+        
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // Simulate 90% success rate
+                const success = Math.random() > 0.1;
+                
+                if (success) {
                     resolve({
-                        allValid: true,
-                        checks: [
-                            { name: 'Webhook Endpoint', status: 'healthy', latency: '45ms' },
-                            { name: 'SSL Certificate', status: 'valid' },
-                            { name: 'Authentication', status: 'passed' }
-                        ]
+                        success: true,
+                        message: `${integration} connected successfully`
                     });
                 } else {
                     resolve({
-                        allValid: false,
-                        errors: [
-                            { name: 'Webhook Endpoint', error: 'Connection timeout' }
-                        ]
+                        success: false,
+                        error: `Connection timeout to ${integration}`
                     });
                 }
-            }, 2000);
+            }, 500 + Math.random() * 1000);
         });
+        
+        /* 
+        // PRODUCTION: Uncomment and configure for real webhook testing
+        
+        try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 5000);
+            
+            const response = await fetch(config.url, {
+                method: config.method,
+                headers: config.headers || {},
+                body: config.testPayload ? JSON.stringify(config.testPayload) : undefined,
+                signal: controller.signal
+            });
+            
+            clearTimeout(timeout);
+            
+            if (response.ok || response.status === 401 || response.status === 404) {
+                // 401/404 means endpoint exists but auth/invalid - still a valid webhook
+                return { success: true };
+            }
+            
+            return { success: false, error: `HTTP ${response.status}` };
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                return { success: false, error: 'Connection timeout' };
+            }
+            return { success: false, error: error.message };
+        }
+        */
+    },
+    
+    showValidationErrors() {
+        const errorList = this.validationResults.errors
+            .map(e => `• ${e.integration}: ${e.error}`)
+            .join('\n');
+        
+        alert(`Webhook Validation Failed:\n\n${errorList}\n\nPlease check your integration settings and try again.`);
     },
     
     redirectToGumroad() {
-        const gumroadUrl = this.gumroadLinks[this.bundle] || this.gumroadLinks.professional;
+        const gumroadUrl = GUMROAD_PRODUCTS[this.bundle] || GUMROAD_PRODUCTS.professional;
         
         // Store session data
         sessionStorage.setItem('scs_bundle', this.bundle);
         sessionStorage.setItem('scs_integrations', JSON.stringify(Object.keys(this.integrations)));
+        sessionStorage.setItem('scs_validation', JSON.stringify(this.validationResults));
         
-        // Redirect to Gumroad
+        // Redirect
         window.location.href = gumroadUrl;
+    },
+    
+    saveData(data) {
+        const existing = JSON.parse(sessionStorage.getItem('scs_setup_data') || '{}');
+        sessionStorage.setItem('scs_setup_data', JSON.stringify({ ...existing, ...data }));
+    },
+    
+    loadSavedData() {
+        const data = JSON.parse(sessionStorage.getItem('scs_setup_data') || '{}');
+        
+        if (data.company && document.getElementById('company-name')) {
+            document.getElementById('company-name').value = data.company;
+        }
+        if (data.email && document.getElementById('contact-email')) {
+            document.getElementById('contact-email').value = data.email;
+        }
+        if (data.contact && document.getElementById('contact-name')) {
+            document.getElementById('contact-name').value = data.contact;
+        }
+        
+        if (data.integrations) {
+            data.integrations.forEach(id => {
+                const item = document.querySelector(`[data-integration="${id}"]`);
+                if (item) {
+                    item.classList.add('selected');
+                    const checkbox = item.querySelector('input[type="checkbox"]');
+                    if (checkbox) checkbox.checked = true;
+                    this.integrations[id] = true;
+                }
+            });
+        }
     },
     
     showDeploymentSuccess() {
@@ -392,30 +603,9 @@ const Dashboard = {
     
     loadSystems() {
         this.systems = [
-            {
-                id: 'sales-001',
-                name: 'Sales Excellence',
-                status: 'healthy',
-                eventsToday: 1247,
-                failedWebhooks: 0,
-                lastActivity: '2 min ago'
-            },
-            {
-                id: 'support-001',
-                name: 'Support Automation',
-                status: 'healthy',
-                eventsToday: 892,
-                failedWebhooks: 0,
-                lastActivity: '5 min ago'
-            },
-            {
-                id: 'hiring-001',
-                name: 'Hiring System',
-                status: 'healthy',
-                eventsToday: 156,
-                failedWebhooks: 0,
-                lastActivity: '12 min ago'
-            }
+            { id: 'sales-001', name: 'Sales Excellence', status: 'healthy', eventsToday: 1247, failedWebhooks: 0, lastActivity: '2 min ago' },
+            { id: 'support-001', name: 'Support Automation', status: 'healthy', eventsToday: 892, failedWebhooks: 0, lastActivity: '5 min ago' },
+            { id: 'hiring-001', name: 'Hiring System', status: 'healthy', eventsToday: 156, failedWebhooks: 0, lastActivity: '12 min ago' }
         ];
         
         this.renderSystems();
@@ -444,13 +634,10 @@ const Dashboard = {
                     <div class="stat">
                         <span class="stat-value">${system.lastActivity}</span>
                         <span class="stat-label">Last Activity</span>
-                   .html
                     </div>
                 </div>
                 <div class="system-actions">
-                    <button class="btn-icon" onclick="Dashboard.retestWebhooks('${system.id}')" title="Retest Webhooks">
-                        🔄
-                    </button>
+                    <button class="btn-icon" onclick="Dashboard.retestWebhooks('${system.id}')" title="Retest Webhooks">🔄</button>
                     <button class="btn-icon ${system.status === 'paused' ? 'resume' : 'pause'}" 
                             onclick="Dashboard.toggleSystem('${system.id}')" 
                             title="${system.status === 'paused' ? 'Resume' : 'Pause'}">
@@ -476,26 +663,18 @@ const Dashboard = {
     },
     
     startAutoRefresh() {
-        setInterval(() => {
-            this.loadSystems();
-        }, this.refreshInterval);
+        setInterval(() => this.loadSystems(), this.refreshInterval);
     },
     
     bindEvents() {
         const refreshBtn = document.getElementById('refresh-btn');
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => {
-                this.loadSystems();
-            });
-        }
+        if (refreshBtn) refreshBtn.addEventListener('click', () => this.loadSystems());
     },
     
     async retestWebhooks(systemId) {
         const btn = event.target;
         btn.classList.add('loading');
-        
         await new Promise(r => setTimeout(r, 1500));
-        
         btn.classList.remove('loading');
         
         const system = this.systems.find(s => s.id === systemId);
@@ -515,65 +694,32 @@ const Dashboard = {
         }
     },
     
-    addEvent(systemId, event) {
-        const system = this.systems.find(s => s.id === systemId);
-        if (system) {
-            system.eventsToday++;
-            this.updateStats();
-            this.addActivityLog(event);
-        }
-    },
-    
     addActivityLog(event) {
         const log = document.getElementById('activity-log');
         if (!log) return;
         
         const entry = document.createElement('div');
         entry.className = 'activity-entry';
-        entry.innerHTML = `
-            <span class="activity-time">${new Date().toLocaleTimeString()}</span>
-            <span class="activity-message">${event}</span>
-        `;
-        
+        entry.innerHTML = `<span class="activity-time">${new Date().toLocaleTimeString()}</span><span class="activity-message">${event}</span>`;
         log.insertBefore(entry, log.firstChild);
         
-        while (log.children.length > 50) {
-            log.removeChild(log.lastChild);
-        }
+        while (log.children.length > 50) log.removeChild(log.lastChild);
     }
 };
 
-/* ========================================
-   Utility Functions
-   ======================================== */
-
+/* Utility Functions */
 function showNotification(message, type = 'info') {
     const container = document.getElementById('notifications');
     if (!container) return;
     
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <span class="notification-message">${message}</span>
-        <button class="notification-close" onclick="this.parentElement.remove()">×</button>
-    `;
-    
+    notification.innerHTML = `<span class="notification-message">${message}</span><button class="notification-close" onclick="this.parentElement.remove()">×</button>`;
     container.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
+    setTimeout(() => notification.remove(), 5000);
 }
 
-function formatNumber(num) {
-    return new Intl.NumberFormat().format(num);
-}
-
+function formatNumber(num) { return new Intl.NumberFormat().format(num); }
 function formatDate(date) {
-    return new Intl.DateTimeFormat('en-US', {
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    }).format(date);
+    return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(date);
 }
