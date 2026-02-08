@@ -6,7 +6,7 @@
 const GUMROAD_PRODUCTS = {
     starter: 'https://simplyx.gumroad.com/l/lead-generation-engine',
     professional: 'https://simplyx.gumroad.com/l/cold-outreach-engine', 
-    enterprise: 'https://simplyx.gumroad.com/l/grrof'
+    enterprise: 'https://simplyx.gumroad.com/l/recruitment'
 };
 
 // Webhook Test Endpoints - Add your actual webhook URLs here
@@ -223,7 +223,7 @@ const SetupFlow = {
         const bundleData = {
             starter: { name: 'Lead Generation Engine', price: '$247', original: '$497' },
             professional: { name: 'Cold Outreach Engine', price: '$597', original: '$997' },
-            enterprise: { name: 'Full Automation Suite', price: '$1,497', original: '$2,497' }
+            enterprise: { name: 'Recruitment Engine', price: '$1,497', original: '$2,497' }
         };
         
         const data = bundleData[this.bundle] || bundleData.professional;
