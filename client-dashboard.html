@@ -1,372 +1,189 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Analytics Dashboard | Simply Complex Solutions</title>
-    <meta name="description" content="Modern business analytics dashboard for customer insights and engagement tracking.">
+    <title>Customer Analytics | Simply Complex Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
-        .status-active { background: #dcfce7; color: #166534; }
-        .status-pending { background: #fef3c7; color: #92400e; }
-        .status-inactive { background: #fee2e2; color: #991b1b; }
-        .engagement-high { background: #dcfce7; color: #166534; }
-        .engagement-medium { background: #fef3c7; color: #92400e; }
-        .engagement-low { background: #fee2e2; color: #991b1b; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1e293b; }
-        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
-        .animate-fade-in { animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Inter', sans-serif; background: #0f172a; color: #e2e8f0; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
+        .scrollable { max-height: 280px; overflow-y: auto; }
+        .scrollable::-webkit-scrollbar { width: 4px; }
+        .scrollable::-webkit-scrollbar-thumb { background: #475569; border-radius: 2px; }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2' }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-    <div class="flex">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-slate-900 min-h-screen p-4 flex-shrink-0 hidden lg:flex flex-col">
-            <div class="mb-8">
-                <a href="index.html" class="text-xl font-bold flex items-center gap-2">
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-400 rounded-lg flex items-center justify-center text-white font-bold text-sm">SC</div>
-                    <span class="text-white">Simply Complex</span>
+                    <span class="text-white font-semibold hidden sm:block">Simply Complex</span>
                 </a>
+                <span class="text-slate-600">|</span>
+                <h1 class="text-lg font-semibold text-white">Customer Analytics</h1>
             </div>
-            <nav class="space-y-1 flex-1">
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-cyan-500 text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                    Overview
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                    Customers
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    Analytics
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 1v1m0 0a9 9 0 110-18 9 9 0 010 18z"/></svg>
-                    Revenue
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-yellow-500 hover:bg-yellow-900/20 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                    Churn Risks
-                </button>
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    Settings
-                </button>
-            </nav>
-            <div class="mt-auto pt-4">
-                <a href="index.html" class="flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-white transition-colors text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    Back to Site
-                </a>
+            <a href="index.html" class="text-sm text-slate-400 hover:text-white">← Back to Site</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6">
+        <!-- KPIs Row -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+            <div class="card p-4">
+                <p class="text-xs text-slate-400 uppercase">Customers</p>
+                <p class="text-2xl font-bold text-white">1,247</p>
+                <p class="text-xs text-green-400">+12.5%</p>
             </div>
-        </aside>
+            <div class="card p-4">
+                <p class="text-xs text-slate-400 uppercase">Active</p>
+                <p class="text-2xl font-bold text-white">1,089</p>
+                <p class="text-xs text-green-400">+8.2%</p>
+            </div>
+            <div class="card p-4">
+                <p class="text-xs text-slate-400 uppercase">Churn Rate</p>
+                <p class="text-2xl font-bold text-white">2.4%</p>
+                <p class="text-xs text-green-400">-0.3%</p>
+            </div>
+            <div class="card p-4">
+                <p class="text-xs text-slate-400 uppercase">Avg Revenue</p>
+                <p class="text-2xl font-bold text-white">$12.4K</p>
+                <p class="text-xs text-green-400">+15.7%</p>
+            </div>
+            <div class="card p-4">
+                <p class="text-xs text-slate-400 uppercase">Satisfaction</p>
+                <p class="text-2xl font-bold text-white">4.8/5</p>
+                <p class="text-xs text-green-400">+0.2</p>
+            </div>
+        </div>
 
-        <!-- Main Content -->
-        <main class="flex-1 min-h-screen">
-            <!-- Header -->
-            <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 sticky top-0 z-10">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h1 class="text-2xl font-bold text-white">Customer Analytics</h1>
-                        <p class="text-sm text-slate-400 mt-1">Real-time customer insights and engagement tracking</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <button class="p-2 rounded-lg hover:bg-slate-800 transition-colors relative">
-                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                        </button>
-                        <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-slate-800 transition-colors">
-                            <svg id="darkIcon" class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                        </button>
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold">JD</div>
-                    </div>
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="card p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">Customer Growth</h3>
+                <div style="height: 200px;"><canvas id="growthChart"></canvas></div>
+            </div>
+            <div class="card p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">Revenue by Region</h3>
+                <div style="height: 200px;"><canvas id="regionChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Middle Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <!-- Top Clients -->
+            <div class="card p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">Top Clients</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">1. TechFlow Inc.</span><span class="text-sm font-semibold text-white">$312K</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">2. Innovate Labs</span><span class="text-sm font-semibold text-white">$215K</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">3. ScaleUp Tech</span><span class="text-sm font-semibold text-white">$178K</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">4. FinTech Pro</span><span class="text-sm font-semibold text-white">$167K</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">5. AI Solutions</span><span class="text-sm font-semibold text-white">$156K</span></div>
                 </div>
-            </header>
+            </div>
 
-            <!-- Dashboard Content -->
-            <div class="p-6">
-                <!-- Metrics Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6 animate-fade-in">
-                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 card-hover">
-                        <div class="flex items-start justify-between">
-                            <div><p class="text-xs text-slate-400 mb-1 uppercase tracking-wider">Total Customers</p><p class="text-2xl font-bold text-white">1,247</p></div>
-                            <div class="p-2 rounded-lg bg-green-900/30"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
-                        </div>
-                        <p class="text-xs text-green-500 mt-2 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>+12.5% vs last month</p>
-                    </div>
-                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 card-hover">
-                        <div class="flex items-start justify-between">
-                            <div><p class="text-xs text-slate-400 mb-1 uppercase tracking-wider">Active Clients</p><p class="text-2xl font-bold text-white">1,089</p></div>
-                            <div class="p-2 rounded-lg bg-cyan-900/30"><svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                        </div>
-                        <p class="text-xs text-green-500 mt-2 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>+8.2% vs last month</p>
-                    </div>
-                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 card-hover">
-                        <div class="flex items-start justify-between">
-                            <div><p class="text-xs text-slate-400 mb-1 uppercase tracking-wider">Churn Rate</p><p class="text-2xl font-bold text-white">2.4%</p></div>
-                            <div class="p-2 rounded-lg bg-red-900/30"><svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg></div>
-                        </div>
-                        <p class="text-xs text-green-500 mt-2 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>-0.3% vs last month</p>
-                    </div>
-                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 card-hover">
-                        <div class="flex items-start justify-between">
-                            <div><p class="text-xs text-slate-400 mb-1 uppercase tracking-wider">Avg Revenue</p><p class="text-2xl font-bold text-white">$12,450</p></div>
-                            <div class="p-2 rounded-lg bg-purple-900/30"><svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1"/></svg></div>
-                        </div>
-                        <p class="text-xs text-green-500 mt-2 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>+15.7% vs last month</p>
-                    </div>
-                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 card-hover">
-                        <div class="flex items-start justify-between">
-                            <div><p class="text-xs text-slate-400 mb-1 uppercase tracking-wider">Satisfaction</p><p class="text-2xl font-bold text-white">4.8<span class="text-lg text-slate-400">/5</span></p></div>
-                            <div class="p-2 rounded-lg bg-yellow-900/30"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                        </div>
-                        <p class="text-xs text-green-500 mt-2 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>+0.2 vs last month</p>
-                    </div>
+            <!-- Segments -->
+            <div class="card p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">Segments</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🟢 New</span><span class="text-sm text-slate-400">187</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🔵 Recurring</span><span class="text-sm text-slate-400">612</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🟡 At Risk</span><span class="text-sm text-slate-400">89</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🔴 Inactive</span><span class="text-sm text-slate-400">156</span></div>
+                    <div class="flex justify-between items-center"><span class="text-sm text-slate-300">🟣 Champions</span><span class="text-sm text-slate-400">203</span></div>
                 </div>
+            </div>
 
-                <!-- Charts Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 animate-fade-in" style="animation-delay: 0.1s">
-                        <h3 class="text-lg font-semibold text-white mb-4">Customer Growth</h3>
-                        <canvas id="growthChart" height="280"></canvas>
+            <!-- Churn Risks -->
+            <div class="card p-4">
+                <h3 class="text-sm font-semibold text-white mb-3">⚠️ Churn Risks</h3>
+                <div class="space-y-2">
+                    <div class="p-2 bg-red-900/20 border border-red-800/50 rounded-lg">
+                        <div class="flex justify-between"><span class="text-sm text-white">DevTools Inc.</span><span class="text-xs bg-red-900/50 text-red-400 px-2 py-0.5 rounded">87%</span></div>
+                        <p class="text-xs text-slate-400">No login 25 days • $45K</p>
                     </div>
-                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 animate-fade-in" style="animation-delay: 0.2s">
-                        <h3 class="text-lg font-semibold text-white mb-4">Revenue by Region</h3>
-                        <canvas id="regionChart" height="280"></canvas>
+                    <div class="p-2 bg-yellow-900/20 border border-yellow-800/50 rounded-lg">
+                        <div class="flex justify-between"><span class="text-sm text-white">Creative Labs</span><span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded">72%</span></div>
+                        <p class="text-xs text-slate-400">Declining usage • $38K</p>
                     </div>
-                </div>
-
-                <!-- Middle Row: Top Clients, Segments, Churn -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                    <!-- Top Clients -->
-                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 animate-fade-in" style="animation-delay: 0.3s">
-                        <h3 class="text-lg font-semibold text-white mb-4">Top 5 Clients</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3"><div class="w-7 h-7 rounded-full bg-cyan-900/50 flex items-center justify-center text-xs font-bold text-cyan-400">1</div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-white">TechFlow Inc.</span><span class="text-sm font-semibold text-white">$312K</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-full bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full"></div></div></div></div>
-                            <div class="flex items-center gap-3"><div class="w-7 h-7 rounded-full bg-cyan-900/50 flex items-center justify-center text-xs font-bold text-cyan-400">2</div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-white">Innovate Labs</span><span class="text-sm font-semibold text-white">$215K</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[69%] bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full"></div></div></div></div>
-                            <div class="flex items-center gap-3"><div class="w-7 h-7 rounded-full bg-cyan-900/50 flex items-center justify-center text-xs font-bold text-cyan-400">3</div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-white">ScaleUp Tech</span><span class="text-sm font-semibold text-white">$178K</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[57%] bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full"></div></div></div></div>
-                            <div class="flex items-center gap-3"><div class="w-7 h-7 rounded-full bg-cyan-900/50 flex items-center justify-center text-xs font-bold text-cyan-400">4</div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-white">FinTech Pro</span><span class="text-sm font-semibold text-white">$167K</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[54%] bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full"></div></div></div></div>
-                            <div class="flex items-center gap-3"><div class="w-7 h-7 rounded-full bg-cyan-900/50 flex items-center justify-center text-xs font-bold text-cyan-400">5</div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-white">AI Solutions</span><span class="text-sm font-semibold text-white">$156K</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[50%] bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full"></div></div></div></div>
-                        </div>
-                    </div>
-
-                    <!-- Customer Segments -->
-                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 animate-fade-in" style="animation-delay: 0.4s">
-                        <h3 class="text-lg font-semibold text-white mb-4">Customer Segments</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-green-500"></div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-slate-300">New Customers</span><span class="text-sm text-slate-400">187</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[15%] bg-green-500 rounded-full"></div></div></div><span class="text-xs text-green-500">+24%</span></div>
-                            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-cyan-500"></div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-slate-300">Recurring</span><span class="text-sm text-slate-400">612</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[49%] bg-cyan-500 rounded-full"></div></div></div><span class="text-xs text-green-500">+8%</span></div>
-                            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-slate-300">At Risk</span><span class="text-sm text-slate-400">89</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[7%] bg-yellow-500 rounded-full"></div></div></div><span class="text-xs text-red-500">+12%</span></div>
-                            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-slate-300">Inactive</span><span class="text-sm text-slate-400">156</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[13%] bg-red-500 rounded-full"></div></div></div><span class="text-xs text-green-500">-5%</span></div>
-                            <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-purple-500"></div><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm text-slate-300">Champions</span><span class="text-sm text-slate-400">203</span></div><div class="h-1.5 bg-slate-700 rounded-full"><div class="h-full w-[16%] bg-purple-500 rounded-full"></div></div></div><span class="text-xs text-green-500">+18%</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Churn Risks -->
-                    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 animate-fade-in" style="animation-delay: 0.5s">
-                        <div class="flex items-center gap-2 mb-4">
-                            <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                            <h3 class="text-lg font-semibold text-white">High Churn Risk</h3>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/30 to-transparent border border-red-800/50">
-                                <div class="flex items-center justify-between mb-1"><span class="text-sm font-medium text-white">DevTools Inc.</span><span class="px-2 py-0.5 rounded text-xs font-medium bg-red-900/50 text-red-400">87%</span></div>
-                                <p class="text-xs text-slate-400">No login in 25 days • $45K revenue</p>
-                                <button class="text-xs text-cyan-400 hover:text-cyan-300 mt-1">Schedule call →</button>
-                            </div>
-                            <div class="p-3 rounded-lg bg-gradient-to-r from-yellow-900/30 to-transparent border border-yellow-800/50">
-                                <div class="flex items-center justify-between mb-1"><span class="text-sm font-medium text-white">Creative Labs</span><span class="px-2 py-0.5 rounded text-xs font-medium bg-yellow-900/50 text-yellow-400">72%</span></div>
-                                <p class="text-xs text-slate-400">Declining usage • $38K revenue</p>
-                                <button class="text-xs text-cyan-400 hover:text-cyan-300 mt-1">Send offer →</button>
-                            </div>
-                            <div class="p-3 rounded-lg bg-gradient-to-r from-yellow-900/30 to-transparent border border-yellow-800/50">
-                                <div class="flex items-center justify-between mb-1"><span class="text-sm font-medium text-white">StartupGen</span><span class="px-2 py-0.5 rounded text-xs font-medium bg-yellow-900/50 text-yellow-400">65%</span></div>
-                                <p class="text-xs text-slate-400">Trial expiring • No payment</p>
-                                <button class="text-xs text-cyan-400 hover:text-cyan-300 mt-1">Extend trial →</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Customer Table -->
-                <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-6 animate-fade-in" style="animation-delay: 0.6s">
-                    <div class="p-4 border-b border-slate-700">
-                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                            <div class="flex items-center gap-3 flex-1 flex-wrap">
-                                <div class="relative flex-1 max-w-xs">
-                                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                                    <input type="text" id="searchInput" placeholder="Search customers..." class="w-full pl-9 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-500" onkeyup="filterTable()">
-                                </div>
-                                <select id="statusFilter" class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500" onchange="filterTable()">
-                                    <option value="">All Status</option>
-                                    <option value="active">Active</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                                <select id="regionFilter" class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500" onchange="filterTable()">
-                                    <option value="">All Regions</option>
-                                    <option value="north">North America</option>
-                                    <option value="europe">Europe</option>
-                                    <option value="asia">Asia Pacific</option>
-                                </select>
-                            </div>
-                            <button class="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                Export CSV
-                            </button>
-                        </div>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full" id="customerTable">
-                            <thead class="bg-slate-700/50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer" onclick="sortTable(0)">Customer ↕</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Status</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Region</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider cursor-pointer" onclick="sortTable(3)">Revenue ↕</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Engagement</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Last Contact</th>
-                                    <th class="px-6 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-700">
-                                <tr class="hover:bg-slate-700/50" data-status="active" data-region="north"><td class="px-6 py-4"><p class="font-medium text-white">Sarah Johnson</p><p class="text-xs text-slate-400">sarah@techflow.io</p></td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium status-active">Active</span></td><td class="px-6 py-4 text-sm text-slate-300">North America</td><td class="px-6 py-4 font-medium text-white" data-value="125000">$125,000</td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium engagement-high">High</span></td><td class="px-6 py-4 text-sm text-slate-400">2 days ago</td><td class="px-6 py-4"><div class="flex gap-2"><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></button></div></td></tr>
-                                <tr class="hover:bg-slate-700/50" data-status="active" data-region="europe"><td class="px-6 py-4"><p class="font-medium text-white">Marcus Weber</p><p class="text-xs text-slate-400">marcus@innovate.de</p></td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium status-active">Active</span></td><td class="px-6 py-4 text-sm text-slate-300">Europe</td><td class="px-6 py-4 font-medium text-white" data-value="98000">$98,000</td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium engagement-high">High</span></td><td class="px-6 py-4 text-sm text-slate-400">1 day ago</td><td class="px-6 py-4"><div class="flex gap-2"><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></button></div></td></tr>
-                                <tr class="hover:bg-slate-700/50" data-status="pending" data-region="asia"><td class="px-6 py-4"><p class="font-medium text-white">Yuki Tanaka</p><p class="text-xs text-slate-400">yuki@scaleup.jp</p></td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium status-pending">Pending</span></td><td class="px-6 py-4 text-sm text-slate-300">Asia Pacific</td><td class="px-6 py-4 font-medium text-white" data-value="76000">$76,000</td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium engagement-medium">Medium</span></td><td class="px-6 py-4 text-sm text-slate-400">5 days ago</td><td class="px-6 py-4"><div class="flex gap-2"><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></button></div></td></tr>
-                                <tr class="hover:bg-slate-700/50" data-status="inactive" data-region="north"><td class="px-6 py-4"><p class="font-medium text-white">James Miller</p><p class="text-xs text-slate-400">james@devtools.com</p></td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium status-inactive">Inactive</span></td><td class="px-6 py-4 text-sm text-slate-300">North America</td><td class="px-6 py-4 font-medium text-white" data-value="45000">$45,000</td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium engagement-low">Low</span></td><td class="px-6 py-4 text-sm text-slate-400">25 days ago</td><td class="px-6 py-4"><div class="flex gap-2"><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></button></div></td></tr>
-                                <tr class="hover:bg-slate-700/50" data-status="active" data-region="europe"><td class="px-6 py-4"><p class="font-medium text-white">Emma Laurent</p><p class="text-xs text-slate-400">emma@fintech.fr</p></td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium status-active">Active</span></td><td class="px-6 py-4 text-sm text-slate-300">Europe</td><td class="px-6 py-4 font-medium text-white" data-value="167000">$167,000</td><td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs font-medium engagement-high">High</span></td><td class="px-6 py-4 text-sm text-slate-400">Today</td><td class="px-6 py-4"><div class="flex gap-2"><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button><button class="p-1.5 hover:bg-slate-600 rounded"><svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></button></div></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="px-6 py-4 border-t border-slate-700 flex items-center justify-between">
-                        <p class="text-sm text-slate-400">Showing <span id="rowCount">5</span> of 1,247 customers</p>
-                        <div class="flex gap-2">
-                            <button class="px-3 py-1 border border-slate-600 rounded-lg text-slate-400 hover:bg-slate-700 disabled:opacity-50 text-sm" disabled>Previous</button>
-                            <button class="px-3 py-1 border border-slate-600 rounded-lg text-white hover:bg-slate-700 text-sm">Next</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Interactions -->
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 animate-fade-in" style="animation-delay: 0.7s">
-                    <h3 class="text-lg font-semibold text-white mb-4">Recent Interactions</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-700/50">
-                            <div class="p-2 rounded-lg bg-green-900/30"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                            <div><p class="text-sm font-medium text-white">TechFlow Inc.</p><p class="text-xs text-slate-400">Upgrade completed</p><p class="text-xs text-slate-500 mt-1">2 min ago</p></div>
-                        </div>
-                        <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-700/50">
-                            <div class="p-2 rounded-lg bg-cyan-900/30"><svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 1v8m0 0v1"/></svg></div>
-                            <div><p class="text-sm font-medium text-white">Innovate Labs</p><p class="text-xs text-slate-400">Payment received</p><p class="text-xs text-slate-500 mt-1">15 min ago</p></div>
-                        </div>
-                        <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-700/50">
-                            <div class="p-2 rounded-lg bg-yellow-900/30"><svg class="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                            <div><p class="text-sm font-medium text-white">ScaleUp Tech</p><p class="text-xs text-slate-400">Support ticket opened</p><p class="text-xs text-slate-500 mt-1">1 hour ago</p></div>
-                        </div>
-                        <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-700/50">
-                            <div class="p-2 rounded-lg bg-purple-900/30"><svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-                            <div><p class="text-sm font-medium text-white">FinTech Pro</p><p class="text-xs text-slate-400">5-star review left</p><p class="text-xs text-slate-500 mt-1">3 hours ago</p></div>
-                        </div>
+                    <div class="p-2 bg-yellow-900/20 border border-yellow-800/50 rounded-lg">
+                        <div class="flex justify-between"><span class="text-sm text-white">StartupGen</span><span class="text-xs bg-yellow-900/50 text-yellow-400 px-2 py-0.5 rounded">65%</span></div>
+                        <p class="text-xs text-slate-400">Trial expiring • $0</p>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+
+        <!-- Customer Table -->
+        <div class="card overflow-hidden">
+            <div class="p-4 border-b border-slate-700 flex flex-wrap items-center gap-3">
+                <input type="text" id="search" placeholder="Search..." class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm w-48" onkeyup="filter()">
+                <select id="status" class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm" onchange="filter()">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <select id="region" class="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm" onchange="filter()">
+                    <option value="">All Regions</option>
+                    <option value="north">North America</option>
+                    <option value="europe">Europe</option>
+                    <option value="asia">Asia Pacific</option>
+                </select>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm" id="table">
+                    <thead class="bg-slate-800">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Customer</th>
+                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Status</th>
+                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Region</th>
+                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Revenue</th>
+                            <th class="px-4 py-3 text-left text-xs text-slate-400 uppercase">Engagement</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        <tr class="hover:bg-slate-800" data-s="active" data-r="north"><td class="px-4 py-3 text-white">Sarah Johnson</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">North America</td><td class="px-4 py-3 text-white">$125K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
+                        <tr class="hover:bg-slate-800" data-s="active" data-r="europe"><td class="px-4 py-3 text-white">Marcus Weber</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">Europe</td><td class="px-4 py-3 text-white">$98K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
+                        <tr class="hover:bg-slate-800" data-s="pending" data-r="asia"><td class="px-4 py-3 text-white">Yuki Tanaka</td><td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 rounded text-xs">Pending</span></td><td class="px-4 py-3 text-slate-300">Asia Pacific</td><td class="px-4 py-3 text-white">$76K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-900/30 text-yellow-400 rounded text-xs">Medium</span></td></tr>
+                        <tr class="hover:bg-slate-800" data-s="inactive" data-r="north"><td class="px-4 py-3 text-white">James Miller</td><td class="px-4 py-3"><span class="px-2 py-1 bg-red-900/30 text-red-400 rounded text-xs">Inactive</span></td><td class="px-4 py-3 text-slate-300">North America</td><td class="px-4 py-3 text-white">$45K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-red-900/30 text-red-400 rounded text-xs">Low</span></td></tr>
+                        <tr class="hover:bg-slate-800" data-s="active" data-r="europe"><td class="px-4 py-3 text-white">Emma Laurent</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">Europe</td><td class="px-4 py-3 text-white">$167K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
+                        <tr class="hover:bg-slate-800" data-s="active" data-r="asia"><td class="px-4 py-3 text-white">Chen Wei</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">Active</span></td><td class="px-4 py-3 text-slate-300">Asia Pacific</td><td class="px-4 py-3 text-white">$89K</td><td class="px-4 py-3"><span class="px-2 py-1 bg-green-900/30 text-green-400 rounded text-xs">High</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 
     <script>
-        // Charts
-        const chartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: { x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }, y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } } }
-        };
-
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.borderColor = '#334155';
+        
         new Chart(document.getElementById('growthChart'), {
             type: 'line',
-            data: {
-                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
-                datasets: [{
-                    label: 'Customers',
-                    data: [520, 580, 650, 720, 820, 920, 1040, 1247],
-                    borderColor: '#06b6d4',
-                    backgroundColor: 'rgba(6, 182, 212, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#06b6d4',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2
-                }]
-            },
-            options: chartOptions
+            data: { labels: ['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb'], datasets: [{ data: [520,580,650,720,820,920,1040,1247], borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,0.1)', fill: true, tension: 0.4 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
         });
-
+        
         new Chart(document.getElementById('regionChart'), {
             type: 'bar',
-            data: {
-                labels: ['North America', 'Europe', 'Asia Pacific', 'Latin America', 'Middle East'],
-                datasets: [{
-                    label: 'Revenue ($K)',
-                    data: [2450, 1680, 980, 420, 280],
-                    backgroundColor: ['#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'],
-                    borderRadius: 6
-                }]
-            },
-            options: { ...chartOptions, scales: { ...chartOptions.scales, y: { ...chartOptions.scales.y, ticks: { color: '#94a3b8', callback: v => '$' + v/1000 + 'M' } } } }
+            data: { labels: ['NA','EU','APAC','LATAM','ME'], datasets: [{ data: [2.45,1.68,0.98,0.42,0.28], backgroundColor: ['#06b6d4','#10b981','#f59e0b','#ef4444','#8b5cf6'], borderRadius: 4 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: v => '$'+v+'M' } } } }
         });
 
-        // Filter & Search
-        function filterTable() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const status = document.getElementById('statusFilter').value;
-            const region = document.getElementById('regionFilter').value;
-            const rows = document.querySelectorAll('#customerTable tbody tr');
-            let count = 0;
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                const rowStatus = row.dataset.status;
-                const rowRegion = row.dataset.region;
-                const matchSearch = text.includes(search);
-                const matchStatus = !status || rowStatus === status;
-                const matchRegion = !region || rowRegion === region;
-                row.style.display = matchSearch && matchStatus && matchRegion ? '' : 'none';
-                if (row.style.display !== 'none') count++;
+        function filter() {
+            const s = document.getElementById('search').value.toLowerCase();
+            const st = document.getElementById('status').value;
+            const r = document.getElementById('region').value;
+            document.querySelectorAll('#table tbody tr').forEach(row => {
+                const match = row.textContent.toLowerCase().includes(s) && (!st || row.dataset.s === st) && (!r || row.dataset.r === r);
+                row.style.display = match ? '' : 'none';
             });
-            document.getElementById('rowCount').textContent = count;
-        }
-
-        // Sort
-        let sortDir = 1;
-        function sortTable(col) {
-            const table = document.getElementById('customerTable');
-            const rows = Array.from(table.querySelectorAll('tbody tr'));
-            rows.sort((a, b) => {
-                let aVal = a.cells[col].textContent.trim();
-                let bVal = b.cells[col].textContent.trim();
-                if (col === 3) { aVal = parseInt(a.cells[col].dataset.value); bVal = parseInt(b.cells[col].dataset.value); }
-                return aVal > bVal ? sortDir : aVal < bVal ? -sortDir : 0;
-            });
-            sortDir *= -1;
-            rows.forEach(row => table.querySelector('tbody').appendChild(row));
         }
     </script>
 </body>
