@@ -4,157 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | Simply Complex Solutions</title>
+    <meta name="description" content="Simple, transparent pricing for n8n automation templates. Start free, upgrade when you see results.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pricing.css">
 </head>
 <body>
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
     
-    <header>
-        <div class="header-inner">
+    <nav class="navbar">
+        <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">◈</div>
-                <span class="logo-text">Simply Complex</span>
+                <span class="logo-text">Simply Complex Solutions</span>
             </a>
-            <nav>
-                <a href="templates.html">Templates</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
                 <a href="pricing.html" class="active">Pricing</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://scs-marketplace.pages.dev/scs-dashboard/">Dashboard</a>
-            </nav>
-            <div class="nav-cta">
-                <div class="currency-toggle">
-                    <button class="currency-btn active" data-currency="EUR">EUR</button>
-                    <button class="currency-btn" data-currency="USD">USD</button>
-                </div>
-                <a href="https://simplyx.gumroad.com/" target="_blank" class="btn btn-primary">Get Started</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
             </div>
         </div>
-    </header>
-    
-    <section class="hero" style="padding:140px 2rem 60px">
-        <h1 style="font-size:3rem">Simple, Transparent Pricing</h1>
-        <p class="hero-desc">Choose the perfect package for your automation needs. One-time payment, lifetime access.</p>
+    </nav>
+
+    <section class="detail-hero">
+        <div class="detail-hero-icon">💰</div>
+        <span class="section-badge">Simple Pricing</span>
+        <h1>Start Free, Upgrade When You See Results</h1>
+        <p>14-day free trial. No credit card required. 30-day money-back guarantee.</p>
+        <div class="pricing-badge" style="margin-top: 1rem;">🎁 First 3 months at 50% off</div>
     </section>
-    
-    <section style="padding-top:0">
-        <div class="cta-pricing" style="justify-content:center;margin-bottom:4rem">
-            <div class="cta-price-card">
-                <div class="cta-price-name">Essential</div>
-                <div class="cta-price-value">€499 <span>/one-time</span></div>
-                <p class="cta-price-desc">All templates + Installation</p>
-                <ul style="text-align:left;margin:1.5rem 0;list-style:none;color:var(--text-muted)">
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> All 12 templates</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Basic setup guide</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Community support</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> 30-day guarantee</li>
-                </ul>
-                <a href="lead.html?bundle=Essential" class="btn btn-outline" style="width:100%;justify-content:center">Get Essential</a>
+
+    <section class="pricing-section">
+        <div class="section-container">
+            <div class="pricing-grid">
+                <!-- Startup Pack -->
+                <div class="pricing-card offer-card">
+                    <div class="offer-tag">Best for Startups</div>
+                    <h3>🚀 Startup Pack</h3>
+                    <p class="pricing-subtitle">Essential automation for new businesses</p>
+                    <div class="pricing-price-lock">
+                        <span class="price-original">$497</span>
+                        <span class="price-current">$247</span>
+                    </div>
+                    <div class="price-period">/month • first 3 months</div>
+                    <div class="pricing-divider"></div>
+                    <ul class="pricing-features">
+                        <li>✅ <strong>26 templates</strong></li>
+                        <li>✅ Lead capture & routing</li>
+                        <li>✅ Email marketing automation</li>
+                        <li>✅ CRM integration setup</li>
+                        <li>✅ Invoice reminders</li>
+                        <li>✅ Social scheduling</li>
+                        <li>✅ Email support</li>
+                    </ul>
+                    <a href="setup.html?bundle=starter" class="btn btn-outline">Start Free Trial</a>
+                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
+                </div>
+
+                <!-- Growth Pack -->
+                <div class="pricing-card featured offer-card">
+                    <div class="offer-savings">SAVE 40%</div>
+                    <div class="offer-tag popular">Most Popular</div>
+                    <h3>📈 Growth Pack</h3>
+                    <p class="pricing-subtitle">Scale your revenue operations</p>
+                    <div class="pricing-price-lock">
+                        <span class="price-original">$997</span>
+                        <span class="price-current">$597</span>
+                    </div>
+                    <div class="price-period">/month • first 3 months</div>
+                    <div class="pricing-divider"></div>
+                    <ul class="pricing-features">
+                        <li>✅ <strong>54 templates</strong></li>
+                        <li>✅ <strong>Everything in Startup</strong></li>
+                        <li>✅ Advanced lead scoring</li>
+                        <li>✅ Multi-channel outreach</li>
+                        <li>✅ Sales pipeline automation</li>
+                        <li>✅ Customer onboarding</li>
+                        <li>✅ Analytics dashboards</li>
+                        <li>✅ Support automation</li>
+                        <li>✅ Priority chat support</li>
+                    </ul>
+                    <a href="setup.html?bundle=professional" class="btn btn-primary">Start Free Trial</a>
+                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
+                </div>
+
+                <!-- Complete Pack -->
+                <div class="pricing-card offer-card">
+                    <div class="offer-tag">For Enterprises</div>
+                    <h3>🌐 Complete Pack</h3>
+                    <p class="pricing-subtitle">Full business automation suite</p>
+                    <div class="pricing-price-lock">
+                        <span class="price-original">$2,497</span>
+                        <span class="price-current">$1,497</span>
+                    </div>
+                    <div class="price-period">/month • first 3 months</div>
+                    <div class="pricing-divider"></div>
+                    <ul class="pricing-features">
+                        <li>✅ <strong>150+ templates</strong></li>
+                        <li>✅ <strong>Everything in Growth</strong></li>
+                        <li>✅ Hiring & recruitment (18)</li>
+                        <li>✅ Finance & accounting (22)</li>
+                        <li>✅ Developer operations (25)</li>
+                        <li>✅ Custom API workflows</li>
+                        <li>✅ Advanced AI prompts</li>
+                        <li>✅ Dedicated account manager</li>
+                        <li>✅ 24/7 phone support</li>
+                    </ul>
+                    <a href="setup.html?bundle=enterprise" class="btn btn-outline">Contact Sales</a>
+                    <p class="pricing-note">Custom onboarding included</p>
+                </div>
             </div>
-            
-            <div class="cta-price-card featured">
-                <div class="cta-price-name">Professional</div>
-                <div class="cta-price-value">€799 <span>/one-time</span></div>
-                <p class="cta-price-desc">Everything + Priority Support</p>
-                <ul style="text-align:left;margin:1.5rem 0;list-style:none;color:var(--text-muted)">
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Everything in Essential</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Priority email support</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Custom configuration help</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Future template updates</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Video tutorials</li>
-                </ul>
-                <a href="lead.html?bundle=Professional" class="btn btn-primary" style="width:100%;justify-content:center">Get Professional</a>
-            </div>
-            
-            <div class="cta-price-card">
-                <div class="cta-price-name">Enterprise</div>
-                <div class="cta-price-value">€1,999 <span>/one-time</span></div>
-                <p class="cta-price-desc">All + Custom Development</p>
-                <ul style="text-align:left;margin:1.5rem 0;list-style:none;color:var(--text-muted)">
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Everything in Professional</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Custom automation development</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Dedicated support channel</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Onboarding call</li>
-                    <li style="margin:0.5rem 0"><i class="fas fa-check" style="color:var(--success);margin-right:0.5rem"></i> Source code access</li>
-                </ul>
-                <a href="lead.html?bundle=Enterprise" class="btn btn-outline" style="width:100%;justify-content:center">Get Enterprise</a>
+
+            <!-- Trust Badges -->
+            <div class="pricing-trust" style="margin-top: 4rem;">
+                <div class="trust-item">🛡️ 30-day money-back guarantee</div>
+                <div class="trust-item">🔒 SOC 2 Type II certified</div>
+                <div class="trust-item">⚡ 2-hour average setup</div>
+                <div class="trust-item">📞 24/7 support included</div>
+                <div class="trust-item">💳 No credit card required</div>
             </div>
         </div>
-        
-        <div style="max-width:900px;margin:0 auto;text-align:center">
-            <h2 style="font-size:2rem;margin-bottom:1rem">Frequently Asked Questions</h2>
-            <div style="text-align:left;margin-top:2rem">
-                <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1rem">
-                    <h4 style="margin-bottom:0.5rem">Do I need n8n installed?</h4>
-                    <p style="color:var(--text-muted)">Yes, you need a self-hosted n8n instance or n8n Cloud. All templates are compatible with n8n version 1.0+.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2>Common Questions</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>What's included in the free trial?</h4>
+                    <p>14-day free trial with full access to all templates in your chosen pack. No credit card required. Experience everything before committing.</p>
                 </div>
-                <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1rem">
-                    <h4 style="margin-bottom:0.5rem">Can I get a refund?</h4>
-                    <p style="color:var(--text-muted)">Yes, we offer a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund.</p>
+
+                <div class="faq-item">
+                    <h4>Can I cancel anytime?</h4>
+                    <p>Yes. No long-term contracts. Cancel anytime from your dashboard. You'll only pay for the time you've used.</p>
                 </div>
-                <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1rem">
-                    <h4 style="margin-bottom:0.5rem">Do I get updates?</h4>
-                    <p style="color:var(--text-muted)">Yes! Professional and Enterprise customers receive free template updates as we improve them.</p>
+
+                <div class="faq-item">
+                    <h4>What happens after the 50% off period?</h4>
+                    <p>After 3 months, your subscription continues at the regular rate. Lock in your rate by choosing annual billing.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you offer annual billing?</h4>
+                    <p>Yes! Choose annual billing and save 20% compared to monthly. That's like getting 2 months free.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I switch plans later?</h4>
+                    <p>Absolutely. Upgrade or downgrade anytime. Your templates and integrations transfer seamlessly.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What's your refund policy?</h4>
+                    <p>30-day money-back guarantee. If you're not satisfied, we'll refund your payment, no questions asked.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do I need n8n to use these templates?</h4>
+                    <p>Yes, our templates are designed for n8n. You'll need your own n8n instance (self-hosted or cloud). We provide setup guides.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Are the templates customizable?</h4>
+                    <p>100%. All templates are fully customizable. Modify workflows, add steps, or build entirely new automations on top.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">◈</div>
-                    <span class="logo-text">Simply Complex</span>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-card">
+                <h2>Ready to Get Started?</h2>
+                <p>Join 10,000+ companies automating their business.</p>
+                <a href="setup.html?bundle=professional" class="btn btn-primary btn-large">Start Free Trial</a>
+                <p class="pricing-note" style="margin-top: 1rem;">No credit card required • Cancel anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">◈</div>
+                        <span class="logo-text">Simply Complex Solutions</span>
+                    </a>
+                    <p>Enterprise AI automation bundles that actually work.</p>
                 </div>
-                <p>Premium automation solutions for modern businesses.</p>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="features.html">Features</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="n8n-store.html">Templates</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="#">Documentation</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="cookies.html">Cookies</a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="templates.html">Templates</a></li>
-                    <li><a href="pricing.html">Bundles</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>© 2024 Simply Complex Solutions. All rights reserved.</p>
             </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
-        </div>
-    </footer>
-    
-    <script>
-    const currencyRates = { EUR: 1, USD: 1.08 };
-    let currentCurrency = 'EUR';
-    
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentCurrency = btn.dataset.currency;
-            document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === currentCurrency));
-            document.querySelectorAll('.cta-price-value').forEach((card, i) => {
-                const prices = [{e:499,s:539}, {e:799,s:863}, {e:1999,s:2159}];
-                const sym = currentCurrency === 'USD' ? '$' : '€';
-                card.innerHTML = sym + prices[i][currentCurrency.toLowerCase()] + ' <span>/one-time</span>';
-            });
-        });
-    });
-    </script>
+        </footer>
+
+    <script src="js</div>
+    /main.js"></script>
 </body>
 </html>
