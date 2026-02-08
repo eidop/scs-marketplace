@@ -1,6 +1,6 @@
 name = "scs-marketplace"
 compatibility_date = "2026-02-07"
-pages_build_output_dir = "./dist"
+pages_build_output_dir = "."
 
 [vars]
 SITE_TITLE = "Simply Complex Solutions"
