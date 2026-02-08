@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Simply Complex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/setup.css">
+</head>
+<body class="dashboard-page">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">Dashboard</a>
+                <a href="#systems">Systems</a>
+                <a href="#activity">Activity</a>
+                <a href="#settings">Settings</a>
+            </nav>
+            <div class="dashboard-actions">
+                <button class="btn-icon" id="refresh-btn" onclick="Dashboard.loadSystems()" title="Refresh">
+                    🔄
+                </button>
+                <a href="setup.html" class="btn btn-primary">Add System</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="section-container">
+            <!-- System Health Overview -->
+            <section class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon events">📊</div>
+                        <span class="stat-value" id="total-events">2,295</span>
+                        <span class="stat-label">Events Today</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon healthy">✅</div>
+                        <span class="stat-value" id="healthy-systems">3/3</span>
+                        <span class="stat-label">Systems Healthy</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon errors">❌</div>
+                        <span class="stat-value" id="failed-webhooks">3</span>
+                        <span class="stat-label">Failed Webhooks</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon systems">🚀</div>
+                        <span class="stat-value">99.97%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Systems -->
+            <section id="systems" class="dashboard-section">
+                <h2>Active Systems</h2>
+                <div class="systems-grid" id="systems-list">
+                    <!-- Systems loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Activity Log -->
+            <section id="activity" class="dashboard-section">
+                <h2>Recent Activity</h2>
+                <div class="activity-log" id="activity-log">
+                    <div class="activity-entry">
+                        <span class="activity-time">08:32:15</span>
+                        <span class="activity-message">Sales Excellence: Processed 47 new leads from HubSpot</span>
+                    </div>
+                    <div class="activity-entry">
+                        <span class="activity-time">08:30:22</span>
+                        <span class="activity-message">Support Automation: Auto-routed 12 tickets to priority queue</span>
+                    </div>
+                    <div class="activity-entry">
+                        <span class="activity-time">08:28:45</span>
+                        <span class="activity-message">Hiring System: Scheduled 3 candidate interviews</span>
+                    </div>
+                    <div class="activity-entry">
+                        <span class="activity-time">08:25:00</span>
+                        <span class="activity-message">Sales Excellence: Sent 23 follow-up emails</span>
+                    </div>
+                    <div class="activity-entry">
+                        <span class="activity-time">08:20:33</span>
+                        <span class="activity-message">Support Automation: Synced knowledge base articles</span>
+                    </div>
+                    <div class="activity-entry">
+                        <span class="activity-time">08:15:12</span>
+                        <span class="activity-message">System health check passed</span>
+                    </div>
+                    <div class="activity-entry">
+                        <span class="activity-time">08:00:00</span>
+                        <span class="activity-message">Daily summary report generated</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reliability Monitor -->
+            <section class="dashboard-section">
+                <h2>Webhook Reliability Monitor</h2>
+                <div class="health-dashboard">
+                    <div class="health-header">
+                        <span class="status-indicator healthy"></span>
+                        <span>All Systems Operational</span>
+                    </div>
+                    <div class="webhook-list">
+                        <div class="webhook-item">
+                            <span class="webhook-name">CRM Webhook</span>
+                            <span class="webhook-status healthy">Healthy</span>
+                            <span class="webhook-latency">45ms</span>
+                        </div>
+                        <div class="webhook-item">
+                            <span class="webhook-name">Email Service</span>
+                            <span class="webhook-status healthy">Healthy</span>
+                            <span class="webhook-latency">120ms</span>
+                        </div>
+                        <div class="webhook-item warning">
+                            <span class="webhook-name">Slack Integration</span>
+                            <span class="webhook-status warning">3 Retries</span>
+                            <span class="webhook-latency">2.3s</span>
+                        </div>
+                        <div class="webhook-item">
+                            <span class="webhook-name">Ticket System</span>
+                            <span class="webhook-status healthy">Healthy</span>
+                            <span class="webhook-latency">67ms</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            Dashboard.init();
+        });
+    </script>
+</body>
+</html>

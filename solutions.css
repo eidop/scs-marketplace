@@ -1,0 +1,454 @@
+/* ========================================
+   Solution Pages CSS
+   ======================================== */
+
+/* Solution Hero */
+.solution-hero {
+    padding: 160px 24px 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 32px;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--accent-primary);
+}
+
+.solution-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.solution-icon-large {
+    width: 100px;
+    height: 100px;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+}
+
+.solution-icon-large svg {
+    width: 50px;
+    height: 50px;
+    color: var(--accent-primary);
+}
+
+.solution-hero h1 {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+}
+
+.solution-tagline {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+}
+
+.solution-outcomes {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.outcome {
+    text-align: center;
+    padding: 24px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.outcome-value {
+    display: block;
+    font-size: 36px;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.outcome-label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+/* Problem Section */
+.problem-section {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    position: relative;
+    z-index: 1;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.problem-content h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.problem-content > p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.problem-list {
+    list-style: none;
+}
+
+.problem-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 16px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.problem-list li:last-child {
+    border-bottom: none;
+}
+
+.problem-list li::before {
+    content: '✕';
+    color: var(--error);
+    font-weight: 700;
+}
+
+.problem-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.problem-stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    text-align: center;
+}
+
+.problem-stat .number {
+    display: block;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--error);
+}
+
+.problem-stat .label {
+    font-size: 14px;
+    color: var(--text-tertiary);
+}
+
+/* Included Section */
+.included-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.automation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.automation-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: var(--transition);
+}
+
+.automation-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+}
+
+.automation-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(99, 102, 241, 0.2);
+    margin-bottom: 16px;
+}
+
+.automation-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.automation-card > p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.automation-features {
+    list-style: none;
+}
+
+.automation-features li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.automation-features li:last-child {
+    border-bottom: none;
+}
+
+/* Integrations Section */
+.integrations-section {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    position: relative;
+    z-index: 1;
+}
+
+.integrations-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.integration-group h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+}
+
+.integration-icons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.int-icon {
+    padding: 16px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.int-icon:hover {
+    border-color: var(--accent-primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Setup & Security */
+.setup-security-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.setup-security-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+}
+
+.setup-info h2,
+.security-info h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.setup-timeline {
+    list-style: none;
+}
+
+.setup-timeline li {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.setup-timeline li:last-child {
+    border-bottom: none;
+}
+
+.setup-timeline .check {
+    color: var(--success);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.setup-timeline strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.setup-timeline span {
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+
+.security-list {
+    list-style: none;
+}
+
+.security-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.security-list li:last-child {
+    border-bottom: none;
+}
+
+.security-list strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.security-list span {
+    font-size: 14px;
+    color: var(--text-tertiary);
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.cta-content > p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Webhook List for Dashboard */
+.webhook-list {
+    margin-top: 24px;
+}
+
+.webhook-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.webhook-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.webhook-status {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.webhook-status.healthy {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.webhook-status.warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+}
+
+.webhook-latency {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    font-family: monospace;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .problem-grid,
+    .setup-security-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .automation-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .solution-outcomes {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .solution-hero h1 {
+        font-size: 36px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .webhook-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}

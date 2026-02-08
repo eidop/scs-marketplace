@@ -3,209 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simply Complex Solutions | Premium n8n Automation Templates</title>
+    <title>Simply Complex | Enterprise AI Automation Bundles</title>
+    <meta name="description" content="Deploy 3-pack AI automation bundles. Sales, Support, Hiring solutions with enterprise reliability.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/scs-v1.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Background Effects -->
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
     
-    <header>
-        <div class="header-inner">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">◈</div>
                 <span class="logo-text">Simply Complex</span>
             </a>
-            <nav>
-                <a href="templates.html">Templates</a>
-                <a href="pricing.html">Bundles</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="nav-cta">
-                <div class="currency-toggle">
-                    <button class="currency-btn active" data-currency="EUR">EUR</button>
-                    <button class="currency-btn" data-currency="USD">USD</button>
-                </div>
+            <div class="nav-links">
+                <a href="#solutions">Solutions</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="dashboard.html" class="nav-btn">Dashboard Login</a>
             </div>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
-    
+    </nav>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-badge">
-            <i class="fas fa-bolt"></i>
-            <span>12 Premium n8n Templates</span>
-        </div>
-        <h1>Automate Your <span class="gradient"> Entire Business</span></h1>
-        <p class="hero-desc">Save 20+ hours/week with ready-to-use n8n automation templates. AI-powered workflows for lead generation, recruitment, support, sales, and more.</p>
-        <div class="hero-actions">
-            <a href="lead.html?bundle=Professional" class="btn btn-primary" style="padding:1rem 3rem;font-size:1.1rem">
-                <i class="fas fa-crown"></i> Get Complete Access
-            </a>
-            <a href="templates.html" class="btn btn-outline" style="padding:1rem 2rem;font-size:1rem">
-                <i class="fas fa-eye"></i> View All Templates
-            </a>
-        </div>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-value">12</div>
-                <div class="hero-stat-label">Templates</div>
+        <div class="hero-content">
+            <div class="hero-badge">Enterprise AI Automation</div>
+            <h1>Upgrade Your Business Operations</h1>
+            <p class="hero-subtitle">Deploy complete AI automation systems, not single workflows. 3-pack bundles that actually work—out of the box.</p>
+            
+            <!-- Outcome Metrics -->
+            <div class="outcome-metrics">
+                <div class="metric">
+                    <span class="metric-value">72%</span>
+                    <span class="metric-label">Faster Operations</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">94%</span>
+                    <span class="metric-label">Fewer Errors</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$847K</span>
+                    <span class="metric-label">Avg. Annual Savings</span>
+                </div>
             </div>
-            <div class="hero-stat">
-                <div class="hero-stat-value">€4,085</div>
-                <div class="hero-stat-label">Total Value</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-value">70%</div>
-                <div class="hero-stat-label">Time Saved</div>
+
+            <div class="hero-cta">
+                <a href="#solutions" class="btn btn-primary">View Solutions</a>
+                <a href="#demo" class="btn btn-secondary">Book Demo</a>
             </div>
         </div>
     </section>
-    
-    <section>
-        <div class="section-header">
-            <h2>Featured Templates</h2>
-            <p>Our most popular automation workflows</p>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Complete Automation Bundles</span>
+                <h2>Solutions That Solve Real Business Problems</h2>
+                <p>Each bundle includes 3 integrated AI automations designed to work together.</p>
+            </div>
+
+            <div class="solutions-grid">
+                <!-- Sales Bundle -->
+                <div class="solution-card" data-solution="sales">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Sales Excellence</h3>
+                    <p class="solution-tagline">Close more deals, faster</p>
+                    <ul class="solution-includes">
+                        <li>
+                            <span class="check">✓</span>
+                            Lead qualification & routing
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Automated follow-up sequences
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Pipeline sync & analytics
+                        </li>
+                    </ul>
+                    <div class="solution-meta">
+                        <span class="setup-time">⚡ 2-hour setup</span>
+                        <span class="integrations">📦 12 integrations</span>
+                    </div>
+                    <a href="solution-sales.html" class="btn btn-outline">View Details</a>
+                </div>
+
+                <!-- Support Bundle -->
+                <div class="solution-card featured" data-solution="support">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Support Automation</h3>
+                    <p class="solution-tagline">Delight customers, reduce load</p>
+                    <ul class="solution-includes">
+                        <li>
+                            <span class="check">✓</span>
+                            AI ticket triage & routing
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Smart response suggestions
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Knowledge base sync
+                        </li>
+                    </ul>
+                    <div class="solution-meta">
+                        <span class="setup-time">⚡ 2-hour setup</span>
+                        <span class="integrations">📦 15 integrations</span>
+                    </div>
+                    <a href="solution-support.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <!-- Hiring Bundle -->
+                <div class="solution-card" data-solution="hiring">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Hiring System</h3>
+                    <p class="solution-tagline">Hire better, faster</p>
+                    <ul class="solution-includes">
+                        <li>
+                            <span class="check">✓</span>
+                            Resume screening & scoring
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Interview scheduling automation
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Candidate status tracking
+                        </li>
+                    </ul>
+                    <div class="solution-meta">
+                        <span class="setup-time">⚡ 1.5-hour setup</span>
+                        <span class="integrations">📦 8 integrations</span>
+                    </div>
+                    <a href="solution-hiring.html" class="btn btn-outline">View Details</a>
+                </div>
+            </div>
         </div>
-        <div class="templates-grid" id="templatesGrid"></div>
     </section>
-    
-    <section style="background: linear-gradient(180deg, transparent, rgba(99,102,241,0.05), transparent);">
-        <div class="section-header">
-            <h2>Why Choose Our Templates?</h2>
-            <p>Enterprise-grade quality, simple setup</p>
-        </div>
-        <div class="templates-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center;">
-                <div style="width: 64px; height: 64px; background: rgba(99,102,241,0.15); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem;">
-                    <i class="fas fa-bolt" style="color: var(--primary-light);"></i>
-                </div>
-                <h3 style="margin-bottom: 0.75rem;">Plug & Play</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Copy, paste, and customize. Most templates are ready in under 15 minutes.</p>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Deployment Process</span>
+                <h2>From Purchase to Production in Hours</h2>
             </div>
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center;">
-                <div style="width: 64px; height: 64px; background: rgba(16,185,129,0.15); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem;">
-                    <i class="fas fa-shield-alt" style="color: var(--success);"></i>
+
+            <div class="steps-timeline">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Choose Your Bundle</h4>
+                        <p>Select Sales, Support, or Hiring solution. All include 3 integrated automations.</p>
+                    </div>
                 </div>
-                <h3 style="margin-bottom: 0.75rem;">Enterprise Ready</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Secure, scalable, and tested in production environments.</p>
-            </div>
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center;">
-                <div style="width: 64px; height: 64px; background: rgba(168,85,247,0.15); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem;">
-                    <i class="fas fa-sync-alt" style="color: var(--accent);"></i>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Connect Integrations</h4>
+                        <p>Link your existing tools. We support 150+ enterprise integrations.</p>
+                    </div>
                 </div>
-                <h3 style="margin-bottom: 0.75rem;">Always Updated</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Regular improvements and new features based on user feedback.</p>
-            </div>
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center;">
-                <div style="width: 64px; height: 64px; background: rgba(245,158,11,0.15); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem;">
-                    <i class="fas fa-headset" style="color: var(--warning);"></i>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Validate & Test</h4>
+                        <p>Our system validates every webhook and integration point before activation.</p>
+                    </div>
                 </div>
-                <h3 style="margin-bottom: 0.75rem;">Priority Support</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Direct access to our team for setup help and customization.</p>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Go Live</h4>
+                        <p>Deploy with confidence. Monitor everything from your dashboard.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">◈</div>
-                    <span class="logo-text">Simply Complex</span>
+
+    <!-- Reliability Section -->
+    <section class="reliability-section">
+        <div class="section-container">
+            <div class="reliability-grid">
+                <div class="reliability-content">
+                    <span class="section-badge">Enterprise Reliability</span>
+                    <h2>No Magic. No Black Boxes.</h2>
+                    <p>Every automation is observable, testable, and reliable.</p>
+                    
+                    <ul class="reliability-features">
+                        <li>
+                            <strong>Webhook Retry Logic</strong>
+                            <span>Exponential backoff ensures delivery</span>
+                        </li>
+                        <li>
+                            <strong>Pre-Deployment Validation</strong>
+                            <span>System blocks if webhooks fail</span>
+                        </li>
+                        <li>
+                            <strong>Dead-Letter Queue</strong>
+                            <span>Failed events captured for review</span>
+                        </li>
+                        <li>
+                            <strong>Real-Time Monitoring</strong>
+                            <span>Health checks every 30 seconds</span>
+                        </li>
+                    </ul>
                 </div>
-                <p>Premium automation solutions for modern businesses.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="templates.html">Templates</a></li>
-                    <li><a href="pricing.html">Bundles</a></li>
-                    <li><a href="#">Custom Dev</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Refund Policy</a></li>
-                </ul>
+                <div class="reliability-visual">
+                    <div class="health-dashboard">
+                        <div class="health-header">
+                            <span class="status-indicator healthy"></span>
+                            <span>System Healthy</span>
+                        </div>
+                        <div class="health-stats">
+                            <div class="stat">
+                                <span class="stat-value">99.97%</span>
+                                <span class="stat-label">Uptime</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">1.2M</span>
+                                <span class="stat-label">Events/Day</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">Failed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Simple Pricing</span>
+                <h2>One Price. Everything Included.</h2>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">499</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>1 Solution Bundle</li>
+                        <li>3 Automations</li>
+                        <li>1,000 events/month</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <a href="setup.html?bundle=starter" class="btn btn-outline">Start Trial</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Best Value</div>
+                    <h3>Professional</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">999</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>2 Solution Bundles</li>
+                        <li>6 Automations</li>
+                        <li>10,000 events/month</li>
+                        <li>Priority Support</li>
+                        <li>Advanced Analytics</li>
+                    </ul>
+                    <a href="setup.html?bundle=professional" class="btn btn-primary">Start Trial</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">2,499</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Unlimited Bundles</li>
+                        <li>Unlimited Events</li>
+                        <li>24/7 Phone Support</li>
+                        <li>Custom Integrations</li>
+                        <li>SLA Guarantee</li>
+                    </ul>
+                    <a href="setup.html?bundle=enterprise" class="btn btn-outline">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">◈</div>
+                        <span class="logo-text">Simply Complex</span>
+                    </a>
+                    <p>Enterprise AI automation bundles that actually work.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <a href="solution-sales.html">Sales Excellence</a>
+                    <a href="solution-support.html">Support Automation</a>
+                    <a href="solution-hiring.html">Hiring System</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">Status</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Simply Complex. Enterprise-grade reliability.</p>
+            </div>
         </div>
     </footer>
-    
-    <script>
-    const currencyRates = { EUR: 1, USD: 1.08 };
-    let currentCurrency = 'EUR';
-    
-    const templates = [
-        { id: 1, name: "Lead Generation Engine", price: 479, category: "lead-gen", color: "#6366f1", icon: "fa-robot", desc: "Multi-channel lead capture with AI enrichment and scoring.", features: ["AI Enrichment", "Lead Scoring", "CRM Integration"], badge: "hot", link: "template-lead-generation.html" },
-        { id: 2, name: "Support Ticket System", price: 479, category: "support", color: "#10b981", icon: "fa-headset", desc: "AI-powered support automation with auto-triage.", features: ["Auto-responders", "AI Triage", "Priority Routing"], badge: "popular", link: "template-support-ticket.html" },
-        { id: 3, name: "Recruitment Automation", price: 459, category: "hr", color: "#f59e0b", icon: "fa-users", desc: "Source, screen, and schedule candidates automatically.", features: ["Resume Parsing", "Scheduling", "CRM Integration"], badge: "new", link: "template-recruitment.html" },
-        { id: 4, name: "Cold Outreach Engine", price: 299, category: "sales", color: "#3b82f6", icon: "fa-envelope", desc: "AI-powered cold email automation at scale.", features: ["Email Sequences", "AI Writing", "Tracking"], badge: null, link: "template-cold-outreach.html" }
-    ];
-    
-    function formatPrice(eur) {
-        const val = Math.round(eur * currencyRates[currentCurrency]);
-        return currentCurrency === 'USD' ? '$' + val : '€' + val;
-    }
-    
-    function renderTemplates() {
-        const grid = document.getElementById('templatesGrid');
-        grid.innerHTML = '';
-        templates.forEach(t => {
-            const badge = t.badge ? `<span class="template-badge ${t.badge}">${t.badge}</span>` : '';
-            const features = t.features.map(f => `<span class="feature-tag">${f}</span>`).join('');
-            grid.innerHTML += `
-                <div class="template-card">
-                    <div class="template-header">
-                        <div class="template-icon" style="background: linear-gradient(135deg, ${t.color}, ${t.color}88)">
-                            <i class="fas ${t.icon}" style="color: #fff"></i>
-                        </div>
-                        <div class="template-title">
-                            <h3>${t.name}</h3>
-                            <p>${t.desc}</p>
-                        </div>
-                        ${badge}
-                    </div>
-                    <div class="template-body">
-                        <div class="template-features">${features}</div>
-                        <div class="template-footer">
-                            <span class="template-price" data-eur="${t.price}">${formatPrice(t.price)}</span>
-                            <a href="${t.link}" class="template-link">View Template <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-    }
-    
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentCurrency = btn.dataset.currency;
-            document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === currentCurrency));
-            document.querySelectorAll('.template-price').forEach(el => {
-                el.textContent = formatPrice(parseInt(el.dataset.eur));
-            });
-        });
-    });
-    
-    renderTemplates();
-    </script>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

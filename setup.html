@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Your System | Simply Complex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/setup.css">
+</head>
+<body class="setup-page">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex</span>
+            </a>
+            <div class="setup-progress">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Bundle</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Onboarding</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Integrations</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">Deploy</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="setup-main">
+        <!-- Step 1: Bundle Confirmation -->
+        <section id="step-1" class="setup-step active">
+            <div class="step-container">
+                <div class="step-header">
+                    <span class="step-badge">Step 1 of 4</span>
+                    <h1>Confirm Your Bundle</h1>
+                    <p>Review your selection before proceeding.</p>
+                </div>
+                
+                <div class="bundle-summary">
+                    <div class="bundle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="bundle-details">
+                        <h2 id="bundle-name">Professional Bundle</h2>
+                        <ul class="bundle-includes">
+                            <li>✓ 2 Solution Bundles (6 automations)</li>
+                            <li>✓ 10,000 events/month</li>
+                            <li>✓ Priority Support</li>
+                            <li>✓ Advanced Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="bundle-price">
+                        <span class="price">$999</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn-primary btn-next" onclick="SetupFlow.nextStep()">
+                        Continue to Onboarding
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Onboarding -->
+        <section id="step-2" class="setup-step">
+            <div class="step-container">
+                <div class="step-header">
+                    <span class="step-badge">Step 2 of 4</span>
+                    <h1>Business Information</h1>
+                    <p>Tell us about your organization.</p>
+                </div>
+                
+                <form class="setup-form" id="onboarding-form">
+                    <div class="form-group">
+                        <label for="company-name">Company Name *</label>
+                        <input type="text" id="company-name" name="companyName" required placeholder="Acme Corporation">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Contact Name *</label>
+                            <input type="text" id="contact-name" name="contactName" required placeholder="John Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" name="contactEmail" required placeholder="john@acme.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="industry">Industry</label>
+                        <select id="industry" name="industry">
+                            <option value="">Select your industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="retail">Retail</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company-size">Company Size</label>
+                        <select id="company-size" name="companySize">
+                            <option value="">Select size</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="500+">500+ employees</option>
+                        </select>
+                    </div>
+                    
+                    <div class="step-actions">
+                        <button type="button" class="btn btn-secondary btn-prev" onclick="SetupFlow.prevStep()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Back
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" onclick="SetupFlow.nextStep()">
+                            Continue to Integrations
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Step 3: Integrations -->
+        <section id="step-3" class="setup-step">
+            <div class="step-container">
+                <div class="step-header">
+                    <span class="step-badge">Step 3 of 4</span>
+                    <h1>Connect Your Tools</h1>
+                    <p>Select the integrations you want to automate.</p>
+                </div>
+                
+                <div class="integrations-grid">
+                    <div class="integration-category">
+                        <h3>Communication</h3>
+                        <div class="integration-list">
+                            <div class="integration-item" data-integration="slack">
+                                <div class="integration-icon">💬</div>
+                                <span>Slack</span>
+                                <input type="checkbox" name="slack">
+                            </div>
+                            <div class="integration-item" data-integration="email">
+                                <div class="integration-icon">📧</div>
+                                <span>Email (SMTP)</span>
+                                <input type="checkbox" name="email">
+                            </div>
+                            <div class="integration-item" data-integration="teams">
+                                <div class="integration-icon">👥</div>
+                                <span>Microsoft Teams</span>
+                                <input type="checkbox" name="teams">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="integration-category">
+                        <h3>CRM & Sales</h3>
+                        <div class="integration-list">
+                            <div class="integration-item" data-integration="hubspot">
+                                <div class="integration-icon">🔶</div>
+                                <span>HubSpot</span>
+                                <input type="checkbox" name="hubspot">
+                            </div>
+                            <div class="integration-item" data-integration="salesforce">
+                                <div class="integration-icon">☁️</div>
+                                <span>Salesforce</span>
+                                <input type="checkbox" name="salesforce">
+                            </div>
+                            <div class="integration-item" data-integration="pipedrive">
+                                <div class="integration-icon">📊</div>
+                                <span>Pipedrive</span>
+                                <input type="checkbox" name="pipedrive">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="integration-category">
+                        <h3>Support</h3>
+                        <div class="integration-list">
+                            <div class="integration-item" data-integration="zendesk">
+                                <div class="integration-icon">🎫</div>
+                                <span>Zendesk</span>
+                                <input type="checkbox" name="zendesk">
+                            </div>
+                            <div class="integration-item" data-interaction="intercom">
+                                <div class="integration-icon">💭</div>
+                                <span>Intercom</span>
+                                <input type="checkbox" name="intercom">
+                            </div>
+                            <div class="integration-item" data-integration="freshdesk">
+                                <div class="integration-icon">🎯</div>
+                                <span>Freshdesk</span>
+                                <input type="checkbox" name="freshdesk">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="integration-category">
+                        <h3>HR & Hiring</h3>
+                        <div class="integration-list">
+                            <div class="integration-item" data-integration="lever">
+                                <div class="integration-icon">📋</div>
+                                <span>Lever</span>
+                                <input type="checkbox" name="lever">
+                            </div>
+                            <div class="integration-item" data-integration="greenhouse">
+                                <div class="integration-icon">🌱</div>
+                                <span>Greenhouse</span>
+                                <input type="checkbox" name="greenhouse">
+                            </div>
+                            <div class="integration-item" data-integration="workday">
+                                <div class="integration-icon">👔</div>
+                                <span>Workday</span>
+                                <input type="checkbox" name="workday">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="webhook-info">
+                    <h4>🔗 Webhook Configuration</h4>
+                    <p>All webhooks will be validated before deployment. Failed webhooks will block activation to ensure reliability.</p>
+                </div>
+
+                <div class="step-actions">
+                    <button type="button" class="btn btn-secondary btn-prev" onclick="SetupFlow.prevStep()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary btn-next" onclick="SetupFlow.nextStep()">
+                        Validate & Continue
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Deploy -->
+        <section id="step-4" class="setup-step">
+            <div class="step-container">
+                <div class="step-header">
+                    <span class="step-badge">Step 4 of 4</span>
+                    <h1>Deploy Your System</h1>
+                    <p>Ready to go live. Click deploy to activate your automations.</p>
+                </div>
+                
+                <div class="deployment-summary">
+                    <h3>Deployment Checklist</h3>
+                    <div class="checklist">
+                        <div class="checklist-item success">
+                            <span class="icon">✓</span>
+                            <span>Bundle Configuration</span>
+                        </div>
+                        <div class="checklist-item success">
+                            <span class="icon">✓</span>
+                            <span>Business Information</span>
+                        </div>
+                        <div class="checklist-item success">
+                            <span class="icon">✓</span>
+                            <span>Integrations Selected</span>
+                        </div>
+                        <div class="checklist-item" id="webhook-validation">
+                            <span class="icon pending">⟳</span>
+                            <span>Webhook Validation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deployment-notice">
+                    <div class="notice-icon">⚠️</div>
+                    <div class="notice-content">
+                        <h4>Deployment Safety Check</h4>
+                        <p>Your system will only be deployed if all webhooks pass validation. Failed webhooks will block activation to prevent data loss.</p>
+                    </div>
+                </div>
+
+                <div class="step-actions center">
+                    <button type="button" class="btn btn-primary btn-large" id="deploy-btn" onclick="SetupFlow.deploySystem()">
+                        <span class="btn-text">Deploy System</span>
+                        <span class="btn-loader hidden">⟳ Validating...</span>
+                    </button>
+                </div>
+
+                <div id="deployment-success" class="deployment-result hidden">
+                    <div class="result-icon">✅</div>
+                    <h2>Deployment Successful!</h2>
+                    <p>Your system is now live and processing events.</p>
+                    <a href="dashboard.html" class="btn btn-primary">Open Dashboard</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize setup flow
+        document.addEventListener('DOMContentLoaded', () => {
+            SetupFlow.init();
+        });
+    </script>
+</body>
+</html>
