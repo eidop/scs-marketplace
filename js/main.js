@@ -2,11 +2,11 @@
    Simply Complex Solutions - Main JavaScript
    ======================================== */
 
-// Gumroad Product Links - UPDATE THESE WITH YOUR GUMROAD URLs
+// Gumroad Product Links
 const GUMROAD_PRODUCTS = {
-    starter: 'https://gum.co/scs-starter',
-    professional: 'https://gum.co/scs-professional', 
-    enterprise: 'https://gum.co/scs-enterprise'
+    starter: 'https://simplyx.gumroad.com/l/lead-generation-engine',
+    professional: 'https://simplyx.gumroad.com/l/cold-outreach-engine', 
+    enterprise: 'https://simplyx.gumroad.com/l/grrof'
 };
 
 // Webhook Test Endpoints - Add your actual webhook URLs here
@@ -221,9 +221,9 @@ const SetupFlow = {
         const bundleOriginalPrice = document.querySelector('.bundle-price .original-price');
         
         const bundleData = {
-            starter: { name: 'Starter Bundle', price: '$247/mo', original: '$497/mo' },
-            professional: { name: 'Professional Bundle', price: '$597/mo', original: '$997/mo' },
-            enterprise: { name: 'Enterprise Bundle', price: '$1,497/mo', original: '$2,497/mo' }
+            starter: { name: 'Lead Generation Engine', price: '$247', original: '$497' },
+            professional: { name: 'Cold Outreach Engine', price: '$597', original: '$997' },
+            enterprise: { name: 'Full Automation Suite', price: '$1,497', original: '$2,497' }
         };
         
         const data = bundleData[this.bundle] || bundleData.professional;
