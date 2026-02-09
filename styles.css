@@ -132,6 +132,11 @@ body {
     color: var(--text-primary);
 }
 
+.logo-image {
+    height: 40px;
+    width: auto;
+}
+
 .logo-icon {
     font-size: 24px;
     color: var(--accent-primary);
@@ -395,79 +400,74 @@ body {
 .solution-card.featured {
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
     border-color: rgba(99, 102, 241, 0.3);
+    border-width: 1.5px;
 }
 
 .featured-badge {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px 12px;
+    top: 12px;
+    right: 12px;
+    padding: 5px 10px;
     background: var(--accent-gradient);
     border-radius: 100px;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     color: white;
+    letter-spacing: 0.5px;
 }
 
 .solution-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(99, 102, 241, 0.15);
+    width: 48px;
+    height: 48px;
+    background: rgba(99, 102, 241, 0.1);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .solution-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     color: var(--accent-primary);
+    opacity: 0.85;
 }
 
 .solution-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
 }
 
 .solution-tagline {
     font-size: 14px;
     color: var(--text-tertiary);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    opacity: 0.85;
 }
 
 .solution-includes {
     list-style: none;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    display: grid;
+    gap: 8px;
 }
 
 .solution-includes li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 0;
     font-size: 14px;
     color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.solution-includes li:last-child {
-    border-bottom: none;
-}
-
-.solution-includes .check {
-    color: var(--success);
-    font-weight: 700;
+    opacity: 0.9;
 }
 
 .solution-meta {
     display: flex;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     font-size: 12px;
     color: var(--text-tertiary);
+    opacity: 0.75;
 }
 
 /* How It Works */

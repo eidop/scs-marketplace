@@ -352,6 +352,25 @@
 
 
     <script src="js/main.js"></script>
+    
+    <!-- Quick Nav Bar -->
+    <div class="quick-nav-bar">
+        <div class="quick-nav-content">
+            <span class="quick-nav-label">🚀 Explore:</span>
+            <a href="index.html" class="quick-nav-link">Home</a>
+            <a href="pricing.html" class="quick-nav-link">Pricing</a>
+            <a href="blog.html" class="quick-nav-link">Blog</a>
+            <a href="resources.html" class="quick-nav-link">Resources</a>
+        </div>
+    </div>
+    
+    <style>
+        .quick-nav-bar { background: rgba(99, 102, 241, 0.1); border-top: 1px solid rgba(99, 102, 241, 0.3); padding: 0.75rem 0; position: sticky; bottom: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .quick-nav-content { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .quick-nav-label { color: #a5b4fc; font-weight: 500; font-size: 0.875rem; }
+        .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+        .quick-nav-link:hover { color: #fff; }
+    </style>
 </body>
 </html>
 

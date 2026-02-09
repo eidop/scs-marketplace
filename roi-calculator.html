@@ -364,6 +364,115 @@
         
         calculate();
     </script>
+    
+    <!-- Quick Nav Bar for Inner Pages -->
+    <div class="quick-nav-bar">
+        <div class="quick-nav-content">
+            <span class="quick-nav-label">🚀 Explore More:</span>
+            <a href="index.html" class="quick-nav-link">Home</a>
+            <a href="pricing.html" class="quick-nav-link">Pricing</a>
+            <a href="resources.html" class="quick-nav-link">Resources</a>
+            <a href="templates.html" class="quick-nav-link">Templates</a>
+            <a href="contact.html" class="quick-nav-link">Contact</a>
+        </div>
+    </div>
+    
+    <style>
+        .quick-nav-bar { background: rgba(99, 102, 241, 0.1); border-top: 1px solid rgba(99, 102, 241, 0.3); padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .quick-nav-content { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .quick-nav-label { color: #a5b4fc; font-weight: 500; font-size: 0.875rem; }
+        .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+        .quick-nav-link:hover { color: #fff; }
+    </style>
+    
+    <!-- Comprehensive Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/scs-logo.png" alt="Simply Complex Solutions" style="height: 32px;">
+                    </a>
+                    <p>Enterprise AI automation bundles for Sales, Support, and Hiring.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="GitHub">⌘</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="solution-sales.html">Sales Automation</a></li>
+                        <li><a href="solution-support.html">Support Automation</a></li>
+                        <li><a href="solution-hiring.html">Hiring Automation</a></li>
+                        <li><a href="n8n-store.html">n8n Templates</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                        <li><a href="templates.html">All Templates</a></li>
+                        <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="client-dashboard.html">Analytics Demo</a></li>
+                        <li><a href="compare.html">Compare Tiers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Free Downloads</a></li>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="setup.html">Setup Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="status.html">System Status</a></li>
+                        <li><a href="changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Simply Complex Solutions. All rights reserved.</p>
+                <p>Powered by n8n & Cloudflare</p>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+        .site-footer { background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.1); padding: 4rem 0 2rem; }
+        .footer-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr); gap: 2rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col ul li a { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: #fff; }
+        .footer-brand p { color: #64748b; font-size: 0.875rem; margin: 1rem 0; }
+        .footer-social { display: flex; gap: 1rem; }
+        .footer-social a { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none; transition: all 0.2s; }
+        .footer-social a:hover { background: #6366f1; color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; color: #64748b; font-size: 0.75rem; }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } .footer-brand { grid-column: span 3; } }
+        @media (max-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } .footer-brand { grid-column: span 2; } .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; } }
+    </style>
 </body>
 </html>
 
