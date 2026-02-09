@@ -1,0 +1,105 @@
+{
+  "name": "Real Estate Lead Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "webhook/real-estate-lead",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "const lead = items[0].json;\n\n// Validate required fields\nif (!lead.email || !lead.name) {\n  throw new Error('Missing required fields: name or email');\n}\n\n// Prepare CRM data\nreturn [{\n  json: {\n    name: lead.name,\n    email: lead.email,\n    phone: lead.phone || '',\n    property: lead.property || '',\n    message: lead.message || '',\n    source: 'Website - Real Estate',\n    status: 'New',\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Transform Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 200]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "moduleId": "tblXXXXXXXXXXXXXX",
+        "name": "={{ $json.name }}",
+        "fieldsToSend": {
+          "values": [
+            {"fieldId": "fldName", "fieldValue": "={{ $json.name }}"},
+            {"fieldId": "fldEmail", "fieldValue": "={{ $json.email }}"},
+            {"fieldId": "fldPhone", "fieldValue": "={{ $json.phone }}"},
+            {"fieldId": "fldProperty", "fieldValue": "={{ $json.property }}"},
+            {"fieldId": "fldSource", "fieldValue": "={{ $json.source }}"},
+            {"fieldId": "fldStatus", "fieldValue": "={{ $json.status }}"}
+          ]
+        },
+        "options": {}
+      },
+      "name": "Notion CRM",
+      "type": "n8n-nodes-notion.notion",
+      "typeVersion": 1,
+      "position": [500, 200]
+    },
+    {
+      "parameters": {
+        "to": "+4799999999",
+        "text": "={{ '🏠 Ny henvendelse\\nNavn: ' + $json.name + '\\nE-post: ' + $json.email + '\\nEiendom: ' + $json.property + '\\nMelding: ' + $json.message }}",
+        "options": {}
+      },
+      "name": "WhatsApp Notification",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [700, 200]
+    },
+    {
+      "parameters": {
+        "to": "={{ $json.email }}",
+        "subject": "Takk for din henvendelse - {{ $json.property }}",
+        "options": {
+          "html": true
+        }
+      },
+      "name": "Lead Confirmation Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 1,
+      "position": [700, 350]
+    },
+    {
+      "parameters": {
+        "functionCode": "\nconst existingLeads = await getLeadsByEmail($json.email);\n\nif (existingLeads.length > 0) {\n  return [{\n    json: {\n      ...$json,\n      duplicate: true,\n      existingLeadId: existingLeads[0].id\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    ...$json,\n    duplicate: false\n  }\n}];"
+      },
+      "name": "Duplicate Check",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [300, 350]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [{"node": "Transform Data", "type": "main", "index": 0}]
+      ]
+    },
+    "Transform Data": {
+      "main": [
+        [{"node": "Duplicate Check", "type": "main", "index": 0}]
+      ]
+    },
+    "Duplicate Check": {
+      "main": [
+        [{"node": "Notion CRM", "type": "main", "index": 0}]
+      ]
+    },
+    "Notion CRM": {
+      "main": [
+        [
+          {"node": "WhatsApp Notification", "type": "main", "index": 0},
+          {"node": "Lead Confirmation Email", "type": "main", "index": 0}
+        ]
+      ]
+    }
+  }
+}

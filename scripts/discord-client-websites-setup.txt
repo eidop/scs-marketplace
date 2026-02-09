@@ -1,0 +1,43 @@
+# Discord Channel Setup Script
+# Run this in Discord (paste in chat) to set up the #client-websites channel
+
+## Step 1: Create the channel
+# Ask Eido to create a new text channel named "client-websites" in the appropriate category
+
+## Step 2: Set the channel topic (paste this)
+/topic 🎯 Client Website Development
+===========================
+Built by Anders, approved by Eido.
+Thread per client project.
+📁 Templates: templates/verticals-complete.md
+
+## Step 3: Pin the thread template (paste this in a thread)
+
+---
+
+### Website Project: [Client Name]
+
+**Type:** [Vertical]
+**Client:** [Company Name]
+**Timeline:** [Deadline]
+
+---
+
+**Features:**
+- [ ]
+
+**Automations:**
+- [ ]
+
+---
+
+**ANDERS:** Build with n8n automations
+**EIDO:** Approve before client delivery
+
+---
+
+## Quick Links
+- Verticals catalog: `templates/automation-website-verticals.md`
+- Real estate example: `templates/real-estate-client-website.md`
+- Client template: `templates/client-website-template.md`
+

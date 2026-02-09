@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Websites + Automation | Simply Complex Solutions</title>
+    <meta name="description" content="Professional websites with built-in automations. Real estate, accounting, healthcare, recruitment. From 15k NOK.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafafa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: #fff; padding: 20px 0; border-bottom: 1px solid #e5e5e5; position: sticky; top: 0; z-index: 100; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #2563eb; text-decoration: none; }
+        nav a { margin-left: 30px; text-decoration: none; color: #4b5563; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #2563eb; }
+        .cta-small { background: #2563eb; color: #fff !important; padding: 10px 20px; border-radius: 8px; }
+        
+        /* Hero */
+        .hero { padding: 100px 0; background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%); color: #fff; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+        .hero p { font-size: 1.25rem; color: #a0aec0; max-width: 600px; margin: 0 auto 40px; }
+        .hero-cta { background: #2563eb; color: #fff; padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1.1rem; display: inline-block; transition: transform 0.2s; }
+        .hero-cta:hover { transform: translateY(-2px); }
+        
+        /* Stats */
+        .stats { padding: 60px 0; background: #fff; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+        .stat h3 { font-size: 2.5rem; font-weight: 800; color: #2563eb; }
+        .stat p { color: #6b7280; font-size: 0.95rem; }
+        
+        /* Section */
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; }
+        .section-title p { color: #6b7280; font-size: 1.1rem; }
+        
+        /* Verticals */
+        .verticals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .vertical-card { background: #fff; border-radius: 16px; padding: 30px; border: 1px solid #e5e5e5; transition: all 0.3s; }
+        .vertical-card:hover { border-color: #2563eb; box-shadow: 0 10px 40px rgba(37,99,235,0.1); }
+        .vertical-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .vertical-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .vertical-card p { color: #6b7280; font-size: 0.95rem; margin-bottom: 20px; }
+        .vertical-features { list-style: none; margin-bottom: 20px; }
+        .vertical-features li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; color: #4b5563; }
+        .vertical-features li:last-child { border: none; }
+        .vertical-features li::before { content: "✓"; color: #10b981; margin-right: 10px; font-weight: 600; }
+        .vertical-price { font-size: 1.5rem; font-weight: 700; color: #2563eb; }
+        
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: #fff; border-radius: 12px; padding: 25px; text-align: center; }
+        .feature-icon { font-size: 2rem; margin-bottom: 15px; }
+        .feature-card h4 { margin-bottom: 10px; }
+        .feature-card p { font-size: 0.9rem; color: #6b7280; }
+        
+        /* Pricing */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .pricing-card { background: #fff; border-radius: 16px; padding: 40px 30px; border: 1px solid #e5e5e5; text-align: center; }
+        .pricing-card.popular { border-color: #2563eb; position: relative; }
+        .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #2563eb; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .pricing-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: #1a1a2e; margin: 20px 0; }
+        .pricing-card .price span { font-size: 1rem; color: #6b7280; font-weight: 400; }
+        .pricing-card ul { list-style: none; text-align: left; margin: 20px 0; }
+        .pricing-card li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+        .pricing-card li:last-child { border: none; }
+        .pricing-card li::before { content: "✓"; color: #10b981; margin-right: 10px; }
+        
+        /* CTA */
+        .cta-section { background: #1a1a2e; color: #fff; padding: 80px 0; text-align: center; }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .cta-section p { color: #a0aec0; margin-bottom: 30px; font-size: 1.1rem; }
+        
+        /* Footer */
+        footer { background: #f5f5f5; padding: 40px 0; text-align: center; color: #6b7280; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .verticals-grid, .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://scs-marketplace.pages.dev" class="logo">Simply Complex Solutions</a>
+                <nav>
+                    <a href="# verticals">Bransjer</a>
+                    <a href="#features">Funksjoner</a>
+                    <a href="#pricing">Priser</a>
+                    <a href="https://scs-marketplace.pages.dev/contact" class="cta-small">Kontakt oss</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Nettsider med innebygd automasjon</h1>
+            <p>Vi bygger profesjonelle nettsider som jobber for deg. Kontaktskjemaer, kalenderbooking, og automatiserte arbeidsflyter – alt inkludert.</p>
+            <a href="https://scs-marketplace.pages.dev/contact" class="hero-cta">Få et uforpliktende tilbud</a>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>5+</h3>
+                    <p>Bransjer vi dekker</p>
+                </div>
+                <div class="stat">
+                    <h3>72%</h3>
+                    <p>Raskere håndtering av henvendelser</p>
+                </div>
+                <div class="stat">
+                    <h3>5-10 dager</h3>
+                    <p>Gjennomsnittlig leveringstid</p>
+                </div>
+                <div class="stat">
+                    <h3>15k-100k</h3>
+                    <p>Pris fra 15.000 NOK</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="verticals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bransjeløsninger</h2>
+                <p>Vi har ferdige maler for de mest etterspurte bransjene</p>
+            </div>
+            <div class="verticals-grid">
+                <div class="vertical-card">
+                    <div class="vertical-icon">🏠</div>
+                    <h3>Eiendomsmegler</h3>
+                    <p>Eiendomssøk, visningskalender, og WhatsApp-varsling ved nye henvendelser.</p>
+                    <ul class="vertical-features">
+                        <li>Eiendomssøk med filtre</li>
+                        <li>Visningskalender</li>
+                        <li>Integrasjon med eksisterende systemer</li>
+                        <li>WhatsApp-varsling til megler</li>
+                    </ul>
+                    <div class="vertical-price">Fra 15.000 NOK</div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📊</div>
+                    <h3>Regnskap</h3>
+                    <p>Kundeportal, dokumentopplasting, og automatiserte purringer.</p>
+                    <ul class="vertical-features">
+                        <li>Kundeportal for fakturaer</li>
+                        <li>Dokumentopplasting med OCR</li>
+                        <li>Automatisk purring</li>
+                        <li>Fristskalender for skatt</li>
+                    </ul>
+                    <div class="vertical-price">Fra 20.000 NOK</div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">🏥</div>
+                    <h3>Helse</h3>
+                    <p>Pasientportal, timebestilling, og SMS-varsling.</p>
+                    <ul class="vertical-features">
+                        <li>Online timebestilling</li>
+                        <li>Pasientportal for journaler</li>
+                        <li>SMS-påminnelser</li>
+                        <li>Sikker dokumentdeling</li>
+                    </ul>
+                    <div class="vertical-price">Fra 30.000 NOK</div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">👔</div>
+                    <h3>Rekruttering</h3>
+                    <p>Ledige stillinger, søknadshåndtering, og ATS-funksjonalitet.</p>
+                    <ul class="vertical-features">
+                        <li>Ledighetsdatabase</li>
+                        <li>Søknadshåndtering</li>
+                        <li>Interview-kalender</li>
+                        <li>Kandidatdatabase</li>
+                    </ul>
+                    <div class="vertical-price">Fra 20.000 NOK</div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">📞</div>
+                    <h3>Kundeservice</h3>
+                    <p>Hjelpesenter, ticketsystem, og AI-chatbot.</p>
+                    <ul class="vertical-features">
+                        <li>FAQ og kunnskapsbase</li>
+                        <li>Ticket-innsending</li>
+                        <li>AI-chatbot</li>
+                        <li>Kundetilfredshetsundersøkelse</li>
+                    </ul>
+                    <div class="vertical-price">Fra 15.000 NOK</div>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">💼</div>
+                    <h3>Investering</h3>
+                    <p>Investorportal, dealoversikt, og fondsinformasjon.</p>
+                    <ul class="vertical-features">
+                        <li>Deal-listing</li>
+                        <li>Investorportal med login</li>
+                        <li>Portefølje-dashboard</li>
+                        <li>Automatisk oppdatering</li>
+                    </ul>
+                    <div class="vertical-price">Fra 40.000 NOK</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="features" style="background: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Inkludert i alle løsninger</h2>
+                <p>Vi bygger ikke bare nettsider – vi bygger systemer</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>n8n Automasjoner</h4>
+                    <p>Automatiske arbeidsflyter for henvendelser, kalender, og varslinger.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Mobil-optimalisert</h4>
+                    <p>Alle nettsider er responsiv og fungerer perfekt på alle enheter.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>Sikkerhet</h4>
+                    <p>SSL, GDPR-samsvar, og kryptert datahåndtering.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h4>Hurtig lastetid</h4>
+                    <p>Optimaliserte bilder og ren kode for best mulig ytelse.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h4>SEO-klargjort</h4>
+                    <p>Teknisk SEO, metadatahåndtering, og strukturerte data.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Integrasjoner</h4>
+                    <p>CRM, kalender, WhatsApp, Stripe, og mer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Prispakker</h2>
+                <p>Velg pakken som passer ditt behov</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Essential</h3>
+                    <p>For små bedrifter som trenger en profesjonell nettside</p>
+                    <div class="price">15.000<span> NOK</span></div>
+                    <ul>
+                        <li>Enkeltside eller 3-siders nettside</li>
+                        <li>Kontaktskjema</li>
+                        <li>Mobil-optimalisert</li>
+                        <li>Grunnleggende SEO</li>
+                        <li>1 måneds support</li>
+                    </ul>
+                    <a href="https://scs-marketplace.pages.dev/contact" style="display: block; padding: 15px; background: #1a1a2e; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600;">Bestill nå</a>
+                </div>
+                <div class="pricing-card popular">
+                    <span class="popular-badge">Mest populær</span>
+                    <h3>Standard</h3>
+                    <p>For bedrifter som trenger automasjoner og portaler</p>
+                    <div class="price">35.000<span> NOK</span></div>
+                    <ul>
+                        <li>Opptil 7 sider</li>
+                        <li>Kundeportal med login</li>
+                        <li>n8n automasjoner inkludert</li>
+                        <li>Integrasjoner (CRM, kalender)</li>
+                        <li>WhatsApp/SMS-varsling</li>
+                        <li>3 måneder support</li>
+                    </ul>
+                    <a href="https://scs-marketplace.pages.dev/contact" style="display: block; padding: 15px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600;">Bestill nå</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <p>For større bedrifter med komplekse behov</p>
+                    <div class="price">75.000<span> NOK+</span></div>
+                    <ul>
+                        <li>Ubegrenset antall sider</li>
+                        <li>Full portal-løsning</li>
+                        <li>Avanserte automasjoner</li>
+                        <li>Skreddersydde integrasjoner</li>
+                        <li>AI-chatbot</li>
+                        <li>Årlig vedlikehold inkludert</li>
+                    </ul>
+                    <a href="https://scs-marketplace.pages.dev/contact" style="display: block; padding: 15px; background: #1a1a2e; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600;">Kontakt oss</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2> klar for å komme i gang?</h2>
+            <p>Fortell oss om ditt prosjekt, så sender vi et uforpliktende tilbud.</p>
+            <a href="https://scs-marketplace.pages.dev/contact" class="hero-cta">Kontakt oss i dag</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2026 Simply Complex Solutions. Alle rettigheter reservert.</p>
+            <p style="margin-top: 10px;">
+                <a href="https://scs-marketplace.pages.dev" style="color: #6b7280; text-decoration: none;">Hjem</a> · 
+                <a href="https://scs-marketplace.pages.dev/n8n-store" style="color: #6b7280; text-decoration: none;">n8n Templates</a> · 
+                <a href="https://scs-marketplace.pages.dev/contact" style="color: #6b7280; text-decoration: none;">Kontakt</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -87,46 +87,54 @@ Your complete verticals for automation website services.
 ## 📈 Other Verticals (to add)
 
 ### Accounting (Regnskap)
+**Template:** `accounting-client-website.md`
+
 **Features:**
-- Client portal (invoices, reports)
-- Document upload (receipts, contracts)
+- Client portal (invoices, reports, document uploads)
 - Tax summary dashboards
+- Secure document sharing
 - Calendar for deadlines
 
 **Automations:**
-- Document upload → OCR → Database
-- Invoice reminders → n8n → Email
-- Deadline alerts (tax day, quarterly)
+- Document upload → OCR → Database categorization
+- Invoice reminders → n8n → Email/SMS sequence
+- Deadline alerts (tax day, quarterly VAT)
 
-**Potential pricing:** 20–40k NOK
+**Pricing:** 15–40k NOK (tiered)
 
 ### Healthcare (Helse)
+**Template:** `healthcare-client-website.md`
+
 **Features:**
-- Patient portal (appointments, history)
-- Symptom checker (AI-powered)
+- Patient portal (appointments, history, records)
+- Symptom checker (AI-powered triage)
 - Document sharing
-- Booking system
+- Booking system with SMS reminders
 
 **Automations:**
 - New appointments → SMS notification
 - Document uploads → Secure storage
 - Follow-up reminders
+- Lab result notifications
 
-**Potential pricing:** 30–60k NOK
+**Pricing:** 25–60k NOK (tiered)
 
 ### Recruitment (Rekruttering)
+**Template:** `recruitment-client-website.md`
+
 **Features:**
-- Job listings with filters
-- Application tracking system (ATS-lite)
+- Job listings with filters and search
+- ATS-lite (application tracking system)
 - Employer branding pages
-- Candidate matching
+- Candidate portal with profile management
 
 **Automations:**
-- New applications → n8n → CRM
+- New applications → n8n → CRM + auto-response
 - Interview scheduling → Calendar sync
 - Candidate email sequences
+- Status updates → Automated notifications
 
-**Potential pricing:** 20–50k NOK
+**Pricing:** 15–50k NOK (tiered)
 
 ---
 
