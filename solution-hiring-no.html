@@ -1,250 +1,632 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiring Automation | Simply Complex Solutions</title>
-    <meta name="description" content="Automated hiring website with resume screening, ATS integration, and interview scheduling.">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <title>Hiring System | Enterprise AI Automatisering</title>
+    <meta name="description" content="AI-drevet rekruttering for å effektivisere prosessen. CV screening, intervjubooking og kandidatsporing på ett sted.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hiring System | Enterprise AI Automatisering">
+    <meta property="og:description" content="AI-drevet rekruttering for å effektivisere prosessen. CV screening, intervjubooking og kandidatsporing på ett sted.">
+    <meta property="og:image" content="https://scs-marketplace.pages.dev/images/og-hiring.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pricing.css">
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
     <!-- Navigation -->
-    <nav class="main-nav">
+    <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">SCS</a>
-            <div class="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="../features.html">Features</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../services/websites.html">Website Services</a>
-                <a href="../contact.html">Contact</a>
+            <a href="index-no.html" class="logo">
+                <img src="assets/images/scs-logo.png" alt="Simply Complex Solutions" class="logo-image" style="height: 40px; width: auto;">
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#features">Funksjoner</a>
+                <a href="#how-it-works">Slik Fungerer Det</a>
+                <a href="#pricing">Priser</a>
+                <a href="resources.html">Resurser</a>
+                <a href="roi-calculator.html">ROI Kalkulator</a>
+                <a href="templates.html">Maler</a>
+                <a href="client-dashboard.html">Analytics</a>
+                <a href="dashboard.html" class="nav-btn">Dashboard</a>
+            </div>
+            <div class="language-switcher">
+                <button class="lang-btn active" id="langBtnNo">🇳🇴 Norsk</button>
+                <div class="lang-dropdown">
+                    <a href="solution-hiring.html" class="lang-option" data-lang="en">
+                        <span class="lang-flag">🇺🇸</span>
+                        <span class="lang-name">English</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
+    <style>
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+        @media (max-width: 900px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+            .language-switcher { position: fixed; top: 60px; right: 1rem; }
+        }
+
+        /* Language Switcher */
+        .language-switcher { position: relative; margin-left: 1rem; }
+        .lang-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; font-weight: 500; }
+        .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); transform: translateY(-1px); }
+        .lang-btn.active { background: var(--primary); border-color: var(--primary); }
+        .lang-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 0.5rem; min-width: 180px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.4); z-index: 100; }
+        .language-switcher:hover .lang-dropdown { display: block; animation: fadeIn 0.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+        .lang-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: #94a3b8; text-decoration: none; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s; }
+        .lang-option:hover { background: rgba(99, 102, 241, 0.15); color: #fff; }
+        .lang-option.active { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+        .lang-option .lang-flag { font-size: 1.1rem; }
+        .lang-option .lang-name { font-weight: 500; }
+    </style>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // Highlight active language
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const isNorwegian = currentPath.includes('-no.html') || currentPath === 'index-no.html';
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                const lang = option.getAttribute('data-lang');
+                if (lang === 'en' && !isNorwegian) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <h1>Hiring Automation</h1>
-            <p class="hero-tagline">Automated resume screening, ATS integration, and interview scheduling.</p>
-            <div class="hero-cta-group">
-                <a href="#features" class="btn btn-primary">See How It Works</a>
-                <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+        <div class="hero-content">
+            <div class="hero-badge">Rekruttering Automatisering</div>
+            <h1>Rekruttere Better, Raskere</h1>
+            <p class="hero-subtitle">AI-drevet automatisering som effektiviserer hele rekrutteringsprosessen fra CV til ansatt.</p>
+
+            <div class="outcome-metrics">
+                <div class="metric">
+                    <span class="metric-value">75%</span>
+                    <span class="metric-label">Mindre Tid</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">3x</span>
+                    <span class="metric-label">Flere Kandidater</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">50%</span>
+                    <span class="metric-label">Mindre Manuelt Arbeid</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#pricing" class="btn btn-primary">Se Priser</a>
+                <a href="#features" class="btn btn-secondary">Se Funksjoner</a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section" id="features">
-        <div class="container">
-            <h2 class="section-title">What We Build</h2>
-            <p class="section-subtitle">Beautiful, functional websites with automations built-in.</p>
+    <section id="features" class="features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Komplette Funksjoner</span>
+                <h2>Hva du Får</h2>
+                <p>Fullt utstyrt for å effektivisere rekrutteringsprosessen din.</p>
+            </div>
 
             <div class="features-grid">
-                <div class="card">
-                    <div class="card-icon">📄</div>
-                    <h3>Resume Screening</h3>
-                    <p>Automatic resume screening and scoring.</p>
-                    <ul class="card-features">
-                        <li>Resume parsing</li>
-                        <li>Skill extraction</li>
-                        <li>Candidate scoring</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            <path d="M12 12h.01M12 16h.01M12 20h.01M16 12h.01M16 16h.01M20 12h.01M20 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3>CV Screening</h3>
+                    <p>AI-analyse av CV-er for å finne riktige kandidater raskt.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">📅</div>
-                    <h3>Interview Scheduling</h3>
-                    <p>Automated interview scheduling and reminders.</p>
-                    <ul class="card-features">
-                        <li>Calendar sync</li>
-                        <li>Interview reminders</li>
-                        <li>Feedback collection</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Intervjubooking</h3>
+                    <p>Automatiser intervjubokinger med kandidater og interviewer.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">🔄</div>
-                    <h3>ATS Integration</h3>
-                    <p>Automated ATS sync and status updates.</p>
-                    <ul class="card-features">
-                        <li>ATS sync</li>
-                        <li>Status updates</li>
-                        <li>Reporting</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                    </div>
+                    <h3>Kandidatsporing</h3>
+                    <p>Full oversikt over kandidatstatus og fremdrift.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">🤖</div>
-                    <h3>AI Candidate Matching</h3>
-                    <p>AI-powered candidate matching based on job requirements.</p>
-                    <ul class="card-features">
-                        <li>AI matching</li>
-                        <li>Job alignment</li>
-                        <li>Scored matches</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                        </svg>
+                    </div>
+                    <h3>ATS Integrasjon</h3>
+                    <p>Full synkronisering med Lever, Greenhouse, og mer.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">📧</div>
-                    <h3>Automated Email</h3>
-                    <p>Automated email sequences for candidates and recruiters.</p>
-                    <ul class="card-features">
-                        <li>Candidate follow-ups</li>
-                        <li>Interview invites</li>
-                        <li>Rejection handling</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3>AI Screening</h3>
+                    <p>Automatisk screening basert på kriterier du definerer.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">📱</div>
-                    <h3>Mobile Responsive</h3>
-                    <p>Perfect on all devices—phones, tablets, desktops.</p>
-                    <ul class="card-features">
-                        <li>Mobile-friendly</li>
-                        <li>Fast loading</li>
-                        <li>Easy navigation</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <h3>Karaktervurdering</h3>
+                    <p>Automatisk scoring av kandidater basert på mønstre.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="section bg-secondary">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">We build automations. You get a launch-ready site in 5–7 days.</p>
+    <section id="how-it-works" class="how-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Slik Fungerer Det</span>
+                <h2>Fra CV til Ansatt på 12 Dager</h2>
+            </div>
 
-            <div class="steps-grid">
+            <div class="steps-timeline">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Book a Call</h3>
-                    <p>Share your requirements. We understand your needs.</p>
+                    <div class="step-content">
+                        <h4>Opprett Postering</h4>
+                        <p>Lag rekrutteringsoppdrag og definere rollen.</p>
+                    </div>
                 </div>
-
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>We Build</h3>
-                    <p>We build your website with automations built-in.</p>
+                    <div class="step-content">
+                        <h4>Koble ATS</h4>
+                        <p>Slå på integrasjon med Lever, Greenhouse, eller andre.</p>
+                    </div>
                 </div>
-
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>You Review</h3>
-                    <p>You approve everything before it goes live.</p>
+                    <div class="step-content">
+                        <h4>Definer Kriterier</h4>
+                        <p>Sett opp screening regler og intervjubokinger.</p>
+                    </div>
                 </div>
-
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>We Launch</h3>
-                    <p>We deploy to your domain. You’re live in 5–7 days.</p>
+                    <div class="step-content">
+                        <h4>Automatiser</h4>
+                        <p>Systemet automatisk screening, booker intervjuer, og oppdaterer status.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Simple Pricing</h2>
-            <p class="section-subtitle">No hidden fees. No setup fees.</p>
+    <!-- Reliability Section -->
+    <section class="reliability-section">
+        <div class="section-container">
+            <div class="reliability-grid">
+                <div class="reliability-content">
+                    <span class="section-badge">Enterprise Pålitelighet</span>
+                    <h2>Ingen Magi. Ingen Svarte Bokser.</h2>
+                    <p>Hver automatisering er observerbar, testbar og pålitelig.</p>
+
+                    <ul class="reliability-features">
+                        <li>
+                            <strong>Webhook Retry Logikk</strong>
+                            <span>Exponentiell backoff sikrer levering</span>
+                        </li>
+                        <li>
+                            <strong>Pre-Deployment Validering</strong>
+                            <span>System blokkerer hvis webhooks feiler</span>
+                        </li>
+                        <li>
+                            <strong>Dead-Letter Queue</strong>
+                            <span>Mislykkede hendelser fanges for revisjon</span>
+                        </li>
+                        <li>
+                            <strong>Real-Time Overvåking</strong>
+                            <span>Helse sjekker hver 30. sekund</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="reliability-visual">
+                    <div class="health-dashboard">
+                        <div class="health-header">
+                            <span class="status-indicator healthy"></span>
+                            <span>System Helse</span>
+                        </div>
+                        <div class="health-stats">
+                            <div class="stat">
+                                <span class="stat-value">99.97%</span>
+                                <span class="stat-label">Uptime</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">100+</span>
+                                <span class="stat-label">Ansatte/Mnd</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">92%</span>
+                                <span class="stat-label">Kvalitets Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Spesiell Lanserings Tilbud</span>
+                <h2>Få i Gang for Mindre</h2>
+                <p>Limited time pricing for new customers. Lock in these rates forever.</p>
+                <div class="pricing-badge">🎁 First 3 months at 50% off</div>
+            </div>
 
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="pricing-price">2,470 NOK</div>
-                    <div class="pricing-price-usd">$247</div>
+                <div class="pricing-card offer-card">
+                    <h3>Lead Genererings Motor</h3>
+                    <p class="pricing-subtitle">Automatisert lead scoring & outreach</p>
+                    <div class="pricing-price-lock">
+                        <span class="price-original">$497</span>
+                        <span class="price-current">$247</span>
+                    </div>
+                    <div class="price-period">/month • first 3 months</div>
+                    <div class="pricing-divider"></div>
                     <ul class="pricing-features">
-                        <li>5 pages</li>
-                        <li>Basic automations</li>
-                        <li>5 integrations</li>
-                        <li>5‑day delivery</li>
+                        <li>✅ AI-powered lead scoring</li>
+                        <li>✅ Automated email sequences</li>
+                        <li>✅ CRM integration (HubSpot, Salesforce)</li>
+                        <li>✅ 5,000 leads/month</li>
+                        <li>✅ Real-time analytics</li>
+                        <li>✅ Email support</li>
                     </ul>
-                    <a href="../contact.html" class="pricing-cta">Get Started</a>
+                    <a href="setup.html?bundle=starter" class="btn btn-outline">Get Started</a>
+                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
                 </div>
 
-                <div class="pricing-card featured">
-                    <div class="featured-badge">Most Popular</div>
-                    <h3>Professional</h3>
-                    <div class="pricing-price">5,970 NOK</div>
-                    <div class="pricing-price-usd">$597</div>
+                <div class="pricing-card featured offer-card">
+                    <div class="offer-savings">SPAR 40%</div>
+                    <h3>Kold Outreach Motor</h3>
+                    <p class="pricing-subtitle">Skaler din outbound kampanjer</p>
+                    <div class="pricing-price-lock">
+                        <span class="price-original">$997</span>
+                        <span class="price-current">$597</span>
+                    </div>
+                    <div class="price-period">/month • first 3 months</div>
+                    <div class="pricing-divider"></div>
                     <ul class="pricing-features">
-                        <li>15 pages</li>
-                        <li>Advanced automations</li>
-                        <li>15 integrations</li>
-                        <li>7‑day delivery</li>
+                        <li>✅ Alt i Lead Gen</li>
+                        <li>✅ Multi-kanal outreach (Email, LinkedIn)</li>
+                        <li>✅ A/B testing & optimalisering</li>
+                        <li>✅ 25,000 leads/month</li>
+                        <li>✅ Avansert pipeline analytics</li>
+                        <li>✅ Prioritet support</li>
                     </ul>
-                    <a href="../contact.html" class="pricing-cta">Get Started</a>
+                    <a href="setup.html?bundle=professional" class="btn btn-primary">Get Started</a>
+                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
                 </div>
 
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="pricing-price">4,970 NOK</div>
-                    <div class="pricing-price-usd">$497</div>
+                <div class="pricing-card offer-card">
+                    <h3>Rekrutterings Motor</h3>
+                    <p class="pricing-subtitle">Automatisert ansettelse & kandidatstyring</p>
+                    <div class="pricing-price-lock">
+                        <span class="price-original">$2,497</span>
+                        <span class="price-current">$1,497</span>
+                    </div>
+                    <div class="price-period">/month • first 3 months</div>
+                    <div class="pricing-divider"></div>
                     <ul class="pricing-features">
-                        <li>Unlimited pages</li>
-                        <li>Custom automations</li>
-                        <li>Unlimited integrations</li>
-                        <li>10‑day delivery</li>
+                        <li>✅ AI CV screening</li>
+                        <li>✅ Automatisert intervjubooking</li>
+                        <li>✅ Kandidat sporing & analytics</li>
+                        <li>✅ ATS integrasjon (Lever, Greenhouse)</li>
+                        <li>✅ Ubegrenset kandidater</li>
+                        <li>✅ Dedikert support</li>
                     </ul>
-                    <a href="../contact.html" class="pricing-cta">Contact Us</a>
+                    <a href="setup.html?bundle=enterprise" class="btn btn-outline">Get Started</a>
+                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
                 </div>
+            </div>
+
+            <div class="pricing-trust">
+                <div class="trust-item">🛡️ 30-dagers pengene tilbake garanti</div>
+                <div class="trust-item">🔒 SOC 2 Type II sertifisert</div>
+                <div class="trust-item">⚡ 2-timers gjennomsnitt oppsettstid</div>
+                <div class="trust-item">📞 24/7 support inkludert</div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Ready to Build?</h2>
-            <p class="section-subtitle">Get a quote in 24 hours. No obligations.</p>
-            <a href="../contact.html" class="btn btn-primary">Get a Quote</a>
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2>Vanlige Spørsmål</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Hvor lenge tar oppsett?</h4>
+                    <p>De fleste teams er oppe og løper på 2 timer eller mindre. Guidet oppsettet vårt kobler integrasjonene dine og validerer alt automatisk.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Hvilke ATS integrasjoner støttes?</h4>
+                    <p>Lever, Greenhouse, Workable, Ashby, og mer.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Kan AI screen CV-er?</h4>
+                    <p>Ja! AI-analyserer mønstre og matcher mot kriterier du definerer.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Hvordan fungerer intervjubooking?</h4>
+                    <p>Automatiser bokinger med kandidater og interviewer via integrasjon.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Kan jeg tilpasse kriterier?</h4>
+                    <p>Ja! Definer dine egne screening regler og scoring system.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Hvordan overvåker jeg rekruttering?</h4>
+                    <p>Live dashbord viser kandidatstatus, dybde og vellykkede ansettelser.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="../features.html">Features</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../contact.html">Contact</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index-no.html" class="logo">
+                        <img src="assets/images/scs-logo.png" alt="Simply Complex Solutions" class="logo-image" style="height: 40px; width: auto;">
+                    </a>
+                    <p>Enterprise AI automatisering pakker som faktisk fungerer.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/simplycomplex" target="_blank" rel="noopener" title="Twitter">𝕏</a>
+                        <a href="https://linkedin.com/company/simplycomplex" target="_blank" rel="noopener" title="LinkedIn">in</a>
+                        <a href="https://github.com/simplycomplex" target="_blank" rel="noopener" title="GitHub">⌘</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Løsninger</h4>
+                    <a href="solution-sales-no.html">Salg Eksepsjonalitet</a>
+                    <a href="solution-support-no.html">Support Automatisering</a>
+                    <a href="solution-hiring-no.html">Rekrutteringssystem</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Firma</h4>
+                    <a href="about.html">Om</a>
+                    <a href="blog.html">Blogg</a>
+                    <a href="careers.html">Karriere</a>
+                    <a href="contact.html">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resurser</h4>
+                    <a href="resources.html">Gratis Nedlastinger</a>
+                    <a href="changelog.html">Endringslogg</a>
+                    <a href="status.html">Status</a>
+                    <a href="compare.html">Hvorfor Oss</a>
+                </div>
             </div>
-            <div class="footer-copy">
-                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+
+            <!-- Newsletter Signup -->
+            <div class="footer-newsletter">
+                <h4>Hold Deg Oppdatert</h4>
+                <p>Få automatisering tips og produktoppdateringer.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Skriv inn din e-post" required>
+                    <button type="submit" class="btn btn-primary">Abonner</button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Simply Complex Solutions. Alle rettigheter reservert.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <a href="?lang=no" class="lang-btn" id="lang-no">🇳🇴 Norsk</a>
-        <a href="?lang=en" class="lang-btn active" id="lang-en">🇺🇸 EN</a>
+    <!-- Floating Chat Widget -->
+    <div class="floating-chat" id="floatingChat">
+        <button class="chat-toggle" onclick="toggleChat()" aria-label="Åpne chat">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-header">
+                <span>💬 Trenger du hjelp?</span>
+                <button onclick="toggleChat()" aria-label="Lukk chat">×</button>
+            </div>
+            <div class="chat-body">
+                <p>Hei! 👋 Hvordan kan vi hjelpe deg i dag?</p>
+                <div class="chat-options">
+                    <a href="solution-sales-no.html" class="chat-option">Salg Automatisering</a>
+                    <a href="solution-support-no.html" class="chat-option">Support Automatisering</a>
+                    <a href="solution-hiring-no.html" class="chat-option">Rekruttering Automatisering</a>
+                    <a href="contact.html" class="chat-option">Kontakt Salg</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // Language switching
-        const lang = new URLSearchParams(window.location.search).get('lang') || 'en';
-        document.getElementById('lang-' + lang).classList.add('active');
+    <style>
+        .floating-chat { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+        .chat-toggle { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #a855f7); border: none; color: #fff; cursor: pointer; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .chat-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(99, 102, 241, 0.5); }
+        .chat-popup { position: absolute; bottom: 70px; right: 0; width: 280px; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s; }
+        .chat-popup.open { opacity: 1; visibility: visible; transform: translateY(0); }
+        .chat-header { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .chat-header button { background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; line-height: 1; }
+        .chat-body { padding: 1rem; }
+        .chat-body p { margin-bottom: 1rem; color: #94a3b8; font-size: 0.9rem; }
+        .chat-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .chat-option { padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.875rem; transition: all 0.2s; text-decoration: none; }
+        .chat-option:hover { background: rgba(99, 102, 241, 0.2); border-color: #6366f1; }
+    </style>
 
-        // Update URL without reload
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const langParam = btn.id.replace('lang-', '');
-                const url = new URL(window.location);
-                url.searchParams.set('lang', langParam);
-                window.location.href = url.toString();
-            });
-        });
+    <script>
+        function toggleChat() {
+            document.getElementById('chatPopup').classList.toggle('open');
+        }
     </script>
+
+    <script src="js/main.js"></script>
+
+    <!-- Comprehensive Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <a href="index-no.html" class="footer-logo">
+                        <img src="assets/images/scs-logo.png" alt="Simply Complex Solutions" style="height: 32px;">
+                    </a>
+                    <p>Enterprise AI automatisering pakker for Salg, Support, og Rekruttering.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="GitHub">⌘</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Løsninger</h4>
+                    <ul>
+                        <li><a href="solution-sales-no.html">Salg Automatisering</a></li>
+                        <li><a href="solution-support-no.html">Support Automatisering</a></li>
+                        <li><a href="solution-hiring-no.html">Rekruttering Automatisering</a></li>
+                        <li><a href="solution-megling-no.html">Eiendom (NO)</a></li>
+                        <li><a href="solution-investering-no.html">Investering (NO)</a></li>
+                        <li><a href="solution-kundeservice-no.html">Kundeservice (NO)</a></li>
+                        <li><a href="n8n-store.html">n8n Maler</a></li>
+                        <li><a href="integrations.html">Integrasjoner</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Produkter</h4>
+                    <ul>
+                        <li><a href="pricing.html">Pris Planer</a></li>
+                        <li><a href="templates.html">Alle Maler</a></li>
+                        <li><a href="roi-calculator.html">ROI Kalkulator</a></li>
+                        <li><a href="client-dashboard.html">Analytics Demo</a></li>
+                        <li><a href="compare.html">Sammenlign Tiers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resurser</h4>
+                    <ul>
+                        <li><a href="resources.html">Gratis Nedlastinger</a></li>
+                        <li><a href="getting-started.html">Kom I Gang</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="blog.html">Blogg</a></li>
+                        <li><a href="setup.html">Setup Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Firma</h4>
+                    <ul>
+                        <li><a href="about.html">Om Oss</a></li>
+                        <li><a href="careers.html">Karriere</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><a href="status.html">System Status</a></li>
+                        <li><a href="changelog.html">Endringslogg</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Juridisk</h4>
+                    <ul>
+                        <li><a href="privacy.html">Personvern Policy</a></li>
+                        <li><a href="terms.html">Vilkår for Tjeneste</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Simply Complex Solutions. Alle rettigheter reservert.</p>
+                <p>Powered by n8n & Cloudflare</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .site-footer { background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.1); padding: 4rem 0 2rem; margin-top: 4rem; }
+        .footer-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr); gap: 2rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col ul li a { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: #fff; }
+        .footer-brand p { color: #64748b; font-size: 0.875rem; margin: 1rem 0; }
+        .footer-social { display: flex; gap: 1rem; }
+        .footer-social a { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none; transition: all 0.2s; }
+        .footer-social a:hover { background: #6366f1; color: #fff; }
+    </style>
 </body>
 </html>
