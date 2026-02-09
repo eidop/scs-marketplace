@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Automation | Simply Complex Solutions</title>
+    <meta name="description" content="Automate deal flow, portfolio analysis, and investor reporting for investment firms and VCs.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scs-marketplace.pages.dev/solution-investing.html">
+    <meta property="og:title" content="Investment Automation | Simply Complex Solutions">
+    <meta property="og:description" content="Automate deal flow, portfolio analysis, and investor reporting for investment firms.">
+    <meta property="og:image" content="https://scs-marketplace.pages.dev/images/og-investing.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Investment Automation">
+    <meta name="twitter:description" content="AI automation for investment firms and VCs.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pricing.css">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" style="height: 32px;">
+                <span class="logo-text">Simply Complex</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="templates.html">Templates</a>
+                <a href="integrations.html">Integrations</a>
+                <a href="client-dashboard.html">Analytics</a>
+                <a href="dashboard.html" class="nav-btn">Dashboard</a>
+            </div>
+            <div class="language-switcher" onclick="toggleLanguage()">
+                <button class="lang-btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
+                    🇺🇸 English
+                </button>
+                <div class="lang-dropdown" id="langDropdown" style="position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 120px; display: none;">
+                    <a href="solution-investering-no.html" style="display: block; padding: 0.5rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem;">🇳🇴 Norsk</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function toggleLanguage() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-switcher')) {
+                const dropdown = document.getElementById('langDropdown');
+                if (dropdown) dropdown.style.display = 'none';
+            }
+        });
+    </script>
+
+    <style>
+        .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; background: linear-gradient(135deg, #fff 0%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 1.25rem; color: #94a3b8; max-width: 700px; margin: 0 auto 2rem; }
+        .badge { display: inline-block; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; color: #10b981; margin-bottom: 1.5rem; }
+        .section { padding: 4rem 2rem; }
+        .section-container { max-width: 1280px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .grid { display: grid; gap: 1.5rem; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
+        .card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-4px); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #fff; }
+        .card p { color: #94a3b8; line-height: 1.6; }
+        .card ul { list-style: none; padding: 0; margin: 1rem 0 0; }
+        .card ul li { padding: 0.5rem 0; color: #cbd5e1; display: flex; align-items: flex-start; gap: 0.75rem; }
+        .card ul li::before { content: "✓"; color: #10b981; font-weight: bold; }
+        .cta-section { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1)); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 5rem 2rem; text-align: center; }
+        .cta-card { max-width: 700px; margin: 0 auto; }
+        .cta-card h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .cta-card p { color: #94a3b8; font-size: 1.25rem; margin-bottom: 2rem; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-primary { background: linear-gradient(135deg, #10b981, #06b6d4); color: #fff; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(16, 185, 129, 0.4); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
+        .btn-outline:hover { border-color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        .pricing-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; text-align: center; }
+        .pricing-card.featured { border-color: #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1)); }
+        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 1.5rem 0 0.5rem; }
+        .price-period { color: #64748b; font-size: 0.875rem; margin-bottom: 1.5rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .stat-item { text-align: center; padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-radius: 12px; }
+        .stat-value { font-size: 2.5rem; font-weight: 800; color: #10b981; }
+        .stat-label { color: #94a3b8; font-size: 0.875rem; margin-top: 0.5rem; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+        @media (max-width: 900px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        }
+        .language-switcher { position: relative; margin-left: 1rem; }
+        .lang-dropdown { z-index: 100; }
+        .lang-dropdown a:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge">💼 Investment Automation</div>
+        <h1>Streamline Your Investment Operations</h1>
+        <p>Automate deal flow, portfolio analysis, and investor reporting. Focus on finding great investments, not administrative tasks.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="setup.html?bundle=professional" class="btn btn-primary">Get Started →</a>
+            <a href="contact.html" class="btn btn-outline">Book Demo</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="section-container">
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="stat-value">68%</div>
+                    <div class="stat-label">Faster Deal Processing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">45%</div>
+                    <div class="stat-label">More Deals Reviewed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">99%</div>
+                    <div class="stat-label">Reporting Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Portfolio Monitoring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Complete Investment Automation</h2>
+                <p style="color: #94a3b8; font-size: 1.125rem; max-width: 600px; margin: 0 auto;">Everything you need to manage your investments more efficiently.</p>
+            </div>
+            <div class="grid grid-3">
+                <!-- Feature 1 -->
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Deal Flow Management</h3>
+                    <p>Track and manage every deal from pipeline to close. Never let opportunities slip through the cracks.</p>
+                    <ul>
+                        <li>Centralized deal pipeline</li>
+                        <li>Stage tracking</li>
+                        <li>Due diligence reminders</li>
+                    </ul>
+                </div>
+                <!-- Feature 2 -->
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>Portfolio Dashboard</h3>
+                    <p>Real-time view of your entire portfolio. Track performance, valuations, and exits at a glance.</p>
+                    <ul>
+                        <li>Automated valuations</li>
+                        <li>Performance metrics</li>
+                        <li>Exit timeline tracking</li>
+                    </ul>
+                </div>
+                <!-- Feature 3 -->
+                <div class="card">
+                    <div class="card-icon">📄</div>
+                    <h3>Investor Reporting</h3>
+                    <p>Generate professional reports automatically. Keep your LPs informed without the manual work.</p>
+                    <ul>
+                        <li>Automated report generation</li>
+                        <li>Customizable templates</li>
+                        <li>Secure investor portal</li>
+                    </ul>
+                </div>
+                <!-- Feature 4 -->
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>LP Portal</h3>
+                    <p>Secure self-service portal for limited partners. Access documents, reports, and statements anytime.</p>
+                    <ul>
+                        <li>Document repository</li>
+                        <li>Capital account tracking</li>
+                        <li>Secure messaging</li>
+                    </ul>
+                </div>
+                <!-- Feature 5 -->
+                <div class="card">
+                    <div class="card-icon">📝</div>
+                    <h3>Fund Administration</h3>
+                    <p>Automate fund operations — capital calls, distributions, and fee calculations.</p>
+                    <ul>
+                        <li>Automated capital calls</li>
+                        <li>Distribution tracking</li>
+                        <li>Fee management</li>
+                    </ul>
+                </div>
+                <!-- Feature 6 -->
+                <div class="card">
+                    <div class="card-icon">🔗</div>
+                    <h3>Data Integrations</h3>
+                    <p>Connect with your existing tools. CRM, accounting, and data providers all in one place.</p>
+                    <ul>
+                        <li>CRM integration</li>
+                        <li>Accounting software</li>
+                        <li>Market data feeds</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works" style="background: rgba(30, 41, 59, 0.4);">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p style="color: #94a3b8; font-size: 1.125rem;">Get up and running in under a week.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 800; color: #10b981; margin-bottom: 1rem;">1</div>
+                    <h3>Connect Your Data</h3>
+                    <p>Link your CRM, accounting, and data sources. We work with all major platforms.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 800; color: #10b981; margin-bottom: 1rem;">2</div>
+                    <h3>Configure Your Workflows</h3>
+                    <p>Set up deal stages, reporting templates, and investor communication preferences.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 800; color: #10b981; margin-bottom: 1rem;">3</div>
+                    <h3>Automate & Scale</h3>
+                    <p>Reports generate automatically. Investors stay informed. You focus on deals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Flexible Investment Solutions</h2>
+                <p style="color: #94a3b8; font-size: 1.125rem;">Pricing that grows with your fund.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="pricing-card">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Seed Stage</h3>
+                    <div class="price">$997</div>
+                    <div class="price-period">one-time</div>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0; text-align: left;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Deal pipeline management</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Basic portfolio dashboard</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Investor portal</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ 10 integrations</li>
+                    </ul>
+                    <a href="setup.html?bundle=professional" class="btn btn-outline" style="width: 100%; justify-content: center; box-sizing: border-box;">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: #fff; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Most Popular</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Growth Stage</h3>
+                    <div class="price">$2,497</div>
+                    <div class="price-period">one-time</div>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0; text-align: left;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Everything in Seed</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Advanced reporting</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Fund administration</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ 25 integrations</li>
+                    </ul>
+                    <a href="setup.html?bundle=enterprise" class="btn btn-primary" style="width: 100%; justify-content: center; box-sizing: border-box;">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Fund Platform</h3>
+                    <div class="price">$4,997</div>
+                    <div class="price-period">one-time</div>
+                    <ul style="list-style: none; padding: 0; margin: 1.5rem 0; text-align: left;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Everything in Growth</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Multi-fund support</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Custom development</li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Unlimited integrations</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center; box-sizing: border-box;">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-card">
+            <h2>Ready to Modernize Your Investment Operations?</h2>
+            <p>Join 200+ firms who invest smarter with automation.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="setup.html?bundle=professional" class="btn btn-primary">Start Free Trial →</a>
+                <a href="contact.html" class="btn btn-outline">Book a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0f172a; border-top: 1px solid rgba(255,255,255,0.1); padding: 3rem 2rem;">
+        <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+            <div>
+                <div style="font-weight: 700; font-size: 1.125rem; margin-bottom: 1rem;">Simply Complex</div>
+                <p style="color: #94a3b8; font-size: 0.875rem;">Enterprise AI automation for modern businesses.</p>
+            </div>
+            <div>
+                <div style="font-weight: 600; margin-bottom: 1rem;">Solutions</div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="solution-sales.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Sales</a>
+                    <a href="solution-support.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Support</a>
+                    <a href="solution-hiring.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Hiring</a>
+                    <a href="solution-investing.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Investment</a>
+                </div>
+            </div>
+            <div>
+                <div style="font-weight: 600; margin-bottom: 1rem;">Resources</div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="templates.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Templates</a>
+                    <a href="integrations.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Integrations</a>
+                    <a href="getting-started.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Getting Started</a>
+                    <a href="resources.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Free Downloads</a>
+                </div>
+            </div>
+            <div>
+                <div style="font-weight: 600; margin-bottom: 1rem;">Company</div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="about.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">About</a>
+                    <a href="blog.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Blog</a>
+                    <a href="careers.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Careers</a>
+                    <a href="contact.html" style="color: #94a3b8; text-decoration: none; font-size: 0.875rem;">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div style="max-width: 1280px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #64748b; font-size: 0.875rem;">
+            © 2026 Simply Complex Solutions. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

@@ -153,22 +153,32 @@
     <url>
         <loc>https://scs-marketplace.pages.dev/solution-megling.html</loc>
         <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-real-estate.html</loc>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://scs-marketplace.pages.dev/solution-megling-no.html</loc>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://scs-marketplace.pages.dev/solution-investering.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-investing.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://scs-marketplace.pages.dev/solution-investering-no.html</loc>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://scs-marketplace.pages.dev/solution-kundeservice.html</loc>
