@@ -1,7 +1,9 @@
-name = "scs-marketplace"
-compatibility_date = "2026-02-07"
-pages_build_output_dir = "."
+name = "scs-demo"
+compatibility_date = "2026-02-09"
 
-[vars]
-SITE_TITLE = "Simply Complex Solutions"
-SITE_DESCRIPTION = "Premium Automation Upgrades"
+[build]
+command = "node scripts/build-demo.js"
+cwd = "."
+
+[site]
+bucket = "./public"

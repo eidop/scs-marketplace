@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "goal": "hybrid-rotation-best-outcome",
+  "strategy": {
+    "sameTierKeyFirst": true,
+    "providerFailoverSecond": true,
+    "cooldownLastResort": true,
+    "stickyPerTask": true,
+    "rebalanceBetweenTasks": true
+  },
+  "tiers": [
+    {
+      "name": "fast-default",
+      "models": [
+        "qwen-portal/coder-model",
+        "moonshot/kimi-k2.5",
+        "minimax-portal/MiniMax-M2.1-lightning",
+        "groq/llama-3.1-70b-versatile",
+        "groq/llama-3.1-8b-instant"
+      ]
+    },
+    {
+      "name": "quality",
+      "models": [
+        "openrouter/anthropic/claude-sonnet-4-20250514",
+        "anthropic/claude-sonnet-4-20250514",
+        "openai-codex/gpt-5.2"
+      ]
+    },
+    {
+      "name": "fallback",
+      "models": [
+        "openrouter/anthropic/claude-haiku-3-20250514",
+        "anthropic/claude-haiku-3-5-20250514",
+        "openrouter/deepseek/deepseek-chat",
+        "deepseek/deepseek-chat",
+        "xiaomi/mimo-v2-flash",
+        "ollama/llama3.1:8b"
+      ]
+    }
+  ],
+  "health": {
+    "failureWindowMinutes": 30,
+    "penaltyOn429": 3,
+    "penaltyOn5xx": 2,
+    "penaltyOnTimeout": 2,
+    "maxPenalty": 10,
+    "decayPerMinute": 0.5
+  }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCS Logo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a0f;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .logo-container {
+            text-align: center;
+            padding: 60px 80px;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%);
+            border-radius: 20px;
+        }
+        .logo-ring {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #6366f1;
+            border-right-color: #a855f7;
+            position: relative;
+            animation: spin 8s linear infinite;
+        }
+        .logo-ring::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-bottom-color: #6366f1;
+            border-left-color: #a855f7;
+            opacity: 0.5;
+        }
+        .logo-ring::after {
+            content: '⚡';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .scs-text {
+            font-size: 72px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 12px;
+            margin-bottom: 15px;
+        }
+        .full-name {
+            font-size: 16px;
+            color: #a855f7;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        .tagline {
+            font-size: 14px;
+            color: #6366f1;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo-ring"></div>
+        <div class="scs-text">SCS</div>
+        <div class="full-name">Simply Complex Solutions</div>
+        <div class="tagline">AUTOMATE. SCALE. GROW.</div>
+    </div>
+</body>
+</html>

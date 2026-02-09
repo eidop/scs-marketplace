@@ -1,17 +1,9 @@
 {
-  "name": "scs-market-place",
-  "version": "1.0.0",
-  "description": "Simply Complex Solutions - Premium Automation Upgrades",
-  "dependencies": {
-    "dotenv": "^17.2.4",
-    "form-data": "^4.0.5",
-    "nodemailer": "^8.0.1"
-  },
+  "name": "scs-marketplace",
+  "version": "2.0.0",
   "scripts": {
-    "deploy": "wrangler pages deploy ./dist --project-name=scs-market-place",
-    "build": "mkdir -p dist/assets && cp -r assets/* dist/assets/ && cp index.html dist/ && cp _headers dist/"
+    "build": "node scripts/build-demo.js",
+    "preview": "node scripts/preview.js"
   },
-  "devDependencies": {
-    "wrangler": "^3.114.17"
-  }
+  "devDependencies": {}
 }

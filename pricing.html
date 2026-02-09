@@ -70,11 +70,10 @@
                 <a href="contact.html" class="nav-btn">Contact</a>
             </div>
             <div class="language-switcher">
-                <button class="lang-btn active">🇺🇸 EN</button>
+                <button class="lang-btn active" id="langBtnEn">🇺🇸 EN</button>
                 <div class="lang-dropdown">
-                    <a href="solution-megling.html" class="lang-option">🏠 Eiendom</a>
-                    <a href="solution-investering.html" class="lang-option">💼 Investering</a>
-                    <a href="solution-kundeservice.html" class="lang-option">🎧 Kundeservice</a>
+                    <a href="?lang=en" class="lang-option" data-lang="en">🇺🇸 English</a>
+                    <a href="?lang=no" class="lang-option" data-lang="no">🇳🇴 Norsk</a>
                 </div>
             </div>
         </div>
@@ -483,7 +482,55 @@
 
 
     <script src="js/main.js"></script>
-    
+
+    <!-- Language Switcher Script -->
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        function setLanguage(lang) {
+            const baseUrl = window.location.pathname.split('?')[0];
+            const url = lang === 'no' ? baseUrl + '?lang=no' : baseUrl;
+            window.location.href = url;
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + '=';
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = 'expires=' + date.toUTCString();
+            document.cookie = name + '=' + value + ';' + expires + ';path=/';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const langFromUrl = params.get('lang');
+
+            if (langFromUrl) {
+                setCookie('lang', langFromUrl, 1);
+            }
+
+            const langBtnEn = document.getElementById('langBtnEn');
+            if (langBtnEn) {
+                langBtnEn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setLanguage('en');
+                });
+            }
+        });
+    </script>
+
     <!-- Quick Nav Bar -->
     <div class="quick-nav-bar">
         <div class="quick-nav-content">

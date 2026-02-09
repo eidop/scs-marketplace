@@ -1,0 +1,136 @@
+{
+  "version": "1.0",
+  "description": "Model rotation reasons and corresponding model choices",
+  "rules": {
+    "rotate_on_high_token_usage": "Switch to a cheaper model when token usage exceeds 70%",
+    "rotate_for_image_generation": "Switch to a multimodal model (GPT‑4o, Claude 3.5 Sonnet)",
+    "rotate_for_code_tasks": "Use qwen-portal/coder-model or similar",
+    "rotate_for_heavy_reasoning": "Use llama3.1:70b or mixtral:8x7b",
+    "rotate_for_quick_tasks": "Use llama3.1:8b or similar fast model"
+  },
+  "rotation_rules": {
+    "high_token_usage": {
+      "threshold_percent": 70,
+      "model": "llama3.1:8b",
+      "reason": "Reduce token usage and prevent burnout",
+      "cooldown_minutes": 30
+    },
+    "image_generation": {
+      "model": "gpt-4o",
+      "reason": "Need image generation capabilities",
+      "fallback": "claude-3.5-sonnet"
+    },
+    "code_tasks": {
+      "model": "qwen-portal/coder-model",
+      "reason": "Need code generation and debugging",
+      "fallback": "llama3.1:70b"
+    },
+    "heavy_reasoning": {
+      "model": "mixtral:8x7b",
+      "reason": "Need complex reasoning and analysis",
+      "fallback": "llama3.1:70b"
+    },
+    "quick_tasks": {
+      "model": "llama3.1:8b",
+      "reason": "Need fast responses for simple queries",
+      "fallback": "qwen-portal/coder-model"
+    }
+  },
+  "models": {
+    "llama3.1:8b": {
+      "size": "7B",
+      "speed": "Fast",
+      "capabilities": [
+        "Code",
+        "Short QA",
+        "Quick responses"
+      ],
+      "token_limit": "8k",
+      "use_cases": [
+        "Quick queries",
+        "Low‑token tasks",
+        "High‑frequency interactions"
+      ]
+    },
+    "llama3.1:70b": {
+      "size": "70B",
+      "speed": "Medium",
+      "capabilities": [
+        "Complex reasoning",
+        "Code generation",
+        "Long context"
+      ],
+      "token_limit": "128k",
+      "use_cases": [
+        "Heavy reasoning",
+        "Long documents",
+        "Code debugging"
+      ]
+    },
+    "mixtral:8x7b": {
+      "size": "34B",
+      "speed": "Medium",
+      "capabilities": [
+        "Multilingual",
+        "Complex prompts",
+        "Reasoning"
+      ],
+      "token_limit": "32k",
+      "use_cases": [
+        "Heavy reasoning",
+        "Multilingual tasks",
+        "Complex analysis"
+      ]
+    },
+    "gemma2:13b": {
+      "size": "13B",
+      "speed": "Fast",
+      "capabilities": [
+        "Good reasoning",
+        "Chat",
+        "Code"
+      ],
+      "token_limit": "32k",
+      "use_cases": [
+        "General tasks",
+        "Balanced performance"
+      ]
+    },
+    "qwen-portal/coder-model": {
+      "size": "Coder model",
+      "speed": "Fast",
+      "capabilities": [
+        "Code generation",
+        "Debugging",
+        "API integration"
+      ],
+      "token_limit": "8k",
+      "use_cases": [
+        "Code tasks",
+        "Scripting",
+        "API development"
+      ]
+    },
+    "gpt-4o": {
+      "size": "Multimodal",
+      "speed": "Medium",
+      "capabilities": [
+        "Image generation",
+        "Text",
+        "Complex reasoning"
+      ],
+      "token_limit": "128k",
+      "use_cases": [
+        "Image generation",
+        "Multimodal tasks"
+      ]
+    }
+  },
+  "fallback_models": {
+    "high_token_usage": "llama3.1:8b",
+    "image_generation": "claude-3.5-sonnet",
+    "code_tasks": "llama3.1:70b",
+    "heavy_reasoning": "llama3.1:70b",
+    "quick_tasks": "qwen-portal/coder-model"
+  }
+}

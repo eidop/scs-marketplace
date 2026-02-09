@@ -1,0 +1,27 @@
+const fs = require('fs');
+const content = fs.readFileSync('C:/Users/Dennn/.openclaw/workspace/apps/template-marketplace/dist/templates.html', 'utf8');
+
+// Find the Learn More links
+const linkMatch = content.match(/<a href=\"([^\"]+)\" class=\"buy-link\">/g);
+
+if (linkMatch) {
+    console.log('=== LEARN MORE LINKS IN templates.html ===\n');
+    linkMatch.forEach(link => {
+        const url = link.match(/href=\"([^\"]+)\"/);
+        console.log(url ? url[1] : link);
+    });
+}
+
+// Check if detail pages exist
+console.log('\n=== CHECKING DETAIL PAGES ===\n');
+const detailPages = [
+    'template-recruitment.html',
+    'template-support-ticket.html',
+    'template-cold-outreach.html',
+    'template-lead-generation.html'
+];
+
+detailPages.forEach(page => {
+    const exists = fs.existsSync('C:/Users/Dennn/.openclaw/workspace/apps/template-marketplace/dist/templates/' + page);
+    console.log(page + ': ' + (exists ? 'EXISTS' : 'MISSING'));
+});

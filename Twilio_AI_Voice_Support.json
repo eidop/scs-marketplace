@@ -1,0 +1,227 @@
+{
+  "name": "Twilio AI Voice Support",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1",
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://your-n8n-url/webhook/twilio-call",
+        "options": {}
+      },
+      "id": "2",
+      "name": "Twilio Incoming Call",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const formData = $input.all()[0].json;\nconst twilioBody = formData.Body || formData.msg || 'Ingen tekst';\n\nreturn {\n  json: {\n    callSid: formData.CallSid || formData.callSid,\n    callerNumber: formData.From || formData.from,\n    calleeNumber: formData.To || formData.to,\n    text: twilioBody,\n    timestamp: new Date().toISOString(),\n    direction: 'incoming',\n    status: 'started'\n  }\n};"
+      },
+      "id": "3",
+      "name": "Parse Twilio Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "upload",
+        "fileName": "={{$now.toISOString() + '-' + $json.callSid + '.json'}}",
+        "data": "={{JSON.stringify($json, null, 2)}}",
+        "fileNameParameter": "fileName",
+        "dataParameter": "data"
+      },
+      "id": "4",
+      "name": "Save Call Log",
+      "type": "n8n-nodes-base.fileOperation",
+      "typeVersion": 1,
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"gpt-4\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Du er en kundeservice-robot. Svare konisnt, professionelt og hjelpsomt. Transkripsjon: {{$json.text}}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 500\n}"
+      },
+      "id": "5",
+      "name": "AI Analyse og Svar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiResponse = $input.item.json.choices[0].message.content;\n\nreturn {\n  json: {\n    ...$input.item.json,\n    aiResponse: aiResponse,\n    timestamp: new Date().toISOString(),\n    status: 'ai_processed'\n  }\n};"
+      },
+      "id": "6",
+      "name": "Parse AI Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1250, 300]
+    },
+    {
+      "parameters": {
+        "resource": "notion",
+        "operation": "createDatabaseItem",
+        "databaseId": "YOUR_NOTION_DATABASE_ID",
+        "properties": "={{{\n  'Samtale': {\n    'title': [{\n      'text': {\n        'content': 'Call ' + $json.callSid\n      }\n    }]\n  },\n  'Kunde': {\n    'rich_text': [{\n      'text': {\n        'content': $json.callerNumber\n      }\n    }]\n  },\n  'Transkripsjon': {\n    'rich_text': [{\n      'text': {\n        'content': $json.text\n      }\n    }]\n  },\n  'AI Svar': {\n    'rich_text': [{\n      'text': {\n        'content': $json.aiResponse\n      }\n    }]\n  },\n  'Tidspunkt': {\n    'date': {\n      'start': $json.timestamp\n    }\n  }\n}}}"
+      },
+      "id": "7",
+      "name": "Save to Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [1450, 300]
+    },
+    {
+      "parameters": {
+        "resource": "http",
+        "operation": "request",
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/YOUR_TWILIO_ACCOUNT_SID/Voice/Calls.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Basic " + Buffer.from(YOUR_TWILIO_ACCOUNT_SID + ":" + YOUR_TWILIO_AUTH_TOKEN).toString('base64')
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Url",
+              "value": "https://your-n8n-url/webhook/twilio-voice"
+            },
+            {
+              "name": "From",
+              "value": "YOUR_TWILIO_PHONE_NUMBER"
+            },
+            {
+              "name": "To",
+              "value": "={{$json.callerNumber}}"
+            },
+            {
+              "name": "Method",
+              "value": "POST"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8",
+      "name": "Voice Webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1650, 300]
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Twilio Incoming Call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twilio Incoming Call": {
+      "main": [
+        [
+          {
+            "node": "Parse Twilio Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Twilio Data": {
+      "main": [
+        [
+          {
+            "node": "Save Call Log",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Analyse og Svar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Call Log": {
+      "main": [
+        [
+          {
+            "node": "AI Analyse og Svar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Analyse og Svar": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Response": {
+      "main": [
+        [
+          {
+            "node": "Save to Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Notion": {
+      "main": [
+        [
+          {
+            "node": "Voice Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-02-09T14:00:00.000Z",
+  "versionId": "1"
+}

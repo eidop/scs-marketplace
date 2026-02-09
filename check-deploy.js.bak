@@ -1,0 +1,25 @@
+const https = require('https');
+
+const options = {
+    hostname: 'api.cloudflare.com',
+    port: 443,
+    path: '/client/v4/accounts/e576148798d3edb601a8858facd86324/pages/projects/scs-market-place',
+    headers: {
+        'X-Auth-Email': 'dennnwood@gmail.com',
+        'X-Auth-Key': '7851f7563ccf7fc8e954e480e5f5f3f146a99'
+    }
+};
+
+https.get(options, (res) => {
+    let d = '';
+    res.on('data', c => d += c);
+    res.on('end', () => {
+        const r = JSON.parse(d);
+        if (r.success && r.result) {
+            const p = r.result;
+            console.log('Project:', p.name);
+            console.log('URL:', p.subdomain);
+            console.log('Status:', p.latest_deployment?.latest_stage?.status || 'no deployment');
+        }
+    });
+}).on('error', console.error);
