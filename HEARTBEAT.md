@@ -1,7 +1,7 @@
 # Daily Checklist – Vault Maintenance (Automated)
 
 ## Automated Heartbeat Check
-Run: `node heartbeat-cmd-center.js`
+Run: `node skills/heartbeat-diagnostic/scripts/heartbeat-cmd-center.js`
 
 This script will perform the following checks and report any issues:
 - Token Usage (monitored by cron)
