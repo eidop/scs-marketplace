@@ -56,6 +56,7 @@
                     🔄
                 </button>
                 <a href="setup.html" class="btn btn-primary">Add System</a>
+                <button class="btn btn-ghost" onclick="logoutAdmin()">Logout</button>
             </div>
         </div>
     </header>
@@ -228,6 +229,12 @@
                 error.classList.add('show');
                 document.getElementById('adminPassword').value = '';
             }
+        }
+        
+        function logoutAdmin() {
+            sessionStorage.removeItem('adminAuth');
+            checkAdminAuth();
+            document.getElementById('adminPassword').value = '';
         }
         
         // Initialize on load
