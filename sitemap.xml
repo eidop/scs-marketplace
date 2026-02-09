@@ -6,6 +6,11 @@
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>https://scs-marketplace.pages.dev/index-no.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://scs-marketplace.pages.dev/features.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -16,7 +21,17 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://scs-marketplace.pages.dev/pricing-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://scs-marketplace.pages.dev/n8n-store.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/templates.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -96,6 +111,76 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://scs-marketplace.pages.dev/lead.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solutions.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-sales.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-sales-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-support.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-support-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-hiring.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-hiring-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-megling.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-megling-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-investering.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-investering-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-kundeservice.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://scs-marketplace.pages.dev/solution-kundeservice-no.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://scs-marketplace.pages.dev/privacy.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -111,23 +196,13 @@
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://scs-marketplace.pages.dev/solution-sales.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <loc>https://scs-marketplace.pages.dev/404.html</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
     </url>
     <url>
-        <loc>https://scs-marketplace.pages.dev/solution-support.html</loc>
+        <loc>https://scs-marketplace.pages.dev/website-services.html</loc>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://scs-marketplace.pages.dev/solution-hiring.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://scs-marketplace.pages.dev/lead.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
 </urlset>
