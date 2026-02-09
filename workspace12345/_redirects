@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects for new pages
+# This ensures services/websites.html is accessible at /websites.html
+
+# If /websites.html is requested, serve services/websites.html
+/websites.html  /services/websites.html  200
+
+# Redirect /services to /services/websites.html
+/services  /services/websites.html  301
