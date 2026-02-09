@@ -1,5 +1,11 @@
 /* Simply Complex Solutions - Premium Styles */
+/* Golden Ratio: φ = 1.618 */
+
 :root {
+  /* Golden Ratio */
+  --phi: 1.618;
+  
+  /* Colors */
   --primary: #6366f1;
   --primary-dark: #4f46e5;
   --primary-light: #818cf8;
@@ -17,6 +23,22 @@
   --border-light: #3a3a4a;
   --gradient: linear-gradient(135deg, var(--primary), #a855f7);
   --gradient-accent: linear-gradient(135deg, #a855f7, #ec4899);
+  
+  /* φ-based Typography */
+  --text-xs:  calc(1rem / var(--phi));                    /* 0.618rem */
+  --text-sm:   1rem;                                      /* 1rem */
+  --text-base: var(--phi);                                /* 1.618rem */
+  --text-lg:   calc(var(--text-base) * var(--phi));       /* 2.618rem */
+  --text-xl:   calc(var(--text-lg) * var(--phi));         /* 4.236rem */
+  --text-2xl:  calc(var(--text-xl) * var(--phi));         /* 6.854rem */
+  
+  /* φ-based Spacing */
+  --space-xs:  calc(0.5rem / var(--phi));                /* 0.309rem */
+  --space-sm:  0.5rem;
+  --space-md:  calc(0.5rem * var(--phi));                 /* 0.809rem */
+  --space-lg:  calc(var(--space-md) * var(--phi));        /* 1.309rem */
+  --space-xl:  calc(var(--space-lg) * var(--phi));        /* 2.118rem */
+  --space-2xl: calc(var(--space-xl) * var(--phi));       /* 3.427rem */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
