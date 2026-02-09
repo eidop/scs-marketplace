@@ -31,7 +31,7 @@ async function auditConfig() {
     // Note: OPENCLAW_GATEWAY_TOKEN is usually an environment variable or CLI arg, not in openclaw.json
     // For this audit, we'll check if a placeholder is set, or if an external token check is needed.
     // A proper audit would involve external validation.
-    const gatewayToken = process.env.OPENCLAW_GATEWAY_TOKEN || (config.gateway && config.gateway.token);
+    const gatewayToken = process.env.OPENCLAW_GATEWAY_TOKEN || (config.gateway && config.gateway.auth && config.gateway.auth.token);
     const minTokenLength = 32; // Standard minimum length for strong tokens
     const commonWeakTokens = ['YOUR_TOKEN_HERE', 'secret', 'password', '123456', 'token', 'default']; // Common placeholders
 

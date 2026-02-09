@@ -9,6 +9,7 @@
     "linkinator": "^7.5.3"
   },
   "dependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "systeminformation": "^5.30.7"
   }
 }

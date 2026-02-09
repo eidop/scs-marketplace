@@ -28,7 +28,7 @@ async function auditGatewaySecurity() {
     report.push("--- OpenClaw Gateway Security Audit Report ---");
 
     // 1. Gateway Token Presence/Strength (Environment variable check is primary)
-    const gatewayToken = process.env.OPENCLAW_GATEWAY_TOKEN || (config.gateway && config.gateway.token);
+    const gatewayToken = process.env.OPENCLAW_GATEWAY_TOKEN || (config.gateway && config.gateway.auth && config.gateway.auth.token);
     const minTokenLength = 32;
     const commonWeakTokens = ['YOUR_TOKEN_HERE', 'secret', 'password', '123456', 'token', 'default'];
 

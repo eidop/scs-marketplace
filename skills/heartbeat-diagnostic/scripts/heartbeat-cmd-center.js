@@ -16,6 +16,27 @@ async function checkHeartbeat() {
     let issuesFound = false;
     const workspaceDir = process.cwd();
 
+    // --- Gateway Health Check & Auto-Restart ---
+    try {
+        const gatewayStatus = await runCommand('openclaw gateway status');
+        if (gatewayStatus.error || !gatewayStatus.stdout.includes('status: ok')) {
+            summary.push(`Gateway: Down or Unresponsive. Initiating restart...`);
+            issuesFound = true;
+            // Attempt to restart the gateway directly
+            const restartResult = await runCommand('openclaw gateway restart');
+            if (restartResult.error) {
+                summary.push(`  Restart Failed: ${restartResult.stderr.trim()}`);
+            } else {
+                summary.push(`  Restart Initiated: ${restartResult.stdout.trim()}`);
+            }
+        } else {
+            // console.log("Gateway: OK"); // Don't clutter if OK
+        }
+    } catch (e) {
+        summary.push(`Error checking OpenClaw Gateway status: ${e.message}`);
+        issuesFound = true;
+    }
+
     // Vault Maintenance
     const vaultOptimizerStatus = await runCommand('node C:/Users/Dennn/.clawd/vault-optimizer.js status');
     if (vaultOptimizerStatus.error) {

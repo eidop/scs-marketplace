@@ -1,56 +1,72 @@
 
-const os = require('os');
-const { exec } = require('child_process');
+const si = require('systeminformation');
 
 async function monitorResources() {
     let report = [];
+    let metrics = {};
 
-    // --- CPU Usage (Conceptual/Basic) ---
-    // Getting precise CPU usage can be complex and platform-dependent.
-    // Here's a simplified approach using os.cpus() or a shell command.
+    report.push("--- System Resource Report ---");
+
     try {
-        // Using os.cpus() for overall CPU info, but not direct current usage % easily
-        const cpus = os.cpus();
-        const totalCpus = cpus.length;
-
-        // On Linux/macOS, 'top -bn1 | grep "Cpu(s)" | sed "s/.*, *\\([0-9.]*\\)%* id.*/\\1/" | awk '{print 100 - $1}'' might give % usage
-        // On Windows, 'wmic cpu get loadpercentage' might work.
-
-        // For simplicity, we'll report number of CPUs and a conceptual usage.
-        report.push(`CPU Cores: ${totalCpus}`);
-
-        // Attempt to get load average (more general system load, not per-core %)
-        const loadAvg = os.loadavg();
-        report.push(`Load Average (1m, 5m, 15m): ${loadAvg.map(l => l.toFixed(2)).join(', ')}`);
-
-    } catch (cpuError) {
-        report.push(`Error getting CPU info: ${cpuError.message}`);
+        const cpu = await si.currentLoad();
+        metrics.cpu = {
+            currentLoad: cpu.currentLoad.toFixed(2),
+            avgLoad: cpu.avgLoad.toFixed(2),
+        };
+        report.push(`CPU Usage: ${metrics.cpu.currentLoad}% (Avg: ${metrics.cpu.avgLoad}%)`);
+    } catch (e) {
+        report.push(`Error getting CPU info: ${e.message}`);
     }
 
-    // --- Memory Usage ---
     try {
-        const totalMem = os.totalmem(); // in bytes
-        const freeMem = os.freemem();   // in bytes
-        const usedMem = totalMem - freeMem;
-
-        const totalMemGB = (totalMem / (1024 ** 3)).toFixed(2);
-        const freeMemGB = (freeMem / (1024 ** 3)).toFixed(2);
-        const usedMemGB = (usedMem / (1024 ** 3)).toFixed(2);
-        const usedPercent = ((usedMem / totalMem) * 100).toFixed(2);
-
-        report.push(`Total Memory: ${totalMemGB} GB`);
-        report.push(`Used Memory: ${usedMemGB} GB (${usedPercent}%)`);
-        report.push(`Free Memory: ${freeMemGB} GB`);
-
-    } catch (memError) {
-        report.push(`Error getting Memory info: ${memError.message}`);
+        const mem = await si.mem();
+        metrics.memory = {
+            total: (mem.total / (1024 ** 3)).toFixed(2),
+            used: (mem.used / (1024 ** 3)).toFixed(2),
+            free: (mem.free / (1024 ** 3)).toFixed(2),
+            usedPercent: ((mem.used / mem.total) * 100).toFixed(2),
+        };
+        report.push(`Total Memory: ${metrics.memory.total} GB`);
+        report.push(`Used Memory: ${metrics.memory.used} GB (${metrics.memory.usedPercent}%)`);
+        report.push(`Free Memory: ${metrics.memory.free} GB`);
+    } catch (e) {
+        report.push(`Error getting Memory info: ${e.message}`);
     }
 
-    console.log("--- System Resource Report ---");
+    try {
+        const disks = await si.fsSize();
+        metrics.disk = disks.map(disk => ({
+            mount: disk.mount,
+            size: (disk.size / (1024 ** 3)).toFixed(2),
+            used: (disk.used / (1024 ** 3)).toFixed(2),
+            usedPercent: disk.use.toFixed(2),
+        }));
+        metrics.disk.forEach(disk => {
+            report.push(`Disk (${disk.mount}): Total ${disk.size} GB, Used ${disk.used} GB (${disk.usedPercent}%)`);
+        });
+    } catch (e) {
+        report.push(`Error getting Disk info: ${e.message}`);
+    }
+
+    try {
+        const network = await si.networkStats();
+        metrics.network = network.map(net => ({
+            iface: net.iface,
+            rx_sec: (net.rx_sec / (1024 ** 2)).toFixed(2),
+            tx_sec: (net.tx_sec / (1024 ** 2)).toFixed(2),
+        }));
+        metrics.network.forEach(net => {
+            report.push(`Network (${net.iface}): Rx ${net.rx_sec} MB/s, Tx ${net.tx_sec} MB/s`);
+        });
+    } catch (e) {
+        report.push(`Error getting Network info: ${e.message}`);
+    }
+
+    report.push("------------------------------");
+
     console.log(report.join('\n'));
-    console.log("------------------------------");
 
-    return { success: true, report: report.join('\n') };
+    return { success: true, report: report.join('\n'), metrics };
 }
 
 monitorResources();

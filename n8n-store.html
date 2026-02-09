@@ -499,12 +499,55 @@
     </div>
     
     <style>
+        /* Hover highlight for template cards */
+        .solution-card {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+            border-color: var(--primary);
+        }
+        /* Keep last hovered card highlighted */
+        .solution-card.last-hovered {
+            border-color: var(--primary);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+        }
+        
         .quick-nav-bar { background: rgba(99, 102, 241, 0.1); border-top: 1px solid rgba(99, 102, 241, 0.3); padding: 0.75rem 0; position: sticky; bottom: 0; z-index: 100; backdrop-filter: blur(10px); }
         .quick-nav-content { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
         .quick-nav-label { color: #a5b4fc; font-weight: 500; font-size: 0.875rem; }
         .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
         .quick-nav-link:hover { color: #fff; }
     </style>
+    
+    <script>
+        // Track last hovered card and make whole card clickable
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.solution-card');
+            
+            cards.forEach(card => {
+                // Track hover state
+                card.addEventListener('mouseenter', function() {
+                    cards.forEach(c => c.classList.remove('last-hovered'));
+                    this.classList.add('last-hovered');
+                });
+                
+                // Make entire card clickable
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking a button inside
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return;
+                    }
+                    const link = this.querySelector('a');
+                    if (link) {
+                        link.click();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 

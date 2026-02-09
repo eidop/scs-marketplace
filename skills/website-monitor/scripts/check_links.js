@@ -1,5 +1,5 @@
 
-const { Linkinator } = require('linkinator');
+const { LinkChecker } = require('linkinator');
 
 async function checkBrokenLinks(url) {
     console.log(`Checking for broken links on: ${url}`);
