@@ -1,0 +1,329 @@
+{
+  "version": "1.0",
+  "description": "Comprehensive list of all available models for automation and AI tasks",
+  "categories": {
+    "local_models": {
+      "description": "Models you can run locally on your laptop",
+      "models": [
+        {
+          "name": "llama3.1:8b",
+          "size": "7B",
+          "type": "Transformer",
+          "license": "Apache 2.0",
+          "context_length": "8k tokens",
+          "speed": "Fast",
+          "best_for": [
+            "Code",
+            "Short QA",
+            "Quick responses",
+            "High‑frequency interactions"
+          ],
+          "use_cases": [
+            "Simple queries",
+            "Low‑token tasks",
+            "Fast reasoning"
+          ],
+          "ram_required": "8GB",
+          "gpu_required": "Optional (8GB VRAM)"
+        },
+        {
+          "name": "llama3.1:70b",
+          "size": "70B",
+          "type": "Transformer",
+          "license": "Apache 2.0",
+          "context_length": "128k tokens",
+          "speed": "Medium",
+          "best_for": [
+            "Complex reasoning",
+            "Code generation",
+            "Long context"
+          ],
+          "use_cases": [
+            "Heavy reasoning",
+            "Long documents",
+            "Code debugging"
+          ],
+          "ram_required": "80GB",
+          "gpu_required": "80GB+ VRAM"
+        },
+        {
+          "name": "mixtral:8x7b",
+          "size": "34B",
+          "type": "Mixture of Experts",
+          "license": "Apache 2.0",
+          "context_length": "32k tokens",
+          "speed": "Medium",
+          "best_for": [
+            "Multilingual",
+            "Complex prompts",
+            "Reasoning"
+          ],
+          "use_cases": [
+            "Heavy reasoning",
+            "Multilingual tasks",
+            "Complex analysis"
+          ],
+          "ram_required": "30GB",
+          "gpu_required": "30GB+ VRAM"
+        },
+        {
+          "name": "gemma2:13b",
+          "size": "13B",
+          "type": "Transformer",
+          "license": "Apache 2.0",
+          "context_length": "32k tokens",
+          "speed": "Fast",
+          "best_for": [
+            "Good reasoning",
+            "Chat",
+            "Code"
+          ],
+          "use_cases": [
+            "General tasks",
+            "Balanced performance"
+          ],
+          "ram_required": "12GB",
+          "gpu_required": "Optional (12GB VRAM)"
+        },
+        {
+          "name": "mistral:7b",
+          "size": "7B",
+          "type": "Transformer",
+          "license": "Apache 2.0",
+          "context_length": "8k tokens",
+          "speed": "Fast",
+          "best_for": [
+            "Code",
+            "Chat",
+            "Summarization"
+          ],
+          "use_cases": [
+            "Quick responses",
+            "Text generation"
+          ],
+          "ram_required": "8GB",
+          "gpu_required": "Optional (8GB VRAM)"
+        },
+        {
+          "name": "phi3:3.8b",
+          "size": "3.8B",
+          "type": "Transformer",
+          "license": "Apache 2.0",
+          "context_length": "4k tokens",
+          "speed": "Very fast",
+          "best_for": [
+            "Lightweight tasks",
+            "Speed",
+            "Minimal resources"
+          ],
+          "use_cases": [
+            "Quick queries",
+            "Low‑resource environments"
+          ],
+          "ram_required": "4GB",
+          "gpu_required": "Optional (4GB VRAM)"
+        }
+      ]
+    },
+    "openrouter_models": {
+      "description": "Models available via OpenRouter API",
+      "models": [
+        {
+          "name": "openai/gpt-4o",
+          "type": "Multimodal",
+          "context_length": "128k tokens",
+          "best_for": [
+            "Image generation",
+            "Text",
+            "Complex reasoning"
+          ],
+          "use_cases": [
+            "Image generation",
+            "Multimodal tasks",
+            "Complex problem solving"
+          ],
+          "api": "OpenRouter"
+        },
+        {
+          "name": "anthropic/claude-3.5-sonnet",
+          "type": "Transformer",
+          "context_length": "200k tokens",
+          "best_for": [
+            "Long context",
+            "Code",
+            "Reasoning"
+          ],
+          "use_cases": [
+            "Long documents",
+            "Code generation",
+            "Complex reasoning"
+          ],
+          "api": "OpenRouter"
+        },
+        {
+          "name": "deepseek/deepseek-chat",
+          "type": "Transformer",
+          "context_length": "64k tokens",
+          "best_for": [
+            "Code",
+            "Reasoning",
+            "Multilingual"
+          ],
+          "use_cases": [
+            "Coding tasks",
+            "Reasoning",
+            "Multilingual support"
+          ],
+          "api": "OpenRouter"
+        },
+        {
+          "name": "google/gemini-pro-1.5",
+          "type": "Transformer",
+          "context_length": "1M tokens",
+          "best_for": [
+            "Very long context",
+            "Code",
+            "Reasoning"
+          ],
+          "use_cases": [
+            "Long documents",
+            "Code",
+            "Research"
+          ],
+          "api": "OpenRouter"
+        },
+        {
+          "name": "openai/gpt-4-turbo",
+          "type": "Transformer",
+          "context_length": "128k tokens",
+          "best_for": [
+            "Complex reasoning",
+            "Code",
+            "Reasoning"
+          ],
+          "use_cases": [
+            "Heavy reasoning",
+            "Code generation",
+            "Complex tasks"
+          ],
+          "api": "OpenRouter"
+        },
+        {
+          "name": "openai/gpt-3.5-turbo",
+          "type": "Transformer",
+          "context_length": "16k tokens",
+          "best_for": [
+            "Quick responses",
+            "Low cost",
+            "Basic tasks"
+          ],
+          "use_cases": [
+            "Simple queries",
+            "Quick tasks",
+            "Low‑cost inference"
+          ],
+          "api": "OpenRouter"
+        }
+      ]
+    },
+    "custom_models": {
+      "description": "Models you have fine-tuned",
+      "models": [
+        {
+          "name": "eidoso",
+          "type": "Fine-tuned Llama3.1:8b",
+          "context_length": "8k tokens",
+          "best_for": [
+            "SCS workflow",
+            "Eido’s style",
+            "Domain knowledge"
+          ],
+          "use_cases": [
+            "SCS tasks",
+            "Eido’s style",
+            "Domain knowledge"
+          ],
+          "created": "2026-02-09",
+          "notes": "Fine-tuned for SCS and Eido’s workflow"
+        }
+      ]
+    },
+    "recommended_combinations": {
+      "description": "Recommended model combinations for different tasks",
+      "combinations": [
+        {
+          "name": "All‑round performance",
+          "local_model": "gemma2:13b",
+          "openrouter_model": "anthropic/claude-3.5-sonnet",
+          "use_case": "General tasks, code, reasoning"
+        },
+        {
+          "name": "Code focus",
+          "local_model": "llama3.1:8b",
+          "openrouter_model": "openai/gpt-4-turbo",
+          "use_case": "Code generation, debugging"
+        },
+        {
+          "name": "Heavy reasoning",
+          "local_model": "mixtral:8x7b",
+          "openrouter_model": "openai/gpt-4-turbo",
+          "use_case": "Complex reasoning, analysis"
+        },
+        {
+          "name": "Image generation",
+          "local_model": "gemma2:13b",
+          "openrouter_model": "openai/gpt-4o",
+          "use_case": "Image generation, multimodal tasks"
+        },
+        {
+          "name": "Fast responses",
+          "local_model": "llama3.1:8b",
+          "openrouter_model": "openai/gpt-3.5-turbo",
+          "use_case": "Quick queries, low‑cost tasks"
+        },
+        {
+          "name": "Long context",
+          "local_model": "gemma2:13b",
+          "openrouter_model": "google/gemini-pro-1.5",
+          "use_case": "Long documents, research"
+        }
+      ]
+    },
+    "rotation_rules": {
+      "description": "Rules for rotating models based on task type",
+      "rules": {
+        "high_token_usage": {
+          "model": "llama3.1:8b",
+          "reason": "Reduce token usage and prevent burnout",
+          "cooldown_minutes": 30
+        },
+        "image_generation": {
+          "model": "openai/gpt-4o",
+          "reason": "Need image generation capabilities",
+          "fallback": "anthropic/claude-3.5-sonnet"
+        },
+        "code_tasks": {
+          "model": "openai/gpt-4-turbo",
+          "reason": "Need code generation and debugging",
+          "fallback": "anthropic/claude-3.5-sonnet"
+        },
+        "heavy_reasoning": {
+          "model": "mixtral:8x7b",
+          "reason": "Need complex reasoning and analysis",
+          "fallback": "llama3.1:70b"
+        },
+        "quick_tasks": {
+          "model": "llama3.1:8b",
+          "reason": "Need fast responses for simple queries",
+          "fallback": "openai/gpt-3.5-turbo"
+        }
+      }
+    }
+  },
+  "notes": [
+    "Local models are faster and cheaper, but require more RAM/VRAM",
+    "OpenRouter models are more capable but have per‑token costs",
+    "Rotate models based on task type to optimize performance and cost",
+    "Fine‑tuned models can be highly specialized (e.g., eidoso for SCS)"
+  ]
+}
