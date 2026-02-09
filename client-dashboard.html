@@ -17,9 +17,38 @@
         .muted { color: var(--muted); }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+        
+        /* Admin Login Modal */
+        .admin-login-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 9999; }
+        .admin-login-modal.active { display: flex; }
+        .admin-login-box { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 2.5rem; max-width: 400px; width: 90%; text-align: center; }
+        .admin-login-box h2 { margin-bottom: 0.5rem; font-size: 1.5rem; color: #e2e8f0; }
+        .admin-login-box p { color: #94a3b8; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .admin-login-box input { width: 100%; padding: 0.875rem 1rem; border: 1px solid #334155; border-radius: 10px; background: #0f172a; color: #fff; font-size: 1rem; margin-bottom: 1rem; outline: none; transition: border-color 0.2s; }
+        .admin-login-box input:focus { border-color: #06b6d4; }
+        .admin-login-box button { width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #06b6d4, #0891b2); border: none; border-radius: 10px; color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .admin-login-box button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,182,212,0.4); }
+        .admin-login-box .error { color: #ef4444; font-size: 0.85rem; margin-top: 1rem; display: none; }
+        .admin-login-box .error.show { display: block; }
+        .dashboard-content { display: none; }
+        .dashboard-content.authenticated { display: block; }
     </style>
 </head>
 <body class="dark min-h-screen">
+    <!-- Admin Login Modal -->
+    <div class="admin-login-modal" id="adminLoginModal">
+        <div class="admin-login-box">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔐</div>
+            <h2>Admin Access</h2>
+            <p>Enter your admin password to access the analytics dashboard.</p>
+            <input type="password" id="adminPassword" placeholder="Admin password" onkeypress="if(event.key==='Enter')verifyAdmin()">
+            <button onclick="verifyAdmin()">Access Dashboard</button>
+            <p class="error" id="adminError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Dashboard Content (hidden until auth) -->
+    <div class="dashboard-content" id="dashboardContent">
     <!-- Header -->
     <header class="border-b border-[var(--border)] px-4 md:px-6 py-3 sticky top-0 z-10" style="background: var(--card);">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -254,6 +283,43 @@
         .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
         .quick-nav-link:hover { color: #fff; }
     </style>
+    
+    <script>
+        // Admin Authentication
+        const ADMIN_PASSWORD = 'SCS2024'; // Change this password
+        
+        function checkAdminAuth() {
+            const isAuthenticated = sessionStorage.getItem('adminAuth') === 'true';
+            const modal = document.getElementById('adminLoginModal');
+            const content = document.getElementById('dashboardContent');
+            
+            if (isAuthenticated) {
+                modal.classList.remove('active');
+                content.classList.add('authenticated');
+            } else {
+                modal.classList.add('active');
+                content.classList.remove('authenticated');
+            }
+        }
+        
+        function verifyAdmin() {
+            const input = document.getElementById('adminPassword').value;
+            const error = document.getElementById('adminError');
+            
+            if (input === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminAuth', 'true');
+                error.classList.remove('show');
+                checkAdminAuth();
+            } else {
+                error.classList.add('show');
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', checkAdminAuth);
+    </script>
+    </div> <!-- dashboard-content -->
 </body>
 </html>
 

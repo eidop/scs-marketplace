@@ -10,10 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/setup.css">
+    <style>
+        /* Admin Login Modal */
+        .admin-login-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 9999; }
+        .admin-login-modal.active { display: flex; }
+        .admin-login-box { background: #1a1a24; border: 1px solid #3a3a4a; border-radius: 16px; padding: 2.5rem; max-width: 400px; width: 90%; text-align: center; }
+        .admin-login-box h2 { margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .admin-login-box p { color: #94a3b8; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .admin-login-box input { width: 100%; padding: 0.875rem 1rem; border: 1px solid #3a3a4a; border-radius: 10px; background: #0a0a0f; color: #fff; font-size: 1rem; margin-bottom: 1rem; outline: none; transition: border-color 0.2s; }
+        .admin-login-box input:focus { border-color: #6366f1; }
+        .admin-login-box button { width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; border-radius: 10px; color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .admin-login-box button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99,102,241,0.4); }
+        .admin-login-box .error { color: #ef4444; font-size: 0.85rem; margin-top: 1rem; display: none; }
+        .admin-login-box .error.show { display: block; }
+    </style>
 </head>
 <body class="dashboard-page">
+    <!-- Admin Login Modal -->
+    <div class="admin-login-modal" id="adminLoginModal">
+        <div class="admin-login-box">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔐</div>
+            <h2>Admin Access</h2>
+            <p>Enter your admin password to access the dashboard.</p>
+            <input type="password" id="adminPassword" placeholder="Admin password" onkeypress="if(event.key==='Enter')verifyAdmin()">
+            <button onclick="verifyAdmin()">Access Dashboard</button>
+            <p class="error" id="adminError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
     <!-- Dashboard Header -->
-    <header class="dashboard-header">
+    <header class="dashboard-header" id="dashboardHeader" style="display:none;">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-icon">◈</div>
@@ -165,7 +191,48 @@
         .quick-nav-label { color: #a5b4fc; font-weight: 500; font-size: 0.875rem; }
         .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
         .quick-nav-link:hover { color: #fff; }
+        .dashboard-content { display: none; }
+        .dashboard-content.authenticated { display: block; }
     </style>
+    
+    <script>
+        // Admin Authentication
+        const ADMIN_PASSWORD = 'SCS2024'; // Change this password
+        
+        function checkAdminAuth() {
+            const isAuthenticated = sessionStorage.getItem('adminAuth') === 'true';
+            const modal = document.getElementById('adminLoginModal');
+            const content = document.getElementById('dashboardHeader');
+            const mainContent = document.querySelector('.dashboard-main');
+            
+            if (isAuthenticated) {
+                modal.classList.remove('active');
+                if (content) content.style.display = 'block';
+                if (mainContent) mainContent.style.display = 'block';
+            } else {
+                modal.classList.add('active');
+                if (content) content.style.display = 'none';
+                if (mainContent) mainContent.style.display = 'none';
+            }
+        }
+        
+        function verifyAdmin() {
+            const input = document.getElementById('adminPassword').value;
+            const error = document.getElementById('adminError');
+            
+            if (input === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminAuth', 'true');
+                error.classList.remove('show');
+                checkAdminAuth();
+            } else {
+                error.classList.add('show');
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', checkAdminAuth);
+    </script>
 </body>
 </html>
 
