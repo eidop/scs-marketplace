@@ -34,7 +34,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index-no.html" class="logo">
-                <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" class="logo-image" style="height: 40px; width: auto;">
+                <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" style="height: 32px;">
+                <span class="logo-text">Simply Complex</span>
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -49,15 +50,48 @@
                 <a href="client-dashboard.html">Analytics</a>
                 <a href="dashboard.html" class="nav-btn">Dashboard</a>
             </div>
-            <div class="language-switcher">
-                <button class="lang-btn active" id="langBtnNo">🇳🇴 Norsk</button>
-                <div class="lang-dropdown">
-                    <a href="solution-hiring.html" class="lang-option" data-lang="en">
-                        <span class="lang-flag">🇺🇸</span>
-                        <span class="lang-name">English</span>
-                    </a>
+            <div class="language-switcher" onclick="toggleLanguage()">
+                <button class="lang-btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
+                    🇳🇴 Norsk
+                </button>
+                <div class="lang-dropdown" id="langDropdown" style="position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 120px; display: none;">
+                    <a href="solution-hiring.html" style="display: block; padding: 0.5rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem;">🇺🇸 English</a>
                 </div>
             </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function toggleLanguage() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-switcher')) {
+                const dropdown = document.getElementById('langDropdown');
+                if (dropdown) dropdown.style.display = 'none';
+            }
+        });
+    </script>
+
+    <style>
+        .navbar .logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+        .navbar .logo-text { color: #fff; font-weight: 700; font-size: 1.125rem; }
+        .language-switcher { position: relative; margin-left: 1rem; cursor: pointer; }
+        .lang-dropdown { z-index: 100; }
+        .lang-dropdown a:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+        @media (max-width: 900px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links.open { display: flex; }
+            .language-switcher { position: fixed; top: 60px; right: 1rem; }
+        }
+    </style>
         </div>
     </nav>
 
