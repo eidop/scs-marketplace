@@ -5,5 +5,10 @@
     "build": "node scripts/build-demo.js",
     "preview": "node scripts/preview.js"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "linkinator": "^7.5.3"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
 }

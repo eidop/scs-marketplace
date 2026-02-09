@@ -31,10 +31,25 @@ async function auditConfig() {
     // Note: OPENCLAW_GATEWAY_TOKEN is usually an environment variable or CLI arg, not in openclaw.json
     // For this audit, we'll check if a placeholder is set, or if an external token check is needed.
     // A proper audit would involve external validation.
-    if (!process.env.OPENCLAW_GATEWAY_TOKEN && (!config.gateway || !config.gateway.token)) {
+    const gatewayToken = process.env.OPENCLAW_GATEWAY_TOKEN || (config.gateway && config.gateway.token);
+    const minTokenLength = 32; // Standard minimum length for strong tokens
+    const commonWeakTokens = ['YOUR_TOKEN_HERE', 'secret', 'password', '123456', 'token', 'default']; // Common placeholders
+
+    if (!gatewayToken) {
         report.push("Security Concern: OPENCLAW_GATEWAY_TOKEN is not explicitly set (neither via environment nor config).");
         report.push("Recommendation: Set a strong, unique `OPENCLAW_GATEWAY_TOKEN` via environment variable or in `openclaw.json` for all non-local connections.");
         issuesFound = true;
+    } else {
+        if (gatewayToken.length < minTokenLength) {
+            report.push(`Security Concern: OPENCLAW_GATEWAY_TOKEN is too short (${gatewayToken.length} characters).`);
+            report.push(`Recommendation: Use a token of at least ${minTokenLength} characters for robust security.`);
+            issuesFound = true;
+        }
+        if (commonWeakTokens.includes(gatewayToken.toLowerCase())) {
+            report.push("Security Alert: OPENCLAW_GATEWAY_TOKEN appears to be a common or weak placeholder.");
+            report.push("Recommendation: Generate a strong, random token to prevent unauthorized access.");
+            issuesFound = true;
+        }
     }
 
     // 2. Channel AllowFrom rules
