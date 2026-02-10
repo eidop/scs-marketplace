@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>?</text></svg>">
-    <title>ROI Calculator | Simply Complex Solutions</title>
-    <meta name="description" content="Calculate your potential ROI from automation. See how much time and money you can save.">
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.png">
+    <title>ROI Kalkulator | Simply Complex Solutions</title>
+    <meta name="description" content="Beregn din potensielle ROI fra automatisering. Se hvor mye tid og penger du kan spare.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-
-    /* ========================================
-       Standardized Button Styles
-       ======================================== */
-
     .btn {
         display: inline-block;
         padding: 0.75rem 1.5rem;
@@ -30,49 +25,27 @@
         border: none;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
-
-    .btn:active {
-        transform: scale(0.98);
-    }
-
-    /* Primary Button (Gradient) */
+    .btn:active { transform: scale(0.98); }
     .btn-primary {
         background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
         color: #fff;
         box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
     }
-
     .btn-primary:hover {
         background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
         box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         transform: translateY(-2px);
     }
-
-    /* Secondary/Outline Button */
     .btn-outline {
         background: transparent;
         color: #6366f1;
         border: 2px solid #6366f1;
     }
-
     .btn-outline:hover {
         background: rgba(99, 102, 241, 0.1);
         border-color: #7c3aed;
         color: #7c3aed;
     }
-
-    /* Ghost Button */
-    .btn-ghost {
-        background: transparent;
-        color: #94a3b8;
-    }
-
-    .btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-    }
-
-    /* Badge Styles */
     .badge {
         display: inline-block;
         padding: 0.25rem 0.75rem;
@@ -82,90 +55,43 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
-
     .badge-primary {
         background: linear-gradient(135deg, #6366f1, #8b5cf6);
         color: #fff;
     }
-
     .badge-success {
         background: rgba(16, 185, 129, 0.2);
         color: #10b981;
     }
-
     .badge-warning {
         background: rgba(245, 158, 11, 0.2);
         color: #f59e0b;
     }
-
     .badge-danger {
         background: rgba(239, 68, 68, 0.2);
         color: #ef4444;
     }
-
-    .badge-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #94a3b8;
-    }
-
-    .badge-outline:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border-color: #6366f1;
-    }
-
-    /* Pricing Card Buttons */
     .btn-card {
         display: block;
         width: 100%;
         margin-top: 1rem;
         padding: 0.875rem;
     }
-
-    .btn-card.outline {
-        background: transparent;
-        border: 2px solid #6366f1;
-        color: #6366f1;
-    }
-
-    .btn-card.outline:hover {
-        background: rgba(99, 102, 241, 0.1);
-    }
-
-    /* Hero Button */
     .btn-hero {
         padding: 1rem 2rem;
         font-size: 1.1rem;
         border-radius: 12px;
         box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
     }
-
     .btn-hero:hover {
         box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
         transform: translateY(-3px);
     }
-
-    /* Footer Button */
-    .btn-footer {
-        width: 100%;
-        padding: 0.75rem;
-    }
-
-    /* Responsive Button Sizes */
     @media (max-width: 768px) {
-        .btn {
-            padding: 0.625rem 1.25rem;
-            font-size: 0.875rem;
-        }
-
-        .btn-hero {
-            padding: 0.875rem 1.5rem;
-            font-size: 1rem;
-        }
+        .btn { padding: 0.625rem 1.25rem; font-size: 0.875rem; }
+        .btn-hero { padding: 0.875rem 1.5rem; font-size: 1rem; }
     }
-
-</style>
+    </style>
 
     <script>
         function toggleMobileMenu() {
@@ -173,157 +99,116 @@
             const menuButton = document.querySelector('.mobile-menu-toggle');
             navLinks.classList.toggle('open');
             menuButton.classList.toggle('active');
-
-            // Prevent body scroll when menu is open
-            if (navLinks.classList.contains('open')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
         }
-
-        // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             const navLinks = document.getElementById('navLinks');
             const menuButton = document.querySelector('.mobile-menu-toggle');
-
-            if (navLinks.classList.contains('open') &&
-                !navLinks.contains(event.target) &&
-                !menuButton.contains(event.target)) {
+            if (navLinks.classList.contains('open') && !navLinks.contains(event.target) && !menuButton.contains(event.target)) {
                 navLinks.classList.remove('open');
                 menuButton.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
-
-        // Close on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const navLinks = document.getElementById('navLinks');
                 const menuButton = document.querySelector('.mobile-menu-toggle');
-
-                if (navLinks.classList.contains('open')) {
-                    navLinks.classList.remove('open');
-                    menuButton.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            }
-        });
-    </script>
-
-
-    <script>
-        function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-        }
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navLinks = document.getElementById('navLinks');
-            const menuButton = document.querySelector('.mobile-menu-toggle');
-            
-            if (navLinks.classList.contains('open') && 
-                !navLinks.contains(event.target) && 
-                !menuButton.contains(event.target)) {
                 navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     </script>
-
 
     <section class="detail-hero">
         <div class="detail-hero-icon">📊</div>
-        <span class="section-badge">Free Tool</span>
-        <h1>Calculate Your Automation ROI</h1>
-        <p>See how much time and money you can save with our automation templates.</p>
+        <span class="section-badge">Gratis Verktøy</span>
+        <h1>Beregn Din Automatiserings-ROI</h1>
+        <p>Se hvor mye tid og penger du kan spare med våre automatiseringsmaler.</p>
     </section>
 
     <section class="calculator-section">
         <div class="calc-card">
-            <h2 style="margin-bottom: 1.5rem; color: #fff;">Your Current Situation</h2>
+            <h2 style="margin-bottom: 1.5rem; color: #fff;">Din Nåværende Situasjon</h2>
             <div class="calc-grid">
                 <div class="calc-field">
-                    <label>Team Size (people doing manual work)</label>
+                    <label>Teamstørrelse (personer som gjør manuelt arbeid)</label>
                     <input type="number" id="teamSize" value="5" min="1" max="100" onchange="calculate()">
                 </div>
                 <div class="calc-field">
-                    <label>Average Hourly Cost ($/hr)</label>
-                    <input type="number" id="hourlyCost" value="50" min="10" max="500" onchange="calculate()">
+                    <label>Gjennomsnittlig timekostnad (kr/time)</label>
+                    <input type="number" id="hourlyCost" value="500" min="100" max="5000" onchange="calculate()">
                 </div>
                 <div class="calc-field">
-                    <label>Hours/week on manual tasks (per person)</label>
+                    <label>Timer/uke på manuelle oppgaver (per person)</label>
                     <input type="number" id="manualHours" value="10" min="1" max="40" onchange="calculate()">
                 </div>
                 <div class="calc-field">
-                    <label>Which pack are you considering?</label>
+                    <label>Hvilket pakke vurderer du?</label>
                     <select id="pack" onchange="calculate()">
-                        <option value="247">Startup ($247/mo)</option>
-                        <option value="597" selected>Growth ($597/mo)</option>
-                        <option value="1497">Complete ($1,497/mo)</option>
+                        <option value="247">Startup (247 kr/mnd)</option>
+                        <option value="597" selected>Growth (597 kr/mnd)</option>
+                        <option value="1497">Complete (1 497 kr/mnd)</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <div class="results-card">
-            <h2 style="color: #fff;">Your Potential Savings</h2>
-            <p style="color: #94a3b8;">Based on average 70% automation efficiency from our customers</p>
+            <h2 style="color: #fff;">Dine Potensielle Besparelser</h2>
+            <p style="color: #94a3b8;">Basert på gjennomsnittlig 70% automatiseringsgrad fra våre kunder</p>
             
             <div class="results-grid">
                 <div class="result-item">
                     <div class="result-value" id="hoursSaved">140</div>
-                    <div class="result-label">Hours Saved/Month</div>
+                    <div class="result-label">Timer Sparet/Måned</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-value" id="moneySaved">$7,000</div>
-                    <div class="result-label">Monthly Savings</div>
+                    <div class="result-value" id="moneySaved">70 000 kr</div>
+                    <div class="result-label">Månedlige Besparelser</div>
                 </div>
                 <div class="result-item">
-                    <div class="result-value" id="annualSavings">$84,000</div>
-                    <div class="result-label">Annual Savings</div>
+                    <div class="result-value" id="annualSavings">840 000 kr</div>
+                    <div class="result-label">Årlige Besparelser</div>
                 </div>
                 <div class="result-item">
                     <div class="result-value" id="paybackDays">3</div>
-                    <div class="result-label">Days to Payback</div>
+                    <div class="result-label">Dager til Tilbakebetaling</div>
                 </div>
             </div>
 
             <div class="roi-highlight">
-                <div class="roi-value" id="roiPercent">1,072%</div>
-                <div class="roi-label">Return on Investment (Year 1)</div>
+                <div class="roi-value" id="roiPercent">1 072%</div>
+                <div class="roi-label">Avkastning på Investering (År 1)</div>
             </div>
 
-            <div class="cta-box">
-                <p style="color: #94a3b8; margin-bottom: 1rem;">Ready to start saving?</p>
-                <a href="contact.html" class="btn btn-primary btn-card">Book a Demo</a>
-                <p style="color: #64748b; font-size: 0.875rem; margin-top: 0.75rem;">Book a demo to get a tailored walkthrough</p>
+            <div class                <p style="color: #="cta-box">
+94a3b8; margin-bottom: 1rem;">Klar til å begynne å spare?</p>
+                <a href="contact.html" class="btn btn-primary btn-card">Bestill en Demo</a>
+                <p style="color: #64748b; font-size: 0.875rem; margin-top: 0.75rem;">Bestill en demo for å få en skreddersydd gjennomgang</p>
             </div>
         </div>
 
         <div class="calc-card" style="margin-top: 3rem;">
-            <h3 style="color: #fff; margin-bottom: 1rem;">How We Calculate This</h3>
+            <h3 style="color: #fff; margin-bottom: 1rem;">Hvordan Vi Beregner Dette</h3>
             <div style="color: #94a3b8; font-size: 0.875rem; line-height: 1.8;">
-                <p><strong style="color: #fff;">Hours Saved:</strong> Team size × Manual hours × 70% automation rate × 4 weeks</p>
-                <p><strong style="color: #fff;">Monthly Savings:</strong> Hours saved × Hourly cost</p>
-                <p><strong style="color: #fff;">ROI:</strong> (Annual savings - Annual cost) / Annual cost × 100</p>
-                <p style="margin-top: 1rem;"><strong style="color: #10b981;">70% automation rate</strong> is our conservative average. Many customers achieve 80-90%.</p>
+                <p><strong style="color: #fff;">Timer Sparet:</strong> Teamstørrelse × Manual timer × 70% automatiseringsgrad × 4 uker</p>
+                <p><strong style="color: #fff;">Månedlige Besparelser:</strong> Timer sparet × Timekostnad</p>
+                <p><strong style="color: #fff;">ROI:</strong> (Årlige besparelser - Årlig kostnad) / Årlig kostnad × 100</p>
+                <p style="margin-top: 1rem;"><strong style="color: #10b981;">70% automatiseringsgrad</strong> er vårt konservative gjennomsnitt. Mange kunder oppnår 80-90%.</p>
             </div>
         </div>
     </section>
 
-    
-    
-    
-    
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <div class="logo-icon">◈</div>
-                        <span class="logo-text">Simply Complex Solutions</span>
+                        <img src="assets/images/scs-logo.png" alt="Simply Complex Solutions" class="logo-image" style="height: 40px; width: auto;">
                     </a>
-                    <p>Enterprise AI automation bundles that actually work.</p>
+                    <p>Enterprise AI-automatisering som faktisk fungerer.</p>
                     <div class="social-links">
                         <a href="https://twitter.com/simplycomplex" target="_blank" rel="noopener" title="Twitter">𝕏</a>
                         <a href="https://linkedin.com/company/simplycomplex" target="_blank" rel="noopener" title="LinkedIn">in</a>
@@ -331,97 +216,64 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Solutions</h4>
-                    <a href="solution-sales.html">Sales Excellence</a>
-                    <a href="solution-support.html">Support Automation</a>
-                    <a href="solution-hiring.html">Hiring System</a>
-                    <a href="n8n-store.html">All Templates</a>
+                    <h4>Løsninger</h4>
+                    <a href="solution-sales.html">Salg</a>
+                    <a href="solution-support.html">Support</a>
+                    <a href="solution-hiring.html">Rekruttering</a>
+                    <a href="n8n-store.html">Alle Maler</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Tools</h4>
-                    <a href="roi-calculator.html">ROI Calculator</a>
-                    <a href="client-dashboard.html">Analytics Dashboard</a>
-                    <a href="status.html">System Status</a>
-                    <a href="compare.html">Feature Comparison</a>
+                    <h4>Verktøy</h4>
+                    <a href="roi-calculator.html">ROI Kalkulator</a>
+                    <a href="client-dashboard.html">Analyse</a>
+                    <a href="status.html">Status</a>
+                    <a href="compare.html">Sammenlign</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Resources</h4>
-                    <a href="resources.html">Free Downloads</a>
-                    <a href="getting-started.html">Getting Started</a>
-                    <a href="changelog.html">Changelog</a>
-                    <a href="blog.html">Blog</a>
+                    <h4>Ressurser</h4>
+                    <a href="resources.html">Nedlastinger</a>
+                    <a href="getting-started.html">Kom i Gang</a>
+                    <a href="changelog.html">Endringslogg</a>
+                    <a href="blog.html">Blogg</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="pricing.html">Pricing</a>
+                    <h4>Om Oss</h4>
+                    <a href="about.html">Om</a>
+                    <a href="contact.html">Kontakt</a>
+                    <a href="careers.html">Karriere</a>
+                    <a href="pricing.html">Priser</a>
                 </div>
             </div>
             
-            <!-- Newsletter Signup -->
             <div class="footer-newsletter">
-                <h4>Stay Updated</h4>
-                <p>Get automation tips and product updates.</p>
+                <h4>Hold Deg Oppdatert</h4>
+                <p>Få automatiseringstips og produktoppdateringer.</p>
                 <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form><script>function subscribeNewsletter(e){e.preventDefault();const input=e.target.querySelector("input");if(input.value){alert("Thanks for subscribing!\n\nEmail: "+input.value);input.value="";}}</script>
+                    <input type="email" placeholder="Skriv inn din e-post" required>
+                    <button type="submit" class="btn btn-primary">Abonner</button>
+                </form>
+                <script>function subscribeNewsletter(e){e.preventDefault();const input=e.target.querySelector("input");if(input.value){alert("Takk for at du abonnerer!\n\nE-post: "+input.value);input.value="");}}</script>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2026 Simply Complex Solutions. All rights reserved.</p>
+                <p>© 2026 Simply Complex Solutions. Alle rettigheter reservert.</p>
                 <div class="footer-legal">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                    <a href="cookies.html">Cookies</a>
+                    <a href="privacy.html">Personvern</a>
+                    <a href="terms.html">Vilkår</a>
+                    <a href="cookies.html">Informasjonskapsler</a>
                 </div>
             </div>
         </div>
     </footer>
 
-
-
-
-
-    <script>
-        function calculate() {
-            const teamSize = parseInt(document.getElementById('teamSize').value) || 5;
-            const hourlyCost = parseInt(document.getElementById('hourlyCost').value) || 50;
-            const manualHours = parseInt(document.getElementById('manualHours').value) || 10;
-            const packCost = parseInt(document.getElementById('pack').value) || 597;
-            
-            const automationRate = 0.70;
-            const weeksPerMonth = 4;
-            
-            const hoursSavedPerMonth = teamSize * manualHours * automationRate * weeksPerMonth;
-            const moneySavedPerMonth = hoursSavedPerMonth * hourlyCost;
-            const annualSavings = moneySavedPerMonth * 12;
-            const annualCost = packCost * 12;
-            const netSavings = annualSavings - annualCost;
-            const roi = (netSavings / annualCost) * 100;
-            const paybackDays = Math.ceil((packCost / (moneySavedPerMonth / 30)));
-            
-            document.getElementById('hoursSaved').textContent = Math.round(hoursSavedPerMonth).toLocaleString();
-            document.getElementById('moneySaved').textContent = '$' + Math.round(moneySavedPerMonth).toLocaleString();
-            document.getElementById('annualSavings').textContent = '$' + Math.round(annualSavings).toLocaleString();
-            document.getElementById('paybackDays').textContent = paybackDays;
-            document.getElementById('roiPercent').textContent = Math.round(roi).toLocaleString() + '%';
-        }
-        
-        calculate();
-    </script>
-    
-    <!-- Quick Nav Bar for Inner Pages -->
     <div class="quick-nav-bar">
         <div class="quick-nav-content">
-            <span class="quick-nav-label">🚀 Explore More:</span>
-            <a href="index.html" class="quick-nav-link">Home</a>
-            <a href="pricing.html" class="quick-nav-link">Pricing</a>
-            <a href="resources.html" class="quick-nav-link">Resources</a>
-            <a href="templates.html" class="quick-nav-link">Templates</a>
-            <a href="contact.html" class="quick-nav-link">Contact</a>
+            <span class="quick-nav-label">🚀 Utforsk Mer:</span>
+            <a href="index.html" class="quick-nav-link">Hjem</a>
+            <a href="pricing.html" class="quick-nav-link">Priser</a>
+            <a href="resources.html" class="quick-nav-link">Ressurser</a>
+            <a href="templates.html" class="quick-nav-link">Maler</a>
+            <a href="contact.html" class="quick-nav-link">Kontakt</a>
         </div>
     </div>
     
@@ -433,15 +285,14 @@
         .quick-nav-link:hover { color: #fff; }
     </style>
     
-    <!-- Comprehensive Footer -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col footer-brand">
                     <a href="index.html" class="footer-logo">
-                        <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" style="height: 32px;">
+                        <img src="assets/images/scs-logo.png" alt="Simply Complex Solutions" style="height: 32px;">
                     </a>
-                    <p>Enterprise AI automation bundles for Sales, Support, and Hiring.</p>
+                    <p>Enterprise AI-automatisering for Salg, Support og Rekruttering.</p>
                     <div class="footer-social">
                         <a href="#" aria-label="Twitter">𝕏</a>
                         <a href="#" aria-label="LinkedIn">in</a>
@@ -449,57 +300,57 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Solutions</h4>
+                    <h4>Løsninger</h4>
                     <ul>
-                        <li><a href="solution-sales.html">Sales Automation</a></li>
-                        <li><a href="solution-support.html">Support Automation</a></li>
-                        <li><a href="solution-hiring.html">Hiring Automation</a></li>
-                        <li><a href="n8n-store.html">n8n Templates</a></li>
-                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="solution-sales.html">Salg</a></li>
+                        <li><a href="solution-support.html">Support</a></li>
+                        <li><a href="solution-hiring.html">Rekruttering</a></li>
+                        <li><a href="n8n-store.html">n8n Maler</a></li>
+                        <li><a href="integrations.html">Integrasjoner</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Products</h4>
+                    <h4>Produkter</h4>
                     <ul>
-                        <li><a href="pricing.html">Pricing Plans</a></li>
-                        <li><a href="templates.html">All Templates</a></li>
-                        <li><a href="roi-calculator.html">ROI Calculator</a></li>
-                        <li><a href="client-dashboard.html">Analytics Demo</a></li>
-                        <li><a href="compare.html">Compare Tiers</a></li>
+                        <li><a href="pricing.html">Priser</a></li>
+                        <li><a href="templates.html">Alle Maler</a></li>
+                        <li><a href="roi-calculator.html">ROI Kalkulator</a></li>
+                        <li><a href="client-dashboard.html">Analyse</a></li>
+                        <li><a href="compare.html">Sammenlign</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Resources</h4>
+                    <h4>Ressurser</h4>
                     <ul>
-                        <li><a href="resources.html">Free Downloads</a></li>
-                        <li><a href="getting-started.html">Getting Started</a></li>
+                        <li><a href="resources.html">Nedlastinger</a></li>
+                        <li><a href="getting-started.html">Kom i Gang</a></li>
                         <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="setup.html">Setup Guide</a></li>
+                        <li><a href="blog.html">Blogg</a></li>
+                        <li><a href="setup.html">Oppsettsguide</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
+                    <h4>Om Oss</h4>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="careers.html">Careers</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="status.html">System Status</a></li>
-                        <li><a href="changelog.html">Changelog</a></li>
+                        <li><a href="about.html">Om Oss</a></li>
+                        <li><a href="careers.html">Karriere</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="changelog.html">Endringslogg</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Legal</h4>
+                    <h4>Juridisk</h4>
                     <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="cookies.html">Cookie Policy</a></li>
+                        <li><a href="privacy.html">Personvern</a></li>
+                        <li><a href="terms.html">Vilkår</a></li>
+                        <li><a href="cookies.html">Informasjonskapsler</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Simply Complex Solutions. All rights reserved.</p>
-                <p>Powered by n8n & Cloudflare</p>
+                <p>&copy; 2026 Simply Complex Solutions. Alle rettigheter reservert.</p>
+                <p> Drevet av n8n & Cloudflare</p>
             </div>
         </div>
     </footer>
@@ -521,6 +372,33 @@
         @media (max-width: 1024px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } .footer-brand { grid-column: span 3; } }
         @media (max-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } .footer-brand { grid-column: span 2; } .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; } }
     </style>
+
+    <script>
+        function calculate() {
+            const teamSize = parseInt(document.getElementById('teamSize').value) || 5;
+            const hourlyCost = parseInt(document.getElementById('hourlyCost').value) || 500;
+            const manualHours = parseInt(document.getElementById('manualHours').value) || 10;
+            const packCost = parseInt(document.getElementById('pack').value) || 597;
+            
+            const automationRate = 0.70;
+            const weeksPerMonth = 4;
+            
+            const hoursSavedPerMonth = teamSize * manualHours * automationRate * weeksPerMonth;
+            const moneySavedPerMonth = hoursSavedPerMonth * hourlyCost;
+            const annualSavings = moneySavedPerMonth * 12;
+            const annualCost = packCost * 12;
+            const netSavings = annualSavings - annualCost;
+            const roi = (netSavings / annualCost) * 100;
+            const paybackDays = Math.ceil((packCost / (moneySavedPerMonth / 30)));
+            
+            document.getElementById('hoursSaved').textContent = Math.round(hoursSavedPerMonth).toLocaleString('no-NO');
+            document.getElementById('moneySaved').textContent = Math.round(moneySavedPerMonth).toLocaleString('no-NO') + ' kr';
+            document.getElementById('annualSavings').textContent = Math.round(annualSavings).toLocaleString('no-NO') + ' kr';
+            document.getElementById('paybackDays').textContent = paybackDays;
+            document.getElementById('roiPercent').textContent = Math.round(roi).toLocaleString('no-NO') + '%';
+        }
+        
+        calculate();
+    </script>
 </body>
 </html>
-
