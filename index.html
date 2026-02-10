@@ -311,9 +311,11 @@
     <section class="hero">
         <div class="hero-content">
             <div class="audience-tag"><span>🎯</span><span>For <strong>revenue teams</strong>, <strong>hiring teams</strong>, and <strong>support teams</strong> at companies with <strong>$1M+ ARR</strong></span></div>
-            <h1>Stop Losing Deals.<br>Start Automating.</h1>
+            <h1>Simply Complex Solutions</h1>
+            <p class="hero-subtitle" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Forenkler en kompleks hverdag</p>
+            <h1 style="margin-bottom: 1.5rem;">Stop Losing Deals.<br>Start Automating.</h1>
             <p class="hero-subtitle">Deploy complete AI automation bundles that generate <strong>2-10X more qualified replies</strong>, <strong>close deals 72% faster</strong>, and <strong>cut hiring time in half</strong>.</p>
-            
+
             <div class="outcome-metrics">
                 <div class="metric"><span class="metric-value">2-10X</span><span class="metric-label">More Qualified Replies</span></div>
                 <div class="metric"><span class="metric-value">72%</span><span class="metric-label">Faster Deal Closing</span></div>
@@ -631,6 +633,36 @@
     </style>
 
     <script>
+    // Translation dictionary
+    const translations = {
+        en: {
+            home: 'Home',
+            solutions: 'Solutions',
+            pricing: 'Pricing',
+            templates: 'Templates',
+            roi_calculator: 'ROI Calculator',
+            case_studies: 'Case Studies',
+            industries: 'Industries',
+            get_started: 'Get Started',
+            language_selector: 'Language',
+            english: 'English',
+            norwegian: 'Norsk'
+        },
+        no: {
+            home: 'Hjem',
+            solutions: 'Løsninger',
+            pricing: 'Priser',
+            templates: 'Maler',
+            roi_calculator: 'ROI Kalkulator',
+            case_studies: 'Casestudier',
+            industries: 'Industrier',
+            get_started: 'Kom i gang',
+            language_selector: 'Språk',
+            english: 'Engelsk',
+            norwegian: 'Norsk'
+        }
+    };
+
     function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('open'); document.querySelector('.mobile-menu-toggle').classList.toggle('active'); }
     document.addEventListener('click', function(e) {
         const nav = document.getElementById('navLinks'); const btn = document.querySelector('.mobile-menu-toggle');
@@ -641,23 +673,59 @@
     
     function changeLanguage(lang) {
         localStorage.setItem('preferredLanguage', lang);
-        // For now, we'll redirect to the same page with language parameter
-        // In a real implementation, this would dynamically update content
-        window.location.search = '?lang=' + lang;
+        // Update language selector
+        const langSelect = document.getElementById('language-select');
+        if (langSelect) {
+            langSelect.value = lang;
+        }
+        
+        // In a real implementation, this would update all page content
+        // For now, we'll just reload the page to demonstrate the concept
+        location.reload();
+    }
+    
+    // Translate content based on selected language
+    function translatePage() {
+        const savedLang = localStorage.getItem('preferredLanguage');
+        const browserLang = navigator.language || navigator.userLanguage;
+        const defaultLang = browserLang.startsWith('no') || browserLang.startsWith('nb') || browserLang.startsWith('nn') ? 'no' : 'en';
+        const currentLang = savedLang || defaultLang;
+        
+        // Update navigation links text
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === 'index.html' || link.textContent.includes('Home')) {
+                link.textContent = translations[currentLang].home;
+            } else if (href === 'solutions.html' || link.textContent.includes('Solutions')) {
+                link.textContent = translations[currentLang].solutions;
+            } else if (href === 'pricing.html' || link.textContent.includes('Pricing')) {
+                link.textContent = translations[currentLang].pricing;
+            } else if (href === 'n8n-store.html' || link.textContent.includes('Templates')) {
+                link.textContent = translations[currentLang].templates;
+            } else if (href === 'roi-calculator.html' || link.textContent.includes('ROI Calculator')) {
+                link.textContent = translations[currentLang].roi_calculator;
+            } else if (href === 'case-studies.html' || link.textContent.includes('Case Studies')) {
+                link.textContent = translations[currentLang].case_studies;
+            } else if (link.textContent.includes('Get Started')) {
+                link.textContent = translations[currentLang].get_started;
+            }
+        });
+        
+        // Update language selector options
+        const langSelect = document.getElementById('language-select');
+        if (langSelect) {
+            langSelect.innerHTML = `
+                <option value="en">${translations[currentLang].english}</option>
+                <option value="no">${translations[currentLang].norwegian}</option>
+            `;
+            langSelect.value = currentLang;
+        }
     }
     
     // Detect and set preferred language on page load
     document.addEventListener('DOMContentLoaded', function() {
-        const savedLang = localStorage.getItem('preferredLanguage');
-        const browserLang = navigator.language || navigator.userLanguage;
-        const defaultLang = browserLang.startsWith('no') || browserLang.startsWith('nb') || browserLang.startsWith('nn') ? 'no' : 'en';
-        const preferredLang = savedLang || defaultLang;
-        
-        // Set the language selector to the preferred language
-        const langSelect = document.getElementById('language-select');
-        if (langSelect) {
-            langSelect.value = preferredLang;
-        }
+        translatePage();
     });
     </script>
 </body>
