@@ -23,3 +23,11 @@ npm-debug.log*
 secrets.json
 vault-*.json
 *.vault
+
+# Credentials (create these files manually)
+credentials.json
+drive-token.json
+drive-folder-id.txt
+
+# Trigger file (auto-generated)
+DEPLOY.txt

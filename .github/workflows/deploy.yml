@@ -1,9 +1,8 @@
-# GitHub Actions Workflow for Cloudflare Pages Auto-Deploy
 name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [master, main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -18,18 +17,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build website
-        run: |
-          mkdir -p dist/assets
-          cp -r assets/* dist/assets/
-          cp index.html dist/
-          cp _headers dist/
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: scs-market-place
-          directory: dist
+          projectName: scs-marketplace
+          directory: .
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
