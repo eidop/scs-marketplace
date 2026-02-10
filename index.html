@@ -188,6 +188,42 @@
         text-align: left;
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
+
+    /* Language Selector */
+    .lang-selector {
+        position: relative;
+    }
+
+    #language-select {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+    }
+
+    #language-select:focus {
+        outline: none;
+        border-color: #6366f1;
+    }
+
+    @media (max-width: 768px) {
+        #language-select {
+            padding: 0.5rem;
+            font-size: 0.8rem;
+        }
+    }
+    }
     
     .comparison-table th {
         background: rgba(255, 255, 255, 0.02);
@@ -261,6 +297,12 @@
                 <a href="roi-calculator.html">ROI Calculator</a>
                 <a href="case-studies.html">Case Studies</a>
                 <a href="#industries">Industries</a>
+                <div class="lang-selector">
+                    <select id="language-select" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="no">Norsk</option>
+                    </select>
+                </div>
                 <a href="contact.html" class="btn btn-primary">Get Started</a>
             </div>
         </div>
@@ -594,6 +636,27 @@
         const nav = document.getElementById('navLinks'); const btn = document.querySelector('.mobile-menu-toggle');
         if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
             nav.classList.remove('open'); btn.classList.remove('active');
+        }
+    });
+    
+    function changeLanguage(lang) {
+        localStorage.setItem('preferredLanguage', lang);
+        // For now, we'll redirect to the same page with language parameter
+        // In a real implementation, this would dynamically update content
+        window.location.search = '?lang=' + lang;
+    }
+    
+    // Detect and set preferred language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedLang = localStorage.getItem('preferredLanguage');
+        const browserLang = navigator.language || navigator.userLanguage;
+        const defaultLang = browserLang.startsWith('no') || browserLang.startsWith('nb') || browserLang.startsWith('nn') ? 'no' : 'en';
+        const preferredLang = savedLang || defaultLang;
+        
+        // Set the language selector to the preferred language
+        const langSelect = document.getElementById('language-select');
+        if (langSelect) {
+            langSelect.value = preferredLang;
         }
     });
     </script>
