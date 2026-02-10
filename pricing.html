@@ -61,10 +61,12 @@
     
     
     
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" class="logo-image" style="height: 40px; width: auto;">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -82,487 +84,211 @@
                 <a href="compare.html">Compare</a>
                 <a href="contact.html" class="nav-btn">Contact</a>
             </div>
-            <div class="language-switcher">
-                <button class="lang-btn active" id="langBtnEn">🇺🇸 EN</button>
-                <div class="lang-dropdown">
-                    <a href="?lang=en" class="lang-option" data-lang="en">🇺🇸 English</a>
-                    <a href="?lang=no" class="lang-option" data-lang="no">🇳🇴 Norsk</a>
-                </div>
-            </div>
         </div>
     </nav>
+
+    
     
     <style>
-        .language-switcher { position: relative; margin-left: auto; }
-        .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
-        .lang-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 160px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 100; }
-        .language-switcher:hover .lang-dropdown { display: block; }
-        .lang-option { display: block; padding: 0.625rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem; transition: all 0.2s; }
-        .lang-option:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
-        @media (max-width: 768px) { .language-switcher { position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); } }
-    </style>
 
-    
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
 
-    
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
+    .btn:active {
+        transform: scale(0.98);
+    }
 
-    
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
 
-    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
 
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
 
-    
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
 
-    
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
 
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
 
-    <style>
-        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
-        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
-        @media (max-width: 900px) {
-            .mobile-menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-links.open { display: flex; }
-            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
-            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
         }
-    </style>
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+</style>
 
     <script>
         function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            navLinks.classList.toggle('open');
+            menuButton.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
-        
+
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             const navLinks = document.getElementById('navLinks');
             const menuButton = document.querySelector('.mobile-menu-toggle');
-            
-            if (navLinks.classList.contains('open') && 
-                !navLinks.contains(event.target) && 
+
+            if (navLinks.classList.contains('open') &&
+                !navLinks.contains(event.target) &&
                 !menuButton.contains(event.target)) {
                 navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const navLinks = document.getElementById('navLinks');
+                const menuButton = document.querySelector('.mobile-menu-toggle');
+
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
         });
     </script>
 
-
-    <section class="detail-hero">
-        <div class="detail-hero-icon">💰</div>
-        <span class="section-badge">Simple Pricing</span>
-        <h1>Start Free, Upgrade When You See Results</h1>
-        <p>Book a demo to see how the system fits your workflow. 30-day money-back guarantee.</p>
-        <div class="pricing-badge" style="margin-top: 1rem;">🎁 First 3 months at 50% off</div>
-        <a href="roi-calculator.html" style="display: inline-block; margin-top: 1rem; color: #06b6d4; font-weight: 500;">📊 Calculate Your ROI →</a>
-    </section>
-
-    <section class="pricing-section">
-        <div class="section-container">
-            <div class="pricing-grid">
-                <!-- Startup Pack -->
-                <div class="pricing-card offer-card">
-                    <div class="offer-tag">Best for Startups</div>
-                    <h3>🚀 Startup Pack</h3>
-                    <p class="pricing-subtitle">Essential automation for new businesses</p>
-                    <div class="pricing-price-lock">
-                        <span class="price-original">$497</span>
-                        <span class="price-current">$247</span>
-                    </div>
-                    <div class="price-period">/month • first 3 months</div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features">
-                        <li>✅ <strong>26 templates</strong></li>
-                        <li>✅ Lead capture & routing</li>
-                        <li>✅ Email marketing automation</li>
-                        <li>✅ CRM integration setup</li>
-                        <li>✅ Invoice reminders</li>
-                        <li>✅ Social scheduling</li>
-                        <li>✅ Email support</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-outline">Book a Demo</a>
-                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
-                </div>
-
-                <!-- Growth Pack -->
-                <div class="pricing-card featured offer-card">
-                    <div class="offer-savings">SAVE 40%</div>
-                    <div class="offer-tag popular">Most Popular</div>
-                    <h3>📈 Growth Pack</h3>
-                    <p class="pricing-subtitle">Scale your revenue operations</p>
-                    <div class="pricing-price-lock">
-                        <span class="price-original">$997</span>
-                        <span class="price-current">$597</span>
-                    </div>
-                    <div class="price-period">/month • first 3 months</div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features">
-                        <li>✅ <strong>54 templates</strong></li>
-                        <li>✅ <strong>Everything in Startup</strong></li>
-                        <li>✅ Advanced lead scoring</li>
-                        <li>✅ Multi-channel outreach</li>
-                        <li>✅ Sales pipeline automation</li>
-                        <li>✅ Customer onboarding</li>
-                        <li>✅ Analytics dashboards</li>
-                        <li>✅ Support automation</li>
-                        <li>✅ Priority chat support</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary">Book a Demo</a>
-                    <p class="pricing-note">🔒 30-day money-back guarantee</p>
-                </div>
-
-                <!-- Complete Pack -->
-                <div class="pricing-card offer-card">
-                    <div class="offer-tag">For Enterprises</div>
-                    <h3>🌐 Complete Pack</h3>
-                    <p class="pricing-subtitle">Full business automation suite</p>
-                    <div class="pricing-price-lock">
-                        <span class="price-original">$2,497</span>
-                        <span class="price-current">$1,497</span>
-                    </div>
-                    <div class="price-period">/month • first 3 months</div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features">
-                        <li>✅ <strong>150+ templates</strong></li>
-                        <li>✅ <strong>Everything in Growth</strong></li>
-                        <li>✅ Hiring & recruitment (18)</li>
-                        <li>✅ Finance & accounting (22)</li>
-                        <li>✅ Developer operations (25)</li>
-                        <li>✅ Custom API workflows</li>
-                        <li>✅ Advanced AI prompts</li>
-                        <li>✅ Dedicated account manager</li>
-                        <li>✅ 24/7 phone support</li>
-                    </ul>
-                    <a href="setup.html?bundle=enterprise" class="btn btn-outline">Contact Sales</a>
-                    <p class="pricing-note">Custom onboarding included</p>
-                </div>
-            </div>
-
-            <!-- Trust Badges -->
-            <div class="pricing-trust" style="margin-top: 4rem;">
-                <div class="trust-item">🛡️ 30-day money-back guarantee</div>
-                <div class="trust-item">🔒 SOC 2 Type II certified</div>
-                <div class="trust-item">⚡ 2-hour average setup</div>
-                <div class="trust-item">📞 24/7 support included</div>
-                <div class="trust-item">💳 No credit card required</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feature Comparison Table -->
-    <section class="comparison-section" style="padding: 4rem 0;">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-badge">Compare Plans</span>
-                <h2>Feature Comparison</h2>
-            </div>
-            <div style="overflow-x: auto; margin-top: 2rem;">
-                <table style="width: 100%; border-collapse: collapse; min-width: 700px;">
-                    <thead>
-                        <tr style="border-bottom: 2px solid rgba(255,255,255,0.1);">
-                            <th style="text-align: left; padding: 1rem; color: #94a3b8; font-weight: 500;">Features</th>
-                            <th style="text-align: center; padding: 1rem; color: #fff;">🚀 Startup<br><span style="font-size: 0.75rem; color: #94a3b8;">$247/mo</span></th>
-                            <th style="text-align: center; padding: 1rem; color: #06b6d4; background: rgba(6,182,212,0.1); border-radius: 8px 8px 0 0;">📈 Growth<br><span style="font-size: 0.75rem;">$597/mo</span></th>
-                            <th style="text-align: center; padding: 1rem; color: #fff;">🌐 Complete<br><span style="font-size: 0.75rem; color: #94a3b8;">$1,497/mo</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Total Templates</td>
-                            <td style="text-align: center; padding: 0.75rem;">26</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">54</td>
-                            <td style="text-align: center; padding: 0.75rem;">150+</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Lead Capture & Routing</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Email Marketing Automation</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">CRM Integration</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Advanced Lead Scoring</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Multi-Channel Outreach</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Sales Pipeline Automation</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Analytics Dashboards</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">✅</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Hiring & Recruitment</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05); color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅ 18 templates</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Finance & Accounting</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05); color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅ 22 templates</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Developer Operations</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05); color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅ 25 templates</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Custom API Workflows</td>
-                            <td style="text-align: center; padding: 0.75rem; color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05); color: #64748b;">—</td>
-                            <td style="text-align: center; padding: 0.75rem;">✅</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Support Level</td>
-                            <td style="text-align: center; padding: 0.75rem;">Email</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">Priority Chat</td>
-                            <td style="text-align: center; padding: 0.75rem;">24/7 Phone + Dedicated AM</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem 1rem; color: #e2e8f0;">Onboarding</td>
-                            <td style="text-align: center; padding: 0.75rem;">Self-serve</td>
-                            <td style="text-align: center; padding: 0.75rem; background: rgba(6,182,212,0.05);">Guided setup</td>
-                            <td style="text-align: center; padding: 0.75rem;">Custom onboarding</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-badge">FAQ</span>
-                <h2>Common Questions</h2>
-            </div>
-
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>What happens after I book a demo?</h4>
-                    <p>We’ll review your workflow, recommend the right pack, and share a setup plan + next steps. If you decide to move forward, onboarding is fast.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I cancel anytime?</h4>
-                    <p>Yes. No long-term contracts. Cancel anytime from your dashboard. You'll only pay for the time you've used.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What happens after the 50% off period?</h4>
-                    <p>After 3 months, your subscription continues at the regular rate. Lock in your rate by choosing annual billing.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Do you offer annual billing?</h4>
-                    <p>Yes! Choose annual billing and save 20% compared to monthly. That's like getting 2 months free.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I switch plans later?</h4>
-                    <p>Absolutely. Upgrade or downgrade anytime. Your templates and integrations transfer seamlessly.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What's your refund policy?</h4>
-                    <p>30-day money-back guarantee. If you're not satisfied, we'll refund your payment, no questions asked.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Do I need n8n to use these templates?</h4>
-                    <p>Yes, our templates are designed for n8n. You'll need your own n8n instance (self-hosted or cloud). We provide setup guides.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Are the templates customizable?</h4>
-                    <p>100%. All templates are fully customizable. Modify workflows, add steps, or build entirely new automations on top.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="section-container">
-            <div class="cta-card">
-                <h2>Ready to Get Started?</h2>
-                <p>Join 10,000+ companies automating their business.</p>
-                <a href="contact.html" class="btn btn-primary btn-large">Book a Demo</a>
-                <p class="pricing-note" style="margin-top: 1rem;">No credit card required • Cancel anytime</p>
-            </div>
-        </div>
-    </section>
-
-    
-    
-    
-    
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" class="logo-image" style="height: 40px; width: auto;">
-                    </a>
-                    <p>Enterprise AI automation bundles that actually work.</p>
-                    <div class="social-links">
-                        <a href="https://twitter.com/simplycomplex" target="_blank" rel="noopener" title="Twitter">𝕏</a>
-                        <a href="https://linkedin.com/company/simplycomplex" target="_blank" rel="noopener" title="LinkedIn">in</a>
-                        <a href="https://github.com/simplycomplex" target="_blank" rel="noopener" title="GitHub">⌘</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Solutions</h4>
-                    <a href="solution-sales.html">Sales Excellence</a>
-                    <a href="solution-support.html">Support Automation</a>
-                    <a href="solution-hiring.html">Hiring System</a>
-                    <a href="n8n-store.html">All Templates</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Tools</h4>
-                    <a href="roi-calculator.html">ROI Calculator</a>
-                    <a href="client-dashboard.html">Analytics Dashboard</a>
-                    <a href="status.html">System Status</a>
-                    <a href="compare.html">Feature Comparison</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <a href="resources.html">Free Downloads</a>
-                    <a href="getting-started.html">Getting Started</a>
-                    <a href="changelog.html">Changelog</a>
-                    <a href="blog.html">Blog</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="pricing.html">Pricing</a>
-                </div>
-            </div>
-            
-            <!-- Newsletter Signup -->
-            <div class="footer-newsletter">
-                <h4>Stay Updated</h4>
-                <p>Get automation tips and product updates.</p>
-                <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2026 Simply Complex Solutions. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                    <a href="cookies.html">Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-
-
-    <script src="js/main.js"></script>
-
-    <!-- Language Switcher Script -->
-    <script>
-        function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-        }
-
-        function setLanguage(lang) {
-            const baseUrl = window.location.pathname.split('?')[0];
-            const url = lang === 'no' ? baseUrl + '?lang=no' : baseUrl;
-            window.location.href = url;
-        }
-
-        function getCookie(name) {
-            const nameEQ = name + '=';
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = 'expires=' + date.toUTCString();
-            document.cookie = name + '=' + value + ';' + expires + ';path=/';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const langFromUrl = params.get('lang');
-
-            if (langFromUrl) {
-                setCookie('lang', langFromUrl, 1);
-            }
-
-            const langBtnEn = document.getElementById('langBtnEn');
-            if (langBtnEn) {
-                langBtnEn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    setLanguage('en');
-                });
-            }
-        });
-    </script>
-
-    <!-- Quick Nav Bar -->
-    <div class="quick-nav-bar">
-        <div class="quick-nav-content">
-            <span class="quick-nav-label">🚀 Explore:</span>
-            <a href="index.html" class="quick-nav-link">Home</a>
-            <a href="roi-calculator.html" class="quick-nav-link">ROI Calculator</a>
-            <a href="resources.html" class="quick-nav-link">Resources</a>
-            <a href="templates.html" class="quick-nav-link">Templates</a>
-            <a href="contact.html" class="quick-nav-link">Contact</a>
-        </div>
-    </div>
-    
-    <style>
-        .quick-nav-bar { background: rgba(99, 102, 241, 0.1); border-top: 1px solid rgba(99, 102, 241, 0.3); padding: 0.75rem 0; position: sticky; bottom: 0; z-index: 100; backdrop-filter: blur(10px); }
-        .quick-nav-content { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-        .quick-nav-label { color: #a5b4fc; font-weight: 500; font-size: 0.875rem; }
-        .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
-        .quick-nav-link:hover { color: #fff; }
-    </style>
 </body>
 </html>
 

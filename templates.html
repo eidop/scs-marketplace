@@ -15,6 +15,7 @@
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
     
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -27,51 +28,19 @@
             <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="solutions.html">Solutions</a>
-                <a href="pricing.html" class="active">Pricing</a>
+                <a href="pricing.html">Pricing</a>
                 <a href="n8n-store.html">Templates</a>
                 <a href="integrations.html">Integrations</a>
                 <a href="client-dashboard.html">Analytics</a>
                 <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="status.html">Status</a>
+                <a href="compare.html">Compare</a>
                 <a href="contact.html" class="nav-btn">Contact</a>
-            </div>
-            <div class="language-switcher" onclick="toggleLanguage()">
-                <button class="lang-btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
-                    🇺🇸 English
-                </button>
-                <div class="lang-dropdown" id="langDropdown" style="position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 120px; display: none;">
-                    <a href="pricing-no.html" style="display: block; padding: 0.5rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem;">🇳🇴 Norsk</a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <script>
-        function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-        }
-        function toggleLanguage() {
-            const dropdown = document.getElementById('langDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.language-switcher')) {
-                document.getElementById('langDropdown').style.display = 'none';
-            }
-        });
-    </script>
-
-    <style>
-        .language-switcher { position: relative; margin-left: 1rem; cursor: pointer; }
-        .lang-dropdown { z-index: 100; }
-        .lang-dropdown a:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
-        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
-        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
-        @media (max-width: 900px) {
-            .mobile-menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-links.open { display: flex; }
-        }
-    </style>
 
     <header class="detail-hero" style="padding: 120px 3rem 60px; text-align: center;">
         <div class="detail-hero-icon">💎</div>
@@ -196,27 +165,157 @@
 </html>
 
 <style>
-    .pricing-horizontal { display: flex; flex-direction: row; gap: 1.5rem; max-width: 1200px; margin: 0 auto; align-items: stretch; }
-    .pricing-card { flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; position: relative; transition: all 0.3s ease; }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.3); }
-    .pricing-card.featured { background: linear-gradient(155deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.08)); border-color: var(--primary); transform: scale(1.02); }
-    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #10b981, #059669); padding: 0.4rem 1.5rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
-    .pricing-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .pricing-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; flex-shrink: 0; }
-    .pricing-card-header h3 { font-size: 1.5rem; margin: 0 0 0.25rem 0; font-weight: 700; }
-    .pricing-card-header p { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
-    .pricing-card-body { flex: 1; margin-bottom: 1.5rem; }
-    .pricing-features { list-style: none; padding: 0; margin: 0; }
-    .pricing-features li { padding: 0.6rem 0; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem; color: var(--text-muted); }
-    .pricing-features li i { width: 20px; text-align: center; flex-shrink: 0; }
-    .pricing-features li i.fa-check { color: #10b981; }
-    .pricing-features li i.fa-plus, .pricing-features li i.fa-star { color: #f59e0b; }
-    .pricing-card-footer { text-align: center; }
-    .pricing-price { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
-    .pricing-price span { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
-    .pricing-card .btn { width: 100%; padding: 0.875rem 1.5rem; }
-    @media (max-width: 900px) {
-        .pricing-horizontal { flex-direction: column; max-width: 400px; }
-        .pricing-card.featured { transform: none; }
+
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
+
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
 </style>

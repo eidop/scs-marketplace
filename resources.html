@@ -10,380 +10,207 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    
     <style>
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .resource-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .resource-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(6, 182, 212, 0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .resource-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .resource-type {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: rgba(6, 182, 212, 0.2);
-            color: #06b6d4;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
-        .resource-card h3 {
-            color: #fff;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-        .resource-card p {
-            color: #94a3b8;
-            font-size: 0.875rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .resource-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.75rem;
-            color: #64748b;
-            margin-bottom: 1rem;
-        }
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
+
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
             padding: 0.625rem 1.25rem;
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-            color: #fff;
-            border-radius: 8px;
             font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s ease;
         }
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
         }
-        .download-btn.secondary {
-            background: rgba(255,255,255,0.1);
+    }
+
+</style>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            navLinks.classList.toggle('open');
+            menuButton.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
-        .category-tabs {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .category-tab {
-            padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 999px;
-            color: #94a3b8;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .category-tab:hover, .category-tab.active {
-            background: rgba(6, 182, 212, 0.2);
-            border-color: #06b6d4;
-            color: #06b6d4;
-        }
-        .newsletter-box {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        .newsletter-box h3 {
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-        .newsletter-box p {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-        }
-        .newsletter-form {
-            display: flex;
-            gap: 0.75rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: #fff;
-        }
-        .newsletter-form button {
-            padding: 0.75rem 1.5rem;
-            background: #06b6d4;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-    
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">◈</div>
-                <span class="logo-text">Simply Complex Solutions</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="client-dashboard.html">Analytics</a>
-                <a href="contact.html" class="nav-btn">Contact</a>
-            </div>
-            <div class="language-switcher">
-                <button class="lang-btn active">🇺🇸 EN</button>
-                <div class="lang-dropdown">
-                    <a href="solution-megling.html" class="lang-option">🏠 Eiendom</a>
-                    <a href="solution-investering.html" class="lang-option">💼 Investering</a>
-                    <a href="solution-kundeservice.html" class="lang-option">🎧 Kundeservice</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <style>
-        .language-switcher { position: relative; margin-left: auto; }
-        .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
-        .lang-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 160px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 100; }
-        .language-switcher:hover .lang-dropdown { display: block; }
-        .lang-option { display: block; padding: 0.625rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem; transition: all 0.2s; }
-        .lang-option:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
-    </style>
 
-    <section class="detail-hero">
-        <div class="detail-hero-icon">📚</div>
-        <span class="section-badge">Free Resources</span>
-        <h1>Templates, Guides & Tools</h1>
-        <p>Everything you need to start automating your business — completely free.</p>
-    </section>
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
 
-    <section style="padding: 4rem 2rem;">
-        <div class="section-container">
-            <div class="category-tabs">
-                <button class="category-tab active" onclick="filterResources('all')">All Resources</button>
-                <button class="category-tab" onclick="filterResources('template')">Templates</button>
-                <button class="category-tab" onclick="filterResources('guide')">Guides</button>
-                <button class="category-tab" onclick="filterResources('tool')">Tools</button>
-                <button class="category-tab" onclick="filterResources('checklist')">Checklists</button>
-            </div>
+            if (navLinks.classList.contains('open') &&
+                !navLinks.contains(event.target) &&
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
 
-            <div class="resources-grid" id="resourcesGrid">
-                <!-- Templates -->
-                <div class="resource-card" data-category="template">
-                    <div class="resource-icon">📧</div>
-                    <span class="resource-type">Template</span>
-                    <h3>Lead Capture Starter Kit</h3>
-                    <p>5 ready-to-use n8n workflows for capturing and routing leads from web forms, chatbots, and landing pages.</p>
-                    <div class="resource-meta">
-                        <span>📄 5 workflows</span>
-                        <span>⏱️ 30 min setup</span>
-                    </div>
-                    <a href="#" class="download-btn">Download Free →</a>
-                </div>
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const navLinks = document.getElementById('navLinks');
+                const menuButton = document.querySelector('.mobile-menu-toggle');
 
-                <div class="resource-card" data-category="template">
-                    <div class="resource-icon">📊</div>
-                    <span class="resource-type">Template</span>
-                    <h3>Email Sequence Builder</h3>
-                    <p>Automated email sequences for onboarding, nurturing, and re-engagement. Works with Mailchimp, SendGrid, and more.</p>
-                    <div class="resource-meta">
-                        <span>📄 3 workflows</span>
-                        <span>⏱️ 20 min setup</span>
-                    </div>
-                    <a href="#" class="download-btn">Download Free →</a>
-                </div>
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    </script>
 
-                <div class="resource-card" data-category="template">
-                    <div class="resource-icon">🔔</div>
-                    <span class="resource-type">Template</span>
-                    <h3>Slack Notification Hub</h3>
-                    <p>Get real-time alerts for new leads, support tickets, payments, and more directly in Slack.</p>
-                    <div class="resource-meta">
-                        <span>📄 4 workflows</span>
-                        <span>⏱️ 15 min setup</span>
-                    </div>
-                    <a href="#" class="download-btn">Download Free →</a>
-                </div>
-
-                <!-- Guides -->
-                <div class="resource-card" data-category="guide">
-                    <div class="resource-icon">📖</div>
-                    <span class="resource-type">Guide</span>
-                    <h3>n8n Beginner's Guide</h3>
-                    <p>Complete introduction to n8n automation. Learn the basics, best practices, and build your first workflow in under an hour.</p>
-                    <div class="resource-meta">
-                        <span>📄 45 pages</span>
-                        <span>⏱️ 1 hour read</span>
-                    </div>
-                    <a href="#" class="download-btn">Download PDF →</a>
-                </div>
-
-                <div class="resource-card" data-category="guide">
-                    <div class="resource-icon">💰</div>
-                    <span class="resource-type">Guide</span>
-                    <h3>Automation ROI Playbook</h3>
-                    <p>How to calculate, measure, and maximize the ROI of your automation investments. Includes templates and formulas.</p>
-                    <div class="resource-meta">
-                        <span>📄 32 pages</span>
-                        <span>⏱️ 45 min read</span>
-                    </div>
-                    <a href="#" class="download-btn">Download PDF →</a>
-                </div>
-
-                <div class="resource-card" data-category="guide">
-                    <div class="resource-icon">🚀</div>
-                    <span class="resource-type">Guide</span>
-                    <h3>Scaling Sales with Automation</h3>
-                    <p>10 proven automation strategies to double your sales capacity without hiring. Real case studies included.</p>
-                    <div class="resource-meta">
-                        <span>📄 28 pages</span>
-                        <span>⏱️ 40 min read</span>
-                    </div>
-                    <a href="#" class="download-btn">Download PDF →</a>
-                </div>
-
-                <!-- Tools -->
-                <div class="resource-card" data-category="tool">
-                    <div class="resource-icon">🧮</div>
-                    <span class="resource-type">Tool</span>
-                    <h3>Automation ROI Calculator</h3>
-                    <p>Interactive calculator to estimate time and cost savings from automation. Input your numbers, get instant results.</p>
-                    <div class="resource-meta">
-                        <span>🌐 Web tool</span>
-                        <span>⏱️ 2 min</span>
-                    </div>
-                    <a href="roi-calculator.html" class="download-btn">Open Calculator →</a>
-                </div>
-
-                <div class="resource-card" data-category="tool">
-                    <div class="resource-icon">🔍</div>
-                    <span class="resource-type">Tool</span>
-                    <h3>Integration Finder</h3>
-                    <p>Search our database of 150+ integrations to find the tools that work with your existing stack.</p>
-                    <div class="resource-meta">
-                        <span>🌐 Web tool</span>
-                        <span>⏱️ Instant</span>
-                    </div>
-                    <a href="integrations.html" class="download-btn">Browse Integrations →</a>
-                </div>
-
-                <!-- Checklists -->
-                <div class="resource-card" data-category="checklist">
-                    <div class="resource-icon">✅</div>
-                    <span class="resource-type">Checklist</span>
-                    <h3>Automation Readiness Audit</h3>
-                    <p>25-point checklist to evaluate if your business is ready for automation and identify quick wins.</p>
-                    <div class="resource-meta">
-                        <span>📄 1 page</span>
-                        <span>⏱️ 10 min</span>
-                    </div>
-                    <a href="#" class="download-btn">Download PDF →</a>
-                </div>
-
-                <div class="resource-card" data-category="checklist">
-                    <div class="resource-icon">📋</div>
-                    <span class="resource-type">Checklist</span>
-                    <h3>n8n Security Checklist</h3>
-                    <p>Essential security configurations for production n8n deployments. Covers authentication, secrets, and backups.</p>
-                    <div class="resource-meta">
-                        <span>📄 2 pages</span>
-                        <span>⏱️ 15 min</span>
-                    </div>
-                    <a href="#" class="download-btn">Download PDF →</a>
-                </div>
-
-                <div class="resource-card" data-category="checklist">
-                    <div class="resource-icon">🎯</div>
-                    <span class="resource-type">Checklist</span>
-                    <h3>Sales Automation Checklist</h3>
-                    <p>40 automation ideas for sales teams. Prioritized by impact and difficulty. Perfect for planning your roadmap.</p>
-                    <div class="resource-meta">
-                        <span>📄 3 pages</span>
-                        <span>⏱️ 20 min</span>
-                    </div>
-                    <a href="#" class="download-btn">Download PDF →</a>
-                </div>
-            </div>
-
-            <div class="newsletter-box">
-                <h3>📬 Get New Resources Weekly</h3>
-                <p>Join 5,000+ automation enthusiasts. We'll send you new templates, guides, and tips every week.</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                    <input type="email" placeholder="your@email.com" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Quick Nav Bar for Inner Pages -->
-    <div class="quick-nav-bar">
-        <div class="quick-nav-content">
-            <span class="quick-nav-label">🚀 Explore More:</span>
-            <a href="index.html" class="quick-nav-link">Home</a>
-            <a href="pricing.html" class="quick-nav-link">Pricing</a>
-            <a href="roi-calculator.html" class="quick-nav-link">ROI Calculator</a>
-            <a href="templates.html" class="quick-nav-link">Templates</a>
-            <a href="contact.html" class="quick-nav-link">Contact</a>
-        </div>
-    </div>
-    
-    <style>
-        .quick-nav-bar { background: rgba(99, 102, 241, 0.1); border-top: 1px solid rgba(99, 102, 241, 0.3); padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-        .quick-nav-content { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-        .quick-nav-label { color: #a5b4fc; font-weight: 500; font-size: 0.875rem; }
-        .quick-nav-link { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
-        .quick-nav-link:hover { color: #fff; }
-    </style>
 
     <script>
         function filterResources(category) {
@@ -398,6 +225,37 @@
                 }
             });
         }
+    </script>
+    
+    <!-- Mobile Menu Styles -->
+    <style>
+        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
+        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+        @media (max-width: 900px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        }
+    </style>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (navLinks.classList.contains('open') && 
+                !navLinks.contains(event.target) && 
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+            }
+        });
     </script>
 </body>
 </html>

@@ -10,94 +10,207 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    
     <style>
-        .compare-section { padding: 4rem 2rem; }
-        .compare-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
-        .compare-table th, .compare-table td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .compare-table th { background: rgba(99,102,241,0.1); color: #fff; font-weight: 600; }
-        .compare-table th:first-child { border-radius: 12px 0 0 0; }
-        .compare-table th:last-child { border-radius: 0 12px 0 0; }
-        .compare-table td:first-child { color: #94a3b8; }
-        .compare-table tr:hover { background: rgba(255,255,255,0.02); }
-        .check { color: #10b981; font-weight: 600; }
-        .cross { color: #ef4444; }
-        .partial { color: #f59e0b; }
-        .highlight-col { background: rgba(99,102,241,0.1); }
-        .vs-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .vs-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; }
-        .vs-card.featured { border-color: #6366f1; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.1)); }
-        .vs-card h3 { color: #fff; font-size: 1.25rem; margin-bottom: 0.5rem; }
-        .vs-card .price { font-size: 2rem; font-weight: 700; color: #fff; margin: 1rem 0; }
-        .vs-card .price span { font-size: 1rem; color: #94a3b8; font-weight: 400; }
-        .vs-card ul { list-style: none; padding: 0; margin: 1.5rem 0; }
-        .vs-card li { padding: 0.5rem 0; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem; }
-        .vs-card li::before { content: ''; width: 6px; height: 6px; background: #6366f1; border-radius: 50%; }
-        .winner-badge { display: inline-block; padding: 0.25rem 0.75rem; background: #10b981; color: #fff; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; }
-        .calc-savings { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 2rem; margin-top: 3rem; text-align: center; }
-        .calc-savings h3 { color: #fff; margin-bottom: 0.5rem; }
-        .calc-savings .big-number { font-size: 3rem; font-weight: 800; color: #10b981; margin: 1rem 0; }
-    </style>
-</head>
-<body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-    
-    
-    
-    
-    
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">◈</div>
-                <span class="logo-text">Simply Complex Solutions</span>
-            </a>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="solutions.html">Solutions</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="n8n-store.html">Templates</a>
-                <a href="integrations.html">Integrations</a>
-                <a href="client-dashboard.html">Analytics</a>
-                <a href="roi-calculator.html">ROI Calculator</a>
-                <a href="resources.html">Resources</a>
-                <a href="status.html">Status</a>
-                <a href="compare.html">Compare</a>
-                <a href="contact.html" class="nav-btn">Contact</a>
-            </div>
-        </div>
-    </nav>
 
-    
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
 
-    
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
+    .btn:active {
+        transform: scale(0.98);
+    }
 
-    
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
 
-    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
 
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
 
-    
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
 
-    
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
 
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
 
-    <style>
-        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
-        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
-        @media (max-width: 900px) {
-            .mobile-menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-links.open { display: flex; }
-            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
-            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
         }
-    </style>
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+</style>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            navLinks.classList.toggle('open');
+            menuButton.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+
+            if (navLinks.classList.contains('open') &&
+                !navLinks.contains(event.target) &&
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const navLinks = document.getElementById('navLinks');
+                const menuButton = document.querySelector('.mobile-menu-toggle');
+
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    </script>
+
 
     <script>
         function toggleMobileMenu() {
@@ -223,7 +336,7 @@
                         <li>Auto-scaling</li>
                         <li>70% time savings</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Book a Demo</a>
+                    <a href="contact.html" class="btn btn-primary btn-card" style="width: 100%; text-align: center;">Book a Demo</a>
                 </div>
 
                 <div class="vs-card">
@@ -254,7 +367,7 @@
         <div class="section-container" style="text-align: center;">
             <h2 style="color: #fff; margin-bottom: 1rem;">Ready to Stop Doing Things the Hard Way?</h2>
             <p style="color: #94a3b8; margin-bottom: 2rem;">Join 10,000+ companies automating with Simply Complex.</p>
-            <a href="contact.html" class="btn btn-primary btn-large">Book a Demo</a>
+            <a href="contact.html" class="btn btn-primary btn-card">Book a Demo</a>
             <p style="color: #64748b; font-size: 0.875rem; margin-top: 1rem;">Book a demo to get a tailored walkthrough</p>
         </div>
     </section>
@@ -315,7 +428,7 @@
                 <form class="newsletter-form" id="newsletter-form">
                     <input type="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
+                </form><script>function subscribeNewsletter(e){e.preventDefault();const input=e.target.querySelector("input");if(input.value){alert("Thanks for subscribing!\n\nEmail: "+input.value);input.value="";}}</script>
             </div>
             
             <div class="footer-bottom">

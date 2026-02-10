@@ -9,85 +9,160 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #1a1a2e; background: #fafafa; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Header */
-        header { background: #fff; padding: 20px 0; border-bottom: 1px solid #e5e5e5; position: sticky; top: 0; z-index: 100; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: #2563eb; text-decoration: none; }
-        nav a { margin-left: 30px; text-decoration: none; color: #4b5563; font-weight: 500; transition: color 0.2s; }
-        nav a:hover { color: #2563eb; }
-        .cta-small { background: #2563eb; color: #fff !important; padding: 10px 20px; border-radius: 8px; }
-        
-        /* Hero */
-        .hero { padding: 100px 0; background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%); color: #fff; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
-        .hero p { font-size: 1.25rem; color: #a0aec0; max-width: 600px; margin: 0 auto 40px; }
-        .hero-cta { background: #2563eb; color: #fff; padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1.1rem; display: inline-block; transition: transform 0.2s; }
-        .hero-cta:hover { transform: translateY(-2px); }
-        
-        /* Stats */
-        .stats { padding: 60px 0; background: #fff; }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
-        .stat h3 { font-size: 2.5rem; font-weight: 800; color: #2563eb; }
-        .stat p { color: #6b7280; font-size: 0.95rem; }
-        
-        /* Section */
-        .section { padding: 80px 0; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; }
-        .section-title p { color: #6b7280; font-size: 1.1rem; }
-        
-        /* Verticals */
-        .verticals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .vertical-card { background: #fff; border-radius: 16px; padding: 30px; border: 1px solid #e5e5e5; transition: all 0.3s; }
-        .vertical-card:hover { border-color: #2563eb; box-shadow: 0 10px 40px rgba(37,99,235,0.1); }
-        .vertical-icon { font-size: 2.5rem; margin-bottom: 15px; }
-        .vertical-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .vertical-card p { color: #6b7280; font-size: 0.95rem; margin-bottom: 20px; }
-        .vertical-features { list-style: none; margin-bottom: 20px; }
-        .vertical-features li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; color: #4b5563; }
-        .vertical-features li:last-child { border: none; }
-        .vertical-features li::before { content: "✓"; color: #10b981; margin-right: 10px; font-weight: 600; }
-        .vertical-price { font-size: 1.5rem; font-weight: 700; color: #2563eb; }
-        
-        /* Features */
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .feature-card { background: #fff; border-radius: 12px; padding: 25px; text-align: center; }
-        .feature-icon { font-size: 2rem; margin-bottom: 15px; }
-        .feature-card h4 { margin-bottom: 10px; }
-        .feature-card p { font-size: 0.9rem; color: #6b7280; }
-        
-        /* Pricing */
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .pricing-card { background: #fff; border-radius: 16px; padding: 40px 30px; border: 1px solid #e5e5e5; text-align: center; }
-        .pricing-card.popular { border-color: #2563eb; position: relative; }
-        .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #2563eb; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-        .pricing-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: #1a1a2e; margin: 20px 0; }
-        .pricing-card .price span { font-size: 1rem; color: #6b7280; font-weight: 400; }
-        .pricing-card ul { list-style: none; text-align: left; margin: 20px 0; }
-        .pricing-card li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
-        .pricing-card li:last-child { border: none; }
-        .pricing-card li::before { content: "✓"; color: #10b981; margin-right: 10px; }
-        
-        /* CTA */
-        .cta-section { background: #1a1a2e; color: #fff; padding: 80px 0; text-align: center; }
-        .cta-section h2 { font-size: 2.5rem; margin-bottom: 20px; }
-        .cta-section p { color: #a0aec0; margin-bottom: 30px; font-size: 1.1rem; }
-        
-        /* Footer */
-        footer { background: #f5f5f5; padding: 40px 0; text-align: center; color: #6b7280; font-size: 0.9rem; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .verticals-grid, .features-grid, .pricing-grid { grid-template-columns: 1fr; }
-            nav { display: none; }
+
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
+
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
         }
-    </style>
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+</style>
 </head>
 <body>
     <header>

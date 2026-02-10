@@ -159,102 +159,50 @@
     <div class="bg-glow-2"></div>
     
     <!-- Navigation -->
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" style="height: 32px;">
-                <span class="logo-text">Simply Complex</span>
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
             <div class="nav-links" id="navLinks">
-                <a href="#solutions">Solutions</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pricing</a>
-                <a href="services/websites.html">Website Services</a>
-                <a href="resources.html">Resources</a>
-                <a href="roi-calculator.html">ROI Calculator</a>
-                <a href="templates.html">Templates</a>
+                <a href="index.html">Home</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="n8n-store.html">Templates</a>
+                <a href="integrations.html">Integrations</a>
                 <a href="client-dashboard.html">Analytics</a>
-                <a href="dashboard.html" class="nav-btn">Dashboard</a>
-            </div>
-            <div class="language-switcher" onclick="toggleLanguage()">
-                <button class="lang-btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
-                    🇺🇸 English
-                </button>
-                <div class="lang-dropdown" id="langDropdown" style="position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 120px; display: none;">
-                    <a href="index-no.html" style="display: block; padding: 0.5rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem;">🇳🇴 Norsk</a>
-                </div>
+                <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="status.html">Status</a>
+                <a href="compare.html">Compare</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
             </div>
         </div>
     </nav>
 
+
     <script>
         function toggleMobileMenu() {
             document.getElementById('navLinks').classList.toggle('open');
+            document.querySelector('.mobile-menu-toggle').classList.toggle('active');
         }
-        function toggleLanguage() {
-            const dropdown = document.getElementById('langDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.language-switcher')) {
-                const dropdown = document.getElementById('langDropdown');
-                if (dropdown) dropdown.style.display = 'none';
-            }
-        });
-    </script>
-
-    <style>
-        .navbar .logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-        .navbar .logo-text { color: #fff; font-weight: 700; font-size: 1.125rem; }
-        .language-switcher { position: relative; margin-left: 1rem; cursor: pointer; }
-        .lang-dropdown { z-index: 100; }
-        .lang-dropdown a:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
-        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
-        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
-        @media (max-width: 900px) {
-            .mobile-menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-links.open { display: flex; }
-            .language-switcher { position: fixed; top: 60px; right: 1rem; }
-        }
-    </style>
         
-        /* Language Switcher */
-        .language-switcher { position: relative; margin-left: 1rem; }
-        .lang-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; font-weight: 500; }
-        .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); transform: translateY(-1px); }
-        .lang-btn.active { background: var(--primary); border-color: var(--primary); }
-        .lang-dropdown { position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 0.5rem; min-width: 180px; display: none; box-shadow: 0 10px 40px rgba(0,0,0,0.4); z-index: 100; }
-        .language-switcher:hover .lang-dropdown { display: block; animation: fadeIn 0.2s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .lang-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; color: #94a3b8; text-decoration: none; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s; }
-        .lang-option:hover { background: rgba(99, 102, 241, 0.15); color: #fff; }
-        .lang-option.active { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
-        .lang-option .lang-flag { font-size: 1.1rem; }
-        .lang-option .lang-name { font-weight: 500; }
-    </style>
-
-    <script>
-        function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-        }
-
-        // Highlight active language
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            const isNorwegian = currentPath.includes('-no.html') || currentPath === 'index-no.html';
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
             
-            document.querySelectorAll('.lang-option').forEach(option => {
-                const lang = option.getAttribute('data-lang');
-                if ((lang === 'en' && !isNorwegian) || (lang === 'no' && isNorwegian)) {
-                    option.classList.add('active');
-                } else {
-                    option.classList.remove('active');
-                }
-            });
+            if (navLinks.classList.contains('open') && 
+                !navLinks.contains(event.target) && 
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+            }
         });
     </script>
 
@@ -634,13 +582,160 @@
     </section>
     
     <style>
-        .industry-section { padding: 5rem 2rem; background: rgba(10, 10, 15, 0.5); }
-        .industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; }
-        .industry-card { border-radius: 16px; padding: 2rem; text-align: center; }
-        .industry-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .industry-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
-        .industry-card p { color: #94a3b8; margin-bottom: 1rem; }
-    </style>
+
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
+
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+</style>
 
     <!-- Pricing - NEW OFFER -->
     <section id="pricing" class="pricing-section">
@@ -816,7 +911,7 @@
                 <form class="newsletter-form" id="newsletter-form">
                     <input type="email" placeholder="Enter your email" required>
                     <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
+                </form><script>function subscribeNewsletter(e){e.preventDefault();const input=e.target.querySelector("input");if(input.value){alert("Thanks for subscribing!\n\nEmail: "+input.value);input.value="";}}</script>
             </div>
             
             <div class="footer-bottom">
@@ -862,21 +957,6 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .floating-chat { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
-        .chat-toggle { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #a855f7); border: none; color: #fff; cursor: pointer; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
-        .chat-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(99, 102, 241, 0.5); }
-        .chat-popup { position: absolute; bottom: 70px; right: 0; width: 280px; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s; }
-        .chat-popup.open { opacity: 1; visibility: visible; transform: translateY(0); }
-        .chat-header { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-        .chat-header button { background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; line-height: 1; }
-        .chat-body { padding: 1rem; }
-        .chat-body p { margin-bottom: 1rem; color: #94a3b8; font-size: 0.9rem; }
-        .chat-options { display: flex; flex-direction: column; gap: 0.5rem; }
-        .chat-option { padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.875rem; transition: all 0.2s; text-decoration: none; }
-        .chat-option:hover { background: rgba(99, 102, 241, 0.2); border-color: #6366f1; }
-    </style>
 
     <script>
         function toggleChat() {
@@ -966,35 +1046,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Simply Complex Solutions. All rights reserved.</p>
+                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
                 <p>Powered by n8n & Cloudflare</p>
             </div>
         </div>
     </footer>
-    
-    <style>
-        .site-footer { background: #0a0a0f; border-top: 1px solid rgba(255,255,255,0.1); padding: 4rem 0 2rem; margin-top: 4rem; }
-        .footer-container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(5, 1fr); gap: 2rem; margin-bottom: 3rem; }
-        .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 0.5rem; }
-        .footer-col ul li a { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
-        .footer-col ul li a:hover { color: #fff; }
-        .footer-brand p { color: #64748b; font-size: 0.875rem; margin: 1rem 0; }
-        .footer-social { display: flex; gap: 1rem; }
-        .footer-social a { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none; transition: all 0.2s; }
-        .footer-social a:hover { background: #6366f1; color: #fff; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; color: #64748b; font-size: 0.75rem; }
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: repeat(3, 1fr); }
-            .footer-brand { grid-column: span 3; }
-        }
-        @media (max-width: 640px) {
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-brand { grid-column: span 2; }
-            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-        }
-    </style>
 </body>
 </html>

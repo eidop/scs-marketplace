@@ -1,250 +1,578 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Service Automation | Simply Complex Solutions</title>
-    <meta name="description" content="Automated customer service website with AI support, ticket routing, and 24/7 automation.">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <title>Kundeservice | Enterprise AI Automatisering</title>
+    <meta name="description" content="AI-drevet kundesupport som fungerer døgnet rundt. Chatbot, billetter og kunnskapsbase på ett sted.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kundeservice | Enterprise AI Automatisering">
+    <meta property="og:description" content="AI-drevet kundesupport som fungerer døgnet rundt. Chatbot, billetter og kunnskapsbase på ett sted.">
+    <meta property="og:image" content="https://scs-marketplace.pages.dev/images/og-support.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pricing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
     <!-- Navigation -->
-    <nav class="main-nav">
+    
+    <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">SCS</a>
-            <div class="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="../features.html">Features</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../services/websites.html">Website Services</a>
-                <a href="../contact.html">Contact</a>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="n8n-store.html">Templates</a>
+                <a href="integrations.html">Integrations</a>
+                <a href="client-dashboard.html">Analytics</a>
+                <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="status.html">Status</a>
+                <a href="compare.html">Compare</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
             </div>
         </div>
     </nav>
 
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+    </script>
+
+    
+    <style>
+
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
+
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+</style>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            navLinks.classList.toggle('open');
+            menuButton.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+
+            if (navLinks.classList.contains('open') &&
+                !navLinks.contains(event.target) &&
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const navLinks = document.getElementById('navLinks');
+                const menuButton = document.querySelector('.mobile-menu-toggle');
+
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    </script>
+
+
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <h1>Customer Service Automation</h1>
-            <p class="hero-tagline">AI-powered support, automated ticketing, and 24/7 customer service.</p>
-            <div class="hero-cta-group">
-                <a href="#features" class="btn btn-primary">See How It Works</a>
-                <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+        <div class="hero-content">
+            <div class="hero-badge">Kundeservice Automatisering</div>
+            <h1>Support Som Aldri Sover</h1>
+            <p class="hero-subtitle">AI-drevet kundeservice som fungerer 24/7. Automatiser supporter, billetter og kunnskapsbase.</p>
+
+            <div class="outcome-metrics">
+                <div class="metric">
+                    <span class="metric-value">90%</span>
+                    <span class="metric-label">Automatisert Svar</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">24/7</span>
+                    <span class="metric-label">Tilgjengelighet</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">60%</span>
+                    <span class="metric-label">Raskere Løsning</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#pricing" class="btn btn-primary">Se Priser</a>
+                <a href="#features" class="btn btn-secondary">Se Funksjoner</a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section" id="features">
-        <div class="container">
-            <h2 class="section-title">What We Build</h2>
-            <p class="section-subtitle">Beautiful, functional websites with automations built-in.</p>
+    <section id="features" class="features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Komplette Funksjoner</span>
+                <h2>Hva Du Får</h2>
+                <p>Alt du trenger for profesjonell kundeservice.</p>
+            </div>
 
             <div class="features-grid">
-                <div class="card">
-                    <div class="card-icon">🤖</div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
                     <h3>AI Support Agent</h3>
-                    <p>AI-powered customer support that works 24/7.</p>
-                    <ul class="card-features">
-                        <li>AI chatbot</li>
-                        <li>24/7 availability</li>
-                        <li>Instant responses</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                    <p>AI-drevet kundesupport som fungerer døgnet rundt med øyeblikkelige svar.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">🎫</div>
-                    <h3>Ticket Routing</h3>
-                    <p>Automated ticket routing and prioritization.</p>
-                    <ul class="card-features">
-                        <li>Smart routing</li>
-                        <li>Prioritization</li>
-                        <li>Category assignment</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>Billettruting</h3>
+                    <p>Automatisk billett-ruting og prioritering basert på innhold og kundehistorikk.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">🧠</div>
-                    <h3>AI Responses</h3>
-                    <p>AI-powered responses based on your knowledge base.</p>
-                    <ul class="card-features">
-                        <li>Knowledge base integration</li>
-                        <li>Automated responses</li>
-                        <li>Smart suggestions</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>AI Svar</h3>
+                    <p>Intelligente svar basert på din kunnskapsbase og FAQ.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Analytics Dashboard</h3>
-                    <p>Track support tickets, resolution times, and satisfaction.</p>
-                    <ul class="card-features">
-                        <li>Ticket tracking</li>
-                        <li>Resolution metrics</li>
-                        <li>Satisfaction surveys</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Sømløs overgang fra chatbot til menneskelig support når det trengs.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3>Self-Service Portal</h3>
-                    <p>Customer self-service portal for common questions.</p>
-                    <ul class="card-features">
-                        <li>FAQ integration</li>
-                        <li>Knowledge base</li>
-                        <li>Support portal</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 2v6h6"/>
+                            <path d="M16 13H8"/>
+                            <path d="M16 17H8"/>
+                            <path d="M10 9H8"/>
+                        </svg>
+                    </div>
+                    <h3>Kunnskapsbase</h3>
+                    <p>Selvbetjeningsportal for kunder med svar på vanlige spørsmål.</p>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">📱</div>
-                    <h3>Mobile Responsive</h3>
-                    <p>Perfect on all devices—phones, tablets, desktops.</p>
-                    <ul class="card-features">
-                        <li>Mobile-friendly</li>
-                        <li>Fast loading</li>
-                        <li>Easy navigation</li>
-                    </ul>
-                    <a href="#pricing" class="card-cta">Learn More</a>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Sporing & Analytics</h3>
+                    <p>Spørsmål, løsningstider og kundetilfredshet på ett sted.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="section bg-secondary">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">We build automations. You get a launch-ready site in 5–7 days.</p>
+    <section id="how-it-works" class="how-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Slik Fungerer Det</span>
+                <h2>Fra Start til Live på 5-7 Dager</h2>
+            </div>
 
-            <div class="steps-grid">
+            <div class="steps-timeline">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Book a Call</h3>
-                    <p>Share your requirements. We understand your needs.</p>
+                    <div class="step-content">
+                        <h4>Book en Samtale</h4>
+                        <p>Del dine krav og behov. Vi forstår dine mål.</p>
+                    </div>
                 </div>
-
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>We Build</h3>
-                    <p>We build your website with automations built-in.</p>
+                    <div class="step-content">
+                        <h4>Vi Bygger</h4>
+                        <p>Vi bygger din kundeservice-plattform med innebygde automatiseringer.</p>
+                    </div>
                 </div>
-
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>You Review</h3>
-                    <p>You approve everything before it goes live.</p>
+                    <div class="step-content">
+                        <h4>Du Godkjenner</h4>
+                        <p>Du godkjenner alt før det går live.</p>
+                    </div>
                 </div>
-
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>We Launch</h3>
-                    <p>We deploy to your domain. You’re live in 5–7 days.</p>
+                    <div class="step-content">
+                        <h4>Vi Lanserer</h4>
+                        <p>Vi deployer til ditt domene. Du er live på 5-7 dager.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Simple Pricing</h2>
-            <p class="section-subtitle">No hidden fees. No setup fees.</p>
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Enkel Prising</span>
+                <h2>Ingen Skjulte Avgifter</h2>
+                <p>Velg pakken som passer dine behov</p>
+            </div>
 
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="pricing-price">2,470 NOK</div>
-                    <div class="pricing-price-usd">$247</div>
-                    <ul class="pricing-features">
-                        <li>5 pages</li>
-                        <li>Basic automations</li>
-                        <li>5 integrations</li>
-                        <li>5‑day delivery</li>
-                    </ul>
-                    <a href="../contact.html" class="pricing-cta">Get Started</a>
+                    <div class="pricing-card-header">
+                        <div class="pricing-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Starter</h3>
+                            <p>For små bedrifter</p>
+                        </div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <div class="price-wrapper">
+                            <span class="currency">NOK</span>
+                            <span class="price">2,470</span>
+                        </div>
+                        <p class="price-usd">$247 USD</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> AI chatbot</li>
+                            <li><i class="fas fa-check"></i> 5 integrasjoner</li>
+                            <li><i class="fas fa-check"></i> Grunnleggende kunnskapsbase</li>
+                            <li><i class="fas fa-check"></i> 5 dagers levering</li>
+                        </ul>
+                        <a href="contact.html" class="pricing-cta">Kom i Gang</a>
+                    </div>
                 </div>
 
                 <div class="pricing-card featured">
-                    <div class="featured-badge">Most Popular</div>
-                    <h3>Professional</h3>
-                    <div class="pricing-price">5,970 NOK</div>
-                    <div class="pricing-price-usd">$597</div>
-                    <ul class="pricing-features">
-                        <li>15 pages</li>
-                        <li>Advanced automations</li>
-                        <li>15 integrations</li>
-                        <li>7‑day delivery</li>
-                    </ul>
-                    <a href="../contact.html" class="pricing-cta">Get Started</a>
+                    <div class="pricing-badge">Mest Populær</div>
+                    <div class="pricing-card-header">
+                        <div class="pricing-icon" style="background: linear-gradient(135deg, #6366f1, #818cf8);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Professional</h3>
+                            <p>For voksende selskaper</p>
+                        </div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <div class="price-wrapper">
+                            <span class="currency">NOK</span>
+                            <span class="price">5,970</span>
+                        </div>
+                        <p class="price-usd">$597 USD</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> AI chatbot + live chat</li>
+                            <li><i class="fas fa-check"></i> 15 integrasjoner</li>
+                            <li><i class="fas fa-check"></i> Avansert kunnskapsbase</li>
+                            <li><i class="fas fa-check"></i> Billett-ruting</li>
+                            <li><i class="fas fa-check"></i> 7 dagers levering</li>
+                        </ul>
+                        <a href="contact.html" class="pricing-cta featured">Kom i Gang</a>
+                    </div>
                 </div>
 
                 <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="pricing-price">7,970 NOK</div>
-                    <div class="pricing-price-usd">$797</div>
-                    <ul class="pricing-features">
-                        <li>Unlimited pages</li>
-                        <li>Custom automations</li>
-                        <li>Unlimited integrations</li>
-                        <li>10‑day delivery</li>
-                    </ul>
-                    <a href="../contact.html" class="pricing-cta">Contact Us</a>
+                    <div class="pricing-card-header">
+                        <div class="pricing-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Enterprise</h3>
+                            <p>For store organisasjoner</p>
+                        </div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <div class="price-wrapper">
+                            <span class="currency">NOK</span>
+                            <span class="price">7,970</span>
+                        </div>
+                        <p class="price-usd">$797 USD</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Alt i Professional</li>
+                            <li><i class="fas fa-check"></i> Ubegrensede integrasjoner</li>
+                            <li><i class="fas fa-check"></i> Skreddersydd AI-trening</li>
+                            <li><i class="fas fa-check"></i> Dedicated support</li>
+                            <li><i class="fas fa-check"></i> 10 dagers levering</li>
+                        </ul>
+                        <a href="contact.html" class="pricing-cta">Kontakt Oss</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Ready to Build?</h2>
-            <p class="section-subtitle">Get a quote in 24 hours. No obligations.</p>
-            <a href="../contact.html" class="btn btn-primary">Get a Quote</a>
-        </div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Klar til å Bygge?</h2>
+        <p>Få et tilbud innen 24 timer. Ingen forpliktelser.</p>
+        <a href="contact.html" class="btn btn-primary btn-card">Kontakt Oss</a>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="../features.html">Features</a>
-                <a href="../pricing.html">Pricing</a>
-                <a href="../contact.html">Contact</a>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="index-no.html" class="logo">
+                    <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" style="height: 32px;">
+                    <span class="logo-text">Simply Complex</span>
+                </a>
+                <p>Enterprise AI automatisering for moderne bedrifter.</p>
             </div>
-            <div class="footer-copy">
-                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Løsninger</h4>
+                <ul>
+                    <li><a href="solution-sales.html">Salg</a></li>
+                    <li><a href="solution-support.html">Support</a></li>
+                    <li><a href="solution-hiring-no.html">Rekruttering</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Ressurser</h4>
+                <ul>
+                    <li><a href="templates.html">Maler</a></li>
+                    <li><a href="resources.html">Guides</a></li>
+                    <li><a href="roi-calculator.html">ROI Kalkulator</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Selskap</h4>
+                <ul>
+                    <li><a href="about.html">Om Oss</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="privacy.html">Personvern</a></li>
+                </ul>
             </div>
         </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simply Complex Solutions. Alle rettigheter reservert.</p>
+        </div>
     </footer>
-
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <a href="?lang=no" class="lang-btn" id="lang-no">🇳🇴 Norsk</a>
-        <a href="?lang=en" class="lang-btn active" id="lang-en">🇺🇸 EN</a>
-    </div>
-
-    <script>
-        // Language switching
-        const lang = new URLSearchParams(window.location.search).get('lang') || 'en';
-        document.getElementById('lang-' + lang).classList.add('active');
-
-        // Update URL without reload
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const langParam = btn.id.replace('lang-', '');
-                const url = new URL(window.location);
-                url.searchParams.set('lang', langParam);
-                window.location.href = url.toString();
-            });
-        });
-    </script>
 </body>
 </html>

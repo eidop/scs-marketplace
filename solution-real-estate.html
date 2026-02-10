@@ -37,11 +37,12 @@
     <div class="bg-glow-2"></div>
 
     <!-- Navigation -->
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/images/scs-logo.svg" alt="Simply Complex Solutions" style="height: 32px;">
-                <span class="logo-text">Simply Complex</span>
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -50,21 +51,18 @@
                 <a href="index.html">Home</a>
                 <a href="solutions.html">Solutions</a>
                 <a href="pricing.html">Pricing</a>
-                <a href="templates.html">Templates</a>
+                <a href="n8n-store.html">Templates</a>
                 <a href="integrations.html">Integrations</a>
                 <a href="client-dashboard.html">Analytics</a>
-                <a href="dashboard.html" class="nav-btn">Dashboard</a>
-            </div>
-            <div class="language-switcher" onclick="toggleLanguage()">
-                <button class="lang-btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
-                    🇺🇸 English
-                </button>
-                <div class="lang-dropdown" id="langDropdown" style="position: absolute; top: 100%; right: 0; margin-top: 0.5rem; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem; min-width: 120px; display: none;">
-                    <a href="solution-megling-no.html" style="display: block; padding: 0.5rem 0.75rem; color: #94a3b8; text-decoration: none; border-radius: 6px; font-size: 0.875rem;">🇳🇴 Norsk</a>
-                </div>
+                <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="status.html">Status</a>
+                <a href="compare.html">Compare</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
             </div>
         </div>
     </nav>
+
 
     <script>
         function toggleMobileMenu() {
@@ -82,56 +80,207 @@
         });
     </script>
 
+    
     <style>
-        .hero { padding: 6rem 2rem 4rem; text-align: center; max-width: 900px; margin: 0 auto; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; background: linear-gradient(135deg, #fff 0%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero p { font-size: 1.25rem; color: #94a3b8; max-width: 700px; margin: 0 auto 2rem; }
-        .badge { display: inline-block; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; color: #10b981; margin-bottom: 1.5rem; }
-        .section { padding: 4rem 2rem; }
-        .section-container { max-width: 1280px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
-        .grid { display: grid; gap: 1.5rem; }
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        .card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
-        .card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-4px); }
-        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: #fff; }
-        .card p { color: #94a3b8; line-height: 1.6; }
-        .card ul { list-style: none; padding: 0; margin: 1rem 0 0; }
-        .card ul li { padding: 0.5rem 0; color: #cbd5e1; display: flex; align-items: flex-start; gap: 0.75rem; }
-        .card ul li::before { content: "✓"; color: #10b981; font-weight: bold; }
-        .cta-section { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1)); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 5rem 2rem; text-align: center; }
-        .cta-card { max-width: 700px; margin: 0 auto; }
-        .cta-card h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
-        .cta-card p { color: #94a3b8; font-size: 1.25rem; margin-bottom: 2rem; }
-        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-size: 1rem; }
-        .btn-primary { background: linear-gradient(135deg, #10b981, #06b6d4); color: #fff; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(16, 185, 129, 0.4); }
-        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
-        .btn-outline:hover { border-color: #10b981; background: rgba(16, 185, 129, 0.1); }
-        .pricing-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; text-align: center; }
-        .pricing-card.featured { border-color: #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1)); }
-        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 1.5rem 0 0.5rem; }
-        .price-period { color: #64748b; font-size: 0.875rem; margin-bottom: 1.5rem; }
-        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-        .stat-item { text-align: center; padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-radius: 12px; }
-        .stat-value { font-size: 2.5rem; font-weight: 800; color: #10b981; }
-        .stat-label { color: #94a3b8; font-size: 0.875rem; margin-top: 0.5rem; }
-        .mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
-        .mobile-menu-toggle span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
-        @media (max-width: 900px) {
-            .mobile-menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,15,0.98); padding: 1rem; flex-direction: column; gap: 0.5rem; display: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-links.open { display: flex; }
-            .nav-links a { padding: 0.75rem 1rem; border-radius: 8px; }
-            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+
+    /* ========================================
+       Standardized Button Styles
+       ======================================== */
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    /* Primary Button (Gradient) */
+    .btn-primary {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #5558e6 0%, #7c3aed 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Secondary/Outline Button */
+    .btn-outline {
+        background: transparent;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+    }
+
+    .btn-outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #7c3aed;
+        color: #7c3aed;
+    }
+
+    /* Ghost Button */
+    .btn-ghost {
+        background: transparent;
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    /* Badge Styles */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+    }
+
+    .badge-warning {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+    }
+
+    .badge-danger {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+    }
+
+    .badge-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+    }
+
+    .badge-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: #6366f1;
+    }
+
+    /* Pricing Card Buttons */
+    .btn-card {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.875rem;
+    }
+
+    .btn-card.outline {
+        background: transparent;
+        border: 2px solid #6366f1;
+        color: #6366f1;
+    }
+
+    .btn-card.outline:hover {
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Hero Button */
+    .btn-hero {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-hero:hover {
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: translateY(-3px);
+    }
+
+    /* Footer Button */
+    .btn-footer {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Responsive Button Sizes */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
         }
-        .language-switcher { position: relative; margin-left: 1rem; }
-        .lang-dropdown { z-index: 100; }
-        .lang-dropdown a:hover { background: rgba(99, 102, 241, 0.2); color: #fff; }
-    </style>
+
+        .btn-hero {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+</style>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            navLinks.classList.toggle('open');
+            menuButton.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+
+            if (navLinks.classList.contains('open') &&
+                !navLinks.contains(event.target) &&
+                !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const navLinks = document.getElementById('navLinks');
+                const menuButton = document.querySelector('.mobile-menu-toggle');
+
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    </script>
+
 </head>
 <body>
     <!-- Hero Section -->
@@ -141,7 +290,7 @@
         <p>Automate property viewings, document management, and client communication. Close more deals with less administrative work.</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="setup.html?bundle=professional" class="btn btn-primary">Get Started →</a>
-            <a href="contact.html" class="btn btn-outline">Book Demo</a>
+            <a href="contact.html" class="btn btn-primary btn-card">Book Demo</a>
         </div>
     </section>
 
@@ -319,7 +468,7 @@
                         <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Advanced analytics</li>
                         <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">✓ Unlimited integrations</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center; box-sizing: border-box;">Contact Sales</a>
+                    <a href="contact.html" class="btn btn-primary btn-card" style="width: 100%; justify-content: center; box-sizing: border-box;">Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -332,7 +481,7 @@
             <p>Join 500+ agents who close more deals with less work.</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="setup.html?bundle=professional" class="btn btn-primary">Start Free Trial →</a>
-                <a href="contact.html" class="btn btn-outline">Book a Demo</a>
+                <a href="contact.html" class="btn btn-primary btn-card">Book a Demo</a>
             </div>
         </div>
     </section>
