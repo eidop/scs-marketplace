@@ -1,0 +1,134 @@
+:root {
+  /* Colors - Light Mode */
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-reflection: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  
+  --accent-blue: #0071e3;
+  --accent-blue-hover: #0077ed;
+  
+  --bg-gradient: linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%);
+  
+  /* Layout Defaults */
+  --border-radius: 16px;
+  --sidebar-width: 260px;
+  --panel-spacing: 20px;
+  --blur-amount: 12px;
+}
+
+[data-theme='dark'] {
+  --glass-bg: rgba(30, 30, 30, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-reflection: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  
+  --bg-gradient: linear-gradient(120deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Base Glass Effect */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--glass-reflection);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layout - Three-Pane Center */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  padding: var(--panel-spacing);
+  gap: var(--panel-spacing);
+  background: var(--bg-gradient);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Inter", "Roboto", sans-serif;
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+/* Left Sidebar (Collapsible) */
+.sidebar-left {
+  width: var(--sidebar-width);
+  transition: transform 0.3s ease, width 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Main Content Area */
+.main-center {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-spacing);
+}
+
+/* Right Sidebar */
+.sidebar-right {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* Components */
+.toolbar-floating {
+  height: 50px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+  background: var(--accent-blue);
+  color: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .sidebar-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .sidebar-left {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,756 +1,149 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simply Complex Solutions | Enterprise AI Automatisering Pakker</title>
-    <meta name="description" content="Deploy 3-pack AI automatisering pakker. Salg, Support, Rekruttering løsninger med enterprise pålitelighet.">
-
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://scs-marketplace.pages.dev/">
-    <meta property="og:title" content="Simply Complex Solutions | Enterprise AI Automatisering">
-    <meta property="og:description" content="Deploy komplette AI automatisering pakker. Salg, Support, Rekruttering løsninger med enterprise pålitelighet og 72% raskere drift.">
-    <meta property="og:image" content="https://scs-marketplace.pages.dev/images/og-home.jpg">
-    <meta property="og:site_name" content="Simply Complex Solutions">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@simplycomplex">
-    <meta name="twitter:url" content="https://scs-marketplace.pages.dev/">
-    <meta name="twitter:title" content="Simply Complex Solutions | Enterprise AI Automatisering">
-    <meta name="twitter:description" content="Deploy komplette AI automatisering pakker. Salg, Support, Rekruttering løsninger med enterprise pålitelighet.">
-    <meta name="twitter:image" content="https://scs-marketplace.pages.dev/images/og-home.jpg">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://scs-marketplace.pages.dev/">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/scs-logo.svg">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/pricing.css">
-
+    <title>Eido Desktop - Glassmorphism UI</title>
+    <link rel="stylesheet" href="glassmorphism-ui.css">
     <style>
-    /* Outcome-Driven CTAs */
-    .btn-outcome {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 1rem 2rem;
-        border-radius: 12px;
-        font-size: 1.05rem;
-        font-weight: 700;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: none;
-    }
-    
-    .btn-outcome-primary {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        color: white;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
-    }
-    
-    .btn-outcome-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
-    }
-    
-    .btn-outcome-secondary {
-        background: rgba(255, 255, 255, 0.08);
-        color: white;
-        border: 2px solid rgba(255, 255, 255, 0.15);
-    }
-    
-    .btn-outcome-secondary:hover {
-        border-color: rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.12);
-    }
-    
-    /* Pricing Outcomes */
-    .pricing-outcome {
-        text-align: center;
-        padding: 1.5rem;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
-        border-radius: 12px;
-        margin: 1rem 0;
-    }
-    
-    .pricing-outcome-value {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #10b981;
-        display: block;
-    }
-    
-    .pricing-outcome-label {
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.7);
-        margin-top: 0.25rem;
-    }
-    
-    /* Annual Savings Badge */
-    .annual-savings-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(16, 185, 129, 0.15);
-        border: 1px solid rgba(16, 185, 129, 0.3);
-        color: #10b981;
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-top: 1rem;
-    }
-    
-    .annual-savings-badge .highlight {
-        color: #34d399;
-        font-weight: 800;
-    }
-    
-    /* Case Studies */
-    .case-study-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        padding: 2rem;
-        position: relative;
-    }
-    
-    .case-study-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .case-study-logo {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 1.25rem;
-        color: white;
-    }
-    
-    .case-study-company {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 0.25rem;
-    }
-    
-    .case-study-industry {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.9rem;
-    }
-    
-    .case-study-results {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin: 1.5rem 0;
-        padding: 1.5rem 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    
-    .case-study-metric {
-        text-align: center;
-    }
-    
-    .case-study-metric-value {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #10b981;
-        display: block;
-    }
-    
-    .case-study-metric-label {
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.5);
-    }
-    
-    /* Target Audience Tag */
-    .audience-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.2);
-        color: #a5b4fc;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-    
-    /* Comparison Table */
-    .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 2rem 0;
-        font-size: 0.95rem;
-    }
-    
-    .comparison-table th,
-    .comparison-table td {
-        padding: 1rem 1.25rem;
-        text-align: left;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    /* Language Selector */
-    .lang-selector {
-        position: relative;
-    }
-
-    #language-select {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-        cursor: pointer;
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-        background-position: right 0.5rem center;
-        background-repeat: no-repeat;
-        background-size: 1.5em 1.5em;
-        padding-right: 2.5rem;
-    }
-
-    #language-select:focus {
-        outline: none;
-        border-color: #6366f1;
-    }
-
-    @media (max-width: 768px) {
-        #language-select {
-            padding: 0.5rem;
-            font-size: 0.8rem;
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
         }
-    }
-    }
-    
-    .comparison-table th {
-        background: rgba(255, 255, 255, 0.02);
-        font-weight: 700;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: rgba(255, 255, 255, 0.6);
-    }
-    
-    .comparison-table th:first-child { border-radius: 12px 0 0 0; }
-    .comparison-table th:last-child { border-radius: 0 12px 0 0; }
-    
-    .comparison-table td:first-child { font-weight: 600; color: rgba(255, 255, 255, 0.9); }
-    
-    .check-icon { color: #10b981; font-weight: 800; }
-    .cross-icon { color: rgba(255, 255, 255, 0.2); }
-    
-    /* Pricing Transparency */
-    .pricing-transparency {
-        background: rgba(16, 185, 129, 0.08);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-        border-radius: 12px;
-        padding: 1.25rem 1.5rem;
-        margin: 1.5rem 0;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .pricing-transparency strong { display: block; color: #10b981; margin-bottom: 0.25rem; }
-    .pricing-transparency span { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
-    
-    /* ROI Calculator Mini */
-    .roi-calculator-mini {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
-        border: 1px solid rgba(99, 102, 241, 0.2);
-        border-radius: 20px;
-        padding: 2rem;
-        margin: 2rem 0;
-    }
-    
-    .roi-calculator-mini h4 { text-align: center; margin-bottom: 1.5rem; }
-    
-    .roi-inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
-    
-    .roi-input-group label { display: block; font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem; }
-    .roi-input-group select { width: 100%; padding: 0.75rem 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; font-size: 1rem; }
-    
-    .roi-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; }
-    .roi-result-item { padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px; }
-    .roi-result-value { font-size: 1.5rem; font-weight: 800; color: #10b981; display: block; }
-    .roi-result-label { font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); }
-    
-    @media (max-width: 768px) {
-        .roi-inputs, .roi-results { grid-template-columns: 1fr; }
-        .case-study-results { grid-template-columns: 1fr; gap: 1.5rem; }
-    }
+        
+        /* Specific content styles for the demo */
+        .content-area {
+            padding: 24px;
+            z-index: 1;
+        }
+        
+        .header {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .subtext {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .card {
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            background: rgba(0, 113, 227, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 100;
+        }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo"><div class="logo-icon">◈</div><span class="logo-text">Simply Complex Solutions</span></a>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Hjem</a>
-                <a href="solutions.html">Løsninger</a>
-                <a href="pricing.html">Priser</a>
-                <a href="n8n-store.html">Maler</a>
-                <a href="roi-calculator.html">ROI Kalkulator</a>
-                <a href="case-studies.html">Casestudier</a>
-                <a href="#industries">Industrier</a>
-                <div class="lang-selector">
-                    <select id="language-select" onchange="changeLanguage(this.value)">
-                        <option value="en">Engelsk</option>
-                        <option value="no">Norsk</option>
-                    </select>
-                </div>
-                <a href="contact.html" class="btn btn-primary">Kom i gang</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="audience-tag"><span>🎯</span><span>For <strong>salgsteam</strong>, <strong>rekrutteringsteam</strong> og <strong>supportteam</strong> i selskaper med <strong>$1M+ omsetning</strong></span></div>
-            <h1>Simply Complex Solutions</h1>
-            <p class="hero-subtitle" style="font-size: 1.25rem; margin-bottom: 0.5rem;">Forenkler en kompleks hverdag</p>
-            <h1 style="margin-bottom: 1.5rem;">Slutt å tape salg. <br>Start automatisering.</h1>
-            <p class="hero-subtitle">Deploy komplette AI automatisering pakker som genererer <strong>2-10X mer kvalifiserte svar</strong>, <strong>ligger salg 72% raskere</strong> og <strong>kutt rekrutteringstid i halv</strong>.</p>
-
-            <div class="outcome-metrics">
-                <div class="metric"><span class="metric-value">2-10X</span><span class="metric-label">Mer kvalifiserte svar</span></div>
-                <div class="metric"><span class="metric-value">72%</span><span class="metric-label">Raskere salgslukking</span></div>
-                <div class="metric"><span class="metric-value">50%</span><span class="metric-label">Mindre rekrutteringstid</span></div>
-                <div class="metric"><span class="metric-value">$847K</span><span class="metric-label">Gjennomsnittlig årlig sparing</span></div>
-            </div>
-
-            <div class="hero-cta">
-                <a href="#pricing" class="btn-outcome btn-outcome-primary"><span>🚀</span><span>Start Automatisering på 2 timer</span></a>
-                <a href="#roi-calculator" class="btn-outcome btn-outcome-secondary"><span>📊</span><span>Beregn ditt ROI</span></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="trust-section">
-        <div class="section-container">
-            <div class="trust-badges">
-                <div class="trust-badge"><span class="trust-icon">🔒</span><span class="trust-text"><strong>SOC 2 Type II</strong> Sertifisert</span></div>
-                <div class="trust-badge"><span class="trust-icon">⭐</span><span class="trust-text"><strong>4.9/5</strong> Gjennomsnittlig rating</span></div>
-                <div class="trust-badge"><span class="trust-icon">🏢</span><span class="trust-text"><strong>500+</strong> Enterprise-kunder</span></div>
-                <div class="trust-badge"><span class="trust-icon">⚡</span><span class="trust-text"><strong>2-timers</strong> Oppsettstid</span></div>
-                <div class="trust-badge"><span class="trust-icon">💰</span><span class="trust-text"><strong>30 dager</strong> Pengene tilbake</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="solutions" class="solutions-section">
-        <div class="section-container">
-            <div class="section-header"><span class="section-badge">Komplett Automatisering Pakker</span><h2>Løsninger som løser virkelige forretningsproblemer</h2><p>Each bundle includes 3 integrated AI automations designed to work together.</p></div>
-            
-            <div class="solutions-grid">
-                <div class="solution-card featured">
-                    <div class="solution-icon">📈</div><h3>Salgsutmerkelse</h3><p class="solution-tagline">Lukk flere salg, raskere</p>
-                    <div class="pricing-outcome"><span class="pricing-outcome-value">2-10X</span><span class="pricing-outcome-label">Mer kvalifiserte svar på mindre tid</span></div>
-                    <ul class="solution-includes"><li><span class="check">✓</span> Lead-kvalifisering & AI-ruting</li><li><span class="check">✓</span> Multi-kanal tilgangsekvenser</li><li><span class="check">✓</span> Pipeline synkronisering & analyse</li></ul>
-                    <a href="#pricing" class="btn btn-primary btn-card">Lukk flere salg →</a>
-                </div>
-                
-                <div class="solution-card">
-                    <div class="solution-icon">👥</div><h3>Rekrutteringutmerkelse</h3><p class="solution-tagline">Kutt rekrutteringstid i halv</p>
-                    <div class="pricing-outcome"><span class="pricing-outcome-value">50%</span><span class="pricing-outcome-label">Raskere ansettelsestid</span></div>
-                    <ul class="solution-includes"><li><span class="check">✓</span> Søknadscreening & rangering</li><li><span class="check">✓</span> Automatisert intervju-scheduling</li><li><span class="check">✓</span> Kandidat-kommunikasjonsprosesser</li></ul>
-                    <a href="#pricing" class="btn btn-outline btn-card">Ansett raskere →</a>
-                </div>
-                
-                <div class="solution-card">
-                    <div class="solution-icon">💬</div><h3>Supportutmerkelse</h3><p class="solution-tagline">Kutt supportkostnader med 40%</p>
-                    <div class="pricing-outcome"><span class="pricing-outcome-value">40%</span><span class="pricing-outcome-label">Reduksjon i support-saker</span></div>
-                    <ul class="solution-includes"><li><span class="check">✓</span> AI-sakstriage & ruting</li><li><span class="check">✓</span> Automatiserte svarprosesser</li><li><span class="check">✓</span> Kunnskapsbase-integrasjon</li></ul>
-                    <a href="#pricing" class="btn btn-outline btn-card">Kutt supportkostnader →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="pricing-section">
-        <div class="section-container">
-            <div class="section-header"><span class="section-badge">Transparent prising</span><h2>Velg ditt resultat</h2><p>Månedlig prising med klare forskjeller. Årlig fakturering sparer 20%.</p></div>
-            
-            <div class="pricing-transparency"><span style="font-size:1.5rem">💎</span><div><strong>Ingen skjulte gebyrer, ingen overraskelser</strong><span>Hva du ser er hva du betaler. Oppsett inkludert. Avslutt når som helst.</span></div></div>
-            
-            <table class="comparison-table">
-                <thead><tr><th>Features & Outcomes</th><th>Starter<small><br>Solo / Småteam</small></th><th>Professional<small><br>Vekstbedrifter</small></th><th>Enterprise<small><br>Skala / $10M+ omsetning</small></th></tr></thead>
-                <tbody>
-                    <tr><td>Lead/Søknadscreening</td><td class="check-icon">✓</td><td class="check-icon">✓</td><td class="check-icon">✓</td></tr>
-                    <tr><td>Månedlige leads/kandidater</td><td>500</td><td>5,000</td><td>Ubegrenset</td></tr>
-                    <tr><td>Tilgangskanaler</td><td>E-post</td><td>E-post + LinkedIn</td><td>Alle (SMS/Telefon)</td></tr>
-                    <tr><td>A/B Testing</td><td class="cross-icon">—</td><td class="check-icon">✓</td><td class="check-icon">✓</td></tr>
-                    <tr><td>Analyse-dashboard</td><td>Basic</td><td>Avansert</td><td>Custom + API</td></tr>
-                    <tr><td>Oppsettstid</td><td>2 timer</td><td>4 timer</td><td>1 dag</td></tr>
-                    <tr><td>Forventet resultat</td><td><strong>2-3X svar</strong></td><td><strong>5-7X svar</strong></td><td><strong>10X+ svar</strong></td></tr>
-                </tbody>
-            </table>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Starter</h3><p class="pricing-subtitle">For solo gründere & små teams</p>
-                    <div class="pricing-price-lock"><span class="price-original">$297</span><span class="price-current">$247</span></div>
-                    <div class="price-period">/måned • fakturert månedlig</div>
-                    <div class="annual-savings-badge"><span>💰</span><span>Spare <span class="highlight">$593/år</span> med årlig fakturering</span></div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features"><li>✅ 500 leads/måned</li><li>✅ E-post tilgang kun</li><li>✅ Basic analyse</li><li>✅ E-post support</li></ul>
-                    <a href="setup.html?bundle=starter" class="btn btn-outline btn-card">Få 2-3X flere svar →</a>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <div class="pricing-badge-tier">Mest populær</div>
-                    <h3>Professional</h3><p class="pricing-subtitle">For vekstbedrifter</p>
-                    <div class="pricing-price-lock"><span class="price-original">$897</span><span class="price-current">$597</span></div>
-                    <div class="price-period">/måned • fakturert månedlig</div>
-                    <div class="annual-savings-badge"><span>💰</span><span>Spare <span class="highlight">$1,433/år</span> med årlig fakturering</span></div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features"><li>✅ 5,000 leads/måned</li><li>✅ E-post + LinkedIn tilgang</li><li>✅ A/B testing</li><li>✅ Avansert analyse</li><li>✅ Prioritet support</li></ul>
-                    <a href="setup.html?bundle=professional" class="btn btn-primary btn-card">Få 5-7X flere svar →</a>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-badge-tier enterprise">Enterprise</div>
-                    <h3>Enterprise</h3><p class="pricing-subtitle">For skala selskaper & $10M+ omsetning</p>
-                    <div class="pricing-price-lock"><span class="price-current">Custom</span></div>
-                    <div class="price-period">Kontakt for prising</div>
-                    <div class="pricing-divider"></div>
-                    <ul class="pricing-features"><li>✅ Ubegrenset leads</li><li>✅ Alle kanaler</li><li>✅ Custom integrasjoner</li><li>✅ Dedikert manager</li><li>✅ Custom API</li></ul>
-                    <a href="contact.html" class="btn btn-outline btn-card">La oss snakke →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="roi-calculator" class="solutions-section">
-        <div class="section-container">
-            <div class="roi-calculator-mini">
-                <h4>📊 Beregn ditt potensielle ROI</h4>
-                <div class="roi-inputs">
-                    <div class="roi-input-group"><label>Teamstørrelse</label><select id="teamSize"><option value="1">1-5 personer</option><option value="5">6-20 personer</option><option value="20">21-50 personer</option><option value="50">50+ personer</option></select></div>
-                    <div class="roi-input-group"><label>Nåværende månedlig utgifter</label><select id="monthlySpend"><option value="500">$500/mnd</option><option value="2000">$2,000/mnd</option><option value="5000">$5,000/mnd</option><option value="10000">$10,000+/mnd</option></select></div>
-                    <div class="roi-input-group"><label>Hovedmål</label><select id="primaryGoal"><option value="sales">Mer salgssvar</option><option value="hiring">Raskere ansettelse</option><option value="support">Kutt supportkostnader</option></select></div>
-                </div>
-                <div class="roi-results">
-                    <div class="roi-result-item"><span class="roi-result-value" id="timeSaved">72%</span><span class="roi-result-label">Tid spart</span></div>
-                    <div class="roi-result-item"><span class="roi-result-value" id="extraRevenue">$180K</span><span class="roi-result-label">Ekstra omsetning/år</span></div>
-                    <div class="roi-result-item"><span class="roi-result-value" id="roiMultiple">15X</span><span class="roi-result-label">Forventet ROI</span></div>
-                </div>
-            </div>
-            <div style="text-align:center;margin-top:1rem;"><a href="roi-calculator.html" class="btn btn-outline">Åpne full kalkulator →</a></div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="testimonials-section">
-        <div class="section-container">
-            <div class="section-header"><span class="section-badge">Virkelige resultater</span><h2>Selskaper som oppnår 2-10X forbedringer</h2><p>Se hva kundene våre oppnår med SCS automatisering.</p></div>
-            
-            <div class="solutions-grid">
-                <div class="case-study-card">
-                    <div class="case-study-header"><div class="case-study-logo">TC</div><div><div class="case-study-company">TechCorp Inc.</div><div class="case-study-industry">SaaS • $12M omsetning • 45 ansatte</div></div></div>
-                    <div class="case-study-results">
-                        <div class="case-study-metric"><span class="case-study-metric-value">8.5X</span><span class="case-study-metric-label">Mer kvalifiserte leads</span></div>
-                        <div class="case-study-metric"><span class="case-study-metric-value">67%</span><span class="case-study-metric-label">Raskere responstid</span></div>
-                        <div class="case-study-metric"><span class="case-study-metric-value">$420K</span><span class="case-study-metric-label">Ekstra omsetning</span></div>
+<body data-theme="light">
+    <div class="app-container">
+        <!-- Left Sidebar: Command Center Navigation -->
+        <aside class="sidebar-left glass-panel">
+            <div class="content-area">
+                <div class="header" style="font-size: 18px;">Eido</div>
+                <nav style="margin-top: 20px;">
+                    <div class="nav-item active">
+                        <span>🏠</span>
+                        <span>Dashboard</span>
                     </div>
-                    <p>"Vi gikk fra 15 kvalifiserte leads/måned til 127. Automatiseringen genererer mer muligheter enn vi kan manuelt."</p>
-                    <div class="case-study-author"><div class="case-study-avatar">SK</div><div><div class="case-study-name">Sarah K.</div><div class="case-study-role">VP of Sales</div></div></div>
-                </div>
-                
-                <div class="case-study-card">
-                    <div class="case-study-header"><div class="case-study-logo">GF</div><div><div class="case-study-company">Global Finance Co.</div><div class="case-study-industry">Finance • $85M omsetning • 320 ansatte</div></div></div>
-                    <div class="case-study-results">
-                        <div class="case-study-metric"><span class="case-study-metric-value">52%</span><span class="case-study-metric-label">Raskere ansettelse</span></div>
-                        <div class="case-study-metric"><span class="case-study-metric-value">3,200+</span><span class="case-study-metric-label">Kandidater prosessert</span></div>
-                        <div class="case-study-metric"><span class="case-study-metric-value">$180K</span><span class="case-study-metric-label">Sparret i kostnader</span></div>
+                    <div class="nav-item">
+                        <span>📂</span>
+                        <span>Workspace</span>
                     </div>
-                    <p>"Ansettelsestiden vår falt fra 45 dager til 22. Prosesserer 3x mer kandidater uten å legge til nye ansatte."</p>
-                    <div class="case-study-author"><div class="case-study-avatar">MJ</div><div><div class="case-study-name">Michael J.</div><div class="case-study-role">Head of Talent</div></div></div>
-                </div>
-                
-                <div class="case-study-card">
-                    <div class="case-study-header"><div class="case-study-logo">HS</div><div><div class="case-study-company">HelpDesk Solutions</div><div class="case-study-industry">Support • $8M omsetning • 65 ansatte</div></div></div>
-                    <div class="case-study-results">
-                        <div class="case-study-metric"><span class="case-study-metric-value">45%</span><span class="case-study-metric-label">Færre saker</span></div>
-                        <div class="case-study-metric"><span class="case-study-metric-value">89%</span><span class="case-study-metric-label">Raskere løsning</span></div>
-                        <div class="case-study-metric"><span class="case-study-metric-value">$125K</span><span class="case-study-metric-label">Årlig sparing</span></div>
+                    <div class="nav-item">
+                        <span>⚙️</span>
+                        <span>Settings</span>
                     </div>
-                    <p>"Kundetilfredshet gikk opp 23% mens supportkostnader gikk ned. AI håndterer 45% av saker automatisk."</p>
-                    <div class="case-study-author"><div class="case-study-avatar">AL</div><div><div class="case-study-name">Amanda L.</div><div class="case-study-role">Support Director</div></div></div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area: Three-Pane Command Center -->
+        <main class="main-center">
+            <!-- Top Toolbar -->
+            <header class="toolbar-floating glass-panel">
+                <div style="font-weight: 500;">Active Session: Main Agent</div>
+                <div class="nav-item" style="font-size: 14px;">
+                    <span>🔍</span> Search...
+                </div>
+            </header>
+
+            <!-- Primary Workspace Panel -->
+            <section class="glass-panel" style="flex-grow: 1;">
+                <div class="content-area">
+                    <div class="header">Project: Glassmorphism Design</div>
+                    <div class="subtext">Defining the future aesthetic of Eido Desktop.</div>
+                    
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="status-badge">Active</div>
+                            <div style="margin-top: 10px; font-weight: 500;">CSS Variables</div>
+                            <p style="font-size: 13px; color: var(--text-secondary);">Defining core design tokens.</p>
+                        </div>
+                        <div class="card">
+                            <div class="status-badge" style="background: rgba(52, 199, 89, 0.2); color: #34c759;">Done</div>
+                            <div style="margin-top: 10px; font-weight: 500;">Grid System</div>
+                            <p style="font-size: 13px; color: var(--text-secondary);">3-pane layout implemented.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar: Context / Details -->
+        <aside class="sidebar-right glass-panel">
+            <div class="content-area">
+                <div class="header" style="font-size: 16px;">Details</div>
+                <div style="margin-top: 16px;">
+                    <label style="font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 4px;">Created</label>
+                    <div style="font-size: 14px;">Feb 11, 2026</div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <label style="font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 4px;">Owner</label>
+                    <div style="font-size: 14px;">Dennn</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </aside>
+    </div>
 
-    <!-- Features vs Benefits Section -->
-    <section id="features-benefits" class="solutions-section">
-        <div class="section-container">
-            <div class="section-header"><span class="section-badge">Hvorfor SCS</span><h2>Hva du får vs hva du oppnår</h2><p>Features forteller deg hva den gjør. Benefits forteller deg hva den endrer.</p></div>
-            
-            <div class="solutions-grid" style="grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                <div class="case-study-card">
-                    <h4 style="color:#a5b4fc;margin-bottom:1rem;">📊 AI Lead Scoring</h4>
-                    <p style="color:rgba(255,255,255,0.5);margin-bottom:1rem;font-size:0.9rem;">FEATUREN</p>
-                    <p style="margin-bottom:0.75rem;">Maskinlæring algoritmer scorer leads basert på 50+ datapunkter</p>
-                    <hr style="border-color:rgba(255,255,255,0.1);margin:1rem 0;">
-                    <p style="color:#10b981;font-weight:700;margin-bottom:0.5rem;">FORTRENNENDE →</p>
-                    <p><strong>Slutt å bruke tid på upretensielle prosjekter.</strong> Teamet ditt fokuserer kun på leads med 80%+ konverteringsmulighet.</p>
-                </div>
-                
-                <div class="case-study-card">
-                    <h4 style="color:#a5b4fc;margin-bottom:1rem;">🔄 Automatiserte oppfølginger</h4>
-                    <p style="color:rgba(255,255,255,0.5);margin-bottom:1rem;font-size:0.9rem;">FEATUREN</p>
-                    <p style="margin-bottom:0.75rem;">Multi-touch e-postsekvenser med adferdsbaserte triggerere</p>
-                    <hr style="border-color:rgba(255,255,255,0.1);margin:1rem 0;">
-                    <p style="color:#10b981;font-weight:700;margin-bottom:0.5rem;">FORTRENNENDE →</p>
-                    <p><strong>Aldri la en lead bli kald.</strong> Automatiserte sekvenser pleier prosjekter 24/7, så du lukker salg 72% raskere.</p>
-                </div>
-                
-                <div class="case-study-card">
-                    <h4 style="color:#a5b4fc;margin-bottom:1rem;">📈 Pipeline Analyse</h4>
-                    <p style="color:rgba(255,255,255,0.5);margin-bottom:1rem;font-size:0.9rem;">FEATUREN</p>
-                    <p style="margin-bottom:0.75rem;">Sanntid dashboards som viser konverteringsrater, hastighet og omsetning</p>
-                    <hr style="border-color:rgba(255,255,255,0.1);margin:1rem 0;">
-                    <p style="color:#10b981;font-weight:700;margin-bottom:0.5rem;">FORTRENNENDE →</p>
-                    <p><strong>Visst nøyaktig hvor salg stopper.</strong> Identifiser bremseklosser før de koster deg omsetning.</p>
-                </div>
-                
-                <div class="case-study-card">
-                    <h4 style="color:#a5b4fc;margin-bottom:1rem;">🎯 CRM Integrasjon</h4>
-                    <p style="color:rgba(255,255,255,0.5);margin-bottom:1rem;font-size:0.9rem;">FEATUREN</p>
-                    <p style="margin-bottom:0.75rem;">Native integrasjoner med HubSpot, Salesforce, Pipedrive og 50+ verktøy</p>
-                    <hr style="border-color:rgba(255,255,255,0.1);margin:1rem 0;">
-                    <p style="color:#10b981;font-weight:700;margin-bottom:0.5rem;">FORTRENNENDE →</p>
-                    <p><strong>Funker hvor du allerede fungerer.</strong> Ingen nye verktøy å lære. Data synkroniserer automatisk.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Industries -->
-    <section id="industries" class="solutions-section" style="background:linear-gradient(180deg, rgba(99,102,241,0.05) 0%, transparent 100%);">
-        <div class="section-container">
-            <div class="section-header"><span class="section-badge">Industrier vi betjener</span><h2>Bygget for din vertikale</h2><p>Automatisering maler optimalisert for disse spesifikke industrier.</p></div>
-            
-            <div class="solutions-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🏢</div>
-                    <h4 style="margin-bottom:0.5rem;">SaaS / Tech</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Demo forespørsler, prøveaksivasering, oppgraderingsveier</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">💼</div>
-                    <h4 style="margin-bottom:0.5rem;">Profesjonelle tjenester</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Konsulenter, agenturer, advokater, regnskapsførere</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🏥</div>
-                    <h4 style="margin-bottom:0.5rem;">Helsevesen</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Pasient-scheduling, forsikringsverifisering</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🏦</div>
-                    <h4 style="margin-bottom:0.5rem;">Finanstjenester</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Rikdomsforvaltning, forsikring, utlån</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🛒</div>
-                    <h4 style="margin-bottom:0.5rem;">E-handel</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Forlatte kurver, etter-kjøp, anmeldelser</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🎓</div>
-                    <h4 style="margin-bottom:0.5rem;">Utdanning</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Opprettelser, kursoppdateringer, alumni</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🏭</div>
-                    <h4 style="margin-bottom:0.5rem;">Produksjon</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Tilbud forespørsler, leverandørmangement</p>
-                </div>
-                
-                <div class="solution-card" style="text-align:center;padding:1.5rem;">
-                    <div style="font-size:3rem;margin-bottom:1rem;">🚀</div>
-                    <h4 style="margin-bottom:0.5rem;">Startups</h4>
-                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;">Fundraising, ansettelse, vekst operasjoner</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Free Trial CTA -->
-    <section id="free-trial" class="cta-section">
-        <div class="section-container" style="text-align:center;max-width:800px;">
-            <h2 style="font-size:2.5rem;margin-bottom:1rem;">Prøv det gratis — Ingen kredittkort nødvendig</h2>
-            <p style="font-size:1.25rem;color:rgba(255,255,255,0.7);margin-bottom:2rem;">
-                14-dagers gratis prøveperiode på alle Professional pakker. Oppsett tar 2 timer. Avslutt når som helst.
-            </p>
-            
-            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">
-                <a href="setup.html?bundle=starter&trial=true" class="btn-outcome btn-outcome-primary" style="padding:1.25rem 2.5rem;">
-                    <span>🚀</span><span>Start gratis prøveperiode</span>
-                </a>
-                <a href="demo.html" class="btn-outcome btn-outcome-secondary" style="padding:1.25rem 2.5rem;">
-                    <span>👀</span><span>Bok en demo</span>
-                </a>
-            </div>
-            
-            <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);">
-                💳 Ingen kredittkort nødvendig &nbsp;|&nbsp; ⚡ Oppsett på 2 timer &nbsp;|&nbsp; 🔒 30-dagers pengene tilbake garanti
-            </p>
-        </div>
-    </section>
-
-    <style>
-    .cta-section {
-        padding: 6rem 2rem;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
-        border-top: 1px solid rgba(99, 102, 241, 0.2);
-        border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    
-    .cta-section h2 {
-        background: linear-gradient(135deg, #fff, #a5b4fc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    @media (max-width: 768px) {
-        .solutions-grid[style*="grid-template-columns: repeat(4"] {
-            grid-template-columns: repeat(2, 1fr) !important;
-        }
-    }
-    </style>
+    <button class="theme-toggle glass-panel" onclick="toggleTheme()">🌓 Toggle Theme</button>
 
     <script>
-    // Translation dictionary
-    const translations = {
-        en: {
-            home: 'Home',
-            solutions: 'Solutions',
-            pricing: 'Pricing',
-            templates: 'Templates',
-            roi_calculator: 'ROI Calculator',
-            case_studies: 'Case Studies',
-            industries: 'Industries',
-            get_started: 'Get Started',
-            language_selector: 'Language',
-            english: 'English',
-            norwegian: 'Norsk'
-        },
-        no: {
-            home: 'Hjem',
-            solutions: 'Løsninger',
-            pricing: 'Priser',
-            templates: 'Maler',
-            roi_calculator: 'ROI Kalkulator',
-            case_studies: 'Casestudier',
-            industries: 'Industrier',
-            get_started: 'Kom i gang',
-            language_selector: 'Språk',
-            english: 'Engelsk',
-            norwegian: 'Norsk'
+        function toggleTheme() {
+            const body = document.body;
+            const current = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
         }
-    };
-
-    function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('open'); document.querySelector('.mobile-menu-toggle').classList.toggle('active'); }
-    document.addEventListener('click', function(e) {
-        const nav = document.getElementById('navLinks'); const btn = document.querySelector('.mobile-menu-toggle');
-        if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-            nav.classList.remove('open'); btn.classList.remove('active');
-        }
-    });
-    
-    function changeLanguage(lang) {
-        localStorage.setItem('preferredLanguage', lang);
-        // Update language selector
-        const langSelect = document.getElementById('language-select');
-        if (langSelect) {
-            langSelect.value = lang;
-        }
-        
-        // In a real implementation, this would update all page content
-        // For now, we'll just reload the page to demonstrate the concept
-        location.reload();
-    }
-    
-    // Translate content based on selected language
-    function translatePage() {
-        const savedLang = localStorage.getItem('preferredLanguage');
-        const browserLang = navigator.language || navigator.userLanguage;
-        const defaultLang = browserLang.startsWith('no') || browserLang.startsWith('nb') || browserLang.startsWith('nn') ? 'no' : 'en';
-        const currentLang = savedLang || defaultLang;
-        
-        // Update navigation links text
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === 'index.html' || link.textContent.includes('Hjem')) {
-                link.textContent = translations[currentLang].home;
-            } else if (href === 'solutions.html' || link.textContent.includes('Løsninger')) {
-                link.textContent = translations[currentLang].solutions;
-            } else if (href === 'pricing.html' || link.textContent.includes('Priser')) {
-                link.textContent = translations[currentLang].pricing;
-            } else if (href === 'n8n-store.html' || link.textContent.includes('Maler')) {
-                link.textContent = translations[currentLang].templates;
-            } else if (href === 'roi-calculator.html' || link.textContent.includes('ROI Kalkulator')) {
-                link.textContent = translations[currentLang].roi_calculator;
-            } else if (href === 'case-studies.html' || link.textContent.includes('Casestudier')) {
-                link.textContent = translations[currentLang].case_studies;
-            } else if (link.textContent.includes('Kom i gang')) {
-                link.textContent = translations[currentLang].get_started;
-            }
-        });
-        
-        // Update language selector options
-        const langSelect = document.getElementById('language-select');
-        if (langSelect) {
-            langSelect.innerHTML = `
-                <option value="en">${translations[currentLang].english}</option>
-                <option value="no">${translations[currentLang].norwegian}</option>
-            `;
-            langSelect.value = currentLang;
-        }
-    }
-    
-    // Detect and set preferred language on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        translatePage();
-    });
     </script>
 </body>
 </html>

@@ -1,0 +1,65 @@
+{
+  "models": {
+    "google/gemini-2.0-flash-thinking-exp": {
+      "q": 0.95,
+      "cost": 0.01,
+      "latency": 2000,
+      "context": 1000000,
+      "success_rate": 1
+    },
+    "google/gemini-2.0-flash": {
+      "q": 0.85,
+      "cost": 0.001,
+      "latency": 800,
+      "context": 1000000,
+      "success_rate": 0.9,
+      "utilization_efficiency": 1
+    },
+    "anthropic/claude-3-5-sonnet": {
+      "q": 0.98,
+      "cost": 0.015,
+      "latency": 1500,
+      "context": 200000,
+      "success_rate": 1
+    },
+    "deepseek/deepseek-chat": {
+      "q": 0.9,
+      "cost": 0.0005,
+      "latency": 1200,
+      "context": 64000,
+      "success_rate": 1
+    },
+    "meta-llama/llama-3.3-70b-instruct": {
+      "q": 0.88,
+      "cost": 0.0008,
+      "latency": 900,
+      "context": 128000,
+      "success_rate": 1
+    }
+  },
+  "task_patterns": {
+    "coding": {
+      "preference": [
+        "anthropic/claude-3-5-sonnet",
+        "google/gemini-2.0-flash-thinking-exp"
+      ],
+      "weight": 1
+    },
+    "reasoning": {
+      "preference": [
+        "google/gemini-2.0-flash-thinking-exp"
+      ],
+      "weight": 1
+    },
+    "summarization": {
+      "preference": [
+        "google/gemini-2.0-flash"
+      ],
+      "weight": 1
+    }
+  },
+  "global_metrics": {
+    "total_requests": 0,
+    "avg_efficiency": 0
+  }
+}
