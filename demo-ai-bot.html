@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot & Voice Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .demo-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .demo-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .demo-icon.chat {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+
+        .demo-icon.voice {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+        }
+
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .demo-description {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            padding-right: 0.5rem;
+        }
+
+        .message {
+            margin-bottom: 0.75rem;
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .message.bot {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.1));
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input input:focus {
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .chat-input button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chat-input button:hover {
+            transform: translateY(-2px);
+        }
+
+        .chat-input button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Voice Interface */
+        .voice-interface {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .voice-button {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .voice-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .voice-button.listening {
+            animation: pulse 1.5s ease-in-out infinite;
+            background: linear-gradient(135deg, #ef4444, #f59e0b);
+        }
+
+        .voice-button svg {
+            width: 48px;
+            height: 48px;
+            fill: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+        }
+
+        .voice-status {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .voice-transcript {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        .features {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .features h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #6366f1;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+        }
+
+        .action-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-demo {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn-demo {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Chatbot & Voice Demo</h1>
+            <p>Interactive examples of Simply Complex Solutions' AI capabilities</p>
+        </div>
+
+        <div class="demo-grid">
+            <!-- Chatbot Demo -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon chat">💬</div>
+                    <div class="demo-title">AI Chatbot Demo</div>
+                </div>
+                <p class="demo-description">
+                    Try our intelligent chatbot powered by OpenAI GPT. Enter a message below and see how it responds naturally.
+                </p>
+
+                <div class="chat-interface">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">Hello! I'm your AI assistant. How can I help you today?</div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key === 'Enter') sendMessage()">
+                        <button id="sendButton" onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voice Demo -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon voice">🎙️</div>
+                    <div class="demo-title">AI Voice Bot Demo</div>
+                </div>
+                <p class="demo-description">
+                    Experience our voice-enabled AI support bot. Click the microphone to start, speak naturally, and receive voice responses.
+                </p>
+
+                <div class="voice-interface">
+                    <button class="voice-button" id="voiceButton" onclick="toggleVoice()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                        </svg>
+                    </button>
+                    <div class="voice-status" id="voiceStatus">Click to start listening</div>
+                    <div class="voice-transcript" id="voiceTranscript">
+                        Speak your message here...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <h2>Why Choose Our AI Solutions?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Real-time Responses</h3>
+                    <p>Instant intelligent responses powered by state-of-the-art language models.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Voice Integration</h3>
+                    <p>Natural voice conversations with text-to-speech and speech-to-text capabilities.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Enterprise Ready</h3>
+                    <p>Built with security, reliability, and scalability in mind.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Easy Integration</h3>
+                    <p>Simple setup with comprehensive documentation and support.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="https://github.com/eidop/scs-marketplace" class="btn-demo">View on GitHub</a>
+            <a href="https://scs-marketplace.pages.dev/" class="btn-demo">Live Demo</a>
+        </div>
+    </div>
+
+    <script>
+        // Chat Demo
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+
+        const botResponses = [
+            "That's a great question! Our AI solutions are designed to automate and enhance customer interactions.",
+            "I'd be happy to help with that! Let me show you how our chatbots can handle various scenarios.",
+            "Excellent choice! Our voice-enabled bots provide natural, human-like conversations.",
+            "I understand what you're looking for. Our solutions integrate seamlessly with your existing systems.",
+            "Great point! Here's how our AI agents can improve your customer service efficiency by 72%."
+        ];
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            chatInput.value = '';
+
+            // Simulate bot response
+            setTimeout(() => {
+                const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                addMessage(randomResponse, 'bot');
+            }, 1000);
+        }
+
+        function addMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Voice Demo
+        let isListening = false;
+        const voiceButton = document.getElementById('voiceButton');
+        const voiceStatus = document.getElementById('voiceStatus');
+        const voiceTranscript = document.getElementById('voiceTranscript');
+
+        function toggleVoice() {
+            if (!isListening) {
+                startListening();
+            } else {
+                stopListening();
+            }
+        }
+
+        function startListening() {
+            isListening = true;
+            voiceButton.classList.add('listening');
+            voiceStatus.textContent = 'Listening...';
+            voiceTranscript.textContent = 'Speak now...';
+
+            // Simulate voice recognition (replace with actual Web Speech API)
+            setTimeout(() => {
+                if (isListening) {
+                    voiceTranscript.textContent = 'Hello, I\'m interested in your AI solutions.';
+                }
+            }, 2000);
+
+            setTimeout(() => {
+                if (isListening) {
+                    stopListening();
+                    showVoiceResponse();
+                }
+            }, 5000);
+        }
+
+        function stopListening() {
+            isListening = false;
+            voiceButton.classList.remove('listening');
+        }
+
+        function showVoiceResponse() {
+            voiceStatus.textContent = 'Processing...';
+            voiceTranscript.textContent = 'Processing...';
+
+            setTimeout(() => {
+                voiceStatus.textContent = 'Complete';
+                voiceTranscript.textContent = '"I\'m here to help with any questions about Simply Complex Solutions AI products. How can I assist you today?"';
+
+                // Auto-stop after 3 seconds
+                setTimeout(() => {
+                    voiceStatus.textContent = 'Click to start listening';
+                    voiceTranscript.textContent = 'Speak your message here...';
+                }, 5000);
+            }, 1500);
+        }
+
+        // Initialize
+        sendButton.disabled = true;
+        chatInput.addEventListener('input', () => {
+            sendButton.disabled = !chatInput.value.trim();
+        });
+    </script>
+</body>
+</html>

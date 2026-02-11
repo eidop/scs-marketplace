@@ -1,0 +1,406 @@
+<!-- AI Chatbot & Voice Demo Section -->
+<section class="ai-demo-section">
+    <div class="ai-demo-container">
+        <div class="ai-demo-header">
+            <h2>🤖 AI Chatbot & Voice Demo</h2>
+            <p>Experience Simply Complex Solutions' intelligent AI capabilities</p>
+        </div>
+
+        <div class="ai-demo-grid">
+            <!-- Chatbot Preview -->
+            <div class="ai-demo-card chat-bot-card">
+                <div class="ai-demo-card-header">
+                    <span class="ai-demo-card-icon">💬</span>
+                    <h3>AI Chatbot Demo</h3>
+                </div>
+
+                <div class="ai-demo-preview">
+                    <div class="ai-chat-messages">
+                        <div class="ai-message ai-message-bot">
+                            <div class="ai-message-bubble">
+                                Hello! I'm your AI assistant. How can I help you today?
+                            </div>
+                        </div>
+                        <div class="ai-message ai-message-user">
+                            <div class="ai-message-bubble">
+                                Can you tell me about your pricing?
+                            </div>
+                        </div>
+                        <div class="ai-message ai-message-bot">
+                            <div class="ai-message-bubble">
+                                Our pricing starts at $999/month. Let me walk you through our packages...
+                            </div>
+                        </div>
+                    </div>
+                    <button class="ai-demo-try-btn" onclick="openChatDemo()">
+                        Try Interactive Demo →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Voice Bot Preview -->
+            <div class="ai-demo-card voice-bot-card">
+                <div class="ai-demo-card-header">
+                    <span class="ai-demo-card-icon">🎙️</span>
+                    <h3>AI Voice Bot Demo</h3>
+                </div>
+
+                <div class="ai-demo-preview voice-preview">
+                    <div class="ai-voice-indicator" id="aiVoiceIndicator">
+                        <div class="ai-voice-wave">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="ai-voice-status">Click microphone to try voice interaction</p>
+                    <button class="ai-demo-try-btn voice-btn" onclick="startVoiceDemo()">
+                        Try Voice Demo →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="ai-demo-features">
+            <h3>Why Choose Our AI Solutions?</h3>
+            <div class="ai-demo-features-grid">
+                <div class="ai-demo-feature-item">
+                    <h4>⚡ Real-time Responses</h4>
+                    <p>Instant intelligent responses powered by state-of-the-art language models.</p>
+                </div>
+                <div class="ai-demo-feature-item">
+                    <h4>🎙️ Voice Integration</h4>
+                    <p>Natural voice conversations with advanced text-to-speech and speech-to-text.</p>
+                </div>
+                <div class="ai-demo-feature-item">
+                    <h4>🔒 Enterprise Ready</h4>
+                    <p>Built with security, reliability, and scalability in mind.</p>
+                </div>
+                <div class="ai-demo-feature-item">
+                    <h4>🚀 Easy Integration</h4>
+                    <p>Simple setup with comprehensive documentation and support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="ai-demo-cta">
+            <a href="demo-ai-bot.html" class="ai-demo-btn primary-btn">
+                🎮 Open Full Interactive Demo
+            </a>
+            <a href="https://github.com/eidop/scs-marketplace" class="ai-demo-btn secondary-btn">
+                View on GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* AI Demo Section Styles */
+.ai-demo-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+}
+
+.ai-demo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ai-demo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.ai-demo-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ai-demo-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ai-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.ai-demo-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.ai-demo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.ai-demo-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.ai-demo-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+}
+
+.ai-demo-card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.ai-demo-preview {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 200px;
+}
+
+.ai-chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.ai-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.ai-message-bot {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ai-message-user {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ai-message-bubble {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+.ai-message-bot .ai-message-bubble {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+    border-bottom-left-radius: 2px;
+}
+
+.ai-message-user .ai-message-bubble {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.1));
+    border-bottom-right-radius: 2px;
+}
+
+.ai-demo-try-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ai-demo-try-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* Voice Preview */
+.voice-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.ai-voice-indicator {
+    margin-bottom: 1rem;
+}
+
+.ai-voice-wave {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 30px;
+}
+
+.ai-voice-wave span {
+    width: 4px;
+    height: 8px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border-radius: 2px;
+    animation: voiceWave 1s ease-in-out infinite;
+}
+
+.ai-voice-wave span:nth-child(2) { animation-delay: 0.1s; }
+.ai-voice-wave span:nth-child(3) { animation-delay: 0.2s; }
+.ai-voice-wave span:nth-child(4) { animation-delay: 0.3s; }
+.ai-voice-wave span:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes voiceWave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.5); }
+}
+
+.ai-voice-status {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.voice-btn {
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+}
+
+/* Features */
+.ai-demo-features {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.ai-demo-features h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.ai-demo-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.ai-demo-feature-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.ai-demo-feature-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: #6366f1;
+}
+
+.ai-demo-feature-item p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* CTA */
+.ai-demo-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ai-demo-btn {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.ai-demo-btn.primary-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+}
+
+.ai-demo-btn.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+}
+
+.ai-demo-btn.secondary-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.ai-demo-btn.secondary-btn:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .ai-demo-header h2 {
+        font-size: 2rem;
+    }
+
+    .ai-demo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-demo-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-demo-cta {
+        flex-direction: column;
+    }
+
+    .ai-demo-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+
+<script>
+function openChatDemo() {
+    window.open('demo-ai-bot.html', '_blank');
+}
+
+function startVoiceDemo() {
+    // Simple demo - would integrate with actual voice recognition
+    const indicator = document.getElementById('aiVoiceIndicator');
+    indicator.style.animation = 'pulse 1.5s ease-in-out infinite';
+
+    setTimeout(() => {
+        indicator.style.animation = 'none';
+    }, 3000);
+}
+</script>
