@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center | Simply Complex Solutions</title>
+    <meta name="description" content="Get help with SCS AI automation tools. FAQ, documentation, and technical support.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .support-hero {
+            padding: 140px 20px 60px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(99, 102, 241, 0.1), transparent);
+        }
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 32px auto 0;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary);
+        }
+        
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .help-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .help-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+        
+        .faq-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border);
+        }
+        
+        .faq-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .contact-form {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            margin-top: 60px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: #fff;
+            outline: none;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--success);
+            margin-top: 12px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--success);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <div class="nav-links">
+                <a href="solutions.html">Solutions</a>
+                <a href="business.html">Business</a>
+                <a href="support.html" class="active">Support</a>
+                <a href="config.html">Config</a>
+                <a href="contact.html" class="nav-btn">Open Ticket</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="support-hero">
+        <div class="section-container">
+            <h1 style="font-size: 3rem; font-weight: 800;">How can we help?</h1>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search knowledge base, templates, or error codes...">
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                All Systems Operational - Response time: < 15 mins
+            </div>
+        </div>
+    </header>
+
+    <main class="section-container">
+        <div class="support-grid">
+            <div class="help-card">
+                <div style="font-size: 2rem; margin-bottom: 12px;">📚</div>
+                <h3>Knowledge Base</h3>
+                <p class="text-muted" style="font-size: 0.9rem; margin-top: 8px;">Detailed guides for setting up and scaling your AI agents.</p>
+                <a href="resources.html" style="display: block; margin-top: 16px; font-weight: 600; color: var(--primary);">Browse Guides →</a>
+            </div>
+            <div class="help-card">
+                <div style="font-size: 2rem; margin-bottom: 12px;">🛠️</div>
+                <h3>API Reference</h3>
+                <p class="text-muted" style="font-size: 0.9rem; margin-top: 8px;">Technical documentation for developers and system architects.</p>
+                <a href="config.html#api" style="display: block; margin-top: 16px; font-weight: 600; color: var(--primary);">View Docs →</a>
+            </div>
+            <div class="help-card">
+                <div style="font-size: 2rem; margin-bottom: 12px;">💬</div>
+                <h3>Community</h3>
+                <p class="text-muted" style="font-size: 0.9rem; margin-top: 8px;">Join our Discord to chat with other SCS users and developers.</p>
+                <a href="https://discord.gg/scs" style="display: block; margin-top: 16px; font-weight: 600; color: var(--primary);">Join Discord →</a>
+            </div>
+        </div>
+
+        <section class="faq-section">
+            <h2 style="margin-bottom: 32px;">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I connect Memo-Bot to my Slack workspace?</div>
+                <div class="faq-answer text-muted">Navigate to the Integrations tab in your dashboard, select Slack, and follow the OAuth flow. Detailed steps can be found in our <a href="setup.html">Setup Guide</a>.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What LLM models does SCS support?</div>
+                <div class="faq-answer text-muted">We currently support GPT-4o, Claude 3.5 Sonnet, and Gemini 1.5 Pro. You can switch models in the Config section of your dashboard.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is my data used for training public models?</div>
+                <div class="faq-answer text-muted">No. SCS uses Enterprise API endpoints with strict zero-retention policies. Your business data remains yours.</div>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2 style="margin-bottom: 12px;">Submit a Ticket</h2>
+            <p class="text-muted" style="margin-bottom: 32px;">Can't find what you're looking for? Our human support team is ready to assist.</p>
+            
+            <form id="ticketForm" action="https://formspree.io/f/scs-support" method="POST">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Issue Type</label>
+                    <select name="type" class="form-control">
+                        <option>Technical Issue</option>
+                        <option>Billing Inquiry</option>
+                        <option>Integration Help</option>
+                        <option>Feature Request</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea name="message" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Submit Ticket</button>
+            </form>
+        </section>
+    </main>
+
+    <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid var(--border);">
+        <p class="text-muted">&copy; 2026 Simply Complex Solutions. Support Hours: 24/7 AI, 08:00-20:00 CET Human.</p>
+    </footer>
+
+    <!-- Memo-Bot Component -->
+    <div id="memo-bot-root"></div>
+    
+    <!-- Memo-Bot Loader -->
+    <script src="js/memo-bot.js"></script>
+    <script>
+        window.initMemoBot({
+            pageContext: 'support',
+            greeting: 'Hello! I am the SCS Help Desk bot. How can I assist you with your automation today?'
+        });
+    </script>
+</body>
+</html>

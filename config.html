@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration & API | Simply Complex Solutions</title>
+    <meta name="description" content="Technical documentation and configuration guide for SCS AI Agents.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .config-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+        
+        .sidebar {
+            padding: 40px;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 80px);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+        }
+        
+        .sidebar-link {
+            display: block;
+            padding: 8px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .sidebar-link:hover, .sidebar-link.active {
+            color: var(--primary);
+        }
+        
+        .content {
+            padding: 60px 80px;
+        }
+        
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255,255,255,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--primary-light);
+        }
+        
+        pre {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: #e2e8f0;
+        }
+        
+        .doc-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+        
+        .doc-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        
+        .doc-section h3 {
+            font-size: 1.5rem;
+            margin: 32px 0 16px;
+        }
+        
+        .env-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .env-table th, .env-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .env-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        @media (max-width: 1024px) {
+            .config-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+            .content {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <div class="nav-links">
+                <a href="solutions.html">Solutions</a>
+                <a href="business.html">Business</a>
+                <a href="support.html">Support</a>
+                <a href="config.html" class="active">Config</a>
+                <a href="client-dashboard.html" class="nav-btn">Console</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="config-container">
+        <aside class="sidebar">
+            <h4 style="margin-bottom: 16px; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Documentation</h4>
+            <a href="#templates" class="sidebar-link">Templates</a>
+            <a href="#api" class="sidebar-link">API Reference</a>
+            <a href="#customization" class="sidebar-link">Customization</a>
+            <a href="#env" class="sidebar-link">Environment Variables</a>
+            <a href="#troubleshooting" class="sidebar-link">Troubleshooting</a>
+        </aside>
+
+        <main class="content">
+            <section id="templates" class="doc-section">
+                <h2>Templates</h2>
+                <p>SCS provides pre-built <code>.n8n</code> and <code>.json</code> templates to accelerate your deployment. All templates are compatible with n8n version 1.0+ and SCS Memo-Bot.</p>
+                
+                <h3>Importing a Template</h3>
+                <ol style="margin-left: 20px; line-height: 1.8;">
+                    <li>Download the template from the <a href="n8n-store.html">SCS Store</a>.</li>
+                    <li>Open your n8n instance and click <strong>Import from File</strong>.</li>
+                    <li>Configure the <code>SCS_API_KEY</code> in your environment variables.</li>
+                </ol>
+
+                <pre><code>{
+  "name": "SCS Sales Outreach",
+  "nodes": [...],
+  "connections": {...},
+  "settings": {
+    "executionTimeout": 3600
+  }
+}</code></pre>
+            </section>
+
+            <section id="api" class="doc-section">
+                <h2>API Reference</h2>
+                <p>Integrate SCS directly into your stack using our REST API. All requests must be authenticated using a Bearer token.</p>
+                
+                <h3>Endpoint: Send Message</h3>
+                <p><code>POST https://api.scs.io/v1/memo-bot/message</code></p>
+                
+                <pre><code>curl -X POST https://api.scs.io/v1/memo-bot/message \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "How do I reset my password?",
+    "context": "support",
+    "user_id": "user_123"
+  }'</code></pre>
+
+                <h3>Response</h3>
+                <pre><code>{
+  "status": "success",
+  "data": {
+    "response": "To reset your password, visit the login page and click 'Forgot Password'.",
+    "confidence": 0.98,
+    "source": "kb_article_402"
+  }
+}</code></pre>
+            </section>
+
+            <section id="env" class="doc-section">
+                <h2>Environment Variables</h2>
+                <p>Configure your SCS instance using these global variables.</p>
+                
+                <table class="env-table">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>SCS_API_KEY</code></td>
+                            <td>Your unique enterprise access key</td>
+                            <td><code>null</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>SCS_MODEL</code></td>
+                            <td>Preferred LLM (gpt-4o, claude-3-5)</td>
+                            <td><code>gpt-4o</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>SCS_LOG_LEVEL</code></td>
+                            <td>Verbosity of system logs</td>
+                            <td><code>info</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>SCS_MAX_TOKENS</code></td>
+                            <td>Limit per agent interaction</td>
+                            <td><code>4096</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="troubleshooting" class="doc-section">
+                <h2>Troubleshooting</h2>
+                <p>Common issues and their resolutions.</p>
+                
+                <h3>Error: <code>401 Unauthorized</code></h3>
+                <p>Your <code>SCS_API_KEY</code> is either missing or has expired. Verify the key in your <a href="client-dashboard.html">SCS Console</a>.</p>
+                
+                <h3>Error: <code>429 Rate Limit Exceeded</code></h3>
+                <p>You have exceeded the request limit for your current plan. Consider upgrading to our <a href="pricing.html">Enterprise Plan</a> for unlimited throughput.</p>
+            </section>
+        </main>
+    </div>
+
+    <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--border);">
+        <p class="text-muted">Documentation version: 2026.2.11</p>
+    </footer>
+
+    <!-- Memo-Bot Component -->
+    <div id="memo-bot-root"></div>
+    
+    <!-- Memo-Bot Loader -->
+    <script src="js/memo-bot.js"></script>
+    <script>
+        window.initMemoBot({
+            pageContext: 'config',
+            greeting: 'Developer mode active. Need help with API endpoints or environment variables?'
+        });
+    </script>
+</body>
+</html>

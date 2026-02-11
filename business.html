@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Solutions | Simply Complex Solutions</title>
+    <meta name="description" content="Scale your business with enterprise-grade AI automation. ROI-driven solutions for sales, support, and operations.">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Business Solutions | Simply Complex Solutions">
+    <meta property="og:description" content="Scale your business with enterprise-grade AI automation.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/scs-logo.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .business-hero {
+            padding: 160px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+        }
+        
+        .roi-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            text-align: center;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+            margin-top: 32px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary);
+        }
+        
+        .calc-result {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--success);
+            margin: 16px 0;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.03);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .author {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .author-img {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <!-- Navigation (Placeholder for Injection/Consistency) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <div class="nav-links">
+                <a href="solutions.html">Solutions</a>
+                <a href="business.html" class="active">Business</a>
+                <a href="support.html">Support</a>
+                <a href="config.html">Config</a>
+                <a href="contact.html" class="nav-btn">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="business-hero">
+        <div class="section-container">
+            <span class="badge badge-primary">Enterprise AI</span>
+            <h1 class="hero-title">Automate Complexity.<br>Scale Opportunity.</h1>
+            <p class="text-muted" style="max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                SCS helps forward-thinking companies deploy production-ready AI agents that handle sales, support, and internal operations with 99.9% reliability.
+            </p>
+            <div class="cta-group">
+                <a href="#roi" class="btn btn-primary btn-hero">Calculate ROI</a>
+                <a href="solutions.html" class="btn btn-outline btn-hero">View Solutions</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-container">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Our Services</h2>
+            <p class="text-muted">Turn-key automation for every department.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <div class="logo-icon" style="margin-bottom: 20px;">⚡</div>
+                <h3>Strategic Consulting</h3>
+                <p class="text-muted" style="margin-top: 12px;">We audit your existing workflows to identify high-impact automation opportunities that drive immediate revenue.</p>
+            </div>
+            <div class="card">
+                <div class="logo-icon" style="margin-bottom: 20px;">🤖</div>
+                <h3>Custom AI Agents</h3>
+                <p class="text-muted" style="margin-top: 12px;">Bespoke LLM-powered agents trained on your private data to handle complex customer inquiries and sales tasks.</p>
+            </div>
+            <div class="card">
+                <div class="logo-icon" style="margin-bottom: 20px;">🔗</div>
+                <h3>Pipeline Integration</h3>
+                <p class="text-muted" style="margin-top: 12px;">Seamless wiring of AI into your existing CRM, ERP, and communication tools (Slack, Discord, WhatsApp).</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roi" class="section-container">
+        <div class="roi-box">
+            <h2 style="font-size: 2.5rem; margin-bottom: 8px;">ROI Calculator</h2>
+            <p class="text-muted">Estimate your annual savings with SCS AI Agents.</p>
+            
+            <div class="calculator-grid">
+                <div>
+                    <div style="margin-bottom: 32px;">
+                        <label style="display: block; margin-bottom: 12px;">Monthly Support Volume</label>
+                        <input type="range" id="volume" min="100" max="10000" value="1000" oninput="updateROI()">
+                        <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                            <span>100</span>
+                            <span id="volume-val" style="color: var(--primary); font-weight: 700;">1,000</span>
+                            <span>10,000</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 12px;">Cost Per Human Interaction ($)</label>
+                        <input type="range" id="cost" min="5" max="50" value="15" oninput="updateROI()">
+                        <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                            <span>$5</span>
+                            <span id="cost-val" style="color: var(--primary); font-weight: 700;">$15</span>
+                            <span>$50</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(0,0,0,0.2); padding: 32px; border-radius: 16px; text-align: center;">
+                    <p class="text-muted">Estimated Annual Savings</p>
+                    <div class="calc-result" id="roi-result">$126,000</div>
+                    <p style="font-size: 0.85rem; color: var(--success);">Based on 70% automation rate</p>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 24px; width: 100%;">Claim These Savings</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <h2 style="margin-bottom: 40px; text-align: center;">Case Studies</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div style="color: var(--primary); font-weight: 800; font-size: 1.5rem; margin-bottom: 16px;">FinTech Corp</div>
+                <p class="text-muted">Automated 82% of Tier-1 support tickets using SCS Memo-Bot, resulting in $450k annual savings.</p>
+                <a href="case-studies.html" style="display: block; margin-top: 20px; font-weight: 600;">Read Study →</a>
+            </div>
+            <div class="card">
+                <div style="color: var(--primary); font-weight: 800; font-size: 1.5rem; margin-bottom: 16px;">Global Retail</div>
+                <p class="text-muted">Integrated AI Sales Agents across 12 countries, increasing conversion rates by 34% within 90 days.</p>
+                <a href="case-studies.html" style="display: block; margin-top: 20px; font-weight: 600;">Read Study →</a>
+            </div>
+            <div class="card">
+                <div style="color: var(--primary); font-weight: 800; font-size: 1.5rem; margin-bottom: 16px;">Real Estate AI</div>
+                <p class="text-muted">Built a 24/7 lead qualification engine that identifies "hot" leads with 94% accuracy.</p>
+                <a href="case-studies.html" style="display: block; margin-top: 20px; font-weight: 600;">Read Study →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container" style="background: rgba(255,255,255,0.02); border-radius: 40px;">
+        <h2 style="text-align: center; margin-bottom: 48px;">What Our Clients Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"SCS didn't just give us a tool; they transformed our entire operations. Our team is now focused on growth instead of tickets."</p>
+                <div class="author">
+                    <div class="author-img"></div>
+                    <div>
+                        <div style="font-weight: 700;">Sarah Jenkins</div>
+                        <div class="text-muted" style="font-size: 0.8rem;">COO, TechScale</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The ROI was evident within the first month. The automation is so seamless our customers don't even know it's AI."</p>
+                <div class="author">
+                    <div class="author-img" style="background: #8b5cf6;"></div>
+                    <div>
+                        <div style="font-weight: 700;">Marcus Vane</div>
+                        <div class="text-muted" style="font-size: 0.8rem;">Head of Product, RetailHub</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 80px 20px; text-align: center; border-top: 1px solid var(--border);">
+        <p class="text-muted">&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+    </footer>
+
+    <!-- Memo-Bot Component -->
+    <div id="memo-bot-root"></div>
+
+    <script>
+        function updateROI() {
+            const vol = document.getElementById('volume').value;
+            const cost = document.getElementById('cost').value;
+            
+            document.getElementById('volume-val').innerText = Number(vol).toLocaleString();
+            document.getElementById('cost-val').innerText = '$' + cost;
+            
+            const annualSavings = (vol * cost * 12) * 0.7; // 70% automation rate
+            document.getElementById('roi-result').innerText = '$' + Math.round(annualSavings).toLocaleString();
+        }
+        
+        // Initial calc
+        updateROI();
+    </script>
+    
+    <!-- Memo-Bot Loader -->
+    <script src="js/memo-bot.js"></script>
+    <script>
+        window.initMemoBot({
+            pageContext: 'business',
+            greeting: 'Hi! Interested in scaling your business with AI? I can help calculate your potential ROI or book a demo.'
+        });
+    </script>
+</body>
+</html>
