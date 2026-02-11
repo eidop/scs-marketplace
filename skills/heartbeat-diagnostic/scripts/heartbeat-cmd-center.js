@@ -19,7 +19,7 @@ async function checkHeartbeat() {
     // --- Gateway Health Check & Auto-Restart ---
     try {
         const gatewayStatus = await runCommand('openclaw gateway status');
-        if (gatewayStatus.error || !gatewayStatus.stdout.includes('status: ok')) {
+        if (gatewayStatus.error || !gatewayStatus.stdout.includes('Listening:') || !gatewayStatus.stdout.includes('RPC probe: ok')) {
             summary.push(`Gateway: Down or Unresponsive. Initiating restart...`);
             issuesFound = true;
             // Attempt to restart the gateway directly
