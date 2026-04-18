@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+    <title>Gratis Automasjonsaudit | Simply Complex Solutions</title>
+    <meta name="description" content="Få en gratis 15-minutters automasjonsaudit. Vi kartlegger dine manuelle prosesser og viser deg hvor du kan spare tid og penger.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scs-marketplace.pages.dev/audit.html">
+    <meta property="og:title" content="Gratis Automasjonsaudit | Simply Complex Solutions">
+    <meta property="og:description" content="15 minutter som kan spare bedriften din 20+ timer i uken.">
+
+    <link rel="canonical" href="https://scs-marketplace.pages.dev/audit.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .audit-hero {
+            text-align: center;
+            padding: 5rem 2rem 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .audit-hero .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .audit-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .audit-hero p { font-size: 1.15rem; color: var(--text-muted, #94a3b8); max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
+        .audit-hero .badge-free {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #10b981;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-section { padding: 4rem 2rem; }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .process-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .process-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,0.3); }
+        .process-card .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .process-card h3 { color: #fff; font-size: 1.15rem; margin-bottom: 0.75rem; }
+        .process-card p { color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6; }
+
+        .deliverables-section { padding: 4rem 2rem; }
+        .deliverables-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1rem;
+        }
+        .deliverable-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .deliverable-item i { color: #10b981; font-size: 1.1rem; margin-top: 0.15rem; }
+        .deliverable-item .text strong { color: #fff; display: block; margin-bottom: 0.25rem; }
+        .deliverable-item .text span { color: var(--text-muted, #94a3b8); font-size: 0.9rem; }
+
+        .faq-section { padding: 4rem 2rem; }
+        .faq-grid { max-width: 750px; margin: 0 auto; }
+        .faq-item {
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: none;
+            color: #fff;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question:hover { background: rgba(255,255,255,0.06); }
+        .faq-question i { transition: transform 0.3s; color: #6366f1; }
+        .faq-question.active i { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.open { max-height: 300px; }
+        .faq-answer p {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-muted, #94a3b8);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .calendly-section { padding: 4rem 2rem; text-align: center; }
+        .calendly-container {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calendly-placeholder {
+            padding: 3rem;
+            text-align: center;
+        }
+        .calendly-placeholder i { font-size: 3rem; color: #6366f1; margin-bottom: 1rem; display: block; }
+        .calendly-placeholder p { color: var(--text-muted, #94a3b8); margin-bottom: 1.5rem; }
+        .calendly-placeholder a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+            transition: all 0.3s ease;
+        }
+        .calendly-placeholder a:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(99,102,241,0.45); }
+
+        .audit-cta-final { padding: 4rem 2rem; text-align: center; }
+        .audit-cta-final h2 { color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .audit-cta-final p { color: var(--text-muted, #94a3b8); margin-bottom: 2rem; }
+        .audit-cta-final .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .audit-cta-final .stat { text-align: center; }
+        .audit-cta-final .stat-value { font-size: 1.75rem; font-weight: 800; color: #10b981; display: block; }
+        .audit-cta-final .stat-label { font-size: 0.85rem; color: var(--text-muted, #94a3b8); }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Simply Complex Solutions</span>
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="n8n-store.html">Templates</a>
+                <a href="roi-calculator.html">ROI Calculator</a>
+                <a href="audit.html" class="nav-highlight" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; padding: 0.4rem 1rem; border-radius: 8px; font-weight: 700;">Gratis Audit</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuButton = document.querySelector('.mobile-menu-toggle');
+            if (navLinks.classList.contains('open') && !navLinks.contains(event.target) && !menuButton.contains(event.target)) {
+                navLinks.classList.remove('open');
+            }
+        });
+    </script>
+
+    <!-- Hero -->
+    <section class="audit-hero">
+        <div class="hero-icon">🔍</div>
+        <div class="badge-free">100% Gratis — Ingen forpliktelser</div>
+        <h1>Få en gratis 15-minutters automasjonsaudit</h1>
+        <p>Vi kartlegger dine manuelle prosesser, viser deg hvor du kan spare tid, og gir deg et konkret forslag — alt i 15 minutter.</p>
+        <a href="#book" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; border-radius: 12px;">
+            <i class="fas fa-calendar-check"></i> Book din gratis audit
+        </a>
+    </section>
+
+    <!-- Process -->
+    <section class="process-section">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+            <span class="section-badge">Slik fungerer det</span>
+            <h2 style="color: #fff; font-size: 1.8rem;">Tre enkle steg</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="step-number">1</div>
+                <h3>Book møte</h3>
+                <p>Velg et tidspunkt som passer deg. Møtet tar kun 15 minutter via Google Meet.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-number">2</div>
+                <h3>Vi kartlegger</h3>
+                <p>Vi går gjennom dine største manuelle prosesser og viser en live demo av relevant automasjon.</p>
+            </div>
+            <div class="process-card">
+                <div class="step-number">3</div>
+                <h3>Du får tilbud</h3>
+                <p>Innen 24 timer får du et skriftlig tilbud med pris, tidsramme og forventet ROI.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="deliverables-section">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+            <span class="section-badge">Hva du får</span>
+            <h2 style="color: #fff; font-size: 1.8rem;">Dette får du fra audit-møtet</h2>
+        </div>
+        <div class="deliverables-grid">
+            <div class="deliverable-item">
+                <i class="fas fa-map"></i>
+                <div class="text">
+                    <strong>Prosesskart</strong>
+                    <span>Visuell oversikt over dine manuelle prosesser og hvor tid går tapt</span>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <i class="fas fa-calculator"></i>
+                <div class="text">
+                    <strong>ROI-beregning</strong>
+                    <span>Konkrete tall på timetap i NOK og forventet besparelse med automasjon</span>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <i class="fas fa-play-circle"></i>
+                <div class="text">
+                    <strong>Live demo</strong>
+                    <span>Vi viser en relevant n8n-workflow som løser ditt største problem</span>
+                </div>
+            </div>
+            <div class="deliverable-item">
+                <i class="fas fa-file-alt"></i>
+                <div class="text">
+                    <strong>Skriftlig tilbud</strong>
+                    <span>Pris, tidsramme og forventet leveranse — innen 24 timer etter møtet</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+            <span class="section-badge">Spørsmål og svar</span>
+            <h2 style="color: #fff; font-size: 1.8rem;">Vanlige spørsmål</h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Er det virkelig gratis?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ja, 100% gratis og uten forpliktelser. Vi tilbyr dette fordi vi vet at når du ser verdien av automasjon, vil du gjerne vite mer. Ingen skjulte kostnader, ingen abonnementer.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Hva kreves fra meg?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Kun 15 minutter av tiden din og en grov oversikt over dine manuelle prosesser. Du trenger ikke installere noe eller forberede noe — vi gjør jobben.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Hva slags bedrifter passer dette for?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Vi fokuserer på norske SMB-er (1-50 ansatte) som har manuelle prosesser innen lead-håndtering, rekruttering, kundesupport eller fakturering. Hvis du bruker tid på repeterende oppgaver, kan vi hjelpe.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Må jeg kjøpe noe etter møtet?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Nei. Du får prosesskart og ROI-beregning uansett. Hvis du vil gå videre, sender vi et uforpliktende tilbud. Det er helt opp til deg.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Hvor lang tid tar et oppsett?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Avhengig av pakke: Starter (1 workflow) leveres innen 1 uke. Professional (2-3 workflows) innen 2 uker. Enterprise (full pakke) innen 3-4 uker.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendly / Booking -->
+    <section class="calendly-section" id="book">
+        <div class="section-header">
+            <span class="section-badge">Book nå</span>
+            <h2 style="color: #fff; font-size: 1.8rem;">Velg ditt tidspunkt</h2>
+            <p style="color: var(--text-muted, #94a3b8); margin-top: 0.5rem;">15 minutter — det er alt som trengs</p>
+        </div>
+        <div class="calendly-container">
+            <div class="calendly-placeholder">
+                <i class="fas fa-calendar-alt"></i>
+                <p>Book din gratis 15-minutters audit direkte i kalenderen.</p>
+                <a href="https://calendly.com/simplycomplexsolutions/audit" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> Åpne booking
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="audit-cta-final">
+        <h2>Klar for å spare tid?</h2>
+        <p>Bedrifter som automatiserer sparer i snitt 20+ timer per uke.</p>
+        <div class="stats-row">
+            <div class="stat">
+                <span class="stat-value">15 min</span>
+                <span class="stat-label">Tid investert</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">20+ t/uke</span>
+                <span class="stat-label">Besparelse</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">70%</span>
+                <span class="stat-label">Automasjonsgrad</span>
+            </div>
+        </div>
+        <a href="#book" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; border-radius: 12px;">
+            <i class="fas fa-calendar-check"></i> Book din gratis audit
+        </a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">◈</div>
+                        <span class="logo-text">Simply Complex Solutions</span>
+                    </a>
+                    <p>Enterprise AI automation bundles that actually work.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/simplycomplex" target="_blank" rel="noopener" title="Twitter">𝕏</a>
+                        <a href="https://linkedin.com/company/simplycomplex" target="_blank" rel="noopener" title="LinkedIn">in</a>
+                        <a href="https://github.com/simplycomplex" target="_blank" rel="noopener" title="GitHub">⌘</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <a href="solution-sales.html">Sales Excellence</a>
+                    <a href="solution-support.html">Support Automation</a>
+                    <a href="solution-hiring.html">Hiring System</a>
+                    <a href="n8n-store.html">All Templates</a>
+                    <a href="audit.html">Gratis Audit</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Tools</h4>
+                    <a href="roi-calculator.html">ROI Calculator</a>
+                    <a href="client-dashboard.html">Analytics Dashboard</a>
+                    <a href="status.html">System Status</a>
+                    <a href="compare.html">Feature Comparison</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="resources.html">Free Downloads</a>
+                    <a href="getting-started.html">Getting Started</a>
+                    <a href="changelog.html">Changelog</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get automation tips and product updates.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Simply Complex Solutions. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="cookies.html">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            if (!isOpen) {
+                answer.classList.add('open');
+                btn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

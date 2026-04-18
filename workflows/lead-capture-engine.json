@@ -1,0 +1,85 @@
+{
+  "name": "Lead Capture Engine — SCS Demo",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "new-lead", "responseMode": "responseNode" },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "navn", "value": "={{$json.body.navn}}" },
+            { "name": "epost", "value": "={{$json.body.epost}}" },
+            { "name": "telefon", "value": "={{$json.body.telefon}}" },
+            { "name": "bedrift", "value": "={{$json.body.bedrift}}" }
+          ]
+        }
+      },
+      "name": "Parse Lead Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Leads",
+        "columns": {
+          "mappingColumns": [
+            { "column": "A", "value": "={{$json.navn}}" },
+            { "column": "B", "value": "={{$json.epost}}" },
+            { "column": "C", "value": "={{$json.telefon}}" },
+            { "column": "D", "value": "={{$json.bedrift}}" },
+            { "column": "E", "value": "={{$now.toISO()}}" }
+          ]
+        }
+      },
+      "name": "Save to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 2,
+      "position": [690, 300],
+      "credentials": { "googleSheetsOAuth2Api": { "id": "YOUR_CREDENTIAL_ID", "name": "Google Sheets account" } }
+    },
+    {
+      "parameters": {
+        "fromEmail": "hei@simplycomplexsolutions.com",
+        "toEmail": "={{$json.epost}}",
+        "subject": "Takk for din interesse, {{$json.navn}}!",
+        "body": "Hei {{$json.navn}},\n\nTakk for at du kontaktet oss. Vi vil komme tilbake til deg innen 24 timer.\n\nMed vennlig hilsen,\nSimply Complex Solutions",
+        "options": { "sendReplyTo": "hei@simplycomplexsolutions.com" }
+      },
+      "name": "Send Welcome Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [910, 200],
+      "credentials": { "smtp": { "id": "YOUR_SMTP_CREDENTIAL_ID", "name": "SMTP account" } }
+    },
+    {
+      "parameters": { "channel": "#leads", "text": "🎯 Ny lead: {{$json.navn}} fra {{$json.bedrift}} ({{$json.epost}})" },
+      "name": "Slack Notification",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [910, 400],
+      "credentials": { "slackApi": { "id": "YOUR_SLACK_CREDENTIAL_ID", "name": "Slack account" } }
+    },
+    {
+      "parameters": { "respondWith": "json", "responseBody": "={{ JSON.stringify({ status: 'ok', message: 'Lead mottatt!' }) }}" },
+      "name": "Respond to Client",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1130, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": { "main": [[{ "node": "Parse Lead Data", "type": "main", "index": 0 }]] },
+    "Parse Lead Data": { "main": [[{ "node": "Save to Google Sheets", "type": "main", "index": 0 }]] },
+    "Save to Google Sheets": { "main": [[{ "node": "Send Welcome Email", "type": "main", "index": 0 }, { "node": "Slack Notification", "type": "main", "index": 0 }]] },
+    "Send Welcome Email": { "main": [[{ "node": "Respond to Client", "type": "main", "index": 0 }]] },
+    "Slack Notification": { "main": [[{ "node": "Respond to Client", "type": "main", "index": 0 }]] }
+  }
+}

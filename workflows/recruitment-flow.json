@@ -1,0 +1,99 @@
+{
+  "name": "Recruitment Flow — SCS Demo",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "new-application", "responseMode": "responseNode" },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "kandidat_navn", "value": "={{$json.body.navn}}" },
+            { "name": "kandidat_epost", "value": "={{$json.body.epost}}" },
+            { "name": "stilling", "value": "={{$json.body.stilling}}" },
+            { "name": "erfaring_ar", "value": "={{$json.body.erfaring}}" },
+            { "name": "kompentanse", "value": "={{$json.body.kompetanse}}" }
+          ]
+        }
+      },
+      "name": "Parse Application",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const exp = parseInt($input.item.json.erfaring_ar) || 0;\nconst skills = ($input.item.json.kompentanse || '').toLowerCase();\nlet score = 0;\nif (exp >= 5) score += 40;\nelse if (exp >= 3) score += 25;\nelse if (exp >= 1) score += 10;\nif (skills.includes('ledelse') || skills.includes('management')) score += 20;\nif (skills.includes('n8n') || skills.includes('automasjon')) score += 15;\nif (skills.includes('selger') || skills.includes('sales')) score += 15;\nif (skills.includes('b2b')) score += 10;\nconst verdict = score >= 60 ? 'kvalifisert' : score >= 35 ? 'vurderes' : 'avslag';\nreturn [{ json: { ...$input.item.json, score, verdict } }];"
+      },
+      "name": "Score Candidate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{ "value1": "={{$json.verdict}}", "operation": "notEquals", "value2": "avslag" }]
+        }
+      },
+      "name": "Filter Qualified",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [910, 300]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Soknader",
+        "columns": {
+          "mappingColumns": [
+            { "column": "A", "value": "={{$json.kandidat_navn}}" },
+            { "column": "B", "value": "={{$json.kandidat_epost}}" },
+            { "column": "C", "value": "={{$json.stilling}}" },
+            { "column": "D", "value": "={{$json.score}}" },
+            { "column": "E", "value": "={{$json.verdict}}" },
+            { "column": "F", "value": "={{$now.toISO()}}" }
+          ]
+        }
+      },
+      "name": "Save to Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 2,
+      "position": [1130, 200],
+      "credentials": { "googleSheetsOAuth2Api": { "id": "YOUR_CREDENTIAL_ID", "name": "Google Sheets" } }
+    },
+    {
+      "parameters": {
+        "fromEmail": "karriere@simplycomplexsolutions.com",
+        "toEmail": "={{$json.kandidat_epost}}",
+        "subject": "Søknad mottatt — {{$json.stilling}}",
+        "body": "Hei {{$json.kandidat_navn}},\n\nTakk for din søknad som {{$json.stilling}}.\nVi vil kontakte deg innen 3 virkedager med en oppdatering.\n\nVennlig hilsen,\nTeamet"
+      },
+      "name": "Send Confirmation Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [1350, 200],
+      "credentials": { "smtp": { "id": "YOUR_SMTP_CREDENTIAL_ID", "name": "SMTP" } }
+    },
+    {
+      "parameters": { "channel": "#rekruttering", "text": "📋 Ny søker: {{$json.kandidat_navn}} → {{$json.stilling}} (Score: {{$json.score}}, {{$json.verdict}})" },
+      "name": "Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [1350, 350],
+      "credentials": { "slackApi": { "id": "YOUR_SLACK_CREDENTIAL_ID", "name": "Slack" } }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": { "main": [[{ "node": "Parse Application", "type": "main", "index": 0 }]] },
+    "Parse Application": { "main": [[{ "node": "Score Candidate", "type": "main", "index": 0 }]] },
+    "Score Candidate": { "main": [[{ "node": "Filter Qualified", "type": "main", "index": 0 }]] },
+    "Filter Qualified": { "main": [[{ "node": "Save to Sheets", "type": "main", "index": 0 }]] },
+    "Save to Sheets": { "main": [[{ "node": "Send Confirmation Email", "type": "main", "index": 0 }, { "node": "Slack Alert", "type": "main", "index": 0 }]] }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "name": "Support Automation — SCS Demo",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "support-ticket", "responseMode": "responseNode" },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "avsender", "value": "={{$json.body.avsender}}" },
+            { "name": "epost", "value": "={{$json.body.epost}}" },
+            { "name": "emne", "value": "={{$json.body.emne}}" },
+            { "name": "melding", "value": "={{$json.body.melding}}" }
+          ]
+        }
+      },
+      "name": "Parse Ticket",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const text = (($input.item.json.emne || '') + ' ' + ($input.item.json.melding || '')).toLowerCase();\nlet category = 'generell';\nlet priority = 'normal';\nif (text.includes('faktura') || text.includes('betaling') || text.includes('invoice')) { category = 'okonomi'; priority = 'hoy'; }\nelse if (text.includes('feil') || text.includes('bug') || text.includes('virker ikke') || text.includes('error')) { category = 'teknisk'; priority = 'hoy'; }\nelse if (text.includes('konto') || text.includes('login') || text.includes('passord')) { category = 'konto'; priority = 'normal'; }\nelse if (text.includes('avbestill') || text.includes('klage')) { category = 'kundeservice'; priority = 'hoy'; }\nreturn [{ json: { ...$input.item.json, category, priority } }];"
+      },
+      "name": "Categorize Ticket",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [{ "value1": "={{$json.priority}}", "operation": "equals", "value2": "hoy" }]
+        }
+      },
+      "name": "Check Priority",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [910, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "support@simplycomplexsolutions.com",
+        "toEmail": "={{$json.epost}}",
+        "subject": "Autosvar: {{$json.emne}} [{{$json.category}}]",
+        "body": "Hei,\n\nTakk for din henvendelse.\nVi har mottatt din melding og kategorisert den som {{$json.category}}.\n\nFor kunder med hoy prioritet: Vi svarer innen 4 timer.\nFor andre henvendelser: Innen 24 timer.\n\nDin sak er registrert.\n\nVennlig hilsen,\nSupportteamet"
+      },
+      "name": "Send Auto-Reply",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [1130, 200],
+      "credentials": { "smtp": { "id": "YOUR_SMTP_CREDENTIAL_ID", "name": "SMTP" } }
+    },
+    {
+      "parameters": { "channel": "#support-escalation", "text": "🔴 HOY PRIORITET: {{$json.avsender}} — {{$json.emne}} [{{$json.category}}]" },
+      "name": "Escalate to Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [1130, 400],
+      "credentials": { "slackApi": { "id": "YOUR_SLACK_CREDENTIAL_ID", "name": "Slack" } }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Tickets",
+        "columns": {
+          "mappingColumns": [
+            { "column": "A", "value": "={{$json.avsender}}" },
+            { "column": "B", "value": "={{$json.epost}}" },
+            { "column": "C", "value": "={{$json.emne}}" },
+            { "column": "D", "value": "={{$json.category}}" },
+            { "column": "E", "value": "={{$json.priority}}" },
+            { "column": "F", "value": "={{$now.toISO()}}" }
+          ]
+        }
+      },
+      "name": "Log Ticket",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 2,
+      "position": [1350, 300],
+      "credentials": { "googleSheetsOAuth2Api": { "id": "YOUR_CREDENTIAL_ID", "name": "Google Sheets" } }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": { "main": [[{ "node": "Parse Ticket", "type": "main", "index": 0 }]] },
+    "Parse Ticket": { "main": [[{ "node": "Categorize Ticket", "type": "main", "index": 0 }]] },
+    "Categorize Ticket": { "main": [[{ "node": "Check Priority", "type": "main", "index": 0 }]] },
+    "Check Priority": {
+      "main": [
+        [{ "node": "Escalate to Slack", "type": "main", "index": 0 }],
+        [{ "node": "Send Auto-Reply", "type": "main", "index": 0 }]
+      ]
+    },
+    "Send Auto-Reply": { "main": [[{ "node": "Log Ticket", "type": "main", "index": 0 }]] },
+    "Escalate to Slack": { "main": [[{ "node": "Log Ticket", "type": "main", "index": 0 }]] }
+  }
+}
